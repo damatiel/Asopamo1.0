@@ -1,0 +1,134 @@
+p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+      left: 0%;
+      top: 0%;
+    }
+    .gwd-img-xvwd {
+      position: absolute;
+      height: 800px;
+      left: 0px;
+      top: 0px;
+      width: 829px;
+    }
+    .gwd-p-ppgg {
+      position: absolute;
+      transform-origin: 238.25px 317.958px 0px;
+      font-size: 49px;
+      width: 9.65%;
+      height: 8.86%;
+      top: 15%;
+      left: 58%;
+    }
+    .gwd-img-1pzk {
+      width: 425px;
+      left: 703px;
+      top: 0px;
+    }
+    .gwd-img-12pu {
+      left: 0px;
+      top: 0px;
+      width: 700px;
+    }
+    .gwd-p-1hiz {
+      left: 1010.18px;
+      width: 91.96px;
+      top: 88.05px;
+      height: 52.01px;
+    }
+    .gwd-p-14qa {
+      left: 552.74px;
+      top: 88.05px;
+      width: 91.96px;
+      height: 52.01px;
+    }
+    .gwd-p-16rd {
+      position: absolute;
+      left: 43px;
+      top: 265px;
+      font-weight: bold;
+      font-family: "Trebuchet MS";
+      width: 145px;
+      height: 59px;
+      transform-origin: 72.5001px 29.5px 0px;
+    }
+    .gwd-strong-ikfz {
+      font-family: "Courier New";
+    }
+    .gwd-p-w8tp {
+      left: 397px;
+      top: 265px;
+      width: 255px;
+      transform-origin: 127.5px 29.5px 0px;
+    }
+    .gwd-span-14q3 {
+      font-family: "Courier New";
+    }
+    .gwd-p-1mkd {
+      position: absolute;
+      left: 188px;
+      top: 265px;
+      width: 151px;
+      height: 16px;
+      transform-origin: 440.417px 210.923px 0px;
+    }
+    .gwd-p-2oua {
+      left: 188px;
+      top: 287px;
+    }
+    .gwd-p-1l8l {
+      top: 307px;
+    }
+    .gwd-p-6s9a {
+      left: 537px;
+    }
+    .gwd-p-wrci {
+      left: 360px;
+    }
+    .gwd-p-1swt {
+      left: 464px;
+      top: 265px;
+    }
+    .gwd-p-16ht {
+      left: 170px;
+      top: 285px;
+      width: 330px;
+      transform-origin: 962.501px 210.923px 0px;
+    }
+    .gwd-p-x0po {
+      left: 147px;
+    }
+    .gwd-p-19xc {
+      left: 550px;
+      top: 303px;
+    }
+    .gwd-p-1hbn {
+      top: 303px;
+    }
+    .gwd-div-1crj {
+      position: absolute;
+      width: 621.333px;
+      height: 108px;
+      left: 37.3333px;
+      top: 613.333px;
+      background-image: none;
+      background-color: rgb(255, 255, 255);
+    }
