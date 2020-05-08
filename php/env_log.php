@@ -52,7 +52,7 @@
 }else{
 		echo "<script>
 		alert('erro de usuario y/o contraseña');
-		redir('../index.html');
+		redir('../index.php');
 		</script>";
 	}
 

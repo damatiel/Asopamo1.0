@@ -188,6 +188,9 @@
                                             </div>
                                         </div>
                                            <br>
+                                           <div>
+                                             <input type="hidden" name="variable1" value="<?php echo $documento; ?>" />
+                                           </div>
                                         <div class="container form-group text-center">
                                             <button type="submit" name="submit" class="btn btn-success">Registrar</button>
                                         </div>

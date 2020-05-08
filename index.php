@@ -21,16 +21,16 @@
                 <div class="col-12 avatarSesion" >
                     <img src="img/avatarSesion.png" alt="">
                 </div>
-                <form action="php/facturacion.html" class="col-12">
+                <form method="POST" action="php/env_log.php" class="col-12">
                     <div class="form-group">
                         <div class="icono"><i class="fas fa-user"></i> </div>
-                        <input type="text" class="form-control text-center" id="txtUsuario" placeholder="txtUsuario" autofocus>
+                        <input type="text" class="form-control text-center" name="txtUsuario" id="txtUsuario" placeholder="Usuario" autofocus>
                     </div>
                     <div class="form-group">
                         <div class="icono"><i class="fas fa-lock"></i> </div>
-                        <input type="password" class="form-control text-center" id="txtPassword" placeholder="txtPassword">
+                        <input type="password" class="form-control text-center" name="txtPassword" id="txtPassword" placeholder="Contraseña">
                     </div>
-                    <button type="submit" class="btn btn-primary boton" name="btnInicio"><i class="fas fa-sign-in-alt"></i> btnInicio</button>
+                    <button type="submit" class="btn btn-primary boton" name="btnInicio"><i class="fas fa-sign-in-alt"></i> Entrar</button>
                 </form>
             </div>
        </div>
