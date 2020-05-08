@@ -27,16 +27,16 @@
     <div class="collapse navbar-collapse bg-primary" ;" id="">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="suscriptores.html">Suscriptores</a>
+          <a class="nav-link" href="suscriptores.php">Suscriptores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="puntos.html">Puntos</a>
+          <a class="nav-link" href="puntos.php">Puntos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Facturacion</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pagos.html">Pagos</a>
+          <a class="nav-link" href="pagos.php">Pagos</a>
         </li>
         <li class="nav-item dropdown" style="z-index: 0;">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -46,7 +46,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Deudas Suscriptores</a>
             <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
-            <a class="dropdown-item" href="consultaRecibos.html">Recaudos</a>
+            <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
 
         </li>
         <li class="nav-item dropdown">
@@ -55,7 +55,7 @@
             Configuracion
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="crearUsuario.html">Crear Usuario</a>
+            <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
 
         </li>
         <li class="nav-item">
