@@ -80,7 +80,15 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 30% 50% 20%;
 }
-
+.formularioFacturacion{
+    width: 30%;
+    position: center;
+    margin-left: 35%;
+}
+.gridConsultas{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
 
 
 
