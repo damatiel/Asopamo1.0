@@ -101,16 +101,16 @@
                                   <script type="text/javascript">
                                     alert('suscriptor');
                                   </script>
-                                  <form>
+                                  <form method="POST" action="gest_sus.php">
                                         <div class="container form-group">
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor">
                                                 <label>Primer Nombres</label>
-                                                <input type="text" class="form-control" id="txtPNnombre" placeholder=<?php echo $fila['primer_nom']; ?>>
+                                                <input type="text" class="form-control" name="txtPNnombre" id="txtPNnombre" value=<?php echo $fila['primer_nom']; ?>>
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">
                                                 <label>Segundo Nombre</label>
-                                                <input type="text" class="form-control" id="txtSNnombre" placeholder=<?php echo $fila['segundo_nom']; ?>>
+                                                <input type="text" class="form-control" name="txtSNnombre" id="txtSNnombre" value=<?php echo $fila['segundo_nom']; ?>>
                                                 </div>    
                                             </div>
                                         </div>
@@ -118,11 +118,11 @@
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor"> 
                                                     <label>Primer Apellido</label>
-                                                <input type="text" class="form-control" id="txtPApellido" placeholder=<?php echo $fila['primer_ape']; ?>>
+                                                <input type="text" class="form-control" name="txtPApellido" id="txtPApellido" value=<?php echo $fila['primer_ape']; ?>>
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">
                                                 <label>Segundo Apellido</label>
-                                                <input type="text" class="form-control" id="txtSApellido" placeholder=<?php echo $fila['segundo_ape']; ?>>
+                                                <input type="text" class="form-control" name="txtSApellido" id="txtSApellido" value=<?php echo $fila['segundo_ape']; ?>>
                                                 </div>    
                                             </div>
                                         </div>
@@ -130,18 +130,21 @@
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor"> 
                                                     <label>Direccion</label>
-                                                <input type="text" class="form-control" id="txtDireccion" placeholder=<?php echo $fila['direc']; ?>>
+                                                <input type="text" class="form-control" name="txtDireccion" value=<?php echo $fila['direc']; ?> >
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">
                                                 <label>Telefono</label>
-                                                <input type="text" class="form-control" id="txtTelefono" placeholder=<?php echo $fila['tel']; ?>>
+                                                <input type="text" class="form-control" name="txtTelefono" id="txtTelefono" value=<?php echo $fila['tel']; ?>>
                                                 </div>    
                                             </div>
                                         </div>
                                            <br>
+                                           <div>
+                                             <input type="hidden" name="documento" value="<?php echo $documento; ?>" />
+                                           </div>
                                         <div class="container form-group text-center">
-                                            <button type="button" class="btn btn-info">Actualizar</button>
-                                            <button type="button" class="btn btn-danger">Eliminar</button>
+                                            <button type="submit" name="submit1" class="btn btn-info">Actualizar</button>
+                                            <button type="submit" name="submit2" class="btn btn-danger">Eliminar</button>
                                         </div>
                                       </form>
                                     <?php
