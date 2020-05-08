@@ -10,7 +10,7 @@ echo "
 	$db = new DB_CONNECT();
 if (isset($_POST["submit"])) {
 
-	$doc = $_POST['variable1'];
+	$doc = $_POST['documento'];
 	$pn = $_POST['txtPNnombre'];
 	$sn = $_POST['txtSNnombre'];
 	$pa = $_POST['txtPApellido'];
