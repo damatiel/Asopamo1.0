@@ -125,12 +125,16 @@
       <div>
         <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
       </div>
-      <div>
+      </form>
+      <form action="#" method="post">
+        <div>
         <br>
         <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar</button>
       </div>
     </div>
-    <div class="container form-group">
+    <?php  ?>
+    <?php if (isset($_POST["buscarpunto"])) {?>
+        <div class="container form-group">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -166,7 +170,13 @@
 
     </div>
 
-  </form>
+   <?php  }?>
+
+      </form>
+      
+    
+
+  
 </body>
 
 </html>
