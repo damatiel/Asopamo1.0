@@ -91,7 +91,7 @@
       <label>Documento</label>
       <div class="gridCrearPunto">
         <div><button type="submit" name="crearpunto" class="btn btn-dark">Crear</button></div>
-        <div><input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento"></div>
+        <div><input type="number" name="cedula" class="form-control" id="txtDocumento" placeholder="txtDocumento"></div>
       </div>
     </div>
     <br>
@@ -99,35 +99,31 @@
       <div>
         <label>Direccion</label>
       </div>
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="">
-        <label class="form-check-label">¿La direccion contiene Letras?</label>
-      </div>
 
     </div>
     <div class="container form-group gridDireccion">
       <div>
-        <select class="form-control">
-          <option>Calle</option>
-          <option>Carrera</option>
+        <select name="tipo_direc" class="form-control">
+          <option value="calle">Calle</option>
+          <option value="carrera">Carrera</option>
         </select>
       </div>
       <div>
-        <input type="number" class="form-control" id="txt" placeholder="">
+        <input type="number" name="numero_direc" class="form-control" id="txt" placeholder="">
       </div>
       <div>
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-          id="txt" placeholder="ABC">
+          id="txt" placeholder="#">
       </div>
       <div>
-        <input type="number" class="form-control" id="txt" placeholder="">
+        <input type="number" name="numero2_direc" class="form-control" id="txt" placeholder="">
       </div>
       <div>
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-          id="txt" placeholder="ABC">
+          id="txt" placeholder="-">
       </div>
       <div>
-        <input type="number" class="form-control" id="txt" placeholder="">
+        <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
       </div>
       <div>
         <br>
@@ -164,9 +160,9 @@
     </div>
 
     <div class="container form-group text-center">
-      <button type="button" class="btn btn-success">Registrar</button>
-      <button type="button" class="btn btn-info">Actualizar</button>
-      <button type="button" class="btn btn-danger">Eliminar</button>
+      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
+      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
+      <button type="submit" name="eliminarpunto" class="btn btn-danger">Eliminar</button>
 
     </div>
 
