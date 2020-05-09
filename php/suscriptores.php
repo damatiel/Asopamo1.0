@@ -7,7 +7,7 @@
 
   if ($_SESSION["autentificado"] != "SI") { 
     //si no está logueado lo envío a la página de autentificación 
-    header("Location:../index.html"); 
+    header("Location:../index.php"); 
 }
 ?>
 <!DOCTYPE html>
@@ -67,7 +67,7 @@
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Salir</a>
+                <a class="nav-link" href="salir.php">Salir</a>
             </li>
             
             

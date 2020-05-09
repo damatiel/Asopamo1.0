@@ -1,3 +1,16 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.php"); 
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +46,7 @@
           <a class="nav-link" href="puntos.php">Puntos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Facturacion</a>
+          <a class="nav-link" href="facturacion.php">Facturacion</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="pagos.php">Pagos</a>
@@ -59,10 +72,10 @@
 
         </li>
         <li class="nav-item">
-          <a class="nav-link">Usuario: Miguel</a>
+          <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Salir</a>
+          <a class="nav-link" href="salir.php">Salir</a>
         </li>
 
 
@@ -73,11 +86,11 @@
   <div>
     <h2 class="titulo text-center container">Puntos</h2>
   </div>
-  <form class="formularioPuntos">
+  <form method="post" action="ges_punto.php" class="formularioPuntos">
     <div class="container form-group">
       <label>Documento</label>
       <div class="gridCrearPunto">
-        <div><button type="button" class="btn btn-dark">Crear</button></div>
+        <div><button type="submit" name="crearpunto" class="btn btn-dark">Crear</button></div>
         <div><input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento"></div>
       </div>
     </div>
@@ -118,7 +131,7 @@
       </div>
       <div>
         <br>
-        <button type="button" class="btn btn-primary">Buscar</button>
+        <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar</button>
       </div>
     </div>
     <div class="container form-group">
