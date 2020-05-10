@@ -11,7 +11,7 @@
  Target Server Version : 100410
  File Encoding         : 65001
 
- Date: 07/05/2020 22:05:27
+ Date: 10/05/2020 12:18:57
 */
 
 SET NAMES utf8mb4;
@@ -51,18 +51,23 @@ CREATE TABLE `meses`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `puntos`;
 CREATE TABLE `puntos`  (
-  `id` int(11) NOT NULL,
-  `dir` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dir` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `estado` int(2) NULL DEFAULT NULL,
-  `doc_sub` int(20) NOT NULL,
+  `doc_suscriptor` int(20) NULL DEFAULT NULL,
   `saldo_ant` int(60) NULL DEFAULT NULL,
   `contador` int(60) NULL DEFAULT NULL,
   `descuento` int(60) NULL DEFAULT NULL,
   `form_pago` int(2) NULL DEFAULT NULL,
   `fecha_act` date NULL DEFAULT NULL,
-  PRIMARY KEY (`id`, `doc_sub`) USING BTREE,
-  INDEX `doc_sub`(`doc_sub`) USING BTREE
-) ENGINE = MyISAM CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`, `dir`) USING BTREE,
+  INDEX `doc_suscriptor`(`doc_suscriptor`) USING BTREE
+) ENGINE = MyISAM AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of puntos
+-- ----------------------------
+INSERT INTO `puntos` VALUES (3, 'calle1#2-3', 1, 1100963440, NULL, NULL, NULL, NULL, '2020-05-08');
 
 -- ----------------------------
 -- Table structure for suscriptores
@@ -83,7 +88,7 @@ CREATE TABLE `suscriptores`  (
 -- ----------------------------
 -- Records of suscriptores
 -- ----------------------------
-INSERT INTO `suscriptores` VALUES (1100963440, 'Miguel', 'Angel', 'Mejia', 'macias', 1, '3508737961', 'cr8#5-38');
+INSERT INTO `suscriptores` VALUES (1100964440, 'Miguel', 'Angel', 'Mejia', 'Macias', 1, '3508737961', 'cr4#5-38');
 
 -- ----------------------------
 -- Table structure for usuarios
