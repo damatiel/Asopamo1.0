@@ -132,8 +132,50 @@
         <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar</button>
       </div>
     </div>
+      <div class="container">
+        <div class="container form-group gridDireccion">
+      <div>
+        <select name="tipo_direc" class="form-control">
+          <option value="calle">Calle</option>
+          <option value="carrera">Carrera</option>
+        </select>
+      </div>
+      <div>
+        <input type="number" name="numero_direc" class="form-control" id="txt" placeholder="">
+      </div>
+      <div>
+        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
+          id="txt" placeholder="#">
+      </div>
+      <div>
+        <input type="number" name="numero2_direc" class="form-control" id="txt" placeholder="">
+      </div>
+      <div>
+        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
+          id="txt" placeholder="-">
+      </div>
+      <div>
+        <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
+      </div>
+        
+    </div>
+      </div>
+    </form>
     <?php  ?>
     <?php if (isset($_POST["buscarpunto"])) {?>
+
+      <?php
+        $td = $_POST['tipo_direc'];
+        $n1 = $_POST['numero_direc'];
+        $n2 = $_POST['numero2_direc'];
+        $n3 = $_POST['numero3_direc'];
+        $dire = $td.$n1.'#'.$n2.'-'.$n3; 
+        $query = "SELECT * FROM puntos WHERE dir = '$dire'";
+
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+
+        
+      ?>
         <div class="container form-group">
       <table class="table">
         <thead class="thead-dark">
@@ -145,11 +187,27 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>ejemplo</td>
-            <td>ejemplo</td>
-            <td>ejemplo</td>
-            <td>ejemplo</td>
+          <tr><?php if ($fila = mysqli_fetch_array($query_exec)) { 
+            $doc = $fila['doc_suscriptor'];
+            ?>
+        
+            <td><?php echo $fila['doc_suscriptor']; ?></td>
+            
+            <td><?php echo $fila['dir']; ?></td>
+            <?php 
+              $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+
+              $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+
+        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+             ?>
+             <td><?php echo $fila2['primer_nom']; ?></td>
+            <td><?php echo $fila2['primer_ape']; ?></td>
+
+          <?php } ?>
+            <?php } ?>
+
+            
           </tr>
 
         </tbody>
@@ -172,7 +230,7 @@
 
    <?php  }?>
 
-      </form>
+      
       
     
 
