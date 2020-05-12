@@ -1,3 +1,15 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,17 +32,17 @@
         <div class="collapse navbar-collapse bg-primary";" id="">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="suscriptores.html">Suscriptores</a>
+              <a class="nav-link" href="suscriptores.php">Suscriptores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="puntos.html">Puntos</a>
+              <a class="nav-link" href="puntos.php">Puntos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="facturacion.html">Facturacion</a>
+                <a class="nav-link" href="facturacion.php">Facturacion</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="pagos.html">Pagos</a>
+                <a class="nav-link" href="pagos.php">Pagos</a>
             </li>
             
            
@@ -39,23 +51,23 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="ConsultaDeudas.html">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="ConsultaPagos.html">Pagos Suscriptores</a>    
-                <a class="dropdown-item" href="consultaRecibos.html">Recaudos</a>
+                <a class="dropdown-item" href="ConsultaDeudas.php">Deudas Suscriptores</a>
+                <a class="dropdown-item" href="ConsultaPagos.php">Pagos Suscriptores</a>    
+                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearUsuario.html">Crear Usuario</a>
+                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
                 
             </li>
             <li class="nav-item">
-                <a class="nav-link">Usuario: Miguel</a>
+                <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Salir</a>
+                <a class="nav-link" href="salir.php">Salir</a>
             </li>
             
             
