@@ -126,13 +126,14 @@
         <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
       </div>
       </form>
-      <form action="#" method="post">
-        <div>
-        <br>
-        <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar</button>
       </div>
-    </div>
+      <form action="#" method="post">
+        
+    
       <div class="container">
+        <div>
+        <label>Direccion</label>
+      </div>
         <div class="container form-group gridDireccion">
       <div>
         <select name="tipo_direc" class="form-control">
@@ -159,9 +160,20 @@
       </div>
         
     </div>
+    <div class="container form-group gridDireccion">
+      <div>
+        <label>ID Punto</label>
+        <input type="number" name="id" class="form-control">
       </div>
+    </div>
+    <div>
+        <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar por direccion</button>
+        <button type="submit" name="buscarpuntoid" class="btn btn-primary">Buscar por id punto</button>
+      </div>
+      </div>
+      <br>
+
     </form>
-    <?php  ?>
     <?php if (isset($_POST["buscarpunto"])) {?>
 
       <?php
@@ -176,6 +188,7 @@
 
         
       ?>
+      <form method="post" action="ges_punto.php">
         <div class="container form-group">
       <table class="table">
         <thead class="thead-dark">
@@ -214,11 +227,11 @@
       </table>
     </div>
     <br>
-    <form method="post" action="ges_punto.php">
+    
       <div class="container form-group">
       <div>
         <label>Descuento</label>
-        <input type="number" class="form-control" id="txtDescuento" placeholder="txtDescuento">
+        <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
         <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
       </div>
     </div>
@@ -235,8 +248,76 @@
 
    <?php  }?>
 
-      
-      
+      <!-- __________________________________________________________________________________________________ -->
+      <?php if (isset($_POST["buscarpuntoid"])) {?>
+
+      <?php
+        $id = $_POST['id']; 
+        $query = "SELECT * FROM puntos WHERE id = '$id'";
+
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+
+        
+      ?>
+      <form method="post" action="ges_punto.php">
+        <div class="container form-group">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Documento</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Primer Nombre</th>
+            <th scope="col">Primer Apellido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><?php if ($fila = mysqli_fetch_array($query_exec)) { 
+            $doc = $fila['doc_suscriptor'];
+            ?>
+        
+            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
+            
+            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
+            <?php 
+              $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+
+              $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+
+        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+             ?>
+             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
+            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+
+          <?php } ?>
+            <?php } ?>
+
+            
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <br>
+    
+      <div class="container form-group">
+      <div>
+        <label>Descuento</label>
+        <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
+        <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
+      </div>
+    </div>
+
+    <div class="container form-group text-center">
+      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
+      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
+      <button type="submit" name="eliminarpunto" class="btn btn-danger">Eliminar</button>
+
+    </div>
+
+    </form>
+    
+
+   <?php  }?>
     
 
   

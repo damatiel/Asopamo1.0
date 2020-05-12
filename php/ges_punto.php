@@ -30,13 +30,30 @@ if (isset($_POST['buscarpunto'])) {
 	echo "buscarpunto";
 }
 if (isset($_POST['registrardescuento'])) {
-	echo "registrar descuento";
+	$doc = $_POST['documento'];
+	$desc = $_POST['descuento'];
+	$query ="UPDATE puntos SET descuento='$desc' WHERE doc_suscriptor = '$doc'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+echo "
+				<script>
+				alert('descuento asignado');
+				redir('puntos.php');
+				</script>
+				";
 }
 if (isset($_POST['actualizarpunto'])) {
 	echo "actualizar punto";
 }
 if (isset($_POST['eliminarpunto'])) {
-	echo "eliminar punto";
+	$doc = $_POST['documento'];
+	$query ="DELETE FROM puntos WHERE doc_suscriptor = '$doc'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	echo "
+		<script>
+			alert('Punto eliminado');
+			redir('puntos.php');
+		</script>
+	";
 }
 
  ?>
