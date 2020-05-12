@@ -42,7 +42,18 @@ echo "
 				";
 }
 if (isset($_POST['actualizarpunto'])) {
-	echo "actualizar punto";
+	$doc = $_POST['documento'];
+	$dir = $_POST['dir'];
+	$p_a = $_POST['p_n'];
+	$p_a = $_POST['p_a'];
+	$query ="UPDATE puntos SET descuento='$desc' WHERE doc_suscriptor = '$doc'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+echo "
+				<script>
+				alert('punto actualizado');
+				redir('puntos.php');
+				</script>
+				";
 }
 if (isset($_POST['eliminarpunto'])) {
 	$doc = $_POST['documento'];
