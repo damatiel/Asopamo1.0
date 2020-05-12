@@ -181,9 +181,9 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Documento</th>
+            <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
-            <th scope="col">Direccion</th>
           </tr>
         </thead>
         <tbody>
@@ -191,9 +191,9 @@
             $doc = $fila['doc_suscriptor'];
             ?>
         
-            <td><?php echo $fila['doc_suscriptor']; ?></td>
+            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
             
-            <td><?php echo $fila['dir']; ?></td>
+            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 
@@ -201,8 +201,8 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><?php echo $fila2['primer_nom']; ?></td>
-            <td><?php echo $fila2['primer_ape']; ?></td>
+             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
+            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
 
           <?php } ?>
             <?php } ?>
@@ -214,10 +214,12 @@
       </table>
     </div>
     <br>
-    <div class="container form-group">
+    <form method="post" action="ges_punto.php">
+      <div class="container form-group">
       <div>
         <label>Descuento</label>
         <input type="number" class="form-control" id="txtDescuento" placeholder="txtDescuento">
+        <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
       </div>
     </div>
 
@@ -227,6 +229,9 @@
       <button type="submit" name="eliminarpunto" class="btn btn-danger">Eliminar</button>
 
     </div>
+
+    </form>
+    
 
    <?php  }?>
 
