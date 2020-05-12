@@ -85,38 +85,34 @@
                 <div>
                   <label>Direccion</label>
                 </div>
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="">
-                  <label class="form-check-label">¿La direccion contiene Letras?</label>
-                </div>
           
               </div>
             <div class="container form-group gridDireccion">
-                <div>
-                  <select class="form-control">
-                    <option>Calle</option>
-                    <option>Carrera</option>
-                  </select>
-                </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                <div>
-                  <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
-                </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                <div>
-                  <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
-                </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                
-              </div>
+      <div>
+        <select name="tipo_direc" class="form-control">
+          <option value="calle">Calle</option>
+          <option value="carrera">Carrera</option>
+        </select>
+      </div>
+      <div>
+        <input type="number" name="numero_direc" class="form-control" id="txt" placeholder="">
+      </div>
+      <div>
+        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
+          id="txt" placeholder="#">
+      </div>
+      <div>
+        <input type="number" name="numero2_direc" class="form-control" id="txt" placeholder="">
+      </div>
+      <div>
+        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
+          id="txt" placeholder="-">
+      </div>
+      <div>
+        <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
+      </div>
+        
+    </div>
               <div class="text-center">
                 <button type="button" class="btn btn-primary">Imprimir</button>
               </div>
