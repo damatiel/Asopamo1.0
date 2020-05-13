@@ -1,6 +1,6 @@
 
 <?php  
-  require_once __DIR__ . '..php/conectar.php';
+  require_once __DIR__ . '/../php/conectar.php';
 
   $db = new DB_CONNECT();
 
@@ -10,6 +10,8 @@
     //si no está logueado lo envío a la página de autentificación 
     header("Location:../index.html"); 
 }
+                  echo '<img src="barcode.php?filepath=assets/123456.jpg&codetype=Code39&size=100&text=hola"/>';
+                  
 ?>
 
 <?php 
