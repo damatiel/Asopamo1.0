@@ -51,13 +51,13 @@ if (isset($_POST["imprimir1"])) {
 	</form>
 	<?php 
 		}}}}
-	if (isset($_POST["imprimir1"])) {
+	if (isset($_POST["imprimirt"])) {
 
 		$mes = $_POST['mes'];
 
 		?>
 		<form method="POST" action="prueba.php">
-		<input type="hidden" name="dir" value="<?php echo $dire; ?>">
+		<input type="hidden" name="mes" value="<?php echo $mes; ?>">
 		<?php 
 		$query = "SELECT * FROM puntos ";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
