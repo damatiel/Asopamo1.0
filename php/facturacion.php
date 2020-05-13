@@ -80,7 +80,7 @@
             <h2 class="titulo text-center container">Facturacion</h2>
           </div>
           <br><br>
-          <form method="post" action="../pdf/prueba.php" class="formularioFacturacion">
+          <form method="post" action="../pdf/pruebacode.php" class="formularioFacturacion">
             <div class="container">
                 <div>
                   <label>Direccion</label>

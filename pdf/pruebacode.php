@@ -21,16 +21,36 @@ if (isset($_POST["imprimir1"])) {
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$dire = $td.$n1.'#'.$n2.'-'.$n3;
-	$query = "SELECT * FROM suscriptores WHERE doc = '$documento'";
+	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
+		$doc = $fila[3];
+		$id_punto = $fila[0];
+		$query2 = "SELECT * FROM facturacion WHERE documento = '$doc'";
+	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+	if ($fila2 = mysqli_fetch_array($query_exec2)) {
+		$n_fact = $fila2[0];
+		$f_fact = $fila2[3];
+		$p_fact = $fila2[4];
+		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+	if ($fila3 = mysqli_fetch_array($query_exec3)) {
+		$p_nom = $fila3[1];
+
 	?>
 	<form method="POST" action="prueba.php">
-		<input type="hidden" name="td" value="<?php echo $dire; ?>">
-		<img src="barcode.php?filepath=assets/123456.jpg&codetype=Code39&size=100&text=hola"/>
+		<input type="hidden" name="dir" value="<?php echo $dire; ?>">
+		<input type="hidden" name="n_fact" value="<?php echo $n_fact; ?>">
+		<input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>">
+		<input type="hidden" name="p_nom" value="<?php echo $p_nom; ?>">
+		<input type="hidden" name="f_fact" value="<?php echo $f_fact; ?>">
+		<input type="hidden" name="p_fact" value="<?php echo $p_fact; ?>">
+		<input type="hidden" name="doc" value="<?php echo $doc; ?>">
+		<img src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
+		<input type="submit" name="fact1">
 	</form>
 	<?php 
-		}}
+		}}}}
 	 ?>
 
 
