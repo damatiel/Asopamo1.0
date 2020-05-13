@@ -139,7 +139,9 @@
                     <button type="submit" name="imprimir1" class="btn btn-primary">Imprimir</button>
                     <button type="submit" name="imprimirt" class="btn btn-success">Imprimir Todos</button>
                  </div>
-                  <img src="barcode.php?filepath=assets/1234567.jpg&codetype=Code39&size=100&text=jorgeesgay" />
+                 <?php 
+                  echo '<img src="barcode.php?filepath=assets/$cedula.jpg&codetype=Code39&size=100&text=$"/>';
+                  ?>
           </form>
 
         </body>
