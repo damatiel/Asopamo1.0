@@ -68,7 +68,7 @@ if (isset($_POST["imprimir1"])) {
 		while ($fila2 = mysqli_fetch_array($query_exec2)) {
 			$n_fact = $fila2[0];
 			?>
-				<img src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
+				<img src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}}
 		 ?>
