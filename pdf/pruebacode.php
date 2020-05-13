@@ -73,7 +73,7 @@ if (isset($_POST["imprimir1"])) {
 		}}
 		 ?>
 		
-		<input type="submit" name="fact1">
+		<input type="submit" name="fact2">
 	</form>
 	<?php
 	}
