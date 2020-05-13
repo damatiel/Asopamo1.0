@@ -96,6 +96,9 @@ $dompdf->loadHtml('
   <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
   ');
 
+
+
+}}
 // (Optional) Setup the paper size and orientation
 $dompdf->setPaper('A4', 'landscape');
 
@@ -104,7 +107,6 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $dompdf->stream();
-}}
   }
 
  ?>
