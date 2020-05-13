@@ -30,8 +30,8 @@ if (isset($_POST["crearpunto"])) {
 			}else{
 				echo "
 				<script>
-				alert('no existe ese suscriptor');
-				redir('puntos.php');
+				alert('no existe ese suscriptor, porfavor agregelo');
+				redir('suscriptores.php');
 				</script>
 				";
 			}
