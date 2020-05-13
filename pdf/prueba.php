@@ -1,5 +1,16 @@
 
+<?php  
+  require_once __DIR__ . '..php/conectar.php';
 
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+}
+?>
 
 <?php 
 // incluye el cargador automático 
@@ -22,12 +33,6 @@ $dompdf->loadHtml('
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">001</p>
   <p class="gwd-p-ppgg gwd-p-1hiz" id="num_fact_1">001</p>
   <p class="gwd-p-16rd"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
-  <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
-  <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-1mkd gwd-p-x0po" id="id_punto">001</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht" id="subs">MIGUEL ANGEL MEJIA</p>

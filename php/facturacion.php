@@ -80,7 +80,7 @@
             <h2 class="titulo text-center container">Facturacion</h2>
           </div>
           <br><br>
-          <form class="formularioFacturacion">
+          <form method="post" action="../pdf/prueba.php" class="formularioFacturacion">
             <div class="container">
                 <div>
                   <label>Direccion</label>
@@ -113,24 +113,33 @@
       </div>
         
     </div>
-              <div class="text-center">
-                <button type="button" class="btn btn-primary">Imprimir</button>
-              </div>
-              <br><br>
+              
+              <br>
               <div class="container text-center">
                   <label>Periodo De Facturacion</label>
               </div>
               <div>
                 <select class="form-control">
-                  <option>Calle</option>
-                  <option>Carrera</option>
+                  <option>Enero</option>
+                  <option>Febrero</option>
+                  <option>Marzo</option>
+                  <option>Abril</option>
+                  <option>Mayo</option>
+                  <option>Junio</option>
+                  <option>Julio</option>
+                  <option>Agosto</option>
+                  <option>Septiembre</option>
+                  <option>Octubre</option>
+                  <option>Noviembre</option>
+                  <option>Diciembre</option>
                 </select>
               </div>
                 <div class="text-center">
                     <br>
-                    <button type="button" class="btn btn-success">Imprimir Todos</button>
+                    <button type="submit" name="imprimir1" class="btn btn-primary">Imprimir</button>
+                    <button type="submit" name="imprimirt" class="btn btn-success">Imprimir Todos</button>
                  </div>
-                  
+                  <img src="barcode.php?filepath=assets/1234567.jpg&codetype=Code39&size=100&text=jorgeesgay" />
           </form>
 
         </body>
