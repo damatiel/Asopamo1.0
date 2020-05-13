@@ -15,7 +15,10 @@ if (isset($_POST["crearpunto"])) {
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$dire = $td.$n1.'#'.$n2.'-'.$n3;
-	$query ="INSERT INTO puntos (dir,estado,doc_suscriptor,fecha_act) VALUES ('$dire',1,'$doc',NOW())";
+	$query ="SELECT * FROM suscriptores WHERE doc = '$doc'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	if ($fila = mysqli_fetch_array($query_exec)) {
+		$query ="INSERT INTO puntos (dir,estado,doc_suscriptor,fecha_act) VALUES ('$dire',1,'$doc',NOW())";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 
 	echo "
@@ -24,6 +27,16 @@ if (isset($_POST["crearpunto"])) {
 				redir('puntos.php');
 				</script>
 				";
+			}else{
+				echo "
+				<script>
+				alert('no existe ese suscriptor');
+				redir('puntos.php');
+				</script>
+				";
+			}
+
+	
 }
 
 if (isset($_POST['buscarpunto'])) {

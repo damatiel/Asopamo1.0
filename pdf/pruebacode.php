@@ -51,6 +51,7 @@ if (isset($_POST["imprimir1"])) {
 	</form>
 	<?php 
 		}}}}
+		
 	 ?>
 
 

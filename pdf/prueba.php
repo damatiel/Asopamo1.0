@@ -60,6 +60,11 @@ $dompdf->render();
 
 // Output the generated PDF to Browser
 $dompdf->stream();
+echo "
+        <script>
+        redir('facturacion.php');
+        </script>
+        ";
   }
 
  ?>
