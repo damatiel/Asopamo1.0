@@ -18,12 +18,12 @@ if (isset($_POST["imprimir1"])) {
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$dire = $td.$n1.'#'.$n2.'-'.$n3;
-	$query = "SELECT * FROM puntos WHERE dir = '$dire' AND dir = '$mes";
+	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
 		$doc = $fila[3];
 		$id_punto = $fila[0];
-		$query2 = "SELECT * FROM facturacion WHERE documento = '$doc'";
+		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND id_mes = '$mes'";
 	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 	if ($fila2 = mysqli_fetch_array($query_exec2)) {
 		$n_fact = $fila2[0];
