@@ -79,16 +79,16 @@
             <h2 class="titulo text-center container">Pagos</h2>
           </div>
           <br><br>
-          <form class="formularioPagos">
+          <form action="ges_pagos.php" method = "POST" class="formularioPagos" >
             <div class="gridPagos">
               <div class="text-center p-1">
                 <label>Numero Factura</label>
               </div>
               <div>
-                <input type="number" class="form-control" id="txtNFactura" autofocus placeholder="txtNFactura">
+                <input type="number" class="form-control" name="txtNFactura" autofocus placeholder="txtNFactura">
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-primary" name="buscarFactura">Buscar</button>
               </div>
             </div>
             <br><br>
