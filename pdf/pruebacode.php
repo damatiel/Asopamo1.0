@@ -80,7 +80,14 @@ if (isset($_POST["imprimir1"])) {
 		<input type="submit" name="fact1">
 	</form>
 	<?php 
-		}}}}
+		}}}else{
+			echo "
+				<script>
+				alert('Se agregaron datos incorrectos');
+				redir('../php/facturacion.php');
+				</script>
+				";
+		}}
 	if (isset($_POST["imprimirt"])) {
 
 		$mes = $_POST['mes'];
