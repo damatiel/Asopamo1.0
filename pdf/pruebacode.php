@@ -11,17 +11,14 @@
 
   session_start();
 
-  if ($_SESSION["autentificado"] != "SI") { 
-    //si no está logueado lo envío a la página de autentificación 
-    header("Location:../index.html"); 
-}
 if (isset($_POST["imprimir1"])) {
+	$mes = $_POST['mes'];
 	$td = $_POST['tipo_direc'];
 	$n1 = $_POST['numero_direc'];
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$dire = $td.$n1.'#'.$n2.'-'.$n3;
-	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
+	$query = "SELECT * FROM puntos WHERE dir = '$dire' AND id_mes = '$mes";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
 		$doc = $fila[3];
@@ -56,7 +53,7 @@ if (isset($_POST["imprimir1"])) {
 		$mes = $_POST['mes'];
 
 		?>
-		<form method="POST" action="prueba.php">
+		<form method="POST" action="prueba2.php">
 		<input type="hidden" name="mes" value="<?php echo $mes; ?>">
 		<?php 
 		$query = "SELECT * FROM puntos ";
@@ -79,16 +76,5 @@ if (isset($_POST["imprimir1"])) {
 	}
 		
 	 ?>
-
-
-
-
-	
-<a href="prueba.php">generar pdf</a>
 </body>
 </html>
-
-
-<?php 
-echo '';
- ?>
