@@ -10,7 +10,7 @@
   $db = new DB_CONNECT();
 
   session_start();
-
+$user = $_SESSION['nombres'];
 if (isset($_POST["imprimir1"])) {
 	$mes = $_POST['mes'];
 	$td = $_POST['tipo_direc'];
@@ -18,11 +18,44 @@ if (isset($_POST["imprimir1"])) {
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$dire = $td.$n1.'#'.$n2.'-'.$n3;
+	if ($mes == 1) {
+		$mes1 = 'enero';
+	}if ($mes == 2) {
+		$mes1 = 'febrero';
+	}if ($mes == 3) {
+		$mes1 = 'marzo';
+	}if ($mes == 4) {
+		$mes1 = 'abril';
+	}if ($mes == 5) {
+		$mes1 = 'mayo';
+	}if ($mes == 6) {
+		$mes1 = 'junio';
+	}if ($mes == 7) {
+		$mes1 = 'julio';
+	}if ($mes == 8) {
+		$mes1 = 'agosto';
+	}if ($mes == 9) {
+		$mes1 = 'septiembre';
+	}if ($mes == 10) {
+		$mes1 = 'octubre';
+	}if ($mes == 11) {
+		$mes1 = 'noviembre';
+	}if ($mes == 12) {
+		$mes1 = 'diciembre';
+	}
+
 	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
 		$doc = $fila[3];
 		$id_punto = $fila[0];
+		$saldo_ant = $fila[4];
+		$descuento = $fila[6];
+		$total_pagar = 13000+$saldo_ant+$descuento;
+
+		$query4 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
+	$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+
 		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND id_mes = '$mes'";
 	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 	if ($fila2 = mysqli_fetch_array($query_exec2)) {
