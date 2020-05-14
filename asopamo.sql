@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2020 a las 07:02:06
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.4
+-- Servidor: 127.0.0.1:3306
+-- Tiempo de generación: 14-05-2020 a las 03:01:25
+-- Versión del servidor: 5.7.26
+-- Versión de PHP: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -27,7 +28,8 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `facturacion`
 --
 
-CREATE TABLE `facturacion` (
+DROP TABLE IF EXISTS `facturacion`;
+CREATE TABLE IF NOT EXISTS `facturacion` (
   `numero_fact` int(11) NOT NULL,
   `id_punto` int(11) DEFAULT NULL,
   `documento` int(20) DEFAULT NULL,
@@ -37,8 +39,11 @@ CREATE TABLE `facturacion` (
   `saldo_ant` decimal(60,0) DEFAULT NULL,
   `id_mes` int(12) DEFAULT NULL,
   `operador` varchar(255) DEFAULT NULL,
-  `total_pagar` decimal(60,0) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `total_pagar` decimal(60,0) DEFAULT NULL,
+  PRIMARY KEY (`numero_fact`) USING BTREE,
+  KEY `id_punto` (`id_punto`),
+  KEY `id_punto_2` (`id_punto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -46,11 +51,13 @@ CREATE TABLE `facturacion` (
 -- Estructura de tabla para la tabla `meses`
 --
 
-CREATE TABLE `meses` (
+DROP TABLE IF EXISTS `meses`;
+CREATE TABLE IF NOT EXISTS `meses` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `ult_dia` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `ult_dia` date DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -58,8 +65,9 @@ CREATE TABLE `meses` (
 -- Estructura de tabla para la tabla `puntos`
 --
 
-CREATE TABLE `puntos` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `puntos`;
+CREATE TABLE IF NOT EXISTS `puntos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `dir` varchar(255) NOT NULL,
   `estado` int(2) DEFAULT NULL,
   `doc_suscriptor` int(20) DEFAULT NULL,
@@ -67,15 +75,18 @@ CREATE TABLE `puntos` (
   `contador` int(60) DEFAULT NULL,
   `descuento` int(60) DEFAULT NULL,
   `form_pago` int(2) DEFAULT NULL,
-  `fecha_act` date DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `fecha_act` date DEFAULT NULL,
+  PRIMARY KEY (`id`,`dir`) USING BTREE,
+  KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE,
+  KEY `doc_suscriptor_2` (`doc_suscriptor`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `puntos`
 --
 
 INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `form_pago`, `fecha_act`) VALUES
-(3, 'calle1#2-3', 1, 1100963440, NULL, NULL, NULL, NULL, '2020-05-08');
+(4, 'carrera10#10-10', 1, 123456789, NULL, NULL, NULL, NULL, '2020-05-13');
 
 -- --------------------------------------------------------
 
@@ -83,7 +94,8 @@ INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `con
 -- Estructura de tabla para la tabla `suscriptores`
 --
 
-CREATE TABLE `suscriptores` (
+DROP TABLE IF EXISTS `suscriptores`;
+CREATE TABLE IF NOT EXISTS `suscriptores` (
   `doc` int(20) NOT NULL,
   `primer_nom` varchar(50) DEFAULT NULL,
   `segundo_nom` varchar(50) DEFAULT NULL,
@@ -91,15 +103,16 @@ CREATE TABLE `suscriptores` (
   `segundo_ape` varchar(50) DEFAULT NULL,
   `estado` int(2) DEFAULT NULL,
   `tel` varchar(11) DEFAULT NULL,
-  `direc` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `direc` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`doc`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `suscriptores`
 --
 
 INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `segundo_ape`, `estado`, `tel`, `direc`) VALUES
-(1100964440, 'Miguel', 'Angel', 'Mejia', 'Macias', 1, '3508737961', 'cr4#5-38');
+(123456789, 'Primer ', 'Segundp', 'Apellido', 'Apellido', 1, '123456789', 'Carrera 10 # 10 - 10');
 
 -- --------------------------------------------------------
 
@@ -107,13 +120,15 @@ INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `s
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
   `tipo` int(2) DEFAULT NULL,
   `usuario` varchar(255) DEFAULT NULL,
-  `pass` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `pass` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -128,63 +143,29 @@ INSERT INTO `usuarios` (`id`, `nombre`, `tipo`, `usuario`, `pass`) VALUES
 -- Estructura de tabla para la tabla `valores`
 --
 
-CREATE TABLE `valores` (
+DROP TABLE IF EXISTS `valores`;
+CREATE TABLE IF NOT EXISTS `valores` (
   `id` int(11) NOT NULL,
   `concepto` varchar(255) DEFAULT NULL,
-  `valor` double(255,0) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `valor` double(255,0) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
--- Índices para tablas volcadas
+-- Restricciones para tablas volcadas
 --
 
 --
--- Indices de la tabla `facturacion`
+-- Filtros para la tabla `facturacion`
 --
 ALTER TABLE `facturacion`
-  ADD PRIMARY KEY (`numero_fact`) USING BTREE,
-  ADD KEY `id_punto` (`id_punto`);
+  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `puntos` (`id`);
 
 --
--- Indices de la tabla `meses`
---
-ALTER TABLE `meses`
-  ADD PRIMARY KEY (`id`) USING BTREE;
-
---
--- Indices de la tabla `puntos`
+-- Filtros para la tabla `puntos`
 --
 ALTER TABLE `puntos`
-  ADD PRIMARY KEY (`id`,`dir`) USING BTREE,
-  ADD KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE;
-
---
--- Indices de la tabla `suscriptores`
---
-ALTER TABLE `suscriptores`
-  ADD PRIMARY KEY (`doc`) USING BTREE;
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`) USING BTREE;
-
---
--- Indices de la tabla `valores`
---
-ALTER TABLE `valores`
-  ADD PRIMARY KEY (`id`) USING BTREE;
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `puntos`
---
-ALTER TABLE `puntos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  ADD CONSTRAINT `puntos_ibfk_1` FOREIGN KEY (`doc_suscriptor`) REFERENCES `suscriptores` (`doc`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
