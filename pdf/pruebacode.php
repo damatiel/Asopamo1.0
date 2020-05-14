@@ -51,7 +51,7 @@ if (isset($_POST["imprimir1"])) {
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
 		$descuento = $fila[6];
-		$total_pagar = 13000+$saldo_ant+$descuento;
+		$total_pagar = 13000+$saldo_ant-$descuento;
 
 		$query4 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
 	$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
