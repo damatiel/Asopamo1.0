@@ -4,51 +4,11 @@ require_once __DIR__ . '/../php/conectar.php';
   $db = new DB_CONNECT();
 
   session_start();
-  
+
 $user = $_SESSION['nombres'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
-if ($mes == 1) {
-    $mes1 = 'enero';
-  }if ($mes == 2) {
-    $mes1 = 'febrero';
-  }if ($mes == 3) {
-    $mes1 = 'marzo';
-  }if ($mes == 4) {
-    $mes1 = 'abril';
-  }if ($mes == 5) {
-    $mes1 = 'mayo';
-  }if ($mes == 6) {
-    $mes1 = 'junio';
-  }if ($mes == 7) {
-    $mes1 = 'julio';
-  }if ($mes == 8) {
-    $mes1 = 'agosto';
-  }if ($mes == 9) {
-    $mes1 = 'septiembre';
-  }if ($mes == 10) {
-    $mes1 = 'octubre';
-  }if ($mes == 11) {
-    $mes1 = 'noviembre';
-  }if ($mes == 12) {
-    $mes1 = 'diciembre';
-  }
-  $query4 = "SELECT * FROM puntos";
-  $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta facturacion");
-  while ($fila4 = mysqli_fetch_array($query_exec4)) {
-    	$doc = $fila4[3];
-		$id_punto = $fila4[0];
-		$saldo_ant = $fila4[4];
-		$descuento = $fila4[6];
-		$atrasos = $fila4[5];
-		$total_pagar = 13000+$saldo_ant-$descuento;
-
-    $query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
-  $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-  }
-
-
   $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
@@ -57,13 +17,16 @@ if ($mes == 1) {
 	    $doc = $fila[2];
 	    $f_fact = $fila[3];
 	    $p_fact = $fila[4];
-		$admin_mes = $fila2[5];
-		$saldo_ant = $fila2[6];
+		$admin_mes = $fila[5];
+		$saldo_ant = $fila[6];
 
     $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
     	$dir = $fila2[1];
+    	$descuento = $fila2[6];
+		$atrasos = $fila2[5];
+		$total_pagar = 13000+$saldo_ant-$descuento;
     $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
@@ -74,7 +37,7 @@ if ($mes == 1) {
 		$html = '<link rel="stylesheet" href="prueba.css">
 		<div  id="codigo"></div>
 
-		  img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
+		  <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
   <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
   <p class="gwd-p-16rd gwd-p-1xo1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
