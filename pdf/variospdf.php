@@ -35,7 +35,7 @@ public static function savedisk($name,$html,$folder)
 {
 		$dompdf = new Dompdf();
 		$dompdf->loadHtml($html);
-		$dompdf->setPaper('A4', 'landscape');
+		$dompdf->setPaper('letter', 'portrait');
 		$dompdf->render();
 		$output = $dompdf -> output();
 		$file = $folder.$name;

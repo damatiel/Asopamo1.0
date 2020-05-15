@@ -24,10 +24,10 @@ p {
     }
     .gwd-img-xvwd {
       position: absolute;
-      height: 800px;
       left: 0px;
       top: 0px;
       width: 829px;
+      height: 1076px;
     }
     .gwd-p-ppgg {
       position: absolute;
@@ -38,27 +38,17 @@ p {
       top: 15%;
       left: 58%;
     }
-    .gwd-img-1pzk {
-      width: 425px;
-      left: 703px;
-      top: 0px;
-    }
     .gwd-img-12pu {
+      width: 813px;
+      transform-origin: 406.667px 538px 0px;
       left: 0px;
       top: 0px;
-      width: 700px;
-    }
-    .gwd-p-1hiz {
-      left: 1010.18px;
-      width: 91.96px;
-      top: 88.05px;
-      height: 52.01px;
     }
     .gwd-p-14qa {
-      left: 552.74px;
-      top: 88.05px;
       width: 91.96px;
       height: 52.01px;
+      left: 552.74px;
+      top: 88.05px;
     }
     .gwd-p-16rd {
       position: absolute;
@@ -75,9 +65,9 @@ p {
     }
     .gwd-p-w8tp {
       left: 397px;
-      top: 265px;
       width: 255px;
       transform-origin: 127.5px 29.5px 0px;
+      top: 265px;
     }
     .gwd-span-14q3 {
       font-family: "Courier New";
@@ -105,30 +95,176 @@ p {
     }
     .gwd-p-1swt {
       left: 464px;
-      top: 265px;
+      top: 408px;
     }
     .gwd-p-16ht {
-      left: 170px;
-      top: 285px;
       width: 330px;
       transform-origin: 962.501px 210.923px 0px;
+      left: 170px;
+      top: 426px;
     }
     .gwd-p-x0po {
       left: 147px;
+      top: 408px;
     }
     .gwd-p-19xc {
       left: 550px;
-      top: 303px;
+      top: 448px;
     }
     .gwd-p-1hbn {
-      top: 303px;
+      left: 188px;
+      top: 446px;
     }
     .gwd-div-1crj {
       position: absolute;
-      width: 621.333px;
-      height: 108px;
-      left: 37.3333px;
-      top: 613.333px;
       background-image: none;
       background-color: rgb(255, 255, 255);
+      left: 48px;
+      top: 829px;
+      height: 142px;
+      width: 717px;
+      transform-origin: 358.666px 70.8333px 0px;
+    }
+    .gwd-p-q0r4 {
+      left: 43px;
+      top: 407px;
+    }
+    .gwd-p-huvl {
+      top: 409px;
+    }
+    .gwd-p-1dj7 {
+      top: 406px;
+    }
+    .gwd-p-1xo1 {
+      top: 406px;
+    }
+    .gwd-p-1eat {
+      top: 409px;
+    }
+    .gwd-p-wotq {
+      top: 409px;
+    }
+    .gwd-p-1h36 {
+      top: 409px;
+    }
+    .gwd-p-d236 {
+      position: absolute;
+      left: 54px;
+      top: 532px;
+    }
+    .gwd-p-ediy {
+      top: 555px;
+    }
+    .gwd-p-1u8f {
+      top: 577px;
+    }
+    .gwd-p-14a8 {
+      top: 598px;
+    }
+    .gwd-p-ng4g {
+      top: 619px;
+    }
+    .gwd-p-1th5 {
+      top: 640px;
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-1g7m {
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-14r7 {
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-ncq9 {
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-18ab {
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-8hmw {
+      font-family: "Courier New";
+      font-weight: bold;
+    }
+    .gwd-p-5wlg {
+      left: 408px;
+    }
+    .gwd-p-4uv1 {
+      left: 427px;
+    }
+    .gwd-p-10z0 {
+      left: 612px;
+    }
+    .gwd-p-hx35 {
+      left: 637px;
+    }
+    .gwd-p-1baq {
+      left: 408px;
+    }
+    .gwd-p-1edg {
+      left: 427px;
+    }
+    .gwd-p-1bt9 {
+      left: 408px;
+      top: 576px;
+    }
+    .gwd-p-16jr {
+      left: 427px;
+      top: 576px;
+    }
+    .gwd-p-a5v1 {
+      top: 597px;
+    }
+    .gwd-p-11ry {
+      top: 597px;
+    }
+    .gwd-p-ceg6 {
+      top: 617px;
+    }
+    .gwd-p-1avi {
+      top: 617px;
+    }
+    .gwd-p-k48i {
+      top: 638px;
+    }
+    .gwd-p-1uq2 {
+      top: 638px;
+    }
+    .gwd-p-1hvk {
+      top: 750px;
+    }
+    .gwd-p-q6vc {
+      top: 750px;
+    }
+    .gwd-p-tp5p {
+      top: 747px;
+    }
+    .gwd-p-1nly {
+      left: 155px;
+    }
+    .gwd-p-156d {
+      top: 285px;
+      left: 504px;
+      font-family: "Courier New";
+      font-weight: bold;
+      width: 76px;
+      transform-origin: 221.667px 210.923px 0px;
+    }
+    .gwd-p-1oen {
+      left: 591px;
+      top: 284px;
+    }
+    .gwd-p-1bi0 {
+      top: 304px;
+      width: 187px;
+      transform-origin: 543.495px 210.923px 0px;
+    }
+    .gwd-p-suoa {
+      width: 101px;
+      transform-origin: 294.514px 210.923px 0px;
+      top: 304px;
+      left: 656px;
     }

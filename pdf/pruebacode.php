@@ -51,6 +51,7 @@ if (isset($_POST["imprimir1"])) {
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
 		$descuento = $fila[6];
+		$atrasos = $fila[5];
 		$total_pagar = 13000+$saldo_ant-$descuento;
 
 		$query4 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
@@ -62,6 +63,8 @@ if (isset($_POST["imprimir1"])) {
 		$n_fact = $fila2[0];
 		$f_fact = $fila2[3];
 		$p_fact = $fila2[4];
+		$admin_mes = $fila2[5];
+		$saldo_ant = $fila2[6];
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 	if ($fila3 = mysqli_fetch_array($query_exec3)) {
@@ -76,6 +79,12 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="f_fact" value="<?php echo $f_fact; ?>">
 		<input type="hidden" name="p_fact" value="<?php echo $p_fact; ?>">
 		<input type="hidden" name="doc" value="<?php echo $doc; ?>">
+		<input type="hidden" name="atrasos" value="<?php echo $atrasos; ?>">
+		<input type="hidden" name="admin_mes" value="<?php echo $admin_mes; ?>">
+		<input type="hidden" name="saldo_ant" value="<?php echo $saldo_ant; ?>">
+		<input type="hidden" name="descuento" value="<?php echo $descuento; ?>">
+		<input type="hidden" name="total_pagar" value="<?php echo $total_pagar; ?>">
+		<input type="hidden" name="user" value="<?php echo $user; ?>">
 		<img src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
 		<input type="submit" name="fact1">
 	</form>
