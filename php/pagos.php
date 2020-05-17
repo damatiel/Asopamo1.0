@@ -79,7 +79,15 @@
             <h2 class="titulo text-center container">Pagos</h2>
           </div>
           <br><br>
-          <form action="ges_pagos.php" method = "POST" class="formularioPagos" >
+          
+          <?php 
+          $nomCompleto = "Nombre Suscriptor";
+          $tel = "Telefono";
+          $direccion = "Direccion";
+          ?>
+          <form method = "POST" class="formularioPagos" action = "#" >
+
+            <div>
             <div class="gridPagos">
               <div class="text-center p-1">
                 <label>Numero Factura</label>
@@ -90,20 +98,54 @@
               <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="buscarFactura">Buscar</button>
               </div>
-            </div>
+              </div>
+            </form>
             <br><br>
+           <?php  
+              if (isset($_POST["buscarFactura"])) {
+                $numFactura = $_POST['txtNFactura'];
+                $query = "SELECT id_punto FROM facturacion WHERE numero_fact = $numFactura";
+                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                if($fila = mysqli_fetch_array($query_exec)){
+                     $idPunto = $fila['id_punto'];
+                     $query = "SELECT doc_suscriptor FROM puntos WHERE id = $idPunto";
+                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                     if($fila = mysqli_fetch_array($query_exec)){
+                        $docSuscriptor = $fila['doc_suscriptor'];
+                        $query = "SELECT primer_nom, segundo_nom, primer_ape, segundo_ape, tel, direc FROM suscriptores WHERE doc = $docSuscriptor";
+                        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                        if($fila = mysqli_fetch_array($query_exec)){
+                           $pNom = $fila['primer_nom'];
+                           $sNom = $fila['segundo_nom'];
+                           $pApe = $fila['primer_ape'];
+                           $sApe = $fila['segundo_ape'];
+                           $tel = $fila['tel'];
+                           $direccion = $fila['direc'];
+                           $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
+                           
+                           
+                        }
+                     }
+                       
+                     }
+                    
+                
+                }else{
+
+                }
+           ?>
            <div>
              <label class="container">Nombre Suscriptor</label>
-             <label class="form-control">Aca el nombre del suscriptor es un label</label>
+             <label class="form-control"><?php echo $nomCompleto; ?></label>
           </div>
            <div class="gridPagos">
              <div class="p-1">
                <label class="container">Telefono</label>
-               <label for="" class="form-control">Label Telefono</label>
+               <label for="" class="form-control"><?php echo $tel; ?></label>
              </div>
              <div class="p-1">
               <label class="container">Direccion</label>
-              <label for="" class="form-control">Label Direccion</label>
+              <label for="" class="form-control"><?php echo $direccion; ?></label>
             </div>
             <div class="p-1">
               <label class="container">Total</label>
@@ -125,8 +167,12 @@
                 <button type="button" class="btn btn-success">Pagar</button>
               </div>
             
+            
             </div>
-
-          </form>
+         
+         
         </body>
         </html>
+
+        
+      
