@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-05-2020 a las 03:01:25
+-- Tiempo de generación: 17-05-2020 a las 21:27:57
 -- Versión del servidor: 5.7.26
 -- Versión de PHP: 7.2.18
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `facturacion`;
 CREATE TABLE IF NOT EXISTS `facturacion` (
-  `numero_fact` int(11) NOT NULL,
+  `numero_fact` int(11) NOT NULL AUTO_INCREMENT,
   `id_punto` int(11) DEFAULT NULL,
   `documento` int(20) DEFAULT NULL,
   `fecha_fact` date DEFAULT NULL,
@@ -40,10 +40,8 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `id_mes` int(12) DEFAULT NULL,
   `operador` varchar(255) DEFAULT NULL,
   `total_pagar` decimal(60,0) DEFAULT NULL,
-  PRIMARY KEY (`numero_fact`) USING BTREE,
-  KEY `id_punto` (`id_punto`),
-  KEY `id_punto_2` (`id_punto`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`numero_fact`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -57,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `meses` (
   `nombre` varchar(50) DEFAULT NULL,
   `ult_dia` date DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -77,16 +75,8 @@ CREATE TABLE IF NOT EXISTS `puntos` (
   `form_pago` int(2) DEFAULT NULL,
   `fecha_act` date DEFAULT NULL,
   PRIMARY KEY (`id`,`dir`) USING BTREE,
-  KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE,
-  KEY `doc_suscriptor_2` (`doc_suscriptor`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `puntos`
---
-
-INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `form_pago`, `fecha_act`) VALUES
-(4, 'carrera10#10-10', 1, 123456789, NULL, NULL, NULL, NULL, '2020-05-13');
+  KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -105,14 +95,7 @@ CREATE TABLE IF NOT EXISTS `suscriptores` (
   `tel` varchar(11) DEFAULT NULL,
   `direc` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`doc`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `suscriptores`
---
-
-INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `segundo_ape`, `estado`, `tel`, `direc`) VALUES
-(123456789, 'Primer ', 'Segundp', 'Apellido', 'Apellido', 1, '123456789', 'Carrera 10 # 10 - 10');
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- --------------------------------------------------------
 
@@ -128,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `usuario` varchar(255) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -149,23 +132,7 @@ CREATE TABLE IF NOT EXISTS `valores` (
   `concepto` varchar(255) DEFAULT NULL,
   `valor` double(255,0) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `facturacion`
---
-ALTER TABLE `facturacion`
-  ADD CONSTRAINT `facturacion_ibfk_1` FOREIGN KEY (`id_punto`) REFERENCES `puntos` (`id`);
-
---
--- Filtros para la tabla `puntos`
---
-ALTER TABLE `puntos`
-  ADD CONSTRAINT `puntos_ibfk_1` FOREIGN KEY (`doc_suscriptor`) REFERENCES `suscriptores` (`doc`);
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
