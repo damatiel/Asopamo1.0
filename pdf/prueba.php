@@ -39,11 +39,10 @@ if (isset($_POST["fact1"])) {
 
   
 
+
 $dompdf->loadHtml('
-  
 <link rel="stylesheet" href="prueba.css">
 <div  id="codigo"></div>
-
    <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
   <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
@@ -90,6 +89,7 @@ $dompdf->loadHtml('
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
   
   <img class="gwd-div-1crj" src="assets/'.$doc.'.jpg"/>
+  <div style="page-break-after:always;"></div>
   ');
 
 // (Optional) Setup the paper size and orientation
@@ -103,4 +103,4 @@ $dompdf->stream();
   }
 
 
- ?>
+ ?><?php  ?>

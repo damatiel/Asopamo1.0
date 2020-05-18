@@ -35,13 +35,7 @@ $mes = $_POST['mes'];
 
   
 
-		$html = '<!DOCTYPE html>
-    <html>
-    <head>
-      <title></title>
-    </head>
-    <body>
-    <?php for ($i=0; $i < 5; $i++) { ?>
+		$html = '
       <link rel="stylesheet" href="prueba.css">
     <div  id="codigo"></div>
 
@@ -92,18 +86,17 @@ $mes = $_POST['mes'];
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
       <div style="page-break-after:always;"></div>
-      <?php } ?>
-    </body>
-    </html>
     ';
       
-
-		$folder = __DIR__ .'/pdf/';
-    $name = 'facturas '.$n_fact.'.pdf';
-		PDF::savedisk($name,$html,$folder);
+$html1 = '<div style="page-break-after:always;"></div>
+    ';
+		$name = 'facturas '.$n_fact.'.pdf';
+  $folder = __DIR__ .'/pdf/';
     
+		PDF::savedisk($name,$html,$folder);
+  // PDF::stream($name,$html);
   }}}
   
 }
-// PDF::stream($name,$html);
+
  ?>
