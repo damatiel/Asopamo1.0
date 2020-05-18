@@ -9,37 +9,43 @@ $user = $_SESSION['nombres'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
-        
-
-  $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
+        $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
-	    $n_fact = $fila[0];
-	    $id_punto = $fila[1];
-	    $doc = $fila[2];
-	    $f_fact = $fila[3];
-	    $p_fact = $fila[4];
-		$admin_mes = $fila[5];
-		$saldo_ant = $fila[6];
+      $n_fact = $fila[0];
+      $id_punto = $fila[1];
+      $doc = $fila[2];
+      $f_fact = $fila[3];
+      $p_fact = $fila[4];
+    $admin_mes = $fila[5];
+    $saldo_ant = $fila[6];
 
     $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
-    	$dir = $fila2[1];
-    	$descuento = $fila2[6];
-		$atrasos = $fila2[5];
-		$total_pagar = 13000+$saldo_ant-$descuento;
+      $dir = $fila2[1];
+      $descuento = $fila2[6];
+    $atrasos = $fila2[5];
+    $total_pagar = 13000+$saldo_ant-$descuento;
     $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
 
-      	$p_nom = $fila3[1];
+        $p_nom = $fila3[1];
 
-		$html = '
-    <link rel="stylesheet" href="prueba.css">
-		<div  id="codigo"></div>
+  
 
-		  <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
+		$html = '<!DOCTYPE html>
+    <html>
+    <head>
+      <title></title>
+    </head>
+    <body>
+    <?php for ($i=0; $i < 5; $i++) { ?>
+      <link rel="stylesheet" href="prueba.css">
+    <div  id="codigo"></div>
+
+      <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
   <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
   <p class="gwd-p-16rd gwd-p-1xo1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
@@ -83,9 +89,14 @@ $mes = $_POST['mes'];
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5">Otros Conceptos</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p">OPERADOR:&nbsp;</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
-		  
-		  <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
-      <div style="page-break-after:always;"></div>';
+      
+      <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
+      <div style="page-break-after:always;"></div>
+      <?php } ?>
+    </body>
+    </html>
+    ';
+      
 
 		$folder = __DIR__ .'/pdf/';
     $name = 'facturas '.$n_fact.'.pdf';
