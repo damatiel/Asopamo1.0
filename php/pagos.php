@@ -38,7 +38,7 @@
               <a class="nav-link" href="puntos.php">Puntos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Facturacion</a>
+                <a class="nav-link" href="facturacion.php">Facturacion</a>
             </li>
             
             <li class="nav-item">
@@ -84,6 +84,11 @@
           $nomCompleto = "Nombre Suscriptor";
           $tel = "Telefono";
           $direccion = "Direccion";
+          $tPagar = "Valor A Pagar";
+          $numFactura ="";
+          $idPunto = "";
+        
+         
           ?>
           <form method = "POST" class="formularioPagos" action = "#" >
 
@@ -93,50 +98,22 @@
                 <label>Numero Factura</label>
               </div>
               <div>
-                <input type="number" class="form-control" name="txtNFactura" autofocus placeholder="txtNFactura">
+                <input type="number" class="form-control" name="txtNFactura" autofocus placeholder="Numero Factura">
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary" name="buscarFactura">Buscar</button>
+                
               </div>
               </div>
-            </form>
+            
             <br><br>
            <?php  
-              if (isset($_POST["buscarFactura"])) {
-                $numFactura = $_POST['txtNFactura'];
-                $query = "SELECT id_punto FROM facturacion WHERE numero_fact = $numFactura";
-                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                if($fila = mysqli_fetch_array($query_exec)){
-                     $idPunto = $fila['id_punto'];
-                     $query = "SELECT doc_suscriptor FROM puntos WHERE id = $idPunto";
-                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                     if($fila = mysqli_fetch_array($query_exec)){
-                        $docSuscriptor = $fila['doc_suscriptor'];
-                        $query = "SELECT primer_nom, segundo_nom, primer_ape, segundo_ape, tel, direc FROM suscriptores WHERE doc = $docSuscriptor";
-                        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                        if($fila = mysqli_fetch_array($query_exec)){
-                           $pNom = $fila['primer_nom'];
-                           $sNom = $fila['segundo_nom'];
-                           $pApe = $fila['primer_ape'];
-                           $sApe = $fila['segundo_ape'];
-                           $tel = $fila['tel'];
-                           $direccion = $fila['direc'];
-                           $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
-                           
-                           
-                        }
-                     }
-                       
-                     }
-                    
-                
-                }else{
-
-                }
+            include('ges_pagos.php');
            ?>
            <div>
              <label class="container">Nombre Suscriptor</label>
              <label class="form-control"><?php echo $nomCompleto; ?></label>
+            
           </div>
            <div class="gridPagos">
              <div class="p-1">
@@ -149,27 +126,36 @@
             </div>
             <div class="p-1">
               <label class="container">Total</label>
-              <label for="" class="form-control">Label Total</label>
+              <label for="" class="form-control"><?php echo $tPagar; ?></label>
             </div>
            </div>
            <br><br><br>
             <div class="gridPagos">
               <div class="p-1">
                 <label class="">Entidad De Pago:</label>
+                <input type="number" name="txtNumeroFactura" style="display:none;" value =<?php echo $numFactura; ?>>
               </div>
               <div>
-                <select class="form-control">
-                  <option>Calle</option>
-                  <option>Carrera</option>
-                </select>
+              <select class="form-control" name="select" index = '3'>
+                <?php
+                  $query = "SELECT * FROM ent_pago";
+                  $resul = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                  while ($row=mysqli_fetch_array($resul)){?>
+                      <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
+                  <?php  }
+                   
+                  ?>
+                   <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
+                  </select>
+                   
               </div>
               <div class="text-center">
-                <button type="button" class="btn btn-success">Pagar</button>
+                <button type="sunmit" class="btn btn-success" name="pagarFactura">Pagar</button>
               </div>
             
             
             </div>
-         
+            </form>
          
         </body>
         </html>
