@@ -85,7 +85,7 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="descuento" value="<?php echo $descuento; ?>">
 		<input type="hidden" name="total_pagar" value="<?php echo $total_pagar; ?>">
 		<input type="hidden" name="user" value="<?php echo $user; ?>">
-		<img src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
+		<img style="visibility: hidden;" src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
 		<input type="submit" name="fact1">
 	</form>
 	<?php 
@@ -147,7 +147,7 @@ if (isset($_POST["imprimir1"])) {
 		while ($fila2 = mysqli_fetch_array($query_exec2)) {
 			$n_fact = $fila2[0];
 			?>
-				<img src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
+				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}
 		 ?>
