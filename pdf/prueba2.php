@@ -92,7 +92,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
       $html.='
     ';
 
-		$name = 'facturas '.$n_fact.'.pdf';
+		$name = 'facturas '.$p_fact.'.pdf';
   $folder = __DIR__ .'/pdf/';
     
 		// PDF::savedisk($name,$html,$folder);
