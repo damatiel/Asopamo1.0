@@ -9,7 +9,14 @@ $user = $_SESSION['nombres'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
-        $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
+        
+
+  
+
+		$html = '
+      <link rel="stylesheet" href="prueba.css">
+    <div  id="codigo"></div>';
+$query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
       $n_fact = $fila[0];
@@ -32,12 +39,7 @@ $mes = $_POST['mes'];
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
 
         $p_nom = $fila3[1];
-
-  
-
-		$html = '
-      <link rel="stylesheet" href="prueba.css">
-    <div  id="codigo"></div>
+    $html.='
 
       <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
@@ -85,17 +87,17 @@ $mes = $_POST['mes'];
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
-      <div style="page-break-after:always;"></div>
+      <div style="page-break-after:always;"></div>';
+      }}}
+      $html.='
     ';
-      
-$html1 = '<div style="page-break-after:always;"></div>
-    ';
+
 		$name = 'facturas '.$n_fact.'.pdf';
   $folder = __DIR__ .'/pdf/';
     
-		PDF::savedisk($name,$html,$folder);
-  // PDF::stream($name,$html);
-  }}}
+		// PDF::savedisk($name,$html,$folder);
+  PDF::stream($name,$html);
+  
   
 }
 
