@@ -46,7 +46,7 @@ require_once __DIR__ . '/conectar.php';
                $query ="INSERT INTO pagos (num_factura,id_punto,id_entPago,fecha_pago) VALUES ($numFactura,$idPunto,$id_pagos,NOW())";
                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");  
              }
-             $query = "UPDATE puntos set saldo_ant = '0', contador = '0', descuento = '0', estado = '2' WHERE id = $idPunto";
+             $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, estado = 2 WHERE id = $idPunto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
        }
       header('pagos.php');

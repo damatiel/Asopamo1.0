@@ -139,14 +139,17 @@ if (isset($_POST["imprimir1"])) {
 		$descuento = $fila4[6];
 		$atrasos = $fila4[5];
 		$estado = $fila4[2];
-		$total_pagar = 13000+$saldo_ant-$descuento;
+		
 		if ($saldo_ant == 0) {
+			echo $saldo_ant;
+			echo "es igual a 0";
   	}else{
-
-  		$atrasos = $fila4[5] + 1;
-  		$saldo_ant = $fila4[4] + 13000;
+  		echo $saldo_ant;
+  		echo "no es igual a 0";
+  		$atrasos = $atrasos + 1;
   		$estado = 1;
   	}
+  	$total_pagar = 13000+$saldo_ant-$descuento;
 
   	$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado'";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
