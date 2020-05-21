@@ -1,3 +1,22 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+
+  $documento ="";
+$nomCompleto ="";
+$dirPunto ="";
+$deuda ="";
+$fecha_pago ="";
+$atrasos ="";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,77 +87,154 @@
             <h2 class="titulo text-center container">Deudas Suscriptores</h2>
           </div>
           <br>
-          <form class="container">
+          <form method = "POST" class="container" action = "#">
               <div class="gridConsultas">
               <div class="container">
             <label>Documento</label>
-            <input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento">
+            <input type="number" class="form-control" name="txtDocumento" placeholder="txtDocumento">
             <br>
-            <button type="button" class="btn btn-primary text-center">Buscar</button>
+            <button type="submit" class="btn btn-primary" name="buscardoc">Buscar</button>
              </div>
              <div>
             <div class="container">
                 <div>
                   <label>Direccion</label>
-                  <input type="checkbox" class="ml-3">
-                  <label class="form-check-label">¿La direccion contiene Letras?</label>
+                 
                 </div>
                 
           
             </div>
               <div class="form-group gridDireccion">
                 <div>
-                  <select class="form-control">
-                    <option>Calle</option>
-                    <option>Carrera</option>
+                  <select name="tipo_direc" class="form-control">
+                    <option value = "Calle">Calle</option>
+                    <option value = "Carrera">Carrera</option>
                   </select>
                 </div>
                 <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
+                  <input type="number" class="form-control" name="numero_direc" placeholder="">
                 </div>
                 <div>
                   <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
+                    id="txt" placeholder="#">
                 </div>
                 <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
+                  <input type="number" class="form-control" name="numero2_direc" placeholder="">
                 </div>
                 <div>
                   <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
+                    id="txt" placeholder="-">
                 </div>
                 <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
+                  <input type="number" class="form-control" name="numero3_direc" placeholder="">
                 </div>
                 <div>
                   <br>
-                  <button type="button" class="btn btn-primary">Buscar</button>
+                  <button type="submit" name ="buscarDireccion" class="btn btn-primary">Buscar</button>
                 </div>
               </div>
             </div>
         </div>
-          </form>
-          <br>
-          <div class="container form-group">
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">Documento</th>
-                  <th scope="col">Primer Nombre</th>
-                  <th scope="col">Primer Apellido</th>
-                  <th scope="col">Direccion</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>ejemplo</td>
-                  <td>ejemplo</td>
-                  <td>ejemplo</td>
-                  <td>ejemplo</td>
-                </tr>
-      
-              </tbody>
-            </table>
+        <br><br>
+        <div class="container">
+            <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">Documento</th>
+                    <th scope="col" class="text-center">Suscriptor</th>
+                    <th scope="col" class="text-center">Punto</th>
+                    <th scope="col" class="text-center">Deuda Actual</th>
+                    <th scope="col" class="text-center">Atrasos</th>
+                    <th scope="col" class="text-center">Ultimo Pago</th>
+                    <th scope="col" class="text-center">Entidad</th>
+                    
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <!--CONSULTA POR DOCUMENTO INICIO-->
+                <?php
+                if (isset($_POST["buscardoc"])){
+                    $documento = $_POST['txtDocumento'];
+                    $query = "SELECT * FROM suscriptores WHERE doc = $documento";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    while($fila = mysqli_fetch_array($query_exec)){?>
+                  <tr>
+                    <td class="text-center"><?php echo $fila['doc']; ?></td>
+                    <td class="text-center"><?php echo $fila['primer_nom']." ".$fila['primer_ape']; ?></td>
+                    <?php } ?>
+                    <?php 
+                      $query = "SELECT * FROM puntos WHERE doc_suscriptor = $documento";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){?>
+                      <td class="text-center"><?php echo $fila['dir']; ?></td>
+                      <td class="text-center"><?php echo "$ ".$fila['saldo_ant']; ?></td>
+                      <td class="text-center"><?php echo $fila['contador']; ?></td>
+                    <?php } ?>
+                    <?php 
+                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){?>
+                       <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
+                       <?php }?>
+                       <?php 
+                      $query = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){?>
+                       <td class="text-center"><?php echo $fila['Nombre']; ?></td>
+                    <?php } ?>
+                    
+                  </tr>
+                  <?php }?>
+                  <!--CONSULTA POR DOCUMENTO FIN-->
+                  <!--CONSULTA POR DIRECCION INICIO-->
+                  <?php
+                if (isset($_POST["buscarDireccion"])){
+                    $td = $_POST['tipo_direc'];
+                    $n1 = $_POST['numero_direc'];
+                    $n2 = $_POST['numero2_direc'];
+                    $n3 = $_POST['numero3_direc'];
+                    $dire = $td.$n1.'#'.$n2.'-'.$n3; 
+                    $query = "SELECT * FROM puntos WHERE dir = '$dire'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    while($fila = mysqli_fetch_array($query_exec)){?>
+                  <tr>
+                    <td class="text-center"><?php 
+                    $documento = $fila['doc_suscriptor'];
+                    $saldo = $fila['saldo_ant']; 
+                    $atraso = $fila['contador'];
+                    echo $fila['doc_suscriptor']; 
+
+                    ?></td>
+                    <?php } ?>
+                    <?php
+                     $query = "SELECT * FROM suscriptores WHERE doc = $documento";
+                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                     while($fila = mysqli_fetch_array($query_exec)){?>
+                      <td class="text-center"><?php echo $fila['primer_nom']." ".$fila['primer_ape']; ?></td>
+                     <?php } ?>
+                     <td class="text-center"><?php echo $dire; ?></td>
+                     <td class="text-center"><?php echo "$ ".$saldo; ?></td>
+                      <td class="text-center"><?php echo $atraso; ?></td>
+                      <?php 
+                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){?>
+                       <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
+                    <?php } ?>
+                    <?php 
+                      $query = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){?>
+                       <td class="text-center"><?php echo $fila['Nombre']; ?></td>
+                    <?php } ?>
+                  </tr>
+                  <?php }?>
+                  <!--CONSULTA POR DIRECCION FIN-->
+                </tbody>
+              </table>
           </div>
+        
+        </form>
         </body>
         </html>
