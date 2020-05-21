@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagos</title>
+    <title>ConsultaRecaudos</title>
     <!--Boostrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
      <!--Boostrap JS-->
@@ -20,28 +20,29 @@
         <div class="collapse navbar-collapse bg-primary";" id="">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="suscriptores.php">Suscriptores</a>
+              <a class="nav-link" href="suscriptores.html">Suscriptores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="puntos.php">Puntos</a>
+              <a class="nav-link" href="puntos.html">Puntos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="facturacion.php">Facturacion</a>
+                <a class="nav-link" href="#">Facturacion</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="pagos.php">Pagos</a>
+                <a class="nav-link" href="pagos.html">Pagos</a>
             </li>
-            
+           
            
             <li class="nav-item dropdown absolute">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="ConsultaDeudas.php">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="ConsultaPagos.php">Pagos Suscriptores</a>    
-                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
+                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
+                <a class="dropdown-item" href="consultaRecibos.html">Recaudos</a>
+                
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,61 +64,34 @@
           
         </div>
       </nav>
-         <br>
-          <div>
-            <h2 class="titulo text-center container">Pagos Suscriptores</h2>
-          </div>
-          <br>
-          <form class="container">
-              <div class="gridConsultas">
-              <div class="container">
-            <label>Documento</label>
-            <input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento">
-            <br>
-            <button type="button" class="btn btn-primary text-center">Buscar</button>
-             </div>
-             <div>
-            <div class="container">
-                <div>
-                  <label>Direccion</label>
+      <div>
+        <h2 class="titulo text-center container">Consulta Recaudos</h2>
+      </div>
+      <form class="container formularioCRecibos">
+            <div class="container gridCRecibos">
+                <div class="container form-group">
+                    <label class="container text-center">Desde</label>
+                  <input type="date" class="form-control documentoSuscriptor" id="txtDocumento" >
                 </div>
-                
-          
+                <div class="container form-group">
+                    <label class="container text-center">Hasta</label>
+                  <input type="date" class="form-control documentoSuscriptor" id="txtDocumento" >
+                </div>
             </div>
-              <div class="form-group gridDireccion">
-                <div>
-                  <select class="form-control">
-                    <option>Calle</option>
-                    <option>Carrera</option>
+            
+            <div class="gridCbxCRecibos text-center">
+                <label class="form-group p-1 labelCRecibos">Entidad De Pago</label>
+                <select class="form-control cbxCRecibos">
+                    <option>ASOPAMOS</option>
+                    <option>SERVI...</option>
                   </select>
+                <div class="btnCRecibos">
+                    <button type="button" class="btn btn-dark">Consultar</button>
                 </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                <div>
-                  <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
-                </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                <div>
-                  <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-                    id="txt" placeholder="ABC">
-                </div>
-                <div>
-                  <input type="number" class="form-control" id="txt" placeholder="">
-                </div>
-                <div>
-                  <br>
-                  <button type="button" class="btn btn-primary">Buscar</button>
-                </div>
-              </div>
             </div>
-        </div>
-          </form>
-          <br>
-          <div class="container">
+    </form>
+        <br><br>
+        <div class="container">
             <table class="table table-hover">
                 <thead>
                   <tr>
@@ -126,7 +100,7 @@
                     <th scope="col">Punto</th>
                     <th scope="col">Factura</th>
                     <th scope="col">Fecha De Pago</th>
-                    <th scope="col">Entidad Bancaria</th>
+                    
 
                   </tr>
                 </thead>
@@ -139,5 +113,5 @@
                   </tr>
                 </tbody>
               </table>
-        </body>
-        </html>
+    </body>
+    </html>

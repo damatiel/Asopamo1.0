@@ -89,7 +89,11 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
 }
-
+.formularioEntidades{
+    width: 30%;
+    position: center;
+    margin-left: 35%;
+}
 
 
 
