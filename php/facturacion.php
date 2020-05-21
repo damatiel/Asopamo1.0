@@ -30,7 +30,7 @@
 <body>
   
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse bg-primary";" id="">
+        <div class="collapse navbar-collapse bg-primary"; id="">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" href="suscriptores.php">Suscriptores</a>

@@ -132,17 +132,31 @@ if (isset($_POST["imprimir1"])) {
 		$query4 = "SELECT * FROM puntos";
   $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta facturacion");
   while ($fila4 = mysqli_fetch_array($query_exec4)) {
+
     	$doc = $fila4[3];
 		$id_punto = $fila4[0];
 		$saldo_ant = $fila4[4];
 		$descuento = $fila4[6];
 		$atrasos = $fila4[5];
+		$estado = $fila4[2];
 		$total_pagar = 13000+$saldo_ant-$descuento;
+		if ($saldo_ant == 0) {
+  	}else{
 
-    $query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
+  		$atrasos = $fila4[5] + 1;
+  		$saldo_ant = $fila4[4] + 13000;
+  		$estado = 1;
+  	}
+
+  	$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado'";
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+  	
+  	if ($atrasos == 3) {
+  		# code...
+  	}else{
+  		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-  }
-			$query2 = "SELECT * FROM facturacion ";
+  $query2 = "SELECT * FROM facturacion ";
 		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 		while ($fila2 = mysqli_fetch_array($query_exec2)) {
 			$n_fact = $fila2[0];
@@ -150,7 +164,11 @@ if (isset($_POST["imprimir1"])) {
 				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}
-		 ?>
+		 
+  }
+			
+  	}
+  	?>
 		
 		<input type="submit" name="fact2">
 	</form>

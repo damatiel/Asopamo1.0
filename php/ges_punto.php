@@ -18,8 +18,11 @@ if (isset($_POST["crearpunto"])) {
 	$query ="SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
-		$query ="INSERT INTO puntos (dir,estado,doc_suscriptor,saldo_ant,contador,descuento,form_pago,fecha_act) VALUES ('$dire',1,'$doc',0,0,0,0,NOW())";
-	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+		$query2 ="INSERT INTO puntos (dir,estado,doc_suscriptor,saldo_ant,contador,descuento,form_pago,fecha_act) VALUES ('$dire',1,'$doc',0,0,0,0,NOW())";
+		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+		if ($fila2 = mysqli_fetch_array($query_exec)) {
+
+		}
 
 	echo "
 				<script>
