@@ -150,7 +150,7 @@ if (isset($_POST["imprimir1"])) {
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   	
   	if ($atrasos == 3) {
-  		# code...
+  		
   	}else{
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
