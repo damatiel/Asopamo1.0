@@ -51,9 +51,8 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
-                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
+          <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,6 +61,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
                 
+                
+              </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -136,15 +137,13 @@
                 <input type="number" name="txtNumeroFactura" style="display:none;" value =<?php echo $numFactura; ?>>
               </div>
               <div>
-              <select class="form-control" name="select" index = '3'>
+              <select class="form-control" name="select">
                 <?php
                   $query = "SELECT * FROM ent_pago";
                   $resul = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                   while ($row=mysqli_fetch_array($resul)){?>
                       <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
-                  <?php  }
-                   
-                  ?>
+                  <?php } ?>
                    <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
                   </select>
                    

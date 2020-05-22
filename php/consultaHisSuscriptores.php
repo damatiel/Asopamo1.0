@@ -58,16 +58,17 @@ $atrasos ="";
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="ConsultaDeudas.php">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="ConsultaPagos.php">Pagos Suscriptores</a>    
-                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
+              <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
+               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
+            <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
+            <a class="dropdown-item" href="valores.php">Valores</a>
                 
             </li>
             <li class="nav-item">
@@ -84,7 +85,7 @@ $atrasos ="";
       </nav>
          <br>
           <div>
-            <h2 class="titulo text-center container">Deudas Suscriptores</h2>
+            <h2 class="titulo text-center container">Historial Suscriptores</h2>
           </div>
           <br>
           <form method = "POST" class="container" action = "#">
@@ -156,34 +157,29 @@ $atrasos ="";
                 <?php
                 if (isset($_POST["buscardoc"])){
                     $documento = $_POST['txtDocumento'];
-                    $query = "SELECT * FROM suscriptores WHERE doc = $documento";
+                    $query = "SELECT * FROM puntos WHERE doc_suscriptor = $documento";
                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                    while($fila = mysqli_fetch_array($query_exec)){?>
+                    while($fila = mysqli_fetch_array($query_exec)){
+                      $query2 = "SELECT * FROM suscriptores WHERE doc = $documento";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                      $fila2 = mysqli_fetch_array($query_exec2);
+                      $query3 = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
+                      $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+                      $fila3 = mysqli_fetch_array($query_exec3);
+                      $idEntidad = $fila3['id_entPago'];
+                      $query4 = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
+                      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+                      $fila4 = mysqli_fetch_array($query_exec4);
+                    ?>
                   <tr>
-                    <td class="text-center"><?php echo $fila['doc']; ?></td>
-                    <td class="text-center"><?php echo $fila['primer_nom']." ".$fila['primer_ape']; ?></td>
+                    <td class="text-center"><?php echo $fila2[0]; ?></td>
+                    <td class="text-center"><?php echo $fila2[1]." ".$fila[3]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo "$ ".$fila[4]; ?></td>
+                    <td class="text-center"><?php echo $fila[5]; ?></td>
+                    <td class="text-center"><?php  echo $fila3[4]; ?></td>
+                    <td class="text-center"><?php echo $fila4[1]; ?></td>
                     <?php } ?>
-                    <?php 
-                      $query = "SELECT * FROM puntos WHERE doc_suscriptor = $documento";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){?>
-                      <td class="text-center"><?php echo $fila['dir']; ?></td>
-                      <td class="text-center"><?php echo "$ ".$fila['saldo_ant']; ?></td>
-                      <td class="text-center"><?php echo $fila['contador']; ?></td>
-                    <?php } ?>
-                    <?php 
-                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){?>
-                       <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
-                       <?php }?>
-                       <?php 
-                      $query = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){?>
-                       <td class="text-center"><?php echo $fila['Nombre']; ?></td>
-                    <?php } ?>
-                    
                   </tr>
                   <?php }?>
                   <!--CONSULTA POR DOCUMENTO FIN-->

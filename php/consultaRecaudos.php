@@ -1,3 +1,15 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,9 +51,8 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
-                <a class="dropdown-item" href="consultaRecibos.html">Recaudos</a>
+              <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
+          <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
                 
             </li>
             <li class="nav-item dropdown">
@@ -49,7 +60,9 @@
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearUsuario.html">Crear Usuario</a>
+              <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
+            <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
+            <a class="dropdown-item" href="valores.php">Valores</a>
                 
             </li>
             <li class="nav-item">
@@ -67,51 +80,91 @@
       <div>
         <h2 class="titulo text-center container">Consulta Recaudos</h2>
       </div>
-      <form class="container formularioCRecibos">
+      <br><br>
+      <?php 
+        $idPunto = "";
+      ?>
+      <form method = "POST" class="container formularioCRecibos" action = "#">
             <div class="container gridCRecibos">
                 <div class="container form-group">
                     <label class="container text-center">Desde</label>
-                  <input type="date" class="form-control documentoSuscriptor" id="txtDocumento" >
+                  <input type="date" class="form-control documentoSuscriptor" name="fInicial" >
                 </div>
                 <div class="container form-group">
                     <label class="container text-center">Hasta</label>
-                  <input type="date" class="form-control documentoSuscriptor" id="txtDocumento" >
+                  <input type="date" class="form-control documentoSuscriptor" name="fFinal" >
                 </div>
             </div>
             
             <div class="gridCbxCRecibos text-center">
                 <label class="form-group p-1 labelCRecibos">Entidad De Pago</label>
-                <select class="form-control cbxCRecibos">
-                    <option>ASOPAMOS</option>
-                    <option>SERVI...</option>
+                <select class="form-control cbxCRecibos" name="select">
+                <?php
+                  $query = "SELECT * FROM ent_pago";
+                  $resul = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                  while ($row=mysqli_fetch_array($resul)){?>
+                      <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
+                  <?php } ?>
                   </select>
                 <div class="btnCRecibos">
-                    <button type="button" class="btn btn-dark">Consultar</button>
+                    <button type="submit"  name ="btnConsultar" class="btn btn-dark">Consultar</button>
                 </div>
             </div>
-    </form>
+            </form>
         <br><br>
         <div class="container">
             <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Documento</th>
-                    <th scope="col">Suscriptor</th>
-                    <th scope="col">Punto</th>
-                    <th scope="col">Factura</th>
-                    <th scope="col">Fecha De Pago</th>
+                    <th class="text-center" scope="col">Factura</th>
+                    <th class="text-center" scope="col">FechaPago</th>
+                    <th class="text-center" scope="col">EntidadPago</th>
+                    <th class="text-center" scope="col">Punto</th>
+                    <th class="text-center" scope="col">Suscriptor</th>
+                    <th class="text-center" scope="col">Documento Suscriptor</th>
                     
 
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th>1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
+                  <?php
+                     if (isset($_POST["btnConsultar"])){
+                      $fecha_ini = $_POST['fInicial'];
+                      $fecha_fin = $_POST['fFinal'];
+                      $idEntidad = $_POST['select'];
+                      $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila1 = mysqli_fetch_array($query_exec)){
+                        $idPunto = $fila1['id_punto'];
+                        $idEntPago = $fila1['id_entPago'];
+                        $query2 = "SELECT * FROM ent_pago WHERE id = $idEntPago";
+                        $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                        $fila2 = mysqli_fetch_array($query_exec2);
+                        $query3 = "SELECT * FROM puntos WHERE id = $idPunto";
+                        $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+                        $fila3 = mysqli_fetch_array($query_exec3);
+                        $docSuscriptor = $fila3['doc_suscriptor'];
+                        $query4 = "SELECT * FROM suscriptores WHERE doc = $docSuscriptor";
+                        $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+                        $fila4 = mysqli_fetch_array($query_exec4);
+                      ?>
+                    <tr>
+                      <td class="text-center"><?php echo $fila1[1]; ?></td>
+                      <td class="text-center"><?php echo $fila1[4]; ?></td>
+                      <td class="text-center"><?php echo $fila2[1]; ?></td>
+                      <td class="text-center"><?php echo $fila3[1]; ?></td>
+                      <td class="text-center"><?php echo $fila4[1]." ".$fila4[3]; ?></td>
+                      <td class="text-center"><?php echo $fila4[0]; ?></td>
+                      </tr>
+                      <?php } ?>
+                     
+                      <?php } ?>
+
+                      
+                  
+                 
                 </tbody>
               </table>
+              
     </body>
     </html>
