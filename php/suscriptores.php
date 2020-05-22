@@ -51,8 +51,7 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
-                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
+                <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
                 <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
@@ -60,7 +59,9 @@
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
+                <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
+                <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
+                <a class="dropdown-item" href="valores.php">Valores</a>
                 
             </li>
             <li class="nav-item">
