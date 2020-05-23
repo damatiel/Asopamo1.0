@@ -37,8 +37,8 @@
               Consultas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
-            <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+            <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
+              <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
               
           </li>
         <li class="nav-item dropdown">

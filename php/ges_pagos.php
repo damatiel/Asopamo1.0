@@ -49,7 +49,6 @@ require_once __DIR__ . '/conectar.php';
              $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, estado = 2 WHERE id = $idPunto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
        }
-      header('pagos.php');
         
         
     

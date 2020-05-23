@@ -85,7 +85,7 @@ $atrasos ="";
       </nav>
          <br>
           <div>
-            <h2 class="titulo text-center container">Historial Suscriptores</h2>
+            <h2 class="titulo text-center container">Ultimos Pagos</h2>
           </div>
           <br>
           <form method = "POST" class="container" action = "#">
@@ -173,7 +173,7 @@ $atrasos ="";
                     ?>
                   <tr>
                     <td class="text-center"><?php echo $fila2[0]; ?></td>
-                    <td class="text-center"><?php echo $fila2[1]." ".$fila[3]; ?></td>
+                    <td class="text-center"><?php echo $fila2[1]." ".$fila2[3]; ?></td>
                     <td class="text-center"><?php echo $fila[1]; ?></td>
                     <td class="text-center"><?php echo "$ ".$fila[4]; ?></td>
                     <td class="text-center"><?php echo $fila[5]; ?></td>

@@ -94,6 +94,18 @@ margin-left: 10px;
     position: center;
     margin-left: 35%;
 }
+.formEntPago{
+    width: 50%;
+    position: center;
+    
+}
+.thnom{
+    width: 60%;
+}
+.gridEntPago{
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+}
 
 
 
