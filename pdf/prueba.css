@@ -119,11 +119,11 @@ p {
       position: absolute;
       background-image: none;
       background-color: rgb(255, 255, 255);
-      left: 48px;
-      top: 829px;
-      height: 142px;
       width: 717px;
-      transform-origin: 358.666px 70.8333px 0px;
+      left: 47px;
+      top: 881px;
+      height: 98px;
+      transform-origin: 358.666px 48.885px 0px;
     }
     .gwd-p-q0r4 {
       left: 43px;
@@ -234,16 +234,19 @@ p {
       top: 638px;
     }
     .gwd-p-1hvk {
-      top: 750px;
+      left: 611px;
+      top: 693px;
     }
     .gwd-p-q6vc {
-      top: 750px;
+      left: 636px;
+      top: 693px;
     }
     .gwd-p-tp5p {
       top: 747px;
     }
     .gwd-p-1nly {
-      left: 155px;
+      left: 154px;
+      top: 682px;
     }
     .gwd-p-156d {
       top: 285px;
@@ -267,4 +270,41 @@ p {
       transform-origin: 294.514px 210.923px 0px;
       top: 304px;
       left: 656px;
+    }
+    .gwd-p-240t {
+      left: 53px;
+      top: 682px;
+    }
+    .gwd-p-uoq1 {
+      top: 788px;
+    }
+    .gwd-p-ujhy {
+      top: 791px;
+    }
+    .gwd-p-1han {
+      top: 790px;
+    }
+    .gwd-p-qjn1 {
+      top: 808px;
+    }
+    .gwd-p-rr0s {
+      top: 828px;
+    }
+    .gwd-p-uiqp {
+      top: 830px;
+    }
+    .gwd-p-ajdm {
+      top: 790px;
+    }
+    .gwd-p-15yh {
+      position: absolute;
+      font-size: 20px;
+      width: 228px;
+      height: 19px;
+      transform-origin: 114px 9.5px 0px;
+      left: 43px;
+      top: 752px;
+    }
+    .gwd-p-15u8 {
+      left: 280px;
     }
