@@ -9,7 +9,7 @@ $user = $_SESSION['nombres'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
-        
+$ultimodia = $_POST['ultimodia'];
 
   
 
@@ -57,7 +57,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d" id="per_fact_1">Atrasos:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_3">Fecha lim. de pago:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_4">Fecha lim. de pago:</p>
-  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0 gwd-p-suoa" id="per_fact_5">31/05/2020</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0 gwd-p-suoa" id="per_fact_5">'.$ultimodia.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1oen" id="per_fact_2">'.$atrasos.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt" id="dir">'.$dir.'</p>
   <p class="gwd-p-16rd gwd-p-1dj7 gwd-p-uoq1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
