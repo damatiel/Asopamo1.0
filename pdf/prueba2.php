@@ -89,9 +89,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
       <div style="page-break-after:always;"></div>';
       }}}
-      $html.='
-    ';
-
+      
+      
 		$name = 'facturas '.$p_fact.'.pdf';
   $folder = __DIR__ .'/pdf/';
     
@@ -99,6 +98,47 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   PDF::stream($name,$html);
   
   
+}if (isset($_POST["fact3"])) {
+  $mes = $_POST['mes'];
+  $id_punto =$_POST['id_punto'];
+        
+
+$html='
+      <table>
+          <tr>
+          <th>Documento</th>
+            <th>Dirección</th>
+            <th>Primer Nombre</th>
+            <th>Primer Apellido</th>
+          </tr>
+          ';
+          $query = "SELECT * FROM puntos WHERE contador = 3";
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+          while ($fila = mysqli_fetch_array($query_exec)) {
+            $doc = $fila[3];
+            $dir = $fila[1];
+          $html.='
+          <tr>
+            <td>'.$doc.'</td>            
+            <td>'.$dir.'</td>';
+              $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+              $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+          $p_n = $fila2[1];
+          $p_a = $fila2[2];
+            $html.='
+              <td>'.$p_n.'</td>
+              <td>'.$p_a.'</td> 
+              </tr>';
+  }}
+  $html.='
+      </table>
+    </div>';
+    
+$name = 'cortes.pdf';
+    
+    // PDF::savedisk($name,$html,$folder);
+  PDF::stream($name,$html);
 }
 
  ?>

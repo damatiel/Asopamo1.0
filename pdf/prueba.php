@@ -99,7 +99,7 @@ $dompdf->setPaper('letter', 'portrait');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream();
+$dompdf->stream($doc);
   }
 
 
