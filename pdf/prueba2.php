@@ -9,7 +9,7 @@ $user = $_SESSION['nombres'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
-        
+$ultimodia = $_POST['ultimodia'];
 
   
 
@@ -43,9 +43,9 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
 
       <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
-  <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd gwd-p-1xo1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
-  <p class="gwd-p-16rd gwd-p-1dj7"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
+  <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
+  <p class="gwd-p-16rd gwd-p-1xo1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
+  <p class="gwd-p-16rd gwd-p-1dj7"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-1h36"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-wotq"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-1eat"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
@@ -57,9 +57,16 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d" id="per_fact_1">Atrasos:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_3">Fecha lim. de pago:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_4">Fecha lim. de pago:</p>
-  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0 gwd-p-suoa" id="per_fact_5">31/05/2020</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0 gwd-p-suoa" id="per_fact_5">'.$ultimodia.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1oen" id="per_fact_2">'.$atrasos.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt" id="dir">'.$dir.'</p>
+  <p class="gwd-p-16rd gwd-p-1dj7 gwd-p-uoq1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
+  <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-huvl gwd-p-ujhy"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
+  <p class="gwd-p-1mkd gwd-p-x0po gwd-p-1han" id="id_punto_1">'.$id_punto.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht gwd-p-qjn1" id="subs_1">'.$p_nom.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-1hbn gwd-p-rr0s" id="fecha_fact_1">'.$f_fact.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-uiqp" id="per_fact_6">'.$p_fact.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt gwd-p-ajdm" id="dir_1">'.$dir.'</p>
   <div class="gwd-div-1crj" id="codigo"></div>
   <p class="gwd-p-d236 gwd-p-1g7m">Administración del Mes</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg">$</p>
@@ -72,7 +79,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq">$</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg">'.$saldo_ant.'</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1bt9">$</p>
-  <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg gwd-p-16jr">'.$descuento.'</p>
+  <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg gwd-p-16jr">0</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1bt9 gwd-p-a5v1">$</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg gwd-p-16jr gwd-p-11ry">0</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1bt9 gwd-p-a5v1 gwd-p-ceg6">$</p>
@@ -83,15 +90,16 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-18ab">Traslado de Punto</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-8hmw">Reconexión</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5">Otros Conceptos</p>
-  <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p">OPERADOR:&nbsp;</p>
+  <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-240t">OPERADOR:&nbsp;</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
+  <p class="gwd-p-15yh">NUMERO DE FACTURA :</p>
+  <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
       <div style="page-break-after:always;"></div>';
       }}}
-      $html.='
-    ';
-
+      
+      
 		$name = 'facturas '.$p_fact.'.pdf';
   $folder = __DIR__ .'/pdf/';
     
@@ -99,6 +107,47 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   PDF::stream($name,$html);
   
   
+}if (isset($_POST["fact3"])) {
+  $mes = $_POST['mes'];
+  $id_punto =$_POST['id_punto'];
+        
+
+$html='
+      <table>
+          <tr>
+          <th>Documento</th>
+            <th>Dirección</th>
+            <th>Primer Nombre</th>
+            <th>Primer Apellido</th>
+          </tr>
+          ';
+          $query = "SELECT * FROM puntos WHERE contador = 3";
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+          while ($fila = mysqli_fetch_array($query_exec)) {
+            $doc = $fila[3];
+            $dir = $fila[1];
+          $html.='
+          <tr>
+            <td>'.$doc.'</td>            
+            <td>'.$dir.'</td>';
+              $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+              $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+          $p_n = $fila2[1];
+          $p_a = $fila2[2];
+            $html.='
+              <td>'.$p_n.'</td>
+              <td>'.$p_a.'</td> 
+              </tr>';
+  }}
+  $html.='
+      </table>
+    </div>';
+    
+$name = 'cortes.pdf';
+    
+    // PDF::savedisk($name,$html,$folder);
+  PDF::stream($name,$html);
 }
 
  ?>
