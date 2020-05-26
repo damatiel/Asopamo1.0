@@ -85,14 +85,23 @@
           </div>
           <br><br>
           <div class="container formEntPago">
-            <form method ="POST" action="#">
+            <form method ="POST" action="entidadPago.php">
               <div class="gridEntPago">
                 <h5 class="p-1">Nombre</h5>
-                <input type="text" class="form-control text-center" name="nomEntPago">
+                <input type="text" class="form-control text-center" name="nomEntPago" style="text-transform:uppercase;">
                 <div class="ml-5">
-                <button type="submit" class="btn btn-success float-rigth">Guardar</button>
+                <button type="submit" class="btn btn-success float-rigth" name ="btnGuardar">Guardar</button>
                 </div>
               </div>
+              <?php
+              if (isset($_POST["btnGuardar"])){
+                $Entidad = $_POST['nomEntPago'];
+                $query = "INSERT INTO ent_pago(Nombre) VALUES ('$Entidad')";
+                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                echo "<script> location.href ='entidadPago.php'; </script>";
+              }
+
+              ?>
               <br><br>
             <table class="table table-hover table-bordered">
                 <thead>
@@ -103,19 +112,34 @@
                 </thead>
                 <tbody>
                   <?php
+                    
                   $query = "SELECT * FROM ent_pago";
                   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                   while($fila = mysqli_fetch_array($query_exec)){?>
                   <tr>
-                  <td class="text-center"><input type="text" class="form-control text-center" name="nomEntPago" value=<?php echo $fila[1]; ?>></td>
+                  <td class="text-center"><input type="text" class="form-control text-center" name ="<?php echo $fila[0]; ?>" value=<?php echo $fila[1]; ?>></td>
                   <td class="container-fluid text-center">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <button type="submit" class="btn btn-primary" value = <?php echo $fila[0]; ?> name ="btnActualizar">Actualizar</button>
+                    <button type="submit" class="btn btn-danger" value = <?php echo $fila[0]; ?> name ="btnEliminar">Eliminar</button>
                   </td>
                   
                   </tr>
                   <?php } ?>
                 </tbody>
+                <?php if (isset($_POST["btnActualizar"])){
+                  $idEntidad = $_POST['btnActualizar'];
+                  $nomActu = $_POST[$idEntidad];
+                  $query = "UPDATE ent_pago set nombre = '$nomActu' WHERE id = $idEntidad";
+                  $query_exec = mysqli_query($db->conectar(),$query)or die("No se pudo conectar");
+                  echo "<script> location.href ='entidadPago.php'; </script>";
+                }else if(isset($_POST["btnEliminar"])){
+                  $idEntidad = $_POST['btnEliminar'];
+                  $query = "DELETE FROM ent_pago WHERE id = $idEntidad";
+                  $query_exec = mysqli_query($db->conectar(),$query)or die("<script>
+                  alert('Imposible Eliminar. Registros Almacenados Con Esta Entidad');
+                  </script>");
+                  echo "<script> location.href ='entidadPago.php'; </script>";
+                } ?>
             </form>
           </div>
           

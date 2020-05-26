@@ -106,6 +106,16 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 15% 65% 20%;
 }
+.gridValores{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+}
+.thvalor{
+    width: 20%;
+}
+.thConcepto{
+    width: 40%;
+}
 
 
 

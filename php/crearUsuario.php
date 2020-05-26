@@ -1,3 +1,15 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,39 +75,40 @@
       
     </div>
   </nav>
+  <br>
       <div>
         <h2 class="titulo text-center">Crear Usuario</h2>
       </div>
-      <form class="formularioCrearUsuario">
+      <form method ="POST" class="formularioCrearUsuario" action="crearUsuario.php">
           
         <div class="container form-group">
             <div> 
                 <label>Documento</label>
-                <input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento">
+                <input type="number" class="form-control" name="txtDocumento" placeholder="Documento">
             </div>
         </div>
         <div class="container form-group">
             <div>
                 <label>Nombres</label>
-                <input type="text" class="form-control" id="txtNnombres" placeholder="txtNnombres">
+                <input type="text" class="form-control" name="txtNnombres" placeholder="Nombres">
             </div>
         </div>
         <div class="container form-group">
             <div> 
                 <label>Apellidos</label>
-                <input type="text" class="form-control" id="txtApellidos" placeholder="txtApellidos">
+                <input type="text" class="form-control" name="txtApellidos" placeholder="Apellidos">
             </div>
         </div>
         <div class="container form-group ">
             <div> 
                 <label>Usuario</label>
-                <input type="text" class="form-control" id="txtUsuario" placeholder="txtUsuario">
+                <input type="text" class="form-control" name="txtUsuario" placeholder="Usuario">
             </div>
         </div>
         <div class="container form-group ">
             <div> 
                 <label>Contraseña</label>
-                <input type="password" class="form-control" id="txtContraseña" placeholder="txtContraseña">
+                <input type="text" class="form-control" name="txtContraseña" placeholder="Contraseña">
             </div>
         </div>
         <br>
