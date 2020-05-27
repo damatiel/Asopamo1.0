@@ -198,6 +198,9 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Atrasos</th>
+            <th scope="col">Deudas</th>
+            <th scope="col">Fecha de Activación</th>
           </tr>
         </thead>
         <tbody>
@@ -215,8 +218,11 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
+            <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
             <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+            <td><?php echo $fila['contador']; ?></td>
+            <td><?php echo $fila['saldo_ant']; ?></td>
+            <td><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
@@ -234,6 +240,12 @@
         <label>Descuento</label>
         <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
         <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
+        <input type="checkbox" id="vehicle1" name="matricula" value="MATRICULA">
+        <label for="vehicle1"> MATRICULA</label><br>
+        <input type="checkbox" id="traslado" name="traslado" value="traslado">
+        <label for="traslado"> TRASLADO</label><br>
+        <input type="checkbox" id="vehicle3" name="reactivacion" value="REACTIVACIÓN">
+        <label for="vehicle3"> REACTIVACIÓN</label><br>
       </div>
     </div>
 
@@ -269,6 +281,9 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Atrasos</th>
+            <th scope="col">Deudas</th>
+            <th scope="col">Fecha de Activación</th>
           </tr>
         </thead>
         <tbody>
@@ -288,6 +303,9 @@
              ?>
              <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
             <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+            <td><?php echo $fila['contador']; ?></td>
+            <td><?php echo $fila['saldo_ant']; ?></td>
+            <td><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
@@ -303,8 +321,14 @@
       <div class="container form-group">
       <div>
         <label>Descuento</label>
-        <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
-        <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
+        <input type="number" class="form-control" name="descuento" id="txtDescuento" value="0" placeholder="Descuento"><br>
+        <input type="hidden" name="documento" value="<?php echo $doc; ?>" /> 
+        <input type="checkbox" name="matricula" value="2">
+        <label for="matricula"> MATRICULA</label><br>
+        <input type="checkbox" name="traslado" value="3">
+        <label for="traslado"> TRASLADO</label><br>
+        <input type="checkbox" name="reactivacion" value="4">
+        <label for="matricula"> REACTIVACIÓN</label><br>
       </div>
     </div>
 
