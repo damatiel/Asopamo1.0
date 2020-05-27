@@ -58,18 +58,32 @@ if (isset($_POST['registrardescuento'])) {
 		}
 	if (isset($_POST['traslado'])) {
 			$traslado = $_POST['traslado'];
+			$query ="SELECT * FROM valores WHERE id = '$traslado'";
+			$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+			if ($fila = mysqli_fetch_array($query_exec)) {
+				$traslado = $fila[2];
+				$query ="UPDATE puntos SET traslado='$traslado' WHERE doc_suscriptor = '$doc'";
+				$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+			}
 		}
 	if (isset($_POST['reactivacion'])) {
 			$reactivacion = $_POST['reactivacion'];
+			$query ="SELECT * FROM valores WHERE id = '$reactivacion'";
+			$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+			if ($fila = mysqli_fetch_array($query_exec)) {
+				$reactivacion = $fila[2];
+				$query ="UPDATE puntos SET reactivacion='$reactivacion' WHERE doc_suscriptor = '$doc'";
+				$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+			}
 		}
 	$query ="UPDATE puntos SET descuento='$desc' WHERE doc_suscriptor = '$doc'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-// echo "
-// 				<script>
-// 				alert('descuento asignado');
-// 				redir('puntos.php');
-// 				</script>
-// 				";
+ echo "
+ 				<script>
+ 				alert('descuento asignado');
+ 				redir('puntos.php');
+ 				</script>
+				";
  }
 if (isset($_POST['actualizarpunto'])) {
 	$doc = $_POST['documento'];
