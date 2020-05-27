@@ -41,7 +41,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
         $p_nom = $fila3[1];
     $html.='
 
-      <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (1).jpg" id="factura">
+      <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (2).jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>
   <p class="gwd-p-16rd gwd-p-q0r4"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
   <p class="gwd-p-16rd gwd-p-1xo1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
