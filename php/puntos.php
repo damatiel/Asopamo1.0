@@ -204,7 +204,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr><?php if ($fila = mysqli_fetch_array($query_exec)) { 
+          <tr><?php 
+            if ($fila = mysqli_fetch_array($query_exec)) { 
             $doc = $fila['doc_suscriptor'];
             ?>
         
