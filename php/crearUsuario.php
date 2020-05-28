@@ -76,21 +76,90 @@
     </div>
   </nav>
   <br>
-      <div>
+  
         <h2 class="titulo text-center">Crear Usuario</h2>
       </div>
-      <form method ="POST" class="formularioCrearUsuario" action="crearUsuario.php">
-          
-        <div class="container form-group">
-            <div> 
-                <label>Documento</label>
-                <input type="number" class="form-control" name="txtDocumento" placeholder="Documento">
-            </div>
+      <br>
+      <form method ="POST" class="formularioCrearUsuario" action="CrearUsuario.php">
+      <div class="container form-group">
+      <div class="gridPagos">
+              <div class="text-center p-1">
+                <label class="float-left">Documento</label>
+              </div>
+              <div>
+                <input type="number" class="form-control float-left" name="txtDocumento" autofocus placeholder="Documento">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="btnValidar">Validar</button>
+                
+              </div>
+         </div>
         </div>
+        </form>
+        <?php 
+            if (isset($_POST["btnValidar"])) {
+
+              $documento = $_POST['txtDocumento'];
+                $query = "SELECT * FROM usuarios WHERE documento = $documento";
+                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+            if ($fila = mysqli_fetch_array($query_exec)) {?> 
+            <form method = "POST" class="formularioCrearUsuario" action="gesUsuarios.php" >
+            <input type="hidden" name="documentoRegistro" value="<?php echo $documento; ?>" />
         <div class="container form-group">
             <div>
                 <label>Nombres</label>
-                <input type="text" class="form-control" name="txtNnombres" placeholder="Nombres">
+                <input type="text" class="form-control" name="txtNombres" value = <?php echo $fila[1];?>>
+            </div>
+        </div>
+        <div class="container form-group">
+            <div> 
+                <label>Apellidos</label>
+                <input type="text" class="form-control" name="txtApellidos" value = <?php echo $fila[2];?>>
+            </div>
+        </div>
+        <div class="container form-group ">
+            <div> 
+                <label>Usuario</label>
+                <input type="text" class="form-control" name="txtUsuario" value = <?php echo $fila[4];?>>
+            </div>
+        </div>
+        <div class="container form-group ">
+            <div> 
+                <label>Contraseña</label>
+                <input type="text" class="form-control" name="txtContraseña" value = <?php echo $fila[5];?>>
+            </div>
+        </div>
+        <div class="container form-group">
+        <?php 
+          if($fila[3] == 1){
+        ?>
+          <label>Tipo De Usuario</label>
+          <select class="form-control" name="select">
+          <option value = "1">Administrador</option>
+          <option value = "0">Usuario</option>
+          </select>
+          <?php } else{ ?>
+            <label>Tipo De Usuario</label>
+          <select class="form-control" name="select">
+          <option value = "0">Usuario</option>
+          <option value = "1">Administrador</option>
+          </select>
+          <?php } ?>
+        </select>
+        </div>
+        <br>
+        <div class="container form-group text-center">
+            <button type="submit" class="btn btn-info" name = "btnActualizar">Actualizar</button>
+            <button type="submit" class="btn btn-danger" name = "btnEliminar">Eliminar</button>
+        </div>
+        </form>
+        <?php }else{?>
+          <form method = "POST" class="formularioCrearUsuario" action="registrarUsuarios.php">
+          <input type="hidden" name="documentoRegistro" value="<?php echo $documento; ?>" />
+        <div class="container form-group">
+            <div>
+                <label>Nombres</label>
+                <input type="text" class="form-control" name="txtNombres" placeholder="Nombres">
             </div>
         </div>
         <div class="container form-group">
@@ -111,13 +180,21 @@
                 <input type="text" class="form-control" name="txtContraseña" placeholder="Contraseña">
             </div>
         </div>
+        <div class="container form-group">
+        <label>Tipo De Usuario</label>
+        <select class="form-control" name="select">
+          <option value = "1">Administrador</option>
+          <option Value = "0">Usuario</option>
+        </select>
+        </div>
         <br>
         <div class="container form-group text-center">
-            <button type="button" class="btn btn-success">Registrar</button>
-            <button type="button" class="btn btn-info">Actualizar</button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-success" name ="btnRegistrar">Registrar</button>
+           
         </div>
-    </form>
-
+        </form>
+       <?php } }?>
+        
+      
 
 </html>
