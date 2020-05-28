@@ -105,42 +105,32 @@ if (isset($_POST["imprimir1"])) {
 	if (isset($_POST["imprimirt"])) {
 
 		$mes = $_POST['mes'];
+		$ultimodia = $_POST['fmes'];
 		if ($mes == 1) {
     $mes1 = 'enero';
     $ultimodia = '2020-01-31';
   }if ($mes == 2) {
     $mes1 = 'febrero';
-    $ultimodia = '2020-02-29';
   }if ($mes == 3) {
     $mes1 = 'marzo';
-    $ultimodia = '2020-03-31';
   }if ($mes == 4) {
     $mes1 = 'abril';
-    $ultimodia = '2020-04-30';
   }if ($mes == 5) {
     $mes1 = 'mayo';
-    $ultimodia = '2020-05-31';
   }if ($mes == 6) {
     $mes1 = 'junio';
-    $ultimodia = '2020-06-30';
   }if ($mes == 7) {
     $mes1 = 'julio';
-    $ultimodia = '2020-07-31';
   }if ($mes == 8) {
     $mes1 = 'agosto';
-    $ultimodia = '2020-08-31';
   }if ($mes == 9) {
     $mes1 = 'septiembre';
-    $ultimodia = '2020-09-30';
   }if ($mes == 10) {
     $mes1 = 'octubre';
-    $ultimodia = '2020-10-31';
   }if ($mes == 11) {
     $mes1 = 'noviembre';
-    $ultimodia = '2020-11-30';
   }if ($mes == 12) {
     $mes1 = 'diciembre';
-    $ultimodia = '2020-12-31';
   }
 		?>
 		<form method="POST" action="prueba2.php">

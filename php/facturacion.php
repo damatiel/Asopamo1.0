@@ -135,6 +135,10 @@
                   <option value="11">Noviembre</option>
                   <option value="12">Diciembre</option>
                 </select>
+                <div class="container form-group">
+                    <label class="container text-center">Fecha fin de mes</label>
+                  <input type="date" class="form-control documentoSuscriptor" name="fmes" >
+                </div>
               </div>
                 <div class="text-center">
                     <br>
