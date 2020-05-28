@@ -173,12 +173,19 @@ if (isset($_POST["imprimir1"])) {
 			$atrasos = $atrasos + 1;
   		$estado = 1;
   	}
-  		
-  	$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
+  		$query2 = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND id_punto = '$id_punto'";
+		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+		if ($fila2 = mysqli_fetch_array($query_exec2)) {
+
+
+		}else{
+			$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
   		$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
+		}
+  	
   $query2 = "SELECT * FROM facturacion ";
 		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 		while ($fila2 = mysqli_fetch_array($query_exec2)) {
