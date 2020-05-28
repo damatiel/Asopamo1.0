@@ -108,7 +108,6 @@ if (isset($_POST["imprimir1"])) {
 		$ultimodia = $_POST['fmes'];
 		if ($mes == 1) {
     $mes1 = 'enero';
-    $ultimodia = '2020-01-31';
   }if ($mes == 2) {
     $mes1 = 'febrero';
   }if ($mes == 3) {
