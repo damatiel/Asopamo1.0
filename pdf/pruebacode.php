@@ -165,8 +165,10 @@ if (isset($_POST["imprimir1"])) {
 		$matricula = $fila4[7];
 		$traslado = $fila4[8];
 		$reactivacion = $fila4[9];
-  	
-  	if ($atrasos >= 2) {
+  		if ($estado == 3) {
+  			# code...
+  		}else{
+  			if ($atrasos >= 2) {
   		
   	}else{
   		if ($saldo_ant > 0) {
@@ -197,6 +199,9 @@ if (isset($_POST["imprimir1"])) {
 		}
 		 
   }
+
+  		}
+  	
 			
   	}
   	?>

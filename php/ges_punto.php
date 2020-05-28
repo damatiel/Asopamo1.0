@@ -99,6 +99,30 @@ echo "
 				</script>
 				";
 }
+if (isset($_POST['suspender'])) {
+	$doc = $_POST['documento'];
+	$id_punto = $_POST['id_punto'];
+	$query ="UPDATE puntos SET estado = 3 WHERE id = '$id_punto'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	echo "
+		<script>
+			alert('Punto suspendido');
+			redir('puntos.php');
+		</script>
+	";
+}
+if (isset($_POST['activar'])) {
+	$doc = $_POST['documento'];
+	$id_punto = $_POST['id_punto'];
+	$query ="UPDATE puntos SET estado = 2 WHERE id = '$id_punto'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	echo "
+		<script>
+			alert('Punto activado');
+			redir('puntos.php');
+		</script>
+	";
+}
 if (isset($_POST['eliminarpunto'])) {
 	$doc = $_POST['documento'];
 	$query ="DELETE FROM puntos WHERE doc_suscriptor = '$doc'";
