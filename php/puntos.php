@@ -198,6 +198,7 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Estado</th>
             <th scope="col">Atrasos</th>
             <th scope="col">Deudas</th>
             <th scope="col">Fecha de Activación</th>
@@ -210,7 +211,7 @@
             $id_punto = $fila['id'];
             ?>
         
-            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
+            <td><?php echo $fila['doc_suscriptor']; ?></td>
             
             <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
@@ -220,8 +221,19 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
-            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+             <td><?php echo $fila2['primer_nom']; ?></td>
+            <td><?php echo $fila2['primer_ape']; ?></td>
+            <?php 
+            $estado = $fila['estado'];
+            if ($estado == 2) {
+              $estado = "Activo";
+            }elseif ($estado == 1) {
+              $estado = "Deudor";
+            }elseif ($estado == 3) {
+              $estado = "Suspendido";
+            }
+             ?>
+            <td><?php echo $estado; ?></td>
             <td><?php echo $fila['contador']; ?></td>
             <td><?php echo $fila['saldo_ant']; ?></td>
             <td><?php echo $fila['fecha_act']; ?></td>
@@ -285,6 +297,7 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Estado</th>
             <th scope="col">Atrasos</th>
             <th scope="col">Deudas</th>
             <th scope="col">Fecha de Activación</th>
@@ -296,7 +309,7 @@
             $id_punto = $fila['id'];
             ?>
         
-            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
+            <td><?php echo $fila['doc_suscriptor']; ?></td>
             
             <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
@@ -306,8 +319,19 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
-            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+             <td><?php echo $fila2['primer_nom']; ?></td>
+            <td><?php echo $fila2['primer_ape']; ?></td>
+            <?php 
+            $estado = $fila['estado'];
+            if ($estado == 2) {
+              $estado = "Activo";
+            }elseif ($estado == 1) {
+              $estado = "Deudor";
+            }elseif ($estado == 3) {
+              $estado = "Suspendido";
+            }
+             ?>
+            <td><?php echo $estado; ?></td>
             <td><?php echo $fila['contador']; ?></td>
             <td><?php echo $fila['saldo_ant']; ?></td>
             <td><?php echo $fila['fecha_act']; ?></td>

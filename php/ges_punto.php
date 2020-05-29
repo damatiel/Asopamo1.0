@@ -38,10 +38,6 @@ if (isset($_POST["crearpunto"])) {
 
 	
 }
-
-if (isset($_POST['buscarpunto'])) {
-	echo "buscarpunto";
-}
 if (isset($_POST['registrardescuento'])) {
 	$doc = $_POST['documento'];
 	$desc = $_POST['descuento'];
@@ -88,9 +84,7 @@ if (isset($_POST['registrardescuento'])) {
 if (isset($_POST['actualizarpunto'])) {
 	$doc = $_POST['documento'];
 	$dir = $_POST['dir'];
-	$p_a = $_POST['p_n'];
-	$p_a = $_POST['p_a'];
-	$query ="UPDATE puntos SET dir='$dir',doc_suscriptor='$doc' WHERE doc_suscriptor = '$doc'";
+	$query ="UPDATE puntos SET dir='$dir' WHERE doc_suscriptor = '$doc'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 echo "
 				<script>
@@ -119,17 +113,6 @@ if (isset($_POST['activar'])) {
 	echo "
 		<script>
 			alert('Punto activado');
-			redir('puntos.php');
-		</script>
-	";
-}
-if (isset($_POST['eliminarpunto'])) {
-	$doc = $_POST['documento'];
-	$query ="DELETE FROM puntos WHERE doc_suscriptor = '$doc'";
-	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-	echo "
-		<script>
-			alert('Punto eliminado');
 			redir('puntos.php');
 		</script>
 	";
