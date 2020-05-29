@@ -213,7 +213,7 @@ $atrasos ="";
                      <td class="text-center"><?php echo "$ ".$saldo; ?></td>
                       <td class="text-center"><?php echo $atraso; ?></td>
                       <?php 
-                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
+                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1 WHERE ";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila = mysqli_fetch_array($query_exec)){?>
                        <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
