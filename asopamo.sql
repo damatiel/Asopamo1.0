@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 28-05-2020 a las 01:04:37
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 29-05-2020 a las 05:07:34
+-- Versión del servidor: 5.7.26
+-- Versión de PHP: 7.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -63,28 +63,16 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `operador` varchar(255) DEFAULT NULL,
   `total_pagar` decimal(60,0) DEFAULT NULL,
   PRIMARY KEY (`numero_fact`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `facturacion`
 --
 
 INSERT INTO `facturacion` (`numero_fact`, `id_punto`, `documento`, `fecha_fact`, `periodo_fact`, `admin_mes`, `saldo_ant`, `id_mes`, `operador`, `total_pagar`) VALUES
-(80, 12, 1100963440, '2020-05-26', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
-(81, 13, 1100962873, '2020-05-26', 'enero', '13000', '0', 1, 'miguel mejia', '0'),
-(82, 12, 1100963440, '2020-05-26', 'febrero', '13000', '13000', 2, 'miguel mejia', '26000'),
-(83, 13, 1100962873, '2020-05-26', 'febrero', '13000', '0', 2, 'miguel mejia', '0'),
-(84, 12, 1100963440, '2020-05-26', 'marzo', '13000', '26000', 3, 'miguel mejia', '39000'),
-(85, 13, 1100962873, '2020-05-26', 'marzo', '13000', '0', 3, 'miguel mejia', '13000'),
-(86, 14, 1100963440, '2020-05-26', 'marzo', '13000', '0', 3, 'miguel mejia', '13000'),
-(87, 13, 1100962873, '2020-05-26', 'abril', '13000', '0', 4, 'miguel mejia', '0'),
-(88, 14, 1100963440, '2020-05-26', 'abril', '13000', '0', 4, 'miguel mejia', '0'),
-(89, 13, 1100962873, '2020-05-26', 'mayo', '13000', '0', 5, 'miguel mejia', '0'),
-(90, 14, 1100963440, '2020-05-26', 'mayo', '13000', '0', 5, 'miguel mejia', '0'),
-(94, 13, 1100962873, '2020-05-27', 'junio', '13000', '0', 6, 'miguel mejia', '0'),
-(95, 14, 1100963440, '2020-05-27', 'junio', '13000', '0', 6, 'miguel mejia', '0'),
-(96, 13, 1100962873, '2020-05-27', 'julio', '13000', '0', 7, 'miguel mejia', '13000'),
-(97, 14, 1100963440, '2020-05-27', 'julio', '13000', '0', 7, 'miguel mejia', '13000');
+(102, 12, 1100963440, '2020-05-29', 'enero', '13000', '13000', 1, 'miguel mejia', '26000'),
+(103, 13, 1100962873, '2020-05-29', 'enero', '13000', '13000', 1, 'miguel mejia', '26000'),
+(104, 14, 1100963440, '2020-05-29', 'enero', '13000', '26000', 1, 'miguel mejia', '39000');
 
 -- --------------------------------------------------------
 
@@ -98,26 +86,27 @@ CREATE TABLE IF NOT EXISTS `pagos` (
   `num_factura` int(11) NOT NULL,
   `id_punto` int(11) NOT NULL,
   `id_entPago` int(11) NOT NULL,
-  `fecha_pago` datetime NOT NULL,
+  `fecha_pago` date NOT NULL,
+  `atrasos` int(11) NOT NULL,
+  `fecha_limite` date NOT NULL,
+  `nom_suscriptor` varchar(255) NOT NULL,
+  `fecha_factura` date NOT NULL,
+  `direccion` varchar(255) NOT NULL,
+  `periodo_fact` date NOT NULL,
+  `admin_mes` int(12) NOT NULL,
+  `saldo_anterior` int(12) NOT NULL,
+  `descuento` int(12) NOT NULL,
+  `traslado` int(12) NOT NULL,
+  `reactivacion` int(12) NOT NULL,
+  `matricula` int(12) NOT NULL,
+  `total` int(12) NOT NULL,
+  `documento` int(12) NOT NULL,
+  `estado` int(11) NOT NULL,
   PRIMARY KEY (`id_pagos`),
   KEY `num_factura` (`num_factura`,`id_punto`,`id_entPago`),
   KEY `id_entPago` (`id_entPago`),
   KEY `id_punto` (`id_punto`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `pagos`
---
-
-INSERT INTO `pagos` (`id_pagos`, `num_factura`, `id_punto`, `id_entPago`, `fecha_pago`) VALUES
-(28, 81, 13, 1, '2020-05-26 23:22:13'),
-(29, 83, 13, 1, '2020-05-26 23:23:23'),
-(30, 87, 13, 2, '2020-05-26 23:30:25'),
-(31, 88, 14, 1, '2020-05-26 23:30:34'),
-(32, 89, 13, 2, '2020-05-27 19:46:27'),
-(33, 90, 14, 1, '2020-05-27 19:46:37'),
-(34, 94, 13, 1, '2020-05-27 19:50:01'),
-(35, 95, 14, 2, '2020-05-27 19:50:10');
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -148,9 +137,9 @@ CREATE TABLE IF NOT EXISTS `puntos` (
 --
 
 INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `matricula`, `traslado`, `reactivacion`, `form_pago`, `fecha_act`) VALUES
-(12, 'carrera11#5-48', 1, 1100963440, 39000, 2, 0, 0, 0, 0, 0, '2020-05-26'),
-(13, 'carrera4#2-38', 2, 1100962873, 13000, 0, 0, 0, 0, 0, 0, '2020-05-26'),
-(14, 'calle13#45-35', 2, 1100963440, 13000, 0, 0, 0, 0, 0, 0, '2020-05-26');
+(12, 'carrera11#5-48', 1, 1100963440, 26000, 1, 0, 0, 0, 0, 0, '2020-05-26'),
+(13, 'carrera4#2-38', 1, 1100962873, 26000, 1, 0, 0, 0, 0, 0, '2020-05-26'),
+(14, 'calle13#45-35', 1, 1100963440, 39000, 2, 0, 0, 0, 0, 0, '2020-05-26');
 
 -- --------------------------------------------------------
 
@@ -187,20 +176,21 @@ INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `s
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL,
+  `documento` int(11) NOT NULL,
   `nombre` varchar(255) DEFAULT NULL,
+  `apellidos` varchar(255) NOT NULL,
   `tipo` int(2) DEFAULT NULL,
   `usuario` varchar(255) DEFAULT NULL,
   `pass` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+  PRIMARY KEY (`documento`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `tipo`, `usuario`, `pass`) VALUES
-(1, 'miguel mejia', 1, 'mmejia', '123');
+INSERT INTO `usuarios` (`documento`, `nombre`, `apellidos`, `tipo`, `usuario`, `pass`) VALUES
+(1, 'miguel mejia', '', 1, 'mmejia', '123');
 
 -- --------------------------------------------------------
 
