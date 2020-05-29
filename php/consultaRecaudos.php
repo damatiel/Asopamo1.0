@@ -113,15 +113,23 @@
             </form>
         <br><br>
         <div class="container">
-            <table class="table table-hover">
+            <table class="table table-hover table-condensed">
                 <thead>
                   <tr>
-                    <th class="text-center" scope="col">Factura</th>
-                    <th class="text-center" scope="col">FechaPago</th>
-                    <th class="text-center" scope="col">EntidadPago</th>
                     <th class="text-center" scope="col">Punto</th>
-                    <th class="text-center" scope="col">Suscriptor</th>
-                    <th class="text-center" scope="col">Documento Suscriptor</th>
+                    <th class="text-center" scope="col">FacNro</th>
+                    <th class="text-center" scope="col">Servicio</th>
+                    <th class="text-center" scope="col">Atrasos</th>
+                    <th class="text-center" scope="col">Sald Ant</th>
+                    <th class="text-center" scope="col">Multa Mora</th>
+                    <th class="text-center" scope="col">Traslado</th>
+                    <th class="text-center" scope="col">Reconexion</th>
+                    <th class="text-center" scope="col">Cuota Mat</th>
+                    <th class="text-center" scope="col">Descuento</th>
+                    <th class="text-center" scope="col">Total</th>
+                    <th class="text-center" scope="col">Fec Pago</th>
+                    <th class="text-center" scope="col">Periodo</th>
+                    <th class="text-center" scope="col">Entidad</th>
                     
 
                   </tr>
@@ -144,17 +152,25 @@
                         $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
                         $fila3 = mysqli_fetch_array($query_exec3);
                         $docSuscriptor = $fila3['doc_suscriptor'];
-                        $query4 = "SELECT * FROM suscriptores WHERE doc = $docSuscriptor";
+                        $query4 = "SELECT * FROM facturacion WHERE id_punto = $idPunto";
                         $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
                         $fila4 = mysqli_fetch_array($query_exec4);
                       ?>
                     <tr>
+                      <td class="text-center"><?php echo $fila1[2]; ?></td>
                       <td class="text-center"><?php echo $fila1[1]; ?></td>
+                      <td class="text-center"><?php  echo $fila4[5];?></td>
+                      <td class="text-center"><?php  echo $fila3[5];?></td>
+                      <td class="text-center"><?php  echo $fila3[4];?></td>
+                      <td class="text-center"><?php  echo "???" ?></td>
+                      <td class="text-center"><?php  echo $fila3[8];?></td>
+                      <td class="text-center"><?php  echo $fila3[9];?></td>
+                      <td class="text-center"><?php  echo $fila3[7];?></td>
+                      <td class="text-center"><?php  echo $fila3[6];?></td>
+                      <td class="text-center"><?php  echo $fila4[9];?></td>
                       <td class="text-center"><?php echo $fila1[4]; ?></td>
-                      <td class="text-center"><?php echo $fila2[1]; ?></td>
-                      <td class="text-center"><?php echo $fila3[1]; ?></td>
-                      <td class="text-center"><?php echo $fila4[1]." ".$fila4[3]; ?></td>
-                      <td class="text-center"><?php echo $fila4[0]; ?></td>
+                      <td class="text-center"><?php  echo $fila4[4];?></td>
+                      <td class="text-center"><?php  echo $fila2[1];?></td>
                       </tr>
                       <?php } ?>
                      
