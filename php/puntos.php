@@ -37,7 +37,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse bg-primary" ;" id="">
+    <div class="collapse navbar-collapse bg-primary" ; id="">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="suscriptores.php">Suscriptores</a>
@@ -363,10 +363,38 @@
     </div>
 
     <div class="container form-group text-center">
-      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
-      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
-      <button type="submit" name="suspender" class="btn btn-danger">Suspender</button>
-      <button type="submit" name="activar" class="btn btn-success">Activar</button>
+
+      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar Costos</button>
+      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar Dirección</button>
+      <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
+        <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
+      <?php endif ?>
+      <?php if ($estado == 'Suspendido'): ?>
+        <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
+      <?php endif ?>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Vender Punto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+           <h6>Ingrese el nuevo numero de cedula</h6>
+          <input type="number" name="cedula2"><br><br>
+          <button type="submit" name="venderpunto" class="btn btn-success">Vender</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+      
 
     </div>
 

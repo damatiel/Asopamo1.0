@@ -116,6 +116,29 @@ if (isset($_POST['activar'])) {
 			redir('puntos.php');
 		</script>
 	";
+}if (isset($_POST['venderpunto'])) {
+	$doc = $_POST['documento'];
+	$id_punto = $_POST['id_punto'];
+	$cedula2 = $_POST['cedula2'];
+	$query = "SELECT * FROM suscriptores WHERE doc = '$cedula2'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	if ($fila = mysqli_fetch_array($query_exec)) {
+	$query ="UPDATE puntos SET doc_suscriptor = $cedula2 WHERE id = '$id_punto'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	echo "
+		<script>
+			alert('Punto Vendido');
+			redir('puntos.php');
+		</script>
+	";
+	}else{
+		echo "
+		<script>
+			alert('El numero de cedula que ingreso no es suscriptor, porfavor agreguelo');
+			redir('puntos.php');
+		</script>
+	";
+	}
 }
 
  ?>
