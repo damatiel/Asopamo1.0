@@ -147,6 +147,7 @@ $atrasos ="";
                     <th scope="col" class="text-center">Deuda Actual</th>
                     <th scope="col" class="text-center">Atrasos</th>
                     <th scope="col" class="text-center">Ultimo Pago</th>
+                    <th scope="col" class="text-center">Valor Pagado</th>
                     <th scope="col" class="text-center">Entidad</th>
                     
 
