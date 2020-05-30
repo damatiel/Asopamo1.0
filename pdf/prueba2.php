@@ -100,7 +100,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
       <div style="page-break-after:always;"></div>';
-      }}}
+      }}    }
       
       
 		$name = 'facturas '.$p_fact.'.pdf';
@@ -109,8 +109,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
     // PDF::savedisk($name,$html,$folder);
     
   PDF::stream($name,$html);
-  $query2 = "INSERT INTO pagos (atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ($atrasos,'$ultimodia','$p_nom','$f_fact','$dir','$p_fact','$admin_mes','$saldo_ante','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc','0') ";
-  $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+  
   
   $query = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0 WHERE id = $id_punto";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
