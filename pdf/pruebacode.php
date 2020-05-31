@@ -53,6 +53,11 @@ if (isset($_POST["imprimir1"])) {
 		if ($fila2 = mysqli_fetch_array($query_exec)) {
 				$admin_mes = $fila2[2];
 			}
+		$query = "SELECT * FROM valores WHERE id = 5 ";
+		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+		if ($fila3 = mysqli_fetch_array($query_exec)) {
+			$multa = $fila3[2];
+			}
 		$doc = $fila[3];
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
@@ -64,6 +69,9 @@ if (isset($_POST["imprimir1"])) {
 		// if ($atrasos == 0) {
 			$saldo_ant = $saldo_ant-$admin_mes;
 		// }
+			 if ($atrasos == 0) {
+			 	$multa = 0;
+			}
 		$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
 		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
@@ -103,6 +111,7 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="matricula" value="<?php echo $matricula; ?>">
 		<input type="hidden" name="traslado" value="<?php echo $traslado; ?>">
 		<input type="hidden" name="reactivacion" value="<?php echo $reactivacion; ?>">
+		<input type="hidden" name="multa" value="<?php echo $multa; ?>">
 		<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
 		<input type="submit" name="fact1">
 	</form>
@@ -156,6 +165,12 @@ if (isset($_POST["imprimir1"])) {
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 		if ($fila = mysqli_fetch_array($query_exec)) {
 				$admin_mes = $fila[2];
+				$multa = $fila[2];
+			}
+			$query = "SELECT * FROM valores WHERE id = 5 ";
+		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+		if ($fila = mysqli_fetch_array($query_exec)) {
+			$multa = $fila[2];
 			}
 
     	$doc = $fila4[3];
@@ -182,6 +197,8 @@ if (isset($_POST["imprimir1"])) {
   		if ($saldo_ant > 0) {
 			$atrasos = $atrasos + 1;
   		$estado = 1;
+  	}else{
+  		$multa = 0;
   	}
   		$query2 = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND id_punto = '$id_punto'";
 		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
@@ -189,12 +206,12 @@ if (isset($_POST["imprimir1"])) {
 
 
 		}else{
-			$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
-  		$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado' WHERE id = $id_punto";
+			$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion+$multa-$descuento;
+  		$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado', multa = '$multa' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$id_punto','$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
+   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
    $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
 		}
   	
