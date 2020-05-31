@@ -116,6 +116,10 @@ margin-left: 10px;
 .thConcepto{
     width: 40%;
 }
+.gridConSuscriptores{
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
+}
 
 
 
