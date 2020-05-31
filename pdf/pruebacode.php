@@ -67,7 +67,7 @@ if (isset($_POST["imprimir1"])) {
 		$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
 		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-		
+
 		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND id_mes = '$mes'";
 	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 	if ($fila2 = mysqli_fetch_array($query_exec2)) {
@@ -80,6 +80,8 @@ if (isset($_POST["imprimir1"])) {
 	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 	if ($fila3 = mysqli_fetch_array($query_exec3)) {
 		$p_nom = $fila3[1];
+		$query2 = "INSERT INTO pagos (atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
+   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
 
 	?>
 	<form method="POST" action="prueba.php">
@@ -192,7 +194,7 @@ if (isset($_POST["imprimir1"])) {
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-   $query2 = "INSERT INTO pagos (atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
+   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$id_punto','$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
    $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
 		}
   	
