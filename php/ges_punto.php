@@ -96,7 +96,13 @@ echo "
 if (isset($_POST['suspender'])) {
 	$doc = $_POST['documento'];
 	$id_punto = $_POST['id_punto'];
-	$query ="UPDATE puntos SET estado = 3 WHERE id = '$id_punto'";
+	$query ="SELECT * FROM puntos WHERE id = '$id_punto'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	if ($fila = mysqli_fetch_array($query_exec)) {
+		$deuda = $fila[4];
+	}
+	if ($deuda == 0) {
+		$query ="UPDATE puntos SET estado = 3 WHERE id = '$id_punto'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	echo "
 		<script>
@@ -104,6 +110,15 @@ if (isset($_POST['suspender'])) {
 			redir('puntos.php');
 		</script>
 	";
+	}else{
+		echo "
+		<script>
+			alert('El punto no se puede suspender porque tiene deuda');
+			redir('puntos.php');
+		</script>
+	";
+	}
+	
 }
 if (isset($_POST['activar'])) {
 	$doc = $_POST['documento'];
