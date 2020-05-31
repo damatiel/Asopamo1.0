@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 29-05-2020 a las 05:07:34
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+-- Tiempo de generación: 31-05-2020 a las 21:19:10
+-- Versión del servidor: 10.4.10-MariaDB
+-- Versión de PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -63,16 +63,25 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `operador` varchar(255) DEFAULT NULL,
   `total_pagar` decimal(60,0) DEFAULT NULL,
   PRIMARY KEY (`numero_fact`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `facturacion`
 --
 
 INSERT INTO `facturacion` (`numero_fact`, `id_punto`, `documento`, `fecha_fact`, `periodo_fact`, `admin_mes`, `saldo_ant`, `id_mes`, `operador`, `total_pagar`) VALUES
-(102, 12, 1100963440, '2020-05-29', 'enero', '13000', '13000', 1, 'miguel mejia', '26000'),
-(103, 13, 1100962873, '2020-05-29', 'enero', '13000', '13000', 1, 'miguel mejia', '26000'),
-(104, 14, 1100963440, '2020-05-29', 'enero', '13000', '26000', 1, 'miguel mejia', '39000');
+(145, 12, 1100963440, '2020-05-31', 'enero', '13000', '0', 1, 'miguel mejia', '26000'),
+(146, 13, 1100962873, '2020-05-31', 'enero', '13000', '0', 1, 'miguel mejia', '103000'),
+(147, 14, 1100963440, '2020-05-31', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
+(148, 12, 1100963440, '2020-05-31', 'febrero', '13000', '0', 2, 'miguel mejia', '26000'),
+(149, 13, 1100962873, '2020-05-31', 'febrero', '13000', '0', 2, 'miguel mejia', '103000'),
+(150, 14, 1100963440, '2020-05-31', 'febrero', '13000', '0', 2, 'miguel mejia', '0'),
+(151, 12, 1100963440, '2020-05-31', 'marzo', '13000', '0', 3, 'miguel mejia', '26000'),
+(152, 13, 1100962873, '2020-05-31', 'marzo', '13000', '0', 3, 'miguel mejia', '103000'),
+(153, 14, 1100963440, '2020-05-31', 'marzo', '13000', '0', 3, 'miguel mejia', '13000'),
+(154, 12, 1100963440, '2020-05-31', 'abril', '13000', '0', 4, 'miguel mejia', '0'),
+(155, 13, 1100962873, '2020-05-31', 'abril', '13000', '13000', 4, 'miguel mejia', '103000'),
+(156, 14, 1100963440, '2020-05-31', 'abril', '13000', '13000', 4, 'miguel mejia', '26000');
 
 -- --------------------------------------------------------
 
@@ -83,30 +92,52 @@ INSERT INTO `facturacion` (`numero_fact`, `id_punto`, `documento`, `fecha_fact`,
 DROP TABLE IF EXISTS `pagos`;
 CREATE TABLE IF NOT EXISTS `pagos` (
   `id_pagos` int(11) NOT NULL AUTO_INCREMENT,
-  `num_factura` int(11) NOT NULL,
-  `id_punto` int(11) NOT NULL,
-  `id_entPago` int(11) NOT NULL,
-  `fecha_pago` date NOT NULL,
-  `atrasos` int(11) NOT NULL,
-  `fecha_limite` date NOT NULL,
-  `nom_suscriptor` varchar(255) NOT NULL,
-  `fecha_factura` date NOT NULL,
-  `direccion` varchar(255) NOT NULL,
-  `periodo_fact` date NOT NULL,
-  `admin_mes` int(12) NOT NULL,
-  `saldo_anterior` int(12) NOT NULL,
-  `descuento` int(12) NOT NULL,
-  `traslado` int(12) NOT NULL,
-  `reactivacion` int(12) NOT NULL,
-  `matricula` int(12) NOT NULL,
-  `total` int(12) NOT NULL,
-  `documento` int(12) NOT NULL,
-  `estado` int(11) NOT NULL,
+  `num_factura` int(11) DEFAULT NULL,
+  `id_punto` int(11) DEFAULT NULL,
+  `id_entPago` int(11) DEFAULT NULL,
+  `fecha_pago` date DEFAULT NULL,
+  `atrasos` int(11) DEFAULT NULL,
+  `fecha_limite` date DEFAULT NULL,
+  `nom_suscriptor` varchar(255) DEFAULT NULL,
+  `fecha_factura` date DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `periodo_fact` varchar(225) DEFAULT NULL,
+  `admin_mes` int(12) DEFAULT NULL,
+  `saldo_anterior` int(12) DEFAULT NULL,
+  `descuento` int(12) DEFAULT NULL,
+  `traslado` int(12) DEFAULT NULL,
+  `reactivacion` int(12) DEFAULT NULL,
+  `matricula` int(12) DEFAULT NULL,
+  `total` int(12) DEFAULT NULL,
+  `documento` int(12) DEFAULT NULL,
+  `estado` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_pagos`),
   KEY `num_factura` (`num_factura`,`id_punto`,`id_entPago`),
   KEY `id_entPago` (`id_entPago`),
   KEY `id_punto` (`id_punto`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`id_pagos`, `num_factura`, `id_punto`, `id_entPago`, `fecha_pago`, `atrasos`, `fecha_limite`, `nom_suscriptor`, `fecha_factura`, `direccion`, `periodo_fact`, `admin_mes`, `saldo_anterior`, `descuento`, `traslado`, `reactivacion`, `matricula`, `total`, `documento`, `estado`) VALUES
+(66, 154, 12, 1, '2020-05-31', 0, '2020-01-31', 'Miguel', '2020-05-31', 'carrera11#5-48', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0),
+(67, 149, 13, 1, '2020-05-31', 0, '2020-01-31', 'Mayra', '2020-05-31', 'carrera4#2-38', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100962873, 0),
+(68, 150, 14, 1, '2020-05-31', 0, '2020-01-31', 'Miguel', '2020-05-31', 'calle13#45-35', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0),
+(69, 154, 12, 1, '2020-05-31', 1, '2020-02-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'febrero', 13000, 13000, 0, 0, 0, 0, 26000, 1100963440, 0),
+(70, 149, 13, 1, '2020-05-31', 1, '2020-02-29', 'Mayra', '2020-05-31', 'carrera4#2-38', 'febrero', 13000, 13000, 0, 0, 0, 0, 26000, 1100962873, 0),
+(71, 150, 14, 1, '2020-05-31', 1, '2020-02-29', 'Miguel', '2020-05-31', 'calle13#45-35', 'febrero', 13000, 13000, 0, 0, 0, 0, 26000, 1100963440, 0),
+(72, NULL, NULL, NULL, NULL, 1, '2020-02-28', 'Miguel', '2020-05-31', 'carrera11#5-48', 'febrero', 13000, 13000, 13000, 0, 0, 0, 13000, 1100963440, 0),
+(73, 154, 12, 1, '2020-05-31', 0, '2020-03-31', 'Miguel', '2020-05-31', 'carrera11#5-48', 'marzo', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0),
+(74, NULL, 13, NULL, NULL, 0, '2020-03-31', 'Mayra', '2020-05-31', 'carrera4#2-38', 'marzo', 13000, 0, 0, 0, 0, 0, 13000, 1100962873, 0),
+(75, NULL, 14, NULL, NULL, 0, '2020-03-31', 'Miguel', '2020-05-31', 'calle13#45-35', 'marzo', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0),
+(76, NULL, NULL, NULL, NULL, 0, '2020-03-31', 'Miguel', '2020-05-31', 'carrera11#5-48', 'marzo', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0),
+(77, 154, 12, 1, '2020-05-31', 1, '2020-04-30', 'Miguel', '2020-05-31', 'carrera11#5-48', 'abril', 13000, 13000, 0, 0, 0, 0, 26000, 1100963440, 0),
+(78, NULL, 13, NULL, NULL, 1, '2020-04-30', 'Mayra', '2020-05-31', 'carrera4#2-38', 'abril', 13000, 13000, 0, 0, 0, 0, 26000, 1100962873, 0),
+(79, NULL, 14, NULL, NULL, 1, '2020-04-30', 'Miguel', '2020-05-31', 'calle13#45-35', 'abril', 13000, 13000, 0, 0, 0, 0, 26000, 1100963440, 0),
+(80, NULL, NULL, NULL, NULL, 1, '2020-04-30', 'Miguel', '2020-05-31', 'carrera11#5-48', 'abril', 13000, 13000, 0, 0, 0, 0, 26000, 1100963440, 0),
+(81, NULL, NULL, NULL, NULL, 1, '2020-04-30', 'Mayra', '2020-05-31', 'carrera4#2-38', 'abril', 13000, 13000, 13000, 10000, 30000, 50000, 103000, 1100962873, 0);
 
 -- --------------------------------------------------------
 
@@ -137,9 +168,9 @@ CREATE TABLE IF NOT EXISTS `puntos` (
 --
 
 INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `matricula`, `traslado`, `reactivacion`, `form_pago`, `fecha_act`) VALUES
-(12, 'carrera11#5-48', 1, 1100963440, 26000, 1, 0, 0, 0, 0, 0, '2020-05-26'),
-(13, 'carrera4#2-38', 1, 1100962873, 26000, 1, 0, 0, 0, 0, 0, '2020-05-26'),
-(14, 'calle13#45-35', 1, 1100963440, 39000, 2, 0, 0, 0, 0, 0, '2020-05-26');
+(12, 'carrera11#5-48', 2, 1100963440, 0, 0, 0, 0, 0, 0, 0, '2020-05-26'),
+(13, 'carrera4#2-38', 1, 1100962873, 26000, 1, 13000, 50000, 10000, 30000, 0, '2020-05-26'),
+(14, 'calle13#45-35', 1, 1100963440, 26000, 1, 0, 0, 0, 0, 0, '2020-05-26');
 
 -- --------------------------------------------------------
 
