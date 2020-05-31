@@ -117,13 +117,14 @@
                 <thead>
                   <tr>
                     <th class="text-center" scope="col">Punto</th>
+                    <th class="text-center" scope="col">Direccion</th>
                     <th class="text-center" scope="col">FacNro</th>
                     <th class="text-center" scope="col">Servicio</th>
                     <th class="text-center" scope="col">Atrasos</th>
                     <th class="text-center" scope="col">Sald Ant</th>
                     <th class="text-center" scope="col">Multa Mora</th>
                     <th class="text-center" scope="col">Traslado</th>
-                    <th class="text-center" scope="col">Reconexion</th>
+                    <th class="text-center" scope="col">Reactivacion</th>
                     <th class="text-center" scope="col">Cuota Mat</th>
                     <th class="text-center" scope="col">Descuento</th>
                     <th class="text-center" scope="col">Total</th>
@@ -143,34 +144,28 @@
                       $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila1 = mysqli_fetch_array($query_exec)){
-                        $idPunto = $fila1['id_punto'];
                         $idEntPago = $fila1['id_entPago'];
+                        $Numfactura = $fila1['num_factura'];
                         $query2 = "SELECT * FROM ent_pago WHERE id = $idEntPago";
                         $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
                         $fila2 = mysqli_fetch_array($query_exec2);
-                        $query3 = "SELECT * FROM puntos WHERE id = $idPunto";
-                        $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
-                        $fila3 = mysqli_fetch_array($query_exec3);
-                        $docSuscriptor = $fila3['doc_suscriptor'];
-                        $query4 = "SELECT * FROM facturacion WHERE id_punto = $idPunto";
-                        $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
-                        $fila4 = mysqli_fetch_array($query_exec4);
                       ?>
-                    <tr>
-                      <td class="text-center"><?php echo $fila1[2]; ?></td>
-                      <td class="text-center"><?php echo $fila1[1]; ?></td>
-                      <td class="text-center"><?php  echo $fila4[5];?></td>
-                      <td class="text-center"><?php  echo $fila3[5];?></td>
-                      <td class="text-center"><?php  echo $fila3[4];?></td>
-                      <td class="text-center"><?php  echo "???" ?></td>
-                      <td class="text-center"><?php  echo $fila3[8];?></td>
-                      <td class="text-center"><?php  echo $fila3[9];?></td>
-                      <td class="text-center"><?php  echo $fila3[7];?></td>
-                      <td class="text-center"><?php  echo $fila3[6];?></td>
-                      <td class="text-center"><?php  echo $fila4[9];?></td>
-                      <td class="text-center"><?php echo $fila1[4]; ?></td>
-                      <td class="text-center"><?php  echo $fila4[4];?></td>
-                      <td class="text-center"><?php  echo $fila2[1];?></td>
+                     <tr>
+                     <td class="text-center"><?php echo $fila1[2]; ?></td>
+                     <td class="text-center"><?php echo $fila1[9]; ?></td>
+                     <td class="text-center"><?php echo $fila1[1]; ?></td>
+                     <td class="text-center"><?php echo $fila1[11]; ?></td>
+                     <td class="text-center"><?php echo $fila1[5]; ?></td>
+                     <td class="text-center"><?php echo $fila1[12]; ?></td>
+                     <td class="text-center"><?php echo "MORA"; ?></td>
+                     <td class="text-center"><?php echo $fila1[14]; ?></td>
+                     <td class="text-center"><?php echo $fila1[15]; ?></td>
+                     <td class="text-center"><?php echo $fila1[16]; ?></td>
+                     <td class="text-center"><?php echo $fila1[13]; ?></td>
+                     <td class="text-center"><?php echo $fila1[17]; ?></td>
+                     <td class="text-center"><?php echo $fila1[4]; ?></td>
+                     <td class="text-center"><?php echo $fila1[10]; ?></td>
+                     <td class="text-center"><?php echo $fila2[1]; ?></td>
                       </tr>
                       <?php } ?>
                      
