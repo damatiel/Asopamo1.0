@@ -120,6 +120,15 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 30% 30% 30% 10%;
 }
+.my-custom-scrollbar {
+    position: absolute;
+    height: 200px;
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+    display: block;
+    }
+    
 
 
 

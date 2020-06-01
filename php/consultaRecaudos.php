@@ -80,9 +80,18 @@
       <div>
         <h2 class="titulo text-center container">Consulta Recaudos</h2>
       </div>
-      <br><br>
+      <br>
       <?php 
         $idPunto = "";
+        $numRecaudos = 0;
+        $TServicios = 0;
+        $TSaldo = 0;
+        $TMultas = 0;
+        $TTraslados = 0;
+        $TReactivacion = 0;
+        $TMatricula = 0;
+        $TDescuento = 0;
+        $TTotal = 0;
       ?>
       <form method = "POST" class="container formularioCRecibos" action = "#">
             <div class="container gridCRecibos">
@@ -111,8 +120,8 @@
                 </div>
             </div>
             </form>
-        <br><br>
-        <div class="container">
+        <br>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
             <table class="table table-hover table-condensed">
                 <thead>
                   <tr>
@@ -135,7 +144,7 @@
 
                   </tr>
                 </thead>
-                <tbody>
+                <tbody >
                   <?php
                      if (isset($_POST["btnConsultar"])){
                       $fecha_ini = $_POST['fInicial'];
@@ -149,33 +158,82 @@
                         $query2 = "SELECT * FROM ent_pago WHERE id = $idEntPago";
                         $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
                         $fila2 = mysqli_fetch_array($query_exec2);
+                        $numRecaudos ++;
+                        $TServicios += $fila1[11];;
+                        $TSaldo += $fila1[12];
+                        $TMultas += $fila1[20];
+                        $TTraslados += $fila1[14];
+                        $TReactivacion += $fila1[15];
+                        $TMatricula += $fila1[16];;
+                        $TDescuento += $fila1[13];
+                        $TTotal += $fila1[17];
+                        
                       ?>
                      <tr>
                      <td class="text-center"><?php echo $fila1[2]; ?></td>
                      <td class="text-center"><?php echo $fila1[9]; ?></td>
                      <td class="text-center"><?php echo $fila1[1]; ?></td>
-                     <td class="text-center"><?php echo $fila1[11]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[11]; ?></td>
                      <td class="text-center"><?php echo $fila1[5]; ?></td>
-                     <td class="text-center"><?php echo $fila1[12]; ?></td>
-                     <td class="text-center"><?php echo "MORA"; ?></td>
-                     <td class="text-center"><?php echo $fila1[14]; ?></td>
-                     <td class="text-center"><?php echo $fila1[15]; ?></td>
-                     <td class="text-center"><?php echo $fila1[16]; ?></td>
-                     <td class="text-center"><?php echo $fila1[13]; ?></td>
-                     <td class="text-center"><?php echo $fila1[17]; ?></td>
-                     <td class="text-center"><?php echo $fila1[4]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[12]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[20]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[14]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[15]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[16]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[13]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[17]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[4]; ?></td>
                      <td class="text-center"><?php echo $fila1[10]; ?></td>
                      <td class="text-center"><?php echo $fila2[1]; ?></td>
                       </tr>
                       <?php } ?>
                      
                       <?php } ?>
-
-                      
-                  
-                 
+                </tbody>
+                
+              </table>
+         </div>
+         
+    </body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+    <div>
+              <table class="table table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th class="text-center" scope="col">Numero Recaudos</th>
+                    <th class="text-center" scope="col">Total Servicios</th>
+                    <th class="text-center" scope="col">Total SaldoAnt</th>
+                    <th class="text-center" scope="col">Total Multas</th>
+                    <th class="text-center" scope="col">Total Traslados</th>
+                    <th class="text-center" scope="col">Total Reactivacion</th>
+                    <th class="text-center" scope="col">Total Matricula</th>
+                    <th class="text-center" scope="col">Total Descuento</th>
+                    <th class="text-center" scope="col">Suma Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <td class="text-center"><?php echo $numRecaudos; ?></td>
+                <td class="text-center"><?php echo "$".$TServicios; ?></td>
+                <td class="text-center"><?php echo "$".$TSaldo; ?></td>
+                <td class="text-center"><?php echo "$".$TMultas; ?></td>
+                <td class="text-center"><?php echo "$".$TTraslados; ?></td>
+                <td class="text-center"><?php echo "$".$TReactivacion; ?></td>
+                <td class="text-center"><?php echo "$".$TMatricula; ?></td>
+                <td class="text-center"><?php echo "$".$TDescuento; ?></td>
+                <td class="text-center"><?php echo "$".$TTotal; ?></td>
                 </tbody>
               </table>
-              
-    </body>
+    </div>
+    
+    </footer>
     </html>
