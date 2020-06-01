@@ -104,7 +104,9 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
       <div style="page-break-after:always;"></div>';
-      }}    }
+      }}  
+  $query = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0 WHERE id = $id_punto";
+   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");  }
       
       
 		$name = 'facturas '.$p_fact.'.pdf';
@@ -115,8 +117,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   PDF::stream($name,$html);
   
   
-  // $query = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0 WHERE id = $id_punto";
-  // $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+   
 
 }if (isset($_POST["fact3"])) {
   $mes = $_POST['mes'];
