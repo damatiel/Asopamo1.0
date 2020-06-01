@@ -146,12 +146,14 @@ if (isset($_POST["imprimir1"])) {
   	}
   	$total_pagar = 13000+$saldo_ant-$descuento;
 
-  	$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado' WHERE id = $id_punto";
-             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   	
-  	if ($atrasos == 3) {
+  	
+  	if ($atrasos >= 3) {
   		
   	}else{
+  		$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado' WHERE id = $id_punto";
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1', 13000, '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
   $query2 = "SELECT * FROM facturacion ";
@@ -168,7 +170,8 @@ if (isset($_POST["imprimir1"])) {
   	}
   	?>
 		
-		<input type="submit" name="fact2">
+		<input type="submit" name="fact2" value="Imprimir todos los recivos">
+		<input type="submit" name="fact3" value="Imprimir reporte de puntos cancelados">
 	</form>
 	<?php
 	}
