@@ -234,6 +234,7 @@ if (isset($_POST["imprimir1"])) {
   	?>
 		<input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>">
 		<input type="submit" name="fact2" value="Imprimir Facturas">
+		<input type="submit" name="fact4" value="Imprimir reporte de excel de la factura del mes">
 		<input type="submit" name="fact3" value="Imprimir cortes">
 	</form>
 	<?php
