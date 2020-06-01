@@ -167,7 +167,7 @@ if (isset($_POST["fact4"])) {
   $mes = $_POST['mes'];
   $ultimodia = $_POST['ultimodia'];
 header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
-header('Content-Disposition: attachment; filename=prueba.xls');
+header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
  ?>
  <table>
   <tr>
