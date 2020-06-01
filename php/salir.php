@@ -2,7 +2,7 @@
 	session_start();
 	$_SESSION=null;
 	session_destroy();
-	header("location:../index.html");
+	header("location:../index.php");
 	
 	
 ?>
