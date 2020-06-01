@@ -38,6 +38,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
     $reactivacion = $fila2[9];
     $atrasos = $fila2[5];
     $multa = $fila2[12];
+    $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
+   $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
     $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
@@ -103,8 +105,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>';
-      $query = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
-   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+      
       $html.='
       <div style="page-break-after:always;"></div>';
       }}}
