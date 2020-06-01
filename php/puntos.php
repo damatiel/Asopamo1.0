@@ -128,14 +128,18 @@
       </div>
       </form>
       </div>
-      <form action="#" method="post">
-        
+      <form action="#" class="formularioPuntos" method="post">
+        <br><br>
+      <div>
+      <h2 class="titulo text-center container">Consulta De Puntos</h2>
+  </div>
+  <br>
     
       <div class="container">
         <div>
         <label>Direccion</label>
       </div>
-        <div class="container form-group gridDireccion">
+        <div class=" form-group gridDireccion">
       <div>
         <select name="tipo_direc" class="form-control">
           <option value="calle">Calle</option>
@@ -161,13 +165,13 @@
       </div>
         
     </div>
-    <div class="container form-group gridDireccion">
+    <div class="form-group gridDireccion">
       <div>
         <label>ID Punto</label>
         <input type="number" name="id" class="form-control">
       </div>
     </div>
-    <div>
+    <div class="text-center">
         <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar por direccion</button>
         <button type="submit" name="buscarpuntoid" class="btn btn-primary">Buscar por id punto</button>
       </div>
@@ -189,6 +193,7 @@
 
         
       ?>
+       
       <form method="post" action="ges_punto.php">
         <div class="container form-group">
       <table class="table">
@@ -211,9 +216,9 @@
             $id_punto = $fila['id'];
             ?>
         
-            <td><?php echo $fila['doc_suscriptor']; ?></td>
+            <td class="text-center"><?php echo $fila['doc_suscriptor']; ?></td>
             
-            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
+            <td class="text-center"><input type="text" class="form-control text-center" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 
@@ -221,8 +226,8 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><?php echo $fila2['primer_nom']; ?></td>
-            <td><?php echo $fila2['primer_ape']; ?></td>
+             <td class="text-center"><?php echo $fila2['primer_nom']; ?></td>
+            <td class="text-center"><?php echo $fila2['primer_ape']; ?></td>
             <?php 
             $estado = $fila['estado'];
             if ($estado == 2) {
@@ -233,10 +238,10 @@
               $estado = "Suspendido";
             }
              ?>
-            <td><?php echo $estado; ?></td>
-            <td><?php echo $fila['contador']; ?></td>
-            <td><?php echo $fila['saldo_ant']; ?></td>
-            <td><?php echo $fila['fecha_act']; ?></td>
+            <td class="text-center"><?php echo $estado; ?></td>
+            <td class="text-center"><?php echo $fila['contador']; ?></td>
+            <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
+            <td class="text-center"><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
@@ -248,7 +253,7 @@
       </table>
     </div>
     <br>
-    
+   
       <div class="container form-group">
       <div>
         <label>Descuento</label>
@@ -276,7 +281,7 @@
     
 
    <?php  }?>
-
+            
       <!-- __________________________________________________________________________________________________ -->
       <?php if (isset($_POST["buscarpuntoid"])) {?>
 
@@ -288,6 +293,8 @@
 
         
       ?>
+      <div>
+   
       <form method="post" action="ges_punto.php">
         <div class="container form-group">
       <table class="table">
@@ -311,7 +318,7 @@
         
             <td><?php echo $fila['doc_suscriptor']; ?></td>
             
-            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
+            <td class="text-center"><input type="text" class="form-control text-center" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 
@@ -319,8 +326,8 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><?php echo $fila2['primer_nom']; ?></td>
-            <td><?php echo $fila2['primer_ape']; ?></td>
+             <td class="text-center"><?php echo $fila2['primer_nom']; ?></td>
+            <td class="text-center"><?php echo $fila2['primer_ape']; ?></td>
             <?php 
             $estado = $fila['estado'];
             if ($estado == 2) {
@@ -331,10 +338,10 @@
               $estado = "Suspendido";
             }
              ?>
-            <td><?php echo $estado; ?></td>
-            <td><?php echo $fila['contador']; ?></td>
-            <td><?php echo $fila['saldo_ant']; ?></td>
-            <td><?php echo $fila['fecha_act']; ?></td>
+            <td class="text-center"><?php echo $estado; ?></td>
+            <td class="text-center"><?php echo $fila['contador']; ?></td>
+            <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
+            <td class="text-center"><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
