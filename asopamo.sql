@@ -1,218 +1,224 @@
--- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-05-2020 a las 02:36:26
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+/*
+ Navicat Premium Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+ Source Server         : miguel
+ Source Server Type    : MySQL
+ Source Server Version : 100410
+ Source Host           : localhost:3306
+ Source Schema         : asopamo
 
+ Target Server Type    : MySQL
+ Target Server Version : 100410
+ File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+ Date: 31/05/2020 17:49:13
+*/
 
---
--- Base de datos: `asopamo`
---
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ent_pago`
---
-
+-- ----------------------------
+-- Table structure for ent_pago
+-- ----------------------------
 DROP TABLE IF EXISTS `ent_pago`;
-CREATE TABLE IF NOT EXISTS `ent_pago` (
+CREATE TABLE `ent_pago`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `Nombre` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `ent_pago`
---
+-- ----------------------------
+-- Records of ent_pago
+-- ----------------------------
+INSERT INTO `ent_pago` VALUES (1, 'ASOPAMO');
+INSERT INTO `ent_pago` VALUES (2, 'SERVIMCOOP');
+INSERT INTO `ent_pago` VALUES (3, 'BANCO AGRARIO');
 
-INSERT INTO `ent_pago` (`id`, `Nombre`) VALUES
-(1, 'ASOPAMO'),
-(2, 'SERVIMCOOP'),
-(3, 'BANCOLOMBIA');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `facturacion`
---
-
+-- ----------------------------
+-- Table structure for facturacion
+-- ----------------------------
 DROP TABLE IF EXISTS `facturacion`;
-CREATE TABLE IF NOT EXISTS `facturacion` (
+CREATE TABLE `facturacion`  (
   `numero_fact` int(11) NOT NULL AUTO_INCREMENT,
-  `id_punto` int(11) DEFAULT NULL,
-  `documento` int(20) DEFAULT NULL,
-  `fecha_fact` date DEFAULT NULL,
-  `periodo_fact` varchar(50) DEFAULT NULL,
-  `admin_mes` decimal(60,0) DEFAULT NULL,
-  `saldo_ant` decimal(60,0) DEFAULT NULL,
-  `id_mes` int(12) DEFAULT NULL,
-  `operador` varchar(255) DEFAULT NULL,
-  `total_pagar` decimal(60,0) DEFAULT NULL,
+  `id_punto` int(11) NULL DEFAULT NULL,
+  `documento` int(20) NULL DEFAULT NULL,
+  `fecha_fact` date NULL DEFAULT NULL,
+  `periodo_fact` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `admin_mes` decimal(60, 0) NULL DEFAULT NULL,
+  `saldo_ant` decimal(60, 0) NULL DEFAULT NULL,
+  `id_mes` int(12) NULL DEFAULT NULL,
+  `operador` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `total_pagar` decimal(60, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`numero_fact`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 172 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `facturacion`
---
+-- ----------------------------
+-- Records of facturacion
+-- ----------------------------
+INSERT INTO `facturacion` VALUES (157, 15, 1100963440, '2020-05-31', 'enero', 13000, 0, 1, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (158, 16, 1100963441, '2020-05-31', 'enero', 13000, 0, 1, 'miguel mejia', 13000);
+INSERT INTO `facturacion` VALUES (159, 17, 1100963440, '2020-05-31', 'enero', 13000, 0, 1, 'miguel mejia', 13000);
+INSERT INTO `facturacion` VALUES (160, 15, 1100963440, '2020-05-31', 'febrero', 13000, 13000, 2, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (161, 16, 1100963441, '2020-05-31', 'febrero', 13000, 13000, 2, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (162, 17, 1100963440, '2020-05-31', 'febrero', 13000, 13000, 2, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (163, 15, 1100963440, '2020-05-31', 'marzo', 13000, 0, 3, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (164, 16, 1100963441, '2020-05-31', 'marzo', 13000, 0, 3, 'miguel mejia', 0);
+INSERT INTO `facturacion` VALUES (165, 17, 1100963440, '2020-05-31', 'marzo', 13000, 0, 3, 'miguel mejia', 0);
+INSERT INTO `facturacion` VALUES (166, 15, 1100963440, '2020-05-31', 'abril', 13000, 0, 4, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (167, 16, 1100963441, '2020-05-31', 'abril', 13000, 0, 4, 'miguel mejia', 13000);
+INSERT INTO `facturacion` VALUES (168, 17, 1100963440, '2020-05-31', 'abril', 13000, 0, 4, 'miguel mejia', 13000);
+INSERT INTO `facturacion` VALUES (169, 15, 1100963440, '2020-05-31', 'mayo', 13000, 13000, 5, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (170, 16, 1100963441, '2020-05-31', 'mayo', 13000, 13000, 5, 'miguel mejia', 26200);
+INSERT INTO `facturacion` VALUES (171, 17, 1100963440, '2020-05-31', 'mayo', 13000, 13000, 5, 'miguel mejia', 26200);
 
-INSERT INTO `facturacion` (`numero_fact`, `id_punto`, `documento`, `fecha_fact`, `periodo_fact`, `admin_mes`, `saldo_ant`, `id_mes`, `operador`, `total_pagar`) VALUES
-(33, 7, 123, '2020-05-17', 'enero', '13000', '0', 1, 'miguel mejia', '0');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pagos`
---
-
+-- ----------------------------
+-- Table structure for pagos
+-- ----------------------------
 DROP TABLE IF EXISTS `pagos`;
-CREATE TABLE IF NOT EXISTS `pagos` (
+CREATE TABLE `pagos`  (
   `id_pagos` int(11) NOT NULL AUTO_INCREMENT,
-  `num_factura` int(11) NOT NULL,
-  `id_punto` int(11) NOT NULL,
-  `id_entPago` int(11) NOT NULL,
-  `fecha_pago` datetime NOT NULL,
-  PRIMARY KEY (`id_pagos`),
-  KEY `num_factura` (`num_factura`,`id_punto`,`id_entPago`),
-  KEY `id_entPago` (`id_entPago`),
-  KEY `id_punto` (`id_punto`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+  `num_factura` int(11) NULL DEFAULT NULL,
+  `id_punto` int(11) NULL DEFAULT NULL,
+  `id_entPago` int(11) NULL DEFAULT NULL,
+  `fecha_pago` date NULL DEFAULT NULL,
+  `atrasos` int(11) NULL DEFAULT NULL,
+  `fecha_limite` date NULL DEFAULT NULL,
+  `nom_suscriptor` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fecha_factura` date NULL DEFAULT NULL,
+  `direccion` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `periodo_fact` varchar(225) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `admin_mes` int(12) NULL DEFAULT NULL,
+  `saldo_anterior` int(12) NULL DEFAULT NULL,
+  `descuento` int(12) NULL DEFAULT NULL,
+  `traslado` int(12) NULL DEFAULT NULL,
+  `reactivacion` int(12) NULL DEFAULT NULL,
+  `matricula` int(12) NULL DEFAULT NULL,
+  `total` int(12) NULL DEFAULT NULL,
+  `documento` int(12) NULL DEFAULT NULL,
+  `estado` int(11) NULL DEFAULT NULL,
+  `multa` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id_pagos`) USING BTREE,
+  INDEX `num_factura`(`num_factura`, `id_punto`, `id_entPago`) USING BTREE,
+  INDEX `id_entPago`(`id_entPago`) USING BTREE,
+  INDEX `id_punto`(`id_punto`) USING BTREE,
+  CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`num_factura`) REFERENCES `facturacion` (`numero_fact`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `pagos_ibfk_2` FOREIGN KEY (`id_entPago`) REFERENCES `ent_pago` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `pagos_ibfk_3` FOREIGN KEY (`id_punto`) REFERENCES `puntos` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 101 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `pagos`
---
+-- ----------------------------
+-- Records of pagos
+-- ----------------------------
+INSERT INTO `pagos` VALUES (82, 163, 15, 1, '2020-05-31', 0, '2020-01-31', 'Miguel', '2020-05-31', 'carrera11#5-48', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0);
+INSERT INTO `pagos` VALUES (83, 164, 16, 1, '2020-05-31', 0, '2020-01-31', 'Angel', '2020-05-31', 'carrera11#5-49', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963441, 0, 0);
+INSERT INTO `pagos` VALUES (84, 165, 17, 1, '2020-05-31', 0, '2020-01-31', 'Miguel', '2020-05-31', 'calle11#5-48', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0);
+INSERT INTO `pagos` VALUES (85, 163, 15, 1, '2020-05-31', 1, '2020-02-28', 'Miguel', '2020-05-31', 'carrera11#5-48', 'febrero', 13000, 13000, 0, 0, 0, 0, 26200, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (86, 164, 16, 1, '2020-05-31', 1, '2020-02-28', 'Angel', '2020-05-31', 'carrera11#5-49', 'febrero', 13000, 13000, 0, 0, 0, 0, 26200, 1100963441, 0, 200);
+INSERT INTO `pagos` VALUES (87, 165, 17, 1, '2020-05-31', 1, '2020-02-28', 'Miguel', '2020-05-31', 'calle11#5-48', 'febrero', 13000, 13000, 0, 0, 0, 0, 26200, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (88, 163, 15, 1, '2020-05-31', 2, '2020-03-31', 'Miguel', '2020-05-31', 'carrera11#5-48', 'marzo', 13000, 26200, 0, 0, 0, 0, 39400, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (89, 164, 16, 1, '2020-05-31', 2, '2020-03-31', 'Angel', '2020-05-31', 'carrera11#5-49', 'marzo', 13000, 26200, 0, 0, 0, 0, 39400, 1100963441, 0, 200);
+INSERT INTO `pagos` VALUES (90, 165, 17, 1, '2020-05-31', 2, '2020-03-31', 'Miguel', '2020-05-31', 'calle11#5-48', 'marzo', 13000, 26200, 0, 0, 0, 0, 39400, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (91, NULL, 15, NULL, NULL, 0, '2020-04-30', 'Miguel', '2020-05-31', 'carrera11#5-48', 'abril', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0);
+INSERT INTO `pagos` VALUES (92, NULL, 16, NULL, NULL, 0, '2020-04-30', 'Angel', '2020-05-31', 'carrera11#5-49', 'abril', 13000, 0, 0, 0, 0, 0, 13000, 1100963441, 0, 0);
+INSERT INTO `pagos` VALUES (93, NULL, 17, NULL, NULL, 0, '2020-04-30', 'Miguel', '2020-05-31', 'calle11#5-48', 'abril', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0);
+INSERT INTO `pagos` VALUES (94, NULL, 15, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26200, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (95, NULL, 16, NULL, NULL, 1, '2020-05-29', 'Angel', '2020-05-31', 'carrera11#5-49', 'mayo', 13000, 13000, 0, 0, 0, 0, 26200, 1100963441, 0, 200);
+INSERT INTO `pagos` VALUES (96, NULL, 17, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'calle11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26200, 1100963440, 0, 200);
+INSERT INTO `pagos` VALUES (97, NULL, NULL, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26400, 1100963440, 0, NULL);
+INSERT INTO `pagos` VALUES (98, NULL, NULL, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26400, 1100963440, 0, NULL);
+INSERT INTO `pagos` VALUES (99, NULL, NULL, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26400, 1100963440, 0, NULL);
+INSERT INTO `pagos` VALUES (100, NULL, NULL, NULL, NULL, 1, '2020-05-29', 'Miguel', '2020-05-31', 'carrera11#5-48', 'mayo', 13000, 13000, 0, 0, 0, 0, 26200, 1100963440, 0, NULL);
 
-INSERT INTO `pagos` (`id_pagos`, `num_factura`, `id_punto`, `id_entPago`, `fecha_pago`) VALUES
-(15, 33, 7, 3, '2020-05-17 21:33:36'),
-(16, 33, 7, 2, '2020-05-17 21:33:42'),
-(17, 33, 7, 1, '2020-05-17 21:33:45'),
-(18, 33, 7, 1, '2020-05-17 21:33:51'),
-(19, 33, 7, 2, '2020-05-17 21:33:54'),
-(20, 33, 7, 3, '2020-05-17 21:33:57');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `puntos`
---
-
+-- ----------------------------
+-- Table structure for puntos
+-- ----------------------------
 DROP TABLE IF EXISTS `puntos`;
-CREATE TABLE IF NOT EXISTS `puntos` (
+CREATE TABLE `puntos`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `dir` varchar(255) NOT NULL,
-  `estado` int(2) DEFAULT NULL,
-  `doc_suscriptor` int(20) DEFAULT NULL,
-  `saldo_ant` int(60) DEFAULT NULL,
-  `contador` int(60) DEFAULT NULL,
-  `descuento` int(60) DEFAULT NULL,
-  `form_pago` int(2) DEFAULT NULL,
-  `fecha_act` date DEFAULT NULL,
-  PRIMARY KEY (`id`,`dir`) USING BTREE,
-  KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  `dir` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `estado` int(2) NULL DEFAULT NULL,
+  `doc_suscriptor` int(20) NULL DEFAULT NULL,
+  `saldo_ant` int(60) NULL DEFAULT NULL,
+  `contador` int(60) NULL DEFAULT NULL,
+  `descuento` int(60) NULL DEFAULT NULL,
+  `matricula` int(11) NULL DEFAULT NULL,
+  `traslado` int(11) NULL DEFAULT NULL,
+  `reactivacion` int(11) NULL DEFAULT NULL,
+  `form_pago` int(2) NULL DEFAULT NULL,
+  `fecha_act` date NULL DEFAULT NULL,
+  `multa` int(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`, `dir`) USING BTREE,
+  INDEX `doc_suscriptor`(`doc_suscriptor`) USING BTREE,
+  INDEX `id`(`id`) USING BTREE,
+  CONSTRAINT `puntos_ibfk_1` FOREIGN KEY (`doc_suscriptor`) REFERENCES `suscriptores` (`doc`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `puntos`
---
+-- ----------------------------
+-- Records of puntos
+-- ----------------------------
+INSERT INTO `puntos` VALUES (15, 'carrera11#5-48', 1, 1100963440, 26200, 1, 0, 0, 0, 0, 0, '2020-05-31', 200);
+INSERT INTO `puntos` VALUES (16, 'carrera11#5-49', 1, 1100963441, 26200, 1, 0, 0, 0, 0, 0, '2020-05-31', 200);
+INSERT INTO `puntos` VALUES (17, 'calle11#5-48', 1, 1100963440, 26200, 1, 0, 0, 0, 0, 0, '2020-05-31', 200);
 
-INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `form_pago`, `fecha_act`) VALUES
-(7, 'calle1#1-1', 1, 123, 0, 0, 0, 0, '2020-05-17');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `suscriptores`
---
-
+-- ----------------------------
+-- Table structure for suscriptores
+-- ----------------------------
 DROP TABLE IF EXISTS `suscriptores`;
-CREATE TABLE IF NOT EXISTS `suscriptores` (
+CREATE TABLE `suscriptores`  (
   `doc` int(20) NOT NULL,
-  `primer_nom` varchar(50) DEFAULT NULL,
-  `segundo_nom` varchar(50) DEFAULT NULL,
-  `primer_ape` varchar(50) DEFAULT NULL,
-  `segundo_ape` varchar(50) DEFAULT NULL,
-  `estado` int(2) DEFAULT NULL,
-  `tel` varchar(11) DEFAULT NULL,
-  `direc` varchar(50) DEFAULT NULL,
+  `primer_nom` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `segundo_nom` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `primer_ape` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `segundo_ape` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `estado` int(2) NULL DEFAULT NULL,
+  `tel` varchar(11) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `direc` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`doc`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `suscriptores`
---
+-- ----------------------------
+-- Records of suscriptores
+-- ----------------------------
+INSERT INTO `suscriptores` VALUES (1100963440, 'Miguel', 'Angel', 'Mejia', 'Macias', 1, '3508737961', 'Carrera11#5-48');
+INSERT INTO `suscriptores` VALUES (1100963441, 'Angel', 'Miguel', 'Macias', 'Mejia', 1, '3508737962', 'Carrera11#5-49');
 
-INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `segundo_ape`, `estado`, `tel`, `direc`) VALUES
-(123, 'Miguel', 'Fabio', 'Lancheros', 'Rodriguez', 1, '1234', 'Carrera 10 # 10 - 10');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
+-- ----------------------------
+-- Table structure for usuarios
+-- ----------------------------
 DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(255) DEFAULT NULL,
-  `tipo` int(2) DEFAULT NULL,
-  `usuario` varchar(255) DEFAULT NULL,
-  `pass` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+CREATE TABLE `usuarios`  (
+  `documento` int(11) NOT NULL,
+  `nombre` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `apellidos` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `tipo` int(2) NULL DEFAULT NULL,
+  `usuario` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `pass` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`documento`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
---
--- Volcado de datos para la tabla `usuarios`
---
+-- ----------------------------
+-- Records of usuarios
+-- ----------------------------
+INSERT INTO `usuarios` VALUES (1, 'miguel mejia', '', 1, 'mmejia', '123');
 
-INSERT INTO `usuarios` (`id`, `nombre`, `tipo`, `usuario`, `pass`) VALUES
-(1, 'miguel mejia', 1, 'mmejia', '123');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `valores`
---
-
+-- ----------------------------
+-- Table structure for valores
+-- ----------------------------
 DROP TABLE IF EXISTS `valores`;
-CREATE TABLE IF NOT EXISTS `valores` (
+CREATE TABLE `valores`  (
   `id` int(11) NOT NULL,
-  `concepto` varchar(255) DEFAULT NULL,
-  `valor` double(255,0) DEFAULT NULL,
+  `concepto` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `valor` double(255, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
---
--- Restricciones para tablas volcadas
---
+-- ----------------------------
+-- Records of valores
+-- ----------------------------
+INSERT INTO `valores` VALUES (1, 'administracion_mes', 13000);
+INSERT INTO `valores` VALUES (2, 'matricula', 50000);
+INSERT INTO `valores` VALUES (3, 'traslado', 10000);
+INSERT INTO `valores` VALUES (4, 'reactivacion', 30000);
+INSERT INTO `valores` VALUES (5, 'multa', 200);
 
---
--- Filtros para la tabla `pagos`
---
-ALTER TABLE `pagos`
-  ADD CONSTRAINT `pagos_ibfk_1` FOREIGN KEY (`num_factura`) REFERENCES `facturacion` (`numero_fact`),
-  ADD CONSTRAINT `pagos_ibfk_2` FOREIGN KEY (`id_entPago`) REFERENCES `ent_pago` (`id`),
-  ADD CONSTRAINT `pagos_ibfk_3` FOREIGN KEY (`id_punto`) REFERENCES `puntos` (`id`);
-
---
--- Filtros para la tabla `puntos`
---
-ALTER TABLE `puntos`
-  ADD CONSTRAINT `puntos_ibfk_1` FOREIGN KEY (`doc_suscriptor`) REFERENCES `suscriptores` (`doc`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS = 1;

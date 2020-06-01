@@ -37,7 +37,7 @@
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse bg-primary" ;" id="">
+    <div class="collapse navbar-collapse bg-primary" ; id="">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" href="suscriptores.php">Suscriptores</a>
@@ -57,7 +57,7 @@
             Consultas
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
+          <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a>  
           <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
 
         </li>
@@ -128,14 +128,18 @@
       </div>
       </form>
       </div>
-      <form action="#" method="post">
-        
+      <form action="#" class="formularioPuntos" method="post">
+        <br><br>
+      <div>
+      <h2 class="titulo text-center container">Consulta De Puntos</h2>
+  </div>
+  <br>
     
       <div class="container">
         <div>
         <label>Direccion</label>
       </div>
-        <div class="container form-group gridDireccion">
+        <div class=" form-group gridDireccion">
       <div>
         <select name="tipo_direc" class="form-control">
           <option value="calle">Calle</option>
@@ -161,13 +165,13 @@
       </div>
         
     </div>
-    <div class="container form-group gridDireccion">
+    <div class="form-group gridDireccion">
       <div>
         <label>ID Punto</label>
         <input type="number" name="id" class="form-control">
       </div>
     </div>
-    <div>
+    <div class="text-center">
         <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar por direccion</button>
         <button type="submit" name="buscarpuntoid" class="btn btn-primary">Buscar por id punto</button>
       </div>
@@ -189,6 +193,7 @@
 
         
       ?>
+       
       <form method="post" action="ges_punto.php">
         <div class="container form-group">
       <table class="table">
@@ -198,16 +203,22 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Atrasos</th>
+            <th scope="col">Deudas</th>
+            <th scope="col">Fecha de Activación</th>
           </tr>
         </thead>
         <tbody>
-          <tr><?php if ($fila = mysqli_fetch_array($query_exec)) { 
+          <tr><?php 
+            if ($fila = mysqli_fetch_array($query_exec)) { 
             $doc = $fila['doc_suscriptor'];
+            $id_punto = $fila['id'];
             ?>
         
-            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
+            <td class="text-center"><?php echo $fila['doc_suscriptor']; ?></td>
             
-            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
+            <td class="text-center"><input type="text" class="form-control text-center" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 
@@ -215,8 +226,22 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
-            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+             <td class="text-center"><?php echo $fila2['primer_nom']; ?></td>
+            <td class="text-center"><?php echo $fila2['primer_ape']; ?></td>
+            <?php 
+            $estado = $fila['estado'];
+            if ($estado == 2) {
+              $estado = "Activo";
+            }elseif ($estado == 1) {
+              $estado = "Deudor";
+            }elseif ($estado == 3) {
+              $estado = "Suspendido";
+            }
+             ?>
+            <td class="text-center"><?php echo $estado; ?></td>
+            <td class="text-center"><?php echo $fila['contador']; ?></td>
+            <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
+            <td class="text-center"><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
@@ -228,19 +253,27 @@
       </table>
     </div>
     <br>
-    
+   
       <div class="container form-group">
       <div>
         <label>Descuento</label>
-        <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
+        <input type="number" class="form-control" name="descuento" id="txtDescuento" value="0" placeholder="Descuento"><br>
         <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
+        <input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>" />
+        <input type="checkbox" name="matricula" value="2">
+        <label for="matricula"> MATRICULA</label><br>
+        <input type="checkbox" name="traslado" value="3">
+        <label for="traslado"> TRASLADO</label><br>
+        <input type="checkbox" name="reactivacion" value="4">
+        <label for="matricula"> REACTIVACIÓN</label><br>
       </div>
     </div>
 
     <div class="container form-group text-center">
       <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
       <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
-      <button type="submit" name="eliminarpunto" class="btn btn-danger">Eliminar</button>
+      <button type="submit" name="suspender" class="btn btn-danger">Suspender</button>
+      <button type="submit" name="activar" class="btn btn-success">Activar</button>
 
     </div>
 
@@ -248,7 +281,7 @@
     
 
    <?php  }?>
-
+            
       <!-- __________________________________________________________________________________________________ -->
       <?php if (isset($_POST["buscarpuntoid"])) {?>
 
@@ -260,6 +293,8 @@
 
         
       ?>
+      <div>
+   
       <form method="post" action="ges_punto.php">
         <div class="container form-group">
       <table class="table">
@@ -269,16 +304,21 @@
             <th scope="col">Dirección</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Primer Apellido</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Atrasos</th>
+            <th scope="col">Deudas</th>
+            <th scope="col">Fecha de Activación</th>
           </tr>
         </thead>
         <tbody>
           <tr><?php if ($fila = mysqli_fetch_array($query_exec)) { 
             $doc = $fila['doc_suscriptor'];
+            $id_punto = $fila['id'];
             ?>
         
-            <td><input type="text" name="doc" value=<?php echo $fila['doc_suscriptor']; ?>></td>
+            <td><?php echo $fila['doc_suscriptor']; ?></td>
             
-            <td><input type="text" name="dir" value=<?php echo $fila['dir']; ?>></td>
+            <td class="text-center"><input type="text" class="form-control text-center" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 
@@ -286,8 +326,22 @@
 
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
              ?>
-             <td><input type="text" name="p_n" value=<?php echo $fila2['primer_nom']; ?>></td>
-            <td><input type="text" name="p_a" value=<?php echo $fila2['primer_ape']; ?>></td>
+             <td class="text-center"><?php echo $fila2['primer_nom']; ?></td>
+            <td class="text-center"><?php echo $fila2['primer_ape']; ?></td>
+            <?php 
+            $estado = $fila['estado'];
+            if ($estado == 2) {
+              $estado = "Activo";
+            }elseif ($estado == 1) {
+              $estado = "Deudor";
+            }elseif ($estado == 3) {
+              $estado = "Suspendido";
+            }
+             ?>
+            <td class="text-center"><?php echo $estado; ?></td>
+            <td class="text-center"><?php echo $fila['contador']; ?></td>
+            <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
+            <td class="text-center"><?php echo $fila['fecha_act']; ?></td>
 
           <?php } ?>
             <?php } ?>
@@ -303,15 +357,51 @@
       <div class="container form-group">
       <div>
         <label>Descuento</label>
-        <input type="number" class="form-control" name="descuento" id="txtDescuento" placeholder="txtDescuento">
+        <input type="number" class="form-control" name="descuento" id="txtDescuento" value="0" placeholder="Descuento"><br>
         <input type="hidden" name="documento" value="<?php echo $doc; ?>" />
+        <input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>" />
+        <input type="checkbox" name="matricula" value="2">
+        <label for="matricula"> MATRICULA</label><br>
+        <input type="checkbox" name="traslado" value="3">
+        <label for="traslado"> TRASLADO</label><br>
+        <input type="checkbox" name="reactivacion" value="4">
+        <label for="matricula"> REACTIVACIÓN</label><br>
       </div>
     </div>
 
     <div class="container form-group text-center">
-      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
-      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
-      <button type="submit" name="eliminarpunto" class="btn btn-danger">Eliminar</button>
+
+      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar Costos</button>
+      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar Dirección</button>
+      <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
+        <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
+      <?php endif ?>
+      <?php if ($estado == 'Suspendido'): ?>
+        <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
+      <?php endif ?>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Vender Punto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+           <h6>Ingrese el nuevo numero de cedula</h6>
+          <input type="number" name="cedula2"><br><br>
+          <button type="submit" name="venderpunto" class="btn btn-success">Vender</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+      
 
     </div>
 

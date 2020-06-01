@@ -94,6 +94,41 @@ margin-left: 10px;
     position: center;
     margin-left: 35%;
 }
+.formEntPago{
+    width: 50%;
+    position: center;
+    
+}
+.thnom{
+    width: 60%;
+}
+.gridEntPago{
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+}
+.gridValores{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+}
+.thvalor{
+    width: 20%;
+}
+.thConcepto{
+    width: 40%;
+}
+.gridConSuscriptores{
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
+}
+.my-custom-scrollbar {
+    position: absolute;
+    height: 200px;
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+    display: block;
+    }
+    
 
 
 

@@ -1,3 +1,15 @@
+<?php  
+  require_once __DIR__ . '/conectar.php';
+
+  $db = new DB_CONNECT();
+
+  session_start();
+
+  if ($_SESSION["autentificado"] != "SI") { 
+    //si no está logueado lo envío a la página de autentificación 
+    header("Location:../index.html"); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,16 +31,16 @@
     <div class="collapse navbar-collapse bg-primary";" id="">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="suscriptores.html">Suscriptores</a>
+          <a class="nav-link" href="suscriptores.php">Suscriptores</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="puntos.html">Puntos</a>
+          <a class="nav-link" href="puntos.php">Puntos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Facturacion</a>
+            <a class="nav-link" href="facturacion.pp">Facturacion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="pagos.html">Pagos</a>
+            <a class="nav-link" href="pagos.php">Pagos</a>
         </li>
         
         
@@ -37,8 +49,8 @@
               Consultas
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="consultaHisSuscriptores.php">Historial Suscriptores</a> 
-            <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+            <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
+              <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
               
           </li>
         <li class="nav-item dropdown">
@@ -63,48 +75,126 @@
       
     </div>
   </nav>
-      <div>
+  <br>
+  
         <h2 class="titulo text-center">Crear Usuario</h2>
       </div>
-      <form class="formularioCrearUsuario">
-          
-        <div class="container form-group">
-            <div> 
-                <label>Documento</label>
-                <input type="number" class="form-control" id="txtDocumento" placeholder="txtDocumento">
-            </div>
+      <br>
+      <form method ="POST" class="formularioCrearUsuario" action="CrearUsuario.php">
+      <div class="container form-group">
+      <div class="gridPagos">
+              <div class="text-center p-1">
+                <label class="float-left">Documento</label>
+              </div>
+              <div>
+                <input type="number" class="form-control float-left" name="txtDocumento" autofocus placeholder="Documento">
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="btnValidar">Validar</button>
+                
+              </div>
+         </div>
         </div>
+        </form>
+        <?php 
+            if (isset($_POST["btnValidar"])) {
+
+              $documento = $_POST['txtDocumento'];
+                $query = "SELECT * FROM usuarios WHERE documento = $documento";
+                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+            if ($fila = mysqli_fetch_array($query_exec)) {?> 
+            <form method = "POST" class="formularioCrearUsuario" action="gesUsuarios.php" >
+            <input type="hidden" name="documentoRegistro" value="<?php echo $documento; ?>" />
         <div class="container form-group">
             <div>
                 <label>Nombres</label>
-                <input type="text" class="form-control" id="txtNnombres" placeholder="txtNnombres">
+                <input type="text" class="form-control" name="txtNombres" value = <?php echo $fila[1];?>>
             </div>
         </div>
         <div class="container form-group">
             <div> 
                 <label>Apellidos</label>
-                <input type="text" class="form-control" id="txtApellidos" placeholder="txtApellidos">
+                <input type="text" class="form-control" name="txtApellidos" value = <?php echo $fila[2];?>>
             </div>
         </div>
         <div class="container form-group ">
             <div> 
                 <label>Usuario</label>
-                <input type="text" class="form-control" id="txtUsuario" placeholder="txtUsuario">
+                <input type="text" class="form-control" name="txtUsuario" value = <?php echo $fila[4];?>>
             </div>
         </div>
         <div class="container form-group ">
             <div> 
                 <label>Contraseña</label>
-                <input type="password" class="form-control" id="txtContraseña" placeholder="txtContraseña">
+                <input type="text" class="form-control" name="txtContraseña" value = <?php echo $fila[5];?>>
             </div>
+        </div>
+        <div class="container form-group">
+        <?php 
+          if($fila[3] == 1){
+        ?>
+          <label>Tipo De Usuario</label>
+          <select class="form-control" name="select">
+          <option value = "1">Administrador</option>
+          <option value = "0">Usuario</option>
+          </select>
+          <?php } else{ ?>
+            <label>Tipo De Usuario</label>
+          <select class="form-control" name="select">
+          <option value = "0">Usuario</option>
+          <option value = "1">Administrador</option>
+          </select>
+          <?php } ?>
+        </select>
         </div>
         <br>
         <div class="container form-group text-center">
-            <button type="button" class="btn btn-success">Registrar</button>
-            <button type="button" class="btn btn-info">Actualizar</button>
-            <button type="button" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-info" name = "btnActualizar">Actualizar</button>
+            <button type="submit" class="btn btn-danger" name = "btnEliminar">Eliminar</button>
         </div>
-    </form>
-
+        </form>
+        <?php }else{?>
+          <form method = "POST" class="formularioCrearUsuario" action="registrarUsuarios.php">
+          <input type="hidden" name="documentoRegistro" value="<?php echo $documento; ?>" />
+        <div class="container form-group">
+            <div>
+                <label>Nombres</label>
+                <input type="text" class="form-control" name="txtNombres" placeholder="Nombres">
+            </div>
+        </div>
+        <div class="container form-group">
+            <div> 
+                <label>Apellidos</label>
+                <input type="text" class="form-control" name="txtApellidos" placeholder="Apellidos">
+            </div>
+        </div>
+        <div class="container form-group ">
+            <div> 
+                <label>Usuario</label>
+                <input type="text" class="form-control" name="txtUsuario" placeholder="Usuario">
+            </div>
+        </div>
+        <div class="container form-group ">
+            <div> 
+                <label>Contraseña</label>
+                <input type="text" class="form-control" name="txtContraseña" placeholder="Contraseña">
+            </div>
+        </div>
+        <div class="container form-group">
+        <label>Tipo De Usuario</label>
+        <select class="form-control" name="select">
+          <option value = "1">Administrador</option>
+          <option Value = "0">Usuario</option>
+        </select>
+        </div>
+        <br>
+        <div class="container form-group text-center">
+            <button type="submit" class="btn btn-success" name ="btnRegistrar">Registrar</button>
+           
+        </div>
+        </form>
+       <?php } }?>
+        
+      
 
 </html>

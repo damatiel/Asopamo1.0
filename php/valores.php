@@ -23,9 +23,7 @@
      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!--C-->
-    <link rel="stylesheet" href="../css/solid.css">
     <link rel="stylesheet" href="../css/main.css">
-    
     
     
 </head>
@@ -65,10 +63,9 @@
               <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
              <a class="dropdown-item" href="valores.php">Valores</a>
                 
-                
             </li>
             <li class="nav-item">
-                <a class="nav-link">Usuario:</a>
+                <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="salir.php">Salir</a>
@@ -81,66 +78,73 @@
       </nav>
       <br>
           <div>
-            <h2 class="titulo text-center container">Entidades De Pago</h2>
+            <h2 class="titulo text-center container">Valores</h2>
           </div>
           <br><br>
           <div class="container formEntPago">
-            <form method ="POST" action="entidadPago.php">
-              <div class="gridEntPago">
-                <h5 class="p-1">Nombre</h5>
-                <input type="text" class="form-control text-center" name="nomEntPago" style="text-transform:uppercase;">
+              <form method ="POST" action="valores.php">
+                <div class="gridValores">
+                <div class="mr-3">
+                <input type="text" class="form-control text-center" name="txtConcepto" placeholder="Concepto">
+                </div>
+                <div class="ml-3">
+                <input type="number" class="form-control text-center" name="txtValor"placeholder="Valor">
+                </div>
                 <div class="ml-5">
                 <button type="submit" class="btn btn-success float-rigth" name ="btnGuardar">Guardar</button>
                 </div>
-              </div>
-              <?php
+                </div>
+                <?php
               if (isset($_POST["btnGuardar"])){
-                $Entidad = $_POST['nomEntPago'];
-                $query = "INSERT INTO ent_pago(Nombre) VALUES ('$Entidad')";
+                $concepto = $_POST['txtConcepto'];
+                $valor = $_POST['txtValor'];
+                $query = "INSERT INTO valores(concepto,valor) VALUES ('$concepto',$valor)";
                 $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                echo "<script> location.href ='entidadPago.php'; </script>";
+                echo "<script> location.href ='valores.php'; </script>";
               }
 
               ?>
-              <br><br>
-            <table class="table table-hover table-bordered">
+                <br><br>
+                 <table class="table table-hover table-bordered">
                 <thead>
                   <tr>
-                    <th scope="col" class="thnom text-center">Nombre</th>
+                    <th scope="col" class="thnom text-center thConcepto">Concepto</th>
+                    <th scope="col" class="text-center thvalor">Valor</th>
                     <th scope="col" class="text-center">Accion</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php
+                <?php
+                    $query = "SELECT * FROM valores";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    while($fila = mysqli_fetch_array($query_exec)){?>
+                    <tr>
+                    <td class="text-center"><input type="text" class="form-control text-center" name ="<?php echo $fila[0]."C"; ?>" value=<?php echo $fila[1]; ?>></td>
+                    <td class="text-center"><input type="text" class="form-control text-center" name ="<?php echo $fila[0]."V"; ?>" value=<?php echo $fila[2]; ?>></td>
+                    <td class="container-fluid text-center">
+                      <button type="submit" class="btn btn-primary" value = <?php echo $fila[0]; ?> name ="btnActualizar">Actualizar</button>
+                      <button type="submit" class="btn btn-danger" value = <?php echo $fila[0]; ?> name ="btnEliminar">Eliminar</button>
+                    </td>
                     
-                  $query = "SELECT * FROM ent_pago";
-                  $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                  while($fila = mysqli_fetch_array($query_exec)){?>
-                  <tr>
-                  <td class="text-center"><input type="text" class="form-control text-center" name ="<?php echo $fila[0]; ?>" value=<?php echo $fila[1]; ?>></td>
-                  <td class="container-fluid text-center">
-                    <button type="submit" class="btn btn-primary" value = <?php echo $fila[0]; ?> name ="btnActualizar">Actualizar</button>
-                    <button type="submit" class="btn btn-danger" value = <?php echo $fila[0]; ?> name ="btnEliminar">Eliminar</button>
-                  </td>
-                  
-                  </tr>
-                  <?php } ?>
+                    </tr>
+                    <?php } ?>
                 </tbody>
                 <?php if (isset($_POST["btnActualizar"])){
-                  $idEntidad = $_POST['btnActualizar'];
-                  $nomActu = $_POST[$idEntidad];
-                  $query = "UPDATE ent_pago set nombre = '$nomActu' WHERE id = $idEntidad";
+                  $idValor = $_POST['btnActualizar'];
+                  $concepto = $_POST[$idValor."C"];
+                  $valor = $_POST[$idValor."V"];
+                  $query = "UPDATE valores set concepto = '$concepto', valor = $valor WHERE id = $idValor";
                   $query_exec = mysqli_query($db->conectar(),$query)or die("No se pudo conectar");
-                  echo "<script> location.href ='entidadPago.php'; </script>";
+                  echo "<script> location.href ='valores.php'; </script>";
                 }else if(isset($_POST["btnEliminar"])){
-                  $idEntidad = $_POST['btnEliminar'];
-                  $query = "DELETE FROM ent_pago WHERE id = $idEntidad";
+                  $idValor = $_POST['btnEliminar'];
+                  $query = "DELETE FROM valores WHERE id = $idValor";
                   $query_exec = mysqli_query($db->conectar(),$query)or die("<script>
                   alert('Imposible Eliminar. Registros Almacenados Con Esta Entidad');
                   </script>");
-                  echo "<script> location.href ='entidadPago.php'; </script>";
+                  echo "<script> location.href ='valores.php'; </script>";
                 } ?>
-            </form>
+              </form>
           </div>
           
 

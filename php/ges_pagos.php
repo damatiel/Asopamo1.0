@@ -43,13 +43,12 @@ require_once __DIR__ . '/conectar.php';
           $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
              if($fila = mysqli_fetch_array($query_exec)){
                $idPunto = $fila['id_punto'];
-               $query ="INSERT INTO pagos (num_factura,id_punto,id_entPago,fecha_pago) VALUES ($numFactura,$idPunto,$id_pagos,NOW())";
-               $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");  
+               $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = NOW() WHERE id_punto = $idPunto";
+               $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta p");  
              }
-             $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, estado = 2 WHERE id = $idPunto";
+             $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, traslado = 0, matricula = 0,reactivacion = 0, mulata = 0, estado = 2 WHERE id = $idPunto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
        }
-      header('pagos.php');
         
         
     

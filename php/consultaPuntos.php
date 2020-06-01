@@ -28,7 +28,6 @@
     
 </head>
 <body>
-  
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse bg-primary"; id="">
           <ul class="navbar-nav mr-auto">
@@ -52,17 +51,16 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
-              <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
+                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
+                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
-              <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
-             <a class="dropdown-item" href="valores.php">Valores</a>
+                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
                 
             </li>
             <li class="nav-item">
@@ -77,76 +75,66 @@
           
         </div>
       </nav>
-      <br>
           <div>
-            <h2 class="titulo text-center container">Facturacion</h2>
+            <h2 class="titulo text-center container">Consulta Puntos</h2> 
+          </div>
+          <br>
+          <div class="container text-center">
+              <div class="gridConSuscriptores">
+                <div class="mr-2">
+                <input type="number" class="form-control" name="txtDoc" placeholder="Consulta Por Documento">
+                </div>
+                <div class="mr-2 ml-2 ">
+                <input type="tetxt" class="form-control" name="txtNom" placeholder="Consulta Por Nombre">
+                </div>
+                <div class="mr-2 ml-2 ">
+                <input type="tetxt" class="form-control" name="txtApe" placeholder="Consulta Por Apellido">
+                </div>
+                <div class="ml-2">
+                <button type="submit" name ="btnBuscar" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
           </div>
           <br><br>
-          <form method="post" action="../pdf/pruebacode.php" class="formularioFacturacion">
-            <div class="container">
-                <div>
-                  <label>Direccion</label>
-                </div>
+          <div class="container">
           
-              </div>
-            <div class="container form-group gridDireccion">
-      <div>
-        <select name="tipo_direc" class="form-control">
-          <option value="calle">Calle</option>
-          <option value="carrera">Carrera</option>
-        </select>
-      </div>
-      <div>
-        <input type="number" name="numero_direc" class="form-control" id="txt" placeholder="">
-      </div>
-      <div>
-        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-          id="txt" placeholder="#">
-      </div>
-      <div>
-        <input type="number" name="numero2_direc" class="form-control" id="txt" placeholder="">
-      </div>
-      <div>
-        <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
-          id="txt" placeholder="-">
-      </div>
-      <div>
-        <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
-      </div>
-        
-    </div>
-              
-              <br>
-              <div class="container text-center">
-                  <label>Periodo De Facturacion</label>
-              </div>
-              <div>
-                <select name="mes" class="form-control">
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
-                  <option value="4">Abril</option>
-                  <option value="5">Mayo</option>
-                  <option value="6">Junio</option>
-                  <option value="7">Julio</option>
-                  <option value="8">Agosto</option>
-                  <option value="9">Septiembre</option>
-                  <option value="10">Octubre</option>
-                  <option value="11">Noviembre</option>
-                  <option value="12">Diciembre</option>
-                </select>
-              </div><br>
-                <div class="container form-group">
-                    <label class="container text-center">Fecha fin de mes</label>
-                  <input type="date" class="form-control documentoSuscriptor" name="fmes" >
-                </div>
-              
-                <div class="text-center">
-                    <br>
-                    <button type="submit" name="imprimir1" class="btn btn-primary">Imprimir</button>
-                    <button type="submit" name="imprimirt" class="btn btn-success">Imprimir Todos</button>
-                 </div>
-          </form>
+          <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col" class="text-center">Documento</th>
+                    <th scope="col" class="text-center">Nombre</th>
+                    <th scope="col" class="text-center">Apellido</th>
+                    <th scope="col" class="text-center">Estado</th>
+                    <th scope="col" class="text-center">Contacto</th>
+                    <th scope="col" class="text-center">Direccion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                    $query = "SELECT * FROM puntos";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    
+                   while($fila = mysqli_fetch_array($query_exec)){ ?>
+                    <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <?php 
+                    $estado = $fila[5];
+                      if($estado == 1){?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } else{ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
+                   
+                    <td class="text-center"><?php echo $fila[6]; ?></td>
+                    <td class="text-center"><?php echo $fila[7]; ?></td>
+                    </tr>
+                   <?php } ?>
+                 
+                  
+                </tbody>
+          </div>
 
         </body>
         </html>
