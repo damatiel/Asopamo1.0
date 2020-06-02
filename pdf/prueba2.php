@@ -38,6 +38,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
     $reactivacion = $fila2[9];
     $atrasos = $fila2[5];
     $multa = $fila2[12];
+    $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
+   $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
     $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
@@ -102,9 +104,11 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-15yh">NUMERO DE FACTURA :</p>
   <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
       
-      <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
+      <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>';
+      
+      $html.='
       <div style="page-break-after:always;"></div>';
-      }}    }
+      }}}
       
       
 		$name = 'facturas '.$p_fact.'.pdf';
@@ -115,8 +119,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   PDF::stream($name,$html);
   
   
-   $query = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0 WHERE id = $id_punto";
-   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+   
 
 }if (isset($_POST["fact3"])) {
   $mes = $_POST['mes'];
@@ -159,6 +162,64 @@ $name = 'cortes.pdf';
     
     // PDF::savedisk($name,$html,$folder);
   PDF::stream($name,$html);
+}
+if (isset($_POST["fact4"])) { 
+  $mes = $_POST['mes'];
+  $ultimodia = $_POST['ultimodia'];
+header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
+header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
+ ?>
+ <table>
+  <tr>
+    <td>Numero de Factura</td>
+    <td>Id del Punto</td>
+    <td>Numero de Cedula</td>
+    <td>Fecha de Factura</td>
+    <td>Periodo Facturado</td>
+    <td>Administracion del mes</td>
+    <td>Saldo Anterior</td>
+    <td>Total a Pagar</td>
+  </tr>
+  <?php 
+    $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
+  $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
+  $total =0;
+  while ($fila = mysqli_fetch_array($query_exec)) {
+      $n_fact = $fila[0];
+      $id_punto = $fila[1];
+      $doc = $fila[2];
+      $f_fact = $fila[3];
+      $p_fact = $fila[4];
+    $admin_mes = $fila[5];
+    $saldo_ant = $fila[6];
+    $total_pagar = $fila[9];
+   ?>
+  <tr>
+    <td><?php echo $n_fact; ?></td>
+    <td><?php echo $id_punto; ?></td>
+    <td><?php echo $doc; ?></td>
+    <td><?php echo $f_fact; ?></td>
+    <td><?php echo $p_fact; ?></td>
+    <td><?php echo $admin_mes; ?></td>
+    <td><?php echo $saldo_ant; ?></td>
+    <td><?php echo $total_pagar; ?></td>
+  </tr>
+  <?php 
+  $total = $total + $total_pagar;
+}
+   ?>
+   <tr>
+     <td>Total</td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td></td>
+     <td><?php echo $total; ?></td>
+   </tr>
+ </table>
+ <?php
 }
 
  ?>
