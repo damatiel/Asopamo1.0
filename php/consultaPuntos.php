@@ -198,7 +198,7 @@
                   <td class="text-center"><?php echo $fila2[1]; ?></td>
                     </tr>
                     <?php
-                     } }
+                     } }}
                       
 
                    }else{
