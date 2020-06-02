@@ -136,7 +136,7 @@
                     <td class="text-center"><?php echo $fila2[3]; ?></td>
                     <?php 
                     $estado = $fila1[2];
-                      if($estado == 1){?>
+                      if($estado == 2){?>
                          <td class="text-center"><?php echo "Activo"; ?></td>
                       <?php } else{ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
@@ -154,17 +154,16 @@
                       
                       $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
                       $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                     $fila2 = mysqli_fetch_array($query_exec2);
+                     while($fila2 = mysqli_fetch_array($query_exec2)){
                       ?>
                     <tr>
                   <td class="text-center"><?php echo $fila1[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[1]; ?></td>
                   <td class="text-center"><?php echo $fila1[3]; ?></td>
                   <?php 
-                  echo $fila2[2];
                   $estado = $fila2[2];
                   
-                    if($estado == 1){?>
+                    if($estado == 2){?>
                        <td class="text-center"><?php echo "Activo"; ?></td>
                     <?php } else{ ?>
                       <td class="text-center"><?php echo "Cancelado"; ?></td>
@@ -172,7 +171,7 @@
                   <td class="text-center"><?php echo $fila2[1]; ?></td>
                   
                     </tr>
-                    <?php }  ?>
+                    <?php }}  ?>
                     <?php 
                      }else if(!empty($ape)){
                       $query1 = "SELECT * FROM suscriptores WHERE primer_ape = '$ape'";
@@ -182,25 +181,24 @@
                       $docNom = $fila1[0];
                       $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
                       $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                     $fila2 = mysqli_fetch_array($query_exec2);
+                     while($fila1 = mysqli_fetch_array($query_exec1)){ 
                       ?>
                     <tr>
                   <td class="text-center"><?php echo $fila1[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[1]; ?></td>
                   <td class="text-center"><?php echo $fila1[3]; ?></td>
-                  <?php } ?>
                   <?php 
                  
                   $estado = $fila2[2];
-                    if($estado == 1){?>
+                    if($estado == 2){?>
                        <td class="text-center"><?php echo "Activo"; ?></td>
                     <?php } else{ ?>
                       <td class="text-center"><?php echo "Cancelado"; ?></td>
                     <?php } ?>
                   <td class="text-center"><?php echo $fila2[1]; ?></td>
                     </tr>
-                    <?php } ?>
-                     <?php 
+                    <?php
+                     } }
                       
 
                    }else{
@@ -219,7 +217,7 @@
                     <td class="text-center"><?php echo $fila2[3]; ?></td>
                     <?php 
                     $estado = $fila[2];
-                      if($estado == 1){?>
+                      if($estado == 2){?>
                          <td class="text-center"><?php echo "Activo"; ?></td>
                       <?php } else{ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
