@@ -12,38 +12,11 @@
   session_start();
 $user = $_SESSION['nombres'];
 if (isset($_POST["imprimir1"])) {
-	$mes = $_POST['mes'];
-	$ultimodia = $_POST['fmes'];
 	$td = $_POST['tipo_direc'];
 	$n1 = $_POST['numero_direc'];
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
-	$dire = $td.$n1.'#'.$n2.'-'.$n3;
-	if ($mes == 1) {
-		$mes1 = 'enero';
-	}if ($mes == 2) {
-		$mes1 = 'febrero';
-	}if ($mes == 3) {
-		$mes1 = 'marzo';
-	}if ($mes == 4) {
-		$mes1 = 'abril';
-	}if ($mes == 5) {
-		$mes1 = 'mayo';
-	}if ($mes == 6) {
-		$mes1 = 'junio';
-	}if ($mes == 7) {
-		$mes1 = 'julio';
-	}if ($mes == 8) {
-		$mes1 = 'agosto';
-	}if ($mes == 9) {
-		$mes1 = 'septiembre';
-	}if ($mes == 10) {
-		$mes1 = 'octubre';
-	}if ($mes == 11) {
-		$mes1 = 'noviembre';
-	}if ($mes == 12) {
-		$mes1 = 'diciembre';
-	}
+	$dire = $td.$n1.'#'.$n2.'-'.$n3;	
 
 	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
@@ -76,9 +49,9 @@ if (isset($_POST["imprimir1"])) {
 		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 
-		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND id_mes = '$mes'";
+		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' ORDER BY numero_fact DESC";
 	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-	if ($fila2 = mysqli_fetch_array($query_exec2)) {
+		if ($fila2 = mysqli_fetch_array($query_exec2)) {
 		$n_fact = $fila2[0];
 		$f_fact = $fila2[3];
 		$p_fact = $fila2[4];
@@ -87,16 +60,31 @@ if (isset($_POST["imprimir1"])) {
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 	if ($fila3 = mysqli_fetch_array($query_exec3)) {
-		$p_nom = $fila3[1];
-		$query2 = "INSERT INTO pagos (atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$atrasos','$ultimodia','$p_nom',NOW(),'$dire','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
+		$pNom = $fila3[1];
+		$sNom = $fila3[2];
+		$pApe = $fila3[3];
+		$sApe = $fila3[4];
+		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
+		$query2 = "INSERT INTO pagos (atrasos,nom_suscriptor,fecha_factura,direccion,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$atrasos','$nomCompleto',NOW(),'$dire','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
    $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
 
 	?>
-	<form method="POST" action="prueba.php">
+	
+	<?php 
+		}}}else{
+			echo "
+				<script>
+				alert('Se agregaron datos incorrectos');
+				redir('../php/facturacion.php');
+				</script>
+				";
+		}?>
+
+		<form method="POST" action="prueba.php">
 		<input type="hidden" name="dir" value="<?php echo $dire; ?>">
 		<input type="hidden" name="n_fact" value="<?php echo $n_fact; ?>">
 		<input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>">
-		<input type="hidden" name="p_nom" value="<?php echo $p_nom; ?>">
+		<input type="hidden" name="p_nom" value="<?php echo $nomCompleto; ?>">
 		<input type="hidden" name="f_fact" value="<?php echo $f_fact; ?>">
 		<input type="hidden" name="p_fact" value="<?php echo $p_fact; ?>">
 		<input type="hidden" name="doc" value="<?php echo $doc; ?>">
@@ -116,14 +104,7 @@ if (isset($_POST["imprimir1"])) {
 		<input type="submit" name="fact1">
 	</form>
 	<?php 
-		}}}else{
-			echo "
-				<script>
-				alert('Se agregaron datos incorrectos');
-				redir('../php/facturacion.php');
-				</script>
-				";
-		}}
+	}
 	if (isset($_POST["imprimirt"])) {
 
 		$mes = $_POST['mes'];
@@ -186,7 +167,11 @@ if (isset($_POST["imprimir1"])) {
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 	if ($fila3 = mysqli_fetch_array($query_exec3)) {
-		$p_nom = $fila3[1];
+		$pNom = $fila3[1];
+		$sNom = $fila3[2];
+		$pApe = $fila3[3];
+		$sApe = $fila3[4];
+		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 	}
   		if ($estado == 3) {
   			# code...
@@ -211,7 +196,7 @@ if (isset($_POST["imprimir1"])) {
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$p_nom',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
+   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
    $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
 		}
   	

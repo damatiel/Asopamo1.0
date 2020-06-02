@@ -44,7 +44,11 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
     if ($fila3 = mysqli_fetch_array($query_exec3)) {
 
-        $p_nom = $fila3[1];
+        $pNom = $fila3[1];
+    $sNom = $fila3[2];
+    $pApe = $fila3[3];
+    $sApe = $fila3[4];
+    $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
     $html.='
 
       <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (2).jpg" id="factura">
@@ -57,7 +61,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-1eat"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-huvl"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-1mkd gwd-p-x0po" id="id_punto">'.$id_punto.'</p>
-  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht" id="subs">'.$p_nom.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht" id="subs">'.$nomCompleto.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-1hbn" id="fecha_fact">'.$f_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc" id="per_fact">'.$p_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d" id="per_fact_1">Atrasos:</p>
@@ -69,7 +73,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   <p class="gwd-p-16rd gwd-p-1dj7 gwd-p-uoq1"><strong class="gwd-strong-ikfz">ID.PUNTO:<br>SUBSCRIPTOR:<br>FECHA FACTURA</strong>:</p>
   <p class="gwd-p-16rd gwd-p-w8tp gwd-p-wrci gwd-p-huvl gwd-p-ujhy"><strong class="gwd-strong-ikfz">DIRECCION:<br><br></strong><span class="gwd-span-14q3">PARIODO FACTURADO</span>:</p>
   <p class="gwd-p-1mkd gwd-p-x0po gwd-p-1han" id="id_punto_1">'.$id_punto.'</p>
-  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht gwd-p-qjn1" id="subs_1">'.$p_nom.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht gwd-p-qjn1" id="subs_1">'.$nomCompleto.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-1hbn gwd-p-rr0s" id="fecha_fact_1">'.$f_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-uiqp" id="per_fact_6">'.$p_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt gwd-p-ajdm" id="dir_1">'.$dir.'</p>
