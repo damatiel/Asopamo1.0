@@ -205,6 +205,9 @@
     <br>
     <br>
     <br>
+    <div>
+        <h2 class="titulo text-center container">Totalidad Recaudos</h2>
+      </div>
     <footer>
     <div>
               <table class="table table-hover table-condensed">
