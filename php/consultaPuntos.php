@@ -80,6 +80,7 @@
           </div>
           <br>
           <div class="container text-center">
+            <form method = "POST" action="consultaPuntos">
               <div class="gridConSuscriptores">
                 <div class="mr-2">
                 <input type="number" class="form-control" name="txtDoc" placeholder="Consulta Por Documento">
@@ -94,9 +95,15 @@
                 <button type="submit" name ="btnBuscar" class="btn btn-primary">Buscar</button>
                 </div>
               </div>
+              </form>
           </div>
           <br><br>
-          <div class="container">
+          <?php 
+           
+          ?>
+          <div class="container ">
+            
+            <div class="table-wrapper-scroll-y my-custom-scrollbar" style = "height: 400px;">
           
           <table class="table table-hover table-bordered">
                 <thead>
@@ -105,35 +112,126 @@
                     <th scope="col" class="text-center">Nombre</th>
                     <th scope="col" class="text-center">Apellido</th>
                     <th scope="col" class="text-center">Estado</th>
-                    <th scope="col" class="text-center">Contacto</th>
                     <th scope="col" class="text-center">Direccion</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php
-                    $query = "SELECT * FROM puntos";
-                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                    
-                   while($fila = mysqli_fetch_array($query_exec)){ ?>
-                    <tr>
-                    <td class="text-center"><?php echo $fila[0]; ?></td>
-                    <td class="text-center"><?php echo $fila[1]; ?></td>
-                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                   if (isset($_POST["btnBuscar"])){
+                    $doc = $_POST['txtDoc'];
+                    $nom = $_POST['txtNom'];
+                    $ape = $_POST['txtApe'];
+                     if(!empty($doc)){
+                      $query1 = "SELECT * FROM puntos WHERE doc_suscriptor = $doc";
+                      $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
+                      $query2 = "SELECT * FROM suscriptores WHERE doc = $doc";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                      $fila2 = mysqli_fetch_array($query_exec2);
+                      while($fila1 = mysqli_fetch_array($query_exec1)){ 
+                        
+                        ?>
+                      <tr>
+                    <td class="text-center"><?php echo $fila1[3]; ?></td>
+                    <td class="text-center"><?php echo $fila2[1]; ?></td>
+                    <td class="text-center"><?php echo $fila2[3]; ?></td>
                     <?php 
-                    $estado = $fila[5];
+                    $estado = $fila1[2];
                       if($estado == 1){?>
                          <td class="text-center"><?php echo "Activo"; ?></td>
                       <?php } else{ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } ?>
-                   
-                    <td class="text-center"><?php echo $fila[6]; ?></td>
-                    <td class="text-center"><?php echo $fila[7]; ?></td>
+                    <td class="text-center"><?php echo $fila1[1]; ?></td>
+                      </tr>
+                      <?php } ?>
+                      <?php
+                     }else if(!empty($nom)){
+                      $query1 = "SELECT * FROM suscriptores WHERE primer_nom = '$nom'";
+                      $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
+                      
+                    while($fila1 = mysqli_fetch_array($query_exec1)){ 
+                      $docNom = $fila1[0];
+                      
+                      $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                     $fila2 = mysqli_fetch_array($query_exec2);
+                      ?>
+                    <tr>
+                  <td class="text-center"><?php echo $fila1[0]; ?></td>
+                  <td class="text-center"><?php echo $fila1[1]; ?></td>
+                  <td class="text-center"><?php echo $fila1[3]; ?></td>
+                  <?php 
+                  echo $fila2[2];
+                  $estado = $fila2[2];
+                  
+                    if($estado == 1){?>
+                       <td class="text-center"><?php echo "Activo"; ?></td>
+                    <?php } else{ ?>
+                      <td class="text-center"><?php echo "Cancelado"; ?></td>
+                    <?php } ?>
+                  <td class="text-center"><?php echo $fila2[1]; ?></td>
+                  
                     </tr>
-                   <?php } ?>
+                    <?php }  ?>
+                    <?php 
+                     }else if(!empty($ape)){
+                      $query1 = "SELECT * FROM suscriptores WHERE primer_ape = '$ape'";
+                      $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
+                      
+                    while($fila1 = mysqli_fetch_array($query_exec1)){ 
+                      $docNom = $fila1[0];
+                      $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                     $fila2 = mysqli_fetch_array($query_exec2);
+                      ?>
+                    <tr>
+                  <td class="text-center"><?php echo $fila1[0]; ?></td>
+                  <td class="text-center"><?php echo $fila1[1]; ?></td>
+                  <td class="text-center"><?php echo $fila1[3]; ?></td>
+                  <?php } ?>
+                  <?php 
+                 
+                  $estado = $fila2[2];
+                    if($estado == 1){?>
+                       <td class="text-center"><?php echo "Activo"; ?></td>
+                    <?php } else{ ?>
+                      <td class="text-center"><?php echo "Cancelado"; ?></td>
+                    <?php } ?>
+                  <td class="text-center"><?php echo $fila2[1]; ?></td>
+                    </tr>
+                    <?php } ?>
+                     <?php 
+                      
+
+                   }else{
+                    $query = "SELECT * FROM puntos";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                   while($fila = mysqli_fetch_array($query_exec)){ 
+                    $docGeneral = $fila[3];
+                    $query2 = "SELECT * FROM suscriptores WHERE doc = $docGeneral";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                      $fila2 = mysqli_fetch_array($query_exec2);
+                     ?>
+                      
+                    <tr>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <td class="text-center"><?php echo $fila2[1]; ?></td>
+                    <td class="text-center"><?php echo $fila2[3]; ?></td>
+                    <?php 
+                    $estado = $fila[2];
+                      if($estado == 1){?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } else{ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    </tr>
+                   <?php } } ?>
                  
                   
                 </tbody>
+                </div>
+                
           </div>
 
         </body>
