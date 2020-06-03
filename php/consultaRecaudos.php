@@ -32,17 +32,17 @@
         <div class="collapse navbar-collapse bg-primary";" id="">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="suscriptores.html">Suscriptores</a>
+              <a class="nav-link" href="suscriptores.php">Suscriptores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="puntos.html">Puntos</a>
+              <a class="nav-link" href="puntos.php">Puntos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Facturacion</a>
+                <a class="nav-link" href="facturacion.php">Facturacion</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link" href="pagos.html">Pagos</a>
+                <a class="nav-link" href="pagos.php">Pagos</a>
             </li>
            
            
@@ -53,6 +53,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
+              <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
                 
             </li>
             <li class="nav-item dropdown">

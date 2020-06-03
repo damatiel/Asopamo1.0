@@ -37,7 +37,7 @@
           <a class="nav-link" href="puntos.php">Puntos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="facturacion.pp">Facturacion</a>
+            <a class="nav-link" href="facturacion.php">Facturacion</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="pagos.php">Pagos</a>
@@ -51,6 +51,8 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
+              <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
               
           </li>
         <li class="nav-item dropdown">

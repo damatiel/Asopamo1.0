@@ -51,8 +51,10 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a>  
+              <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
+              <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

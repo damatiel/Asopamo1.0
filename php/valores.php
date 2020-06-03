@@ -53,6 +53,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
+              <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,28 +85,6 @@
           <br><br>
           <div class="container formEntPago">
               <form method ="POST" action="valores.php">
-                <div class="gridValores">
-                <div class="mr-3">
-                <input type="text" class="form-control text-center" name="txtConcepto" placeholder="Concepto">
-                </div>
-                <div class="ml-3">
-                <input type="number" class="form-control text-center" name="txtValor"placeholder="Valor">
-                </div>
-                <div class="ml-5">
-                <button type="submit" class="btn btn-success float-rigth" name ="btnGuardar">Guardar</button>
-                </div>
-                </div>
-                <?php
-              if (isset($_POST["btnGuardar"])){
-                $concepto = $_POST['txtConcepto'];
-                $valor = $_POST['txtValor'];
-                $query = "INSERT INTO valores(concepto,valor) VALUES ('$concepto',$valor)";
-                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                echo "<script> location.href ='valores.php'; </script>";
-              }
-
-              ?>
-                <br><br>
                  <table class="table table-hover table-bordered">
                 <thead>
                   <tr>
