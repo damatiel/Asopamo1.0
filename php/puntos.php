@@ -86,6 +86,8 @@
 
     </div>
   </nav>
+  <div class="gridRPuntos">
+  <div>
   <div>
     <h2 class="titulo text-center container">Puntos</h2>
   </div>
@@ -125,18 +127,19 @@
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
           id="txt" placeholder="-">
       </div>
-      <div>
-        <input type="text" name="numero3_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
-      </div>
+  </div>
+  <div class="form-group container">
+    <label for="exampleFormControlTextarea1">Indicaciones</label>
+    <textarea class="form-control" rows="3" placeholder ="Digite Aca el barrio o cualquier otra indicacion"></textarea>
+  </div>
       </form>
       </div>
+      
+      <div>
       <form action="#" class="formularioPuntos" method="post">
-        <br><br>
       <div>
       <h2 class="titulo text-center container">Consulta De Puntos</h2>
   </div>
-  <br>
-    
       <div class="container">
         <div>
         <label>Direccion</label>
@@ -167,20 +170,27 @@
       </div>
         
     </div>
+    <br>
+    <div>
+    <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar por direccion</button>
+    </div>
+    <br>
     <div class="form-group gridDireccion">
       <div>
         <label>ID Punto</label>
         <input type="number" name="id" class="form-control">
       </div>
     </div>
-    <div class="text-center">
-        <button type="submit" name="buscarpunto" class="btn btn-primary">Buscar por direccion</button>
+    <div>
         <button type="submit" name="buscarpuntoid" class="btn btn-primary">Buscar por id punto</button>
       </div>
       </div>
       <br>
 
     </form>
+    </div>
+</div>
+<br>
     <?php if (isset($_POST["buscarpunto"])) {?>
 
       <?php
