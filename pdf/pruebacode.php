@@ -65,9 +65,8 @@ if (isset($_POST["imprimir1"])) {
 		$pApe = $fila3[3];
 		$sApe = $fila3[4];
 		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
-		$query2 = "INSERT INTO pagos (atrasos,nom_suscriptor,fecha_factura,direccion,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado) VALUES ('$atrasos','$nomCompleto',NOW(),'$dire','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0) ";
-   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
-
+		$query4 = "UPDATE pagos set descuento = '$descuento', traslado = '$traslado',reactivacion='$reactivacion',matricula='$matricula',total = '$total_pagar'  WHERE id_punto = $id_punto AND periodo_fact = $p_fact";	
+		$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta pagos");
 	?>
 	
 	<?php 
