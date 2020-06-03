@@ -51,19 +51,16 @@
                 Consultas
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
-              <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
-              <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
-              <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
+                <a class="dropdown-item" href="#">Deudas Suscriptores</a>
+                <a class="dropdown-item" href="#">Pagos Suscriptores</a>   
+                <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
-              <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
-             <a class="dropdown-item" href="valores.php">Valores</a>
+                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
                 
             </li>
             <li class="nav-item">
@@ -83,6 +80,7 @@
           </div>
           <br>
           <div class="container text-center">
+            <form method = "POST" action="consultaSuscriptores">
               <div class="gridConSuscriptores">
                 <div class="mr-2">
                 <input type="number" class="form-control" name="txtDoc" placeholder="Consulta Por Documento">
@@ -97,6 +95,7 @@
                 <button type="submit" name ="btnBuscar" class="btn btn-primary">Buscar</button>
                 </div>
               </div>
+              </form>
           </div>
           <br><br>
           <div class="container">
@@ -114,6 +113,76 @@
                 </thead>
                 <tbody>
                   <?php
+                  if (isset($_POST["btnBuscar"])){
+                    $doc = $_POST['txtDoc'];
+                    $nom = $_POST['txtNom'];
+                    $ape = $_POST['txtApe'];
+                     if(!empty($doc)){
+                      $query = "SELECT * FROM suscriptores WHERE doc='$doc'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                   $fila = mysqli_fetch_array($query_exec) ?>
+                    <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <?php 
+                    $estado = $fila[5];
+                      if($estado == 1){?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } else{ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
+                   
+                    <td class="text-center"><?php echo $fila[6]; ?></td>
+                    <td class="text-center"><?php echo $fila[7]; ?></td>
+                      </tr>
+                      <?php
+                     }else if(!empty($nom)){
+                      $query = "SELECT * FROM suscriptores WHERE primer_nom='$nom'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                   while($fila = mysqli_fetch_array($query_exec)){ ?>
+                    <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <?php 
+                    $estado = $fila[5];
+                      if($estado == 1){?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } else{ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
+                   
+                    <td class="text-center"><?php echo $fila[6]; ?></td>
+                    <td class="text-center"><?php echo $fila[7]; ?></td>
+                  
+                    </tr>
+                    <?php }  ?>
+                    <?php 
+                     }else if(!empty($ape)){
+                      $query = "SELECT * FROM suscriptores WHERE primer_ape='$ape'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                   while($fila = mysqli_fetch_array($query_exec)){ ?>
+                    <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <?php 
+                    $estado = $fila[5];
+                      if($estado == 1){?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } else{ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
+                   
+                    <td class="text-center"><?php echo $fila[6]; ?></td>
+                    <td class="text-center"><?php echo $fila[7]; ?></td>
+                    </tr>
+                    <?php
+                     } }
+                      
+
+                   }else{
                     $query = "SELECT * FROM suscriptores";
                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                    while($fila = mysqli_fetch_array($query_exec)){ ?>
@@ -132,7 +201,7 @@
                     <td class="text-center"><?php echo $fila[6]; ?></td>
                     <td class="text-center"><?php echo $fila[7]; ?></td>
                     </tr>
-                   <?php } ?>
+                   <?php }} ?>
                  
                   
                 </tbody>
