@@ -53,7 +53,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
-              <a class="dropdown-item" href="consultaRecibos.php">Recaudos</a>
+              <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
             </li>
