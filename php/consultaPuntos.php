@@ -7,7 +7,7 @@
 
   if ($_SESSION["autentificado"] != "SI") { 
     //si no está logueado lo envío a la página de autentificación 
-    header("Location:../index.html"); 
+    header("Location:../index.php"); 
 }
 ?>
 <!DOCTYPE html>
@@ -141,7 +141,9 @@
                     $estado = $fila1[2];
                       if($estado == 2){?>
                          <td class="text-center"><?php echo "Activo"; ?></td>
-                      <?php } else{ ?>
+                      <?php } elseif($estado == 1){ ?>
+                        <td class="text-center"><?php echo "Deudor"; ?></td>
+                      <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } ?>
                     <td class="text-center"><?php echo $fila1[1]; ?></td>
@@ -180,11 +182,11 @@
                       $query1 = "SELECT * FROM suscriptores WHERE primer_ape = '$ape'";
                       $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
                       
-                    while($fila1 = mysqli_fetch_array($query_exec1)){ 
+                    if($fila1 = mysqli_fetch_array($query_exec1)){ 
                       $docNom = $fila1[0];
                       $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
                       $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                     while($fila1 = mysqli_fetch_array($query_exec1)){ 
+                     while($fila2 = mysqli_fetch_array($query_exec2)){
                       ?>
                     <tr>
                   <td class="text-center"><?php echo $fila1[0]; ?></td>
