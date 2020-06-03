@@ -12,6 +12,7 @@
   session_start();
 $user = $_SESSION['nombres'];
 if (isset($_POST["imprimir1"])) {
+
 	$td = $_POST['tipo_direc'];
 	$n1 = $_POST['numero_direc'];
 	$n2 = $_POST['numero2_direc'];
@@ -65,8 +66,13 @@ if (isset($_POST["imprimir1"])) {
 		$pApe = $fila3[3];
 		$sApe = $fila3[4];
 		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
-		$query4 = "UPDATE pagos set descuento = '$descuento', traslado = '$traslado',reactivacion='$reactivacion',matricula='$matricula',total = '$total_pagar'  WHERE id_punto = $id_punto AND periodo_fact = $p_fact";	
+		$query4 = "UPDATE pagos set descuento = '$descuento', traslado = '$traslado',reactivacion='$reactivacion',matricula='$matricula',total = '$total_pagar'  WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";	
 		$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta pagos");
+		$query5 = "SELECT * FROM pagos WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";
+	$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta");
+	if ($fila5 = mysqli_fetch_array($query_exec5)) {
+		$ultimodia = $fila5[6];
+	}
 	?>
 	
 	<?php 
@@ -94,7 +100,7 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="total_pagar" value="<?php echo $total_pagar; ?>">
 		<input type="hidden" name="user" value="<?php echo $user; ?>">
 		<input type="hidden" name="ultimodia" value="<?php echo $ultimodia; ?>">
-		<input type="hidden" name="mes" value="<?php echo $mes; ?>">
+		<input type="hidden" name="mes" value="<?php echo $p_fact; ?>">
 		<input type="hidden" name="matricula" value="<?php echo $matricula; ?>">
 		<input type="hidden" name="traslado" value="<?php echo $traslado; ?>">
 		<input type="hidden" name="reactivacion" value="<?php echo $reactivacion; ?>">
