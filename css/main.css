@@ -33,9 +33,9 @@ margin-left: 10px;
 
 }
 .formularioPuntos{
-    width: 40%;
+    width: 80%;
     position: center;
-    margin-left: 30%;
+    margin-left: 5%;
 }
 .gridDireccion{
     display: grid;
@@ -128,7 +128,10 @@ margin-left: 10px;
 .table-wrapper-scroll-y {
     display: block;
     }
-    
 
+.gridRPuntos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+}
 
 
