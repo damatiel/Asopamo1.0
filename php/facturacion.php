@@ -97,21 +97,21 @@
         </select>
       </div>
       <div>
-        <input type="number" name="numero_direc" class="form-control" id="txt" placeholder="">
+        <input type="text" name="numero_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
       </div>
       <div>
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
           id="txt" placeholder="#">
       </div>
       <div>
-        <input type="number" name="numero2_direc" class="form-control" id="txt" placeholder="">
+        <input type="text" name="numero2_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
       </div>
       <div>
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
           id="txt" placeholder="-">
       </div>
       <div>
-        <input type="number" name="numero3_direc" class="form-control" id="txt" placeholder="">
+        <input type="text" name="numero3_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
       </div>
         
     </div>
