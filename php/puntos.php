@@ -127,10 +127,13 @@
         <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
           id="txt" placeholder="-">
       </div>
+      <div>
+        <input type="text" name="numero3_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
+      </div>
   </div>
   <div class="form-group container">
     <label for="exampleFormControlTextarea1">Indicaciones</label>
-    <textarea class="form-control" rows="3" placeholder ="Digite Aca el barrio o cualquier otra indicacion"></textarea>
+    <input class="form-control" rows="3" name="indicaciones" placeholder ="Digite Aca el barrio o cualquier otra indicacion">
   </div>
       </form>
       </div>
