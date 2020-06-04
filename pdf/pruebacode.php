@@ -182,7 +182,9 @@ if (isset($_POST["imprimir1"])) {
   			# code...
   		}else{
   			if ($atrasos >= 2) {
-  		
+  			$atrasos = $atrasos + 1;
+  	}elseif ($atrasos >=5) {
+  		$estado = 3;
   	}else{
   		if ($saldo_ant > 0) {
 			$atrasos = $atrasos + 1;
