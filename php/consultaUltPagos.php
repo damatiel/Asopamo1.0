@@ -223,15 +223,15 @@ $atrasos ="";
                      <td class="text-center"><?php echo "$ ".$saldo; ?></td>
                       <td class="text-center"><?php echo $atraso; ?></td>
                       <?php 
-                      $query = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1 WHERE ";
+                      $query = "SELECT * FROM pagos ORDER BY DESC";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){?>
+                      if($fila = mysqli_fetch_array($query_exec)){?>
                        <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
                     <?php } ?>
                     <?php 
                       $query = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){?>
+                    if($fila = mysqli_fetch_array($query_exec)){?>
                        <td class="text-center"><?php echo $fila['Nombre']; ?></td>
                     <?php } ?>
                   </tr>
