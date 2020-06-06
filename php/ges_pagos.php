@@ -10,11 +10,12 @@ require_once __DIR__ . '/conectar.php';
       if($fila = mysqli_fetch_array($query_exec)){
            $idPunto = $fila['id_punto'];
            $tPagar = $fila['total_pagar'];
-           $query = "SELECT doc_suscriptor FROM puntos WHERE id = $idPunto";
+           $query = "SELECT doc_suscriptor, dir FROM puntos WHERE id = $idPunto";
            $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
            if($fila = mysqli_fetch_array($query_exec)){
               $docSuscriptor = $fila['doc_suscriptor'];
-              $query = "SELECT primer_nom, segundo_nom, primer_ape, segundo_ape, tel, direc FROM suscriptores WHERE doc = $docSuscriptor";
+              $direccion = $fila['dir'];
+              $query = "SELECT primer_nom, segundo_nom, primer_ape, segundo_ape, tel FROM suscriptores WHERE doc = $docSuscriptor";
               $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
               if($fila = mysqli_fetch_array($query_exec)){
                  $pNom = $fila['primer_nom'];
@@ -22,7 +23,6 @@ require_once __DIR__ . '/conectar.php';
                  $pApe = $fila['primer_ape'];
                  $sApe = $fila['segundo_ape'];
                  $tel = $fila['tel'];
-                 $direccion = $fila['direc'];
                  $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
                
                  

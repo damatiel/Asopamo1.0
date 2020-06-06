@@ -169,10 +169,12 @@
                   $estado = $fila2[2];
                   
                     if($estado == 2){?>
-                       <td class="text-center"><?php echo "Activo"; ?></td>
-                    <?php } else{ ?>
-                      <td class="text-center"><?php echo "Cancelado"; ?></td>
-                    <?php } ?>
+                         <td class="text-center"><?php echo "Activo"; ?></td>
+                      <?php } elseif($estado == 1){ ?>
+                        <td class="text-center"><?php echo "Deudor"; ?></td>
+                      <?php } elseif($estado == 3){ ?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } ?>
                   <td class="text-center"><?php echo $fila2[1]; ?></td>
                   
                     </tr>
@@ -224,7 +226,9 @@
                     $estado = $fila[2];
                       if($estado == 2){?>
                          <td class="text-center"><?php echo "Activo"; ?></td>
-                      <?php } else{ ?>
+                      <?php } elseif($estado == 1){ ?>
+                        <td class="text-center"><?php echo "Deudor"; ?></td>
+                      <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } ?>
                     <td class="text-center"><?php echo $fila[1]; ?></td>
