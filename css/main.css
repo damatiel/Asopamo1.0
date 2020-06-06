@@ -132,6 +132,15 @@ margin-left: 10px;
 .gridRPuntos{
         display: grid;
         grid-template-columns: 50% 50%;
+     
 }
-
+.importar{
+    padding: .5%;
+    width: 12%;
+    background:#3DC434;
+    border-radius: 10px;
+}
+.importar:hover{
+    background:#53DD49;
+}
 
