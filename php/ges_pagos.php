@@ -38,16 +38,18 @@ require_once __DIR__ . '/conectar.php';
          $id_pagos = $_POST['select'];
          
         $query = "UPDATE facturacion set total_pagar = '0', saldo_ant = '0' WHERE numero_fact = $numFactura";
-        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-        $query = "SELECT id_punto FROM facturacion WHERE numero_fact = $numFactura";
-          $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizar facturas");
+        $query = "SELECT * FROM facturacion WHERE numero_fact = $numFactura";
+          $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta seleccionar facturacion");
              if($fila = mysqli_fetch_array($query_exec)){
                $idPunto = $fila['id_punto'];
-               $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = NOW() WHERE id_punto = $idPunto";
-               $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta p");  
+               $p_fact = $fila['periodo_fact'];
+               echo $p_fact;
+               $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = NOW() WHERE periodo_fact = '$p_fact' AND id_punto = '$idPunto'";
+               $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizacion pagos");  
              }
              $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, traslado = 0, matricula = 0,reactivacion = 0, multa = 0, estado = 2 WHERE id = $idPunto";
-             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizar puntos");
        }
         
         

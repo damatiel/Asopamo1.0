@@ -170,28 +170,36 @@ $atrasos ="";
                     $query = "SELECT * FROM puntos WHERE doc_suscriptor = $documento";
                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                     while($fila = mysqli_fetch_array($query_exec)){
-                      $query2 = "SELECT * FROM suscriptores WHERE doc = $documento";
-                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                      $fila2 = mysqli_fetch_array($query_exec2);
-                      $query3 = "SELECT * FROM pagos ORDER BY id_pagos DESC LIMIT 1";
-                      $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
-                      $fila3 = mysqli_fetch_array($query_exec3);
-                      $idEntidad = $fila3['id_entPago'];
-                      $query4 = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
-                      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
-                      $fila4 = mysqli_fetch_array($query_exec4);
-                    ?>
-                  <tr>
-                    <td class="text-center"><?php echo $fila2[0]; ?></td>
-                    <td class="text-center"><?php echo $fila2[1]." ".$fila2[3]; ?></td>
-                    <td class="text-center"><?php echo $fila[1]; ?></td>
-                    <td class="text-center"><?php echo "$ ".$fila[4]; ?></td>
-                    <td class="text-center"><?php echo $fila[5]; ?></td>
-                    <td class="text-center"><?php  echo $fila3[4]; ?></td>
-                    <td class="text-center"><?php echo $fila4[1]; ?></td>
-                    <?php } ?>
+                      $dire = $fila[1];
+                      $query = "SELECT * FROM pagos WHERE direccion = '$dire' ORDER BY num_factura DESC";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    while($fila = mysqli_fetch_array($query_exec)){ 
+                      $id_fact = $fila[1];
+                      $query = "SELECT * FROM facturacion WHERE numero_fact = '$id_fact'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    if($fila2 = mysqli_fetch_array($query_exec)){ 
+                      $doc=$fila2[2];
+                      $nom=$fila[7];
+                      $id_punto=$fila[2];
+                      $saldo_ant=$fila[12];
+                      $atrasos=$fila[5];
+                      $ult_pago=$fila[4];
+                      $total=$fila[17];
+                      $entidad=$fila[3];
+                      ?>
+                      <tr>
+                    <td class="text-center"><?php echo $doc; ?></td>
+                    <td class="text-center"><?php echo $nom; ?></td>
+                    <td class="text-center"><?php echo $id_punto; ?></td>
+                    <td class="text-center"><?php echo $saldo_ant; ?></td>
+                    <td class="text-center"><?php echo $atrasos; ?></td>
+                    <td class="text-center"><?php echo $ult_pago; ?></td>
+                    <td class="text-center"><?php echo $total; ?></td>
+                    <td class="text-center"><?php echo $entidad; ?></td>
                   </tr>
-                  <?php }?>
+                    
+                      
+                  <?php }}}}?>
                   <!--CONSULTA POR DOCUMENTO FIN-->
                   <!--CONSULTA POR DIRECCION INICIO-->
                   <?php
@@ -201,41 +209,37 @@ $atrasos ="";
                     $n2 = $_POST['numero2_direc'];
                     $n3 = $_POST['numero3_direc'];
                     $dire = $td.$n1.'#'.$n2.'-'.$n3; 
-                    $query = "SELECT * FROM puntos WHERE dir = '$dire'";
+                    $query = "SELECT * FROM pagos WHERE direccion = '$dire' ORDER BY num_factura DESC";
                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                    while($fila = mysqli_fetch_array($query_exec)){?>
-                  <tr>
-                    <td class="text-center"><?php 
-                    $documento = $fila['doc_suscriptor'];
-                    $saldo = $fila['saldo_ant']; 
-                    $atraso = $fila['contador'];
-                    echo $fila['doc_suscriptor']; 
-
-                    ?></td>
-                    <?php } ?>
-                    <?php
-                     $query = "SELECT * FROM suscriptores WHERE doc = $documento";
-                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                     while($fila = mysqli_fetch_array($query_exec)){?>
-                      <td class="text-center"><?php echo $fila['primer_nom']." ".$fila['primer_ape']; ?></td>
-                     <?php } ?>
-                     <td class="text-center"><?php echo $dire; ?></td>
-                     <td class="text-center"><?php echo "$ ".$saldo; ?></td>
-                      <td class="text-center"><?php echo $atraso; ?></td>
-                      <?php 
-                      $query = "SELECT * FROM pagos ORDER BY DESC";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      if($fila = mysqli_fetch_array($query_exec)){?>
-                       <td class="text-center"><?php $idEntidad = $fila['id_entPago']; echo $fila['fecha_pago']; ?></td>
-                    <?php } ?>
-                    <?php 
-                      $query = "SELECT * FROM ent_pago WHERE id = $idEntidad;";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                    if($fila = mysqli_fetch_array($query_exec)){?>
-                       <td class="text-center"><?php echo $fila['Nombre']; ?></td>
-                    <?php } ?>
+                    while($fila = mysqli_fetch_array($query_exec)){ 
+                      $id_fact = $fila[1];
+                      $query = "SELECT * FROM facturacion WHERE numero_fact = '$id_fact'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    if($fila2 = mysqli_fetch_array($query_exec)){ 
+                      $doc=$fila2[2];
+                      $nom=$fila[7];
+                      $id_punto=$fila[2];
+                      $saldo_ant=$fila[12];
+                      $atrasos=$fila[5];
+                      $ult_pago=$fila[4];
+                      $total=$fila[17];
+                      $entidad=$fila[3];
+                      ?>
+                      <tr>
+                    <td class="text-center"><?php echo $doc; ?></td>
+                    <td class="text-center"><?php echo $nom; ?></td>
+                    <td class="text-center"><?php echo $id_punto; ?></td>
+                    <td class="text-center"><?php echo $saldo_ant; ?></td>
+                    <td class="text-center"><?php echo $atrasos; ?></td>
+                    <td class="text-center"><?php echo $ult_pago; ?></td>
+                    <td class="text-center"><?php echo $total; ?></td>
+                    <td class="text-center"><?php echo $entidad; ?></td>
                   </tr>
-                  <?php }?>
+                    
+                    
+                  <?php 
+                }}}
+                ?>
                   <!--CONSULTA POR DIRECCION FIN-->
                 </tbody>
               </table>
