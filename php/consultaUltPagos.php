@@ -118,21 +118,21 @@ $atrasos ="";
                   </select>
                 </div>
                 <div>
-                  <input type="number" class="form-control" name="numero_direc" placeholder="">
+                  <input type="text" name="numero_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="hola">
                 </div>
                 <div>
                   <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
                     id="txt" placeholder="#">
                 </div>
                 <div>
-                  <input type="number" class="form-control" name="numero2_direc" placeholder="">
+                  <input type="text" class="form-control" name="numero2_direc" placeholder="">
                 </div>
                 <div>
                   <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
                     id="txt" placeholder="-">
                 </div>
                 <div>
-                  <input type="number" class="form-control" name="numero3_direc" placeholder="">
+                  <input type="text" class="form-control" name="numero3_direc" placeholder="">
                 </div>
                 <div>
                   <br>
