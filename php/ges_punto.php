@@ -75,7 +75,7 @@ if (isset($_POST['registrardescuento'])) {
 			$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 			if ($fila = mysqli_fetch_array($query_exec)) {
 				$reactivacion = $fila[2];
-				$query ="UPDATE puntos SET reactivacion='$reactivacion' WHERE id = '$id_punto'";
+				$query ="UPDATE puntos SET reactivacion='$reactivacion' WHERE id = '$id_punto' AND estado = 4";
 				$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 			}
 		}
