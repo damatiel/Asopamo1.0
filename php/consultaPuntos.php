@@ -111,6 +111,7 @@
           <table class="table table-hover table-bordered">
                 <thead>
                   <tr>
+                    <th scope="col" class="text-center">ID Punto</th>
                     <th scope="col" class="text-center">Documento</th>
                     <th scope="col" class="text-center">Nombre</th>
                     <th scope="col" class="text-center">Apellido</th>
@@ -134,6 +135,7 @@
                         
                         ?>
                       <tr>
+                    <td class="text-center"><?php echo $fila1[0]; ?></td>
                     <td class="text-center"><?php echo $fila1[3]; ?></td>
                     <td class="text-center"><?php echo $fila2[1]; ?></td>
                     <td class="text-center"><?php echo $fila2[3]; ?></td>
@@ -162,6 +164,7 @@
                      while($fila2 = mysqli_fetch_array($query_exec2)){
                       ?>
                     <tr>
+                      <td class="text-center"><?php echo $fila2[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[1]; ?></td>
                   <td class="text-center"><?php echo $fila1[3]; ?></td>
@@ -191,6 +194,7 @@
                      while($fila2 = mysqli_fetch_array($query_exec2)){
                       ?>
                     <tr>
+                  <td class="text-center"><?php echo $fila2[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[0]; ?></td>
                   <td class="text-center"><?php echo $fila1[1]; ?></td>
                   <td class="text-center"><?php echo $fila1[3]; ?></td>

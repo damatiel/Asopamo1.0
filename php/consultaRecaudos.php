@@ -110,12 +110,14 @@
             <div class="gridCbxCRecibos text-center">
                 <label class="form-group p-1 labelCRecibos">Entidad De Pago</label>
                 <select class="form-control cbxCRecibos" name="select">
+                  <option value ="todos">TODOS</option>
                 <?php
                   $query = "SELECT * FROM ent_pago";
                   $resul = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                   while ($row=mysqli_fetch_array($resul)){?>
                       <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
                   <?php } ?>
+
                   </select>
                 <div class="btnCRecibos">
                     <button type="submit"  name ="btnConsultar" class="btn btn-dark">Consultar</button>
@@ -152,7 +154,12 @@
                       $fecha_ini = $_POST['fInicial'];
                       $fecha_fin = $_POST['fFinal'];
                       $idEntidad = $_POST['select'];
-                      $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                      if ($idEntidad == "todos") {
+                        $query = "SELECT * FROM pagos WHERE fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                      }else{
+                        $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                      }
+                      
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila1 = mysqli_fetch_array($query_exec)){
                         $idEntPago = $fila1['id_entPago'];

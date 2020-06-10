@@ -118,7 +118,7 @@ $atrasos ="";
                   </select>
                 </div>
                 <div>
-                  <input type="text" name="numero_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="hola">
+                  <input type="text" name="numero_direc" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
                 </div>
                 <div>
                   <input type="text" class="form-control text-center" disabled="disabled" style="text-transform:uppercase;"
