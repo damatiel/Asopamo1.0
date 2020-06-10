@@ -31,7 +31,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
     $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
-      $dir = $fila2[1];
+      $dir = $fila2[1]." ".$fila2['indicaciones'];
       $descuento = $fila2[6];
       $matricula = $fila2[7];
     $traslado = $fila2[8];
@@ -175,28 +175,51 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
  ?>
  <table>
   <tr>
-    <td>Numero de Factura</td>
-    <td>Id del Punto</td>
-    <td>Numero de Cedula</td>
-    <td>Fecha de Factura</td>
-    <td>Periodo Facturado</td>
-    <td>Administracion del mes</td>
-    <td>Saldo Anterior</td>
-    <td>Total a Pagar</td>
+    <th>Numero de Factura</th>
+    <th>Id del Punto</th>
+    <th>Numero de Cedula</th>
+    <th>Fecha de Factura</th>
+    <th>Periodo Facturado</th>
+    <th>Administracion del mes</th>
+    <th>Saldo Anterior</th>
+    <th>Descuento</th>
+    <th>Matricula</th>
+    <th>Traslado</th>
+    <th>Reactivacion</th>
+    <th>Multa</th>
+    <th>Total a Pagar</th>
   </tr>
   <?php 
     $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   $total =0;
+  
   while ($fila = mysqli_fetch_array($query_exec)) {
+    $id_punto = $fila[1];
+    $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
+  $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
+  if($fila2 = mysqli_fetch_array($query_exec)) {
+  $total =0;
+  $t_admin_mes=0;
+  $t_saldo_ant=0;
+  $t_descuento=0;
+  $t_matricula=0;
+  $t_traslado =0;
+  $t_reactivacion=0;
+  $t_multa=0;
       $n_fact = $fila[0];
       $id_punto = $fila[1];
       $doc = $fila[2];
       $f_fact = $fila[3];
       $p_fact = $fila[4];
-    $admin_mes = $fila[5];
-    $saldo_ant = $fila[6];
-    $total_pagar = $fila[9];
+      $admin_mes = $fila[5];
+      $saldo_ant = $fila[6];
+      $descuento = $fila2[6];
+      $matricula = $fila2[7];
+      $traslado = $fila2[8];
+      $reactivacion = $fila2[9];
+      $multa = $fila2[12];
+      $total_pagar = $fila[9];
    ?>
   <tr>
     <td><?php echo $n_fact; ?></td>
@@ -206,11 +229,22 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     <td><?php echo $p_fact; ?></td>
     <td><?php echo $admin_mes; ?></td>
     <td><?php echo $saldo_ant; ?></td>
+    <td><?php echo $descuento; ?></td>
+    <td><?php echo $matricula; ?></td>
+    <td><?php echo $traslado; ?></td>
+    <td><?php echo $reactivacion; ?></td>
+    <td><?php echo $multa; ?></td>
     <td><?php echo $total_pagar; ?></td>
   </tr>
   <?php 
   $total = $total + $total_pagar;
-}
+  $t_admin_mes = $t_admin_mes + $admin_mes;
+  $t_saldo_ant=$t_saldo_ant+$saldo_ant;
+  $t_descuento=$t_descuento+$descuento;
+  $t_matricula=$t_matricula+$matricula;
+  $t_reactivacion=$t_reactivacion+$reactivacion;
+  $t_multa=$t_multa+$multa;
+}}
    ?>
    <tr>
      <td>Total</td>
@@ -218,8 +252,13 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
      <td></td>
      <td></td>
      <td></td>
-     <td></td>
-     <td></td>
+     <td><?php echo $t_admin_mes; ?></td>
+     <td><?php echo $t_saldo_ant; ?></td>
+     <td><?php echo $t_descuento; ?></td>
+     <td><?php echo $t_matricula; ?></td>
+     <td><?php echo $t_traslado; ?></td>
+     <td><?php echo $t_reactivacion; ?></td>
+     <td><?php echo $t_multa; ?></td>
      <td><?php echo $total; ?></td>
    </tr>
  </table>

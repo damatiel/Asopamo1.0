@@ -32,6 +32,7 @@ if (isset($_POST["imprimir1"])) {
 		if ($fila3 = mysqli_fetch_array($query_exec)) {
 			$multa = $fila3[2];
 			}
+		$indi =$fila['indicaciones']; 
 		$doc = $fila[3];
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
@@ -40,6 +41,7 @@ if (isset($_POST["imprimir1"])) {
 		$matricula = $fila[7];
 		$traslado = $fila[8];
 		$reactivacion = $fila[9];
+		$dire = $dire.$indi;
 		// if ($atrasos == 0) {
 			$saldo_ant = $saldo_ant-$admin_mes;
 		// }
@@ -168,7 +170,10 @@ if (isset($_POST["imprimir1"])) {
 		$matricula = $fila4[7];
 		$traslado = $fila4[8];
 		$reactivacion = $fila4[9];
-		$dir = $fila4[1];
+		$dire = $fila4[1];
+		$dir2 = $fila4['indicaciones'];
+		$dir = $dire." ".$dir2;
+
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 	if ($fila3 = mysqli_fetch_array($query_exec3)) {
