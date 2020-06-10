@@ -193,13 +193,6 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   $total =0;
-  
-  while ($fila = mysqli_fetch_array($query_exec)) {
-    $id_punto = $fila[1];
-    $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
-  $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
-  while($fila2 = mysqli_fetch_array($query_exec)) {
-  $total =0;
   $t_admin_mes=0;
   $t_saldo_ant=0;
   $t_descuento=0;
@@ -207,6 +200,13 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
   $t_traslado =0;
   $t_reactivacion=0;
   $t_multa=0;
+  
+  while ($fila = mysqli_fetch_array($query_exec)) {
+    $id_punto = $fila[1];
+    $query1 = "SELECT * FROM puntos WHERE id = '$id_punto'";
+  $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta facturacion");
+  if($fila2 = mysqli_fetch_array($query_exec1)) {
+  
       $n_fact = $fila[0];
       $id_punto = $fila[1];
       $doc = $fila[2];
@@ -220,6 +220,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
       $reactivacion = $fila2[9];
       $multa = $fila2[12];
       $total_pagar = $fila[9];
+    }
    ?>
   <tr>
     <td><?php echo $n_fact; ?></td>
@@ -244,7 +245,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
   $t_matricula=$t_matricula+$matricula;
   $t_reactivacion=$t_reactivacion+$reactivacion;
   $t_multa=$t_multa+$multa;
-}}
+}
    ?>
    <tr>
      <td>Total</td>

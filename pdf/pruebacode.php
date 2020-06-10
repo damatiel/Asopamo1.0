@@ -183,13 +183,18 @@ if (isset($_POST["imprimir1"])) {
 		$sApe = $fila3[4];
 		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 	}
-  		if ($estado == 3) {
-  			# code...
+  		if ($atrasos >= 5) {
+  			$estado = 4;
+  			$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		}else{
   			if ($atrasos >= 2) {
   			$atrasos = $atrasos + 1;
+  			$estado = 3;
+  			$query = "UPDATE puntos set contador = '$atrasos', estado = '$estado' WHERE id = $id_punto";
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   	}elseif ($atrasos >=5) {
-  		$estado = 3;
+  		
   	}else{
   		if ($saldo_ant > 0) {
 			$atrasos = $atrasos + 1;
