@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 04-06-2020 a las 01:18:00
+-- Tiempo de generación: 10-06-2020 a las 01:36:08
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -63,18 +63,16 @@ CREATE TABLE IF NOT EXISTS `facturacion` (
   `operador` varchar(255) DEFAULT NULL,
   `total_pagar` decimal(60,0) DEFAULT NULL,
   PRIMARY KEY (`numero_fact`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=247 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `facturacion`
 --
 
 INSERT INTO `facturacion` (`numero_fact`, `id_punto`, `documento`, `fecha_fact`, `periodo_fact`, `admin_mes`, `saldo_ant`, `id_mes`, `operador`, `total_pagar`) VALUES
-(198, 15, 1100963440, '2020-06-02', 'enero', '13000', '0', 1, 'miguel mejia', '0'),
-(199, 16, 1100963441, '2020-06-02', 'enero', '13000', '0', 1, 'miguel mejia', '17000'),
-(200, 17, 1100963440, '2020-06-02', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
-(201, 18, 1100963440, '2020-06-02', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
-(202, 19, 1100963441, '2020-06-02', 'enero', '13000', '0', 1, 'miguel mejia', '13000');
+(244, 23, 1100963440, '2020-06-09', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
+(245, 24, 1100963441, '2020-06-09', 'enero', '13000', '0', 1, 'miguel mejia', '13000'),
+(246, 25, 1100963442, '2020-06-09', 'enero', '13000', '0', 1, 'miguel mejia', '13000');
 
 -- --------------------------------------------------------
 
@@ -109,18 +107,16 @@ CREATE TABLE IF NOT EXISTS `pagos` (
   KEY `num_factura` (`num_factura`,`id_punto`,`id_entPago`) USING BTREE,
   KEY `id_entPago` (`id_entPago`) USING BTREE,
   KEY `id_punto` (`id_punto`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=190 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `pagos`
 --
 
 INSERT INTO `pagos` (`id_pagos`, `num_factura`, `id_punto`, `id_entPago`, `fecha_pago`, `atrasos`, `fecha_limite`, `nom_suscriptor`, `fecha_factura`, `direccion`, `periodo_fact`, `admin_mes`, `saldo_anterior`, `descuento`, `traslado`, `reactivacion`, `matricula`, `total`, `documento`, `estado`, `multa`) VALUES
-(141, 198, 15, 1, '2020-06-02', 0, '2020-01-31', 'Miguel Angel Mejia Macias', '2020-06-02', 'carrera11#5-48', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0),
-(142, NULL, 16, NULL, NULL, 0, '2020-01-31', 'Angel Miguel Macias Mejia', '2020-06-02', 'carrera11#5-49', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963441, 0, 0),
-(143, NULL, 17, NULL, NULL, 0, '2020-01-31', 'Miguel Angel Mejia Macias', '2020-06-02', 'calle11#5-48', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0),
-(144, NULL, 18, NULL, NULL, 0, '2020-01-31', 'Miguel Angel Mejia Macias', '2020-06-02', 'calle1#2-3', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0),
-(145, NULL, 19, NULL, NULL, 0, '2020-01-31', 'Angel Miguel Macias Mejia', '2020-06-02', 'calle2b#3-46', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963441, 0, 0);
+(187, NULL, 23, NULL, NULL, 0, '2020-01-31', 'Miguel Angel Mejia Macias', '2020-06-09', 'calle1#1-1', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963440, 0, 0),
+(188, NULL, 24, NULL, NULL, 0, '2020-01-31', 'Angel Miguel Macias Mejia', '2020-06-09', 'calle2#2-2', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963441, 0, 0),
+(189, NULL, 25, NULL, NULL, 0, '2020-01-31', 'Miguel Andres Rojas Lozano', '2020-06-09', 'calle3#3-3', 'enero', 13000, 0, 0, 0, 0, 0, 13000, 1100963442, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -147,21 +143,17 @@ CREATE TABLE IF NOT EXISTS `puntos` (
   PRIMARY KEY (`id`,`dir`) USING BTREE,
   KEY `doc_suscriptor` (`doc_suscriptor`) USING BTREE,
   KEY `id` (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Volcado de datos para la tabla `puntos`
 --
 
 INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `contador`, `descuento`, `matricula`, `traslado`, `reactivacion`, `form_pago`, `fecha_act`, `multa`, `indicaciones`) VALUES
-(15, 'carrera11#5-48', 2, 1100963441, 0, 0, 0, 0, 0, 0, 0, '2020-05-31', 0, NULL),
-(16, 'carrera11#5-49', 2, 1100963441, 13000, 0, 6000, 0, 10000, 0, 0, '2020-05-31', 0, NULL),
-(17, 'calle11#5-48', 2, 1100963440, 13000, 0, 0, 0, 0, 0, 0, '2020-05-31', 0, NULL),
-(18, 'calle1#2-3', 2, 1100963440, 13000, 0, 0, 0, 0, 0, 0, '2020-06-01', 0, NULL),
-(19, 'calle2b#3-46', 2, 1100963441, 13000, 0, 0, 0, 0, 0, 0, '2020-06-02', 0, NULL),
-(20, 'calle6b#4-46', 1, 1100963442, 0, 0, 0, 0, 0, 0, 0, '2020-06-02', 0, ''),
-(21, 'carrera4#3b-45', 1, 1100963442, 0, 0, 0, 0, 0, 0, 0, '2020-06-02', 0, ''),
-(22, 'calle4#2-1', 1, 1100963442, 0, 0, 0, 0, 0, 0, 0, '2020-06-02', 0, 'barrio la esperenza');
+(23, 'calle1#1-1', 2, 1100963440, 13000, 0, 0, 0, 0, 0, 0, '2020-06-05', 0, 'villa del prado'),
+(24, 'calle2#2-2', 2, 1100963441, 13000, 0, 0, 0, 0, 0, 0, '2020-06-05', 0, 'villa del rosario'),
+(25, 'calle3#3-3', 2, 1100963442, 13000, 0, 0, 0, 0, 0, 0, '2020-06-05', 0, 'San Martin'),
+(26, 'manzana4', 2, 1100963443, 0, 0, 0, 0, 0, 0, 0, '2020-06-09', 0, 'Casa 23 villa del rosario');
 
 -- --------------------------------------------------------
 
@@ -171,13 +163,13 @@ INSERT INTO `puntos` (`id`, `dir`, `estado`, `doc_suscriptor`, `saldo_ant`, `con
 
 DROP TABLE IF EXISTS `suscriptores`;
 CREATE TABLE IF NOT EXISTS `suscriptores` (
-  `doc` int(20) NOT NULL,
+  `doc` int(255) NOT NULL,
   `primer_nom` varchar(50) DEFAULT NULL,
   `segundo_nom` varchar(50) DEFAULT NULL,
   `primer_ape` varchar(50) DEFAULT NULL,
   `segundo_ape` varchar(50) DEFAULT NULL,
   `estado` int(2) DEFAULT NULL,
-  `tel` varchar(11) DEFAULT NULL,
+  `tel` varchar(255) DEFAULT NULL,
   `direc` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`doc`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
@@ -187,9 +179,10 @@ CREATE TABLE IF NOT EXISTS `suscriptores` (
 --
 
 INSERT INTO `suscriptores` (`doc`, `primer_nom`, `segundo_nom`, `primer_ape`, `segundo_ape`, `estado`, `tel`, `direc`) VALUES
-(1100963440, 'Miguel', 'Angel', 'Mejia', 'Macias', 1, '3508737961', 'Carrera11#5-48'),
-(1100963441, 'Angel', 'Miguel', 'Macias', 'Mejia', 1, '3508737962', 'Carrera11#5-49'),
-(1100963442, 'Miguel', 'Julian', 'Mejia', 'Perez', 1, '3166086171', 'Carrera5b#5-67');
+(1100963440, 'Miguel', 'Angel', 'Mejia', 'Macias', 1, '3508737961', 'Carrera6#7-68'),
+(1100963441, 'Angel', 'Miguel', 'Macias', 'Mejia', 1, '3166086171', 'cr2#2-2'),
+(1100963442, 'Miguel', 'Andres', 'Rojas', 'Lozano', 1, '3205467788', 'Carrera3#3-3'),
+(1100963443, 'Andres', 'Felipe', 'Prada', 'Pardo', 1, '1234', 'Manzana 5 casa 4 altos del valle');
 
 -- --------------------------------------------------------
 

@@ -111,6 +111,7 @@
         <select name="tipo_direc" class="form-control">
           <option value="calle">Calle</option>
           <option value="carrera">Carrera</option>
+          <option value="manzana">Manzana</option>
         </select>
       </div>
       <div>
@@ -152,6 +153,7 @@
         <select name="tipo_direc" class="form-control">
           <option value="calle">Calle</option>
           <option value="carrera">Carrera</option>
+          <option value="manzana">Manzana</option>
         </select>
       </div>
       <div>
@@ -201,7 +203,12 @@
         $n1 = $_POST['numero_direc'];
         $n2 = $_POST['numero2_direc'];
         $n3 = $_POST['numero3_direc'];
-        $dire = $td.$n1.'#'.$n2.'-'.$n3; 
+        if ($td == "manzana") {
+          $dire = $td.$n1.$n2.$n3;
+        }else{
+          $dire = $td.$n1.'#'.$n2.'-'.$n3;
+        }
+         
         $query = "SELECT * FROM puntos WHERE dir = '$dire'";
 
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
@@ -230,8 +237,7 @@
             $doc = $fila['doc_suscriptor'];
             $id_punto = $fila['id'];
             ?>
-        
-            <td class="text-center"><?php echo $fila['doc_suscriptor']; ?></td>
+        <td><?php echo $fila['doc_suscriptor']; ?></td>
             
             <td class="text-center"><input type="text" class="form-control text-center" name="dir" value=<?php echo $fila['dir']; ?>></td>
             <?php 
@@ -268,7 +274,7 @@
       </table>
     </div>
     <br>
-   
+    
       <div class="container form-group">
       <div>
         <label>Descuento</label>
@@ -285,10 +291,38 @@
     </div>
 
     <div class="container form-group text-center">
-      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar</button>
-      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar</button>
-      <button type="submit" name="suspender" class="btn btn-danger">Suspender</button>
-      <button type="submit" name="activar" class="btn btn-success">Activar</button>
+
+      <button type="submit" name="registrardescuento" class="btn btn-success">Registrar Costos</button>
+      <button type="submit" name="actualizarpunto" class="btn btn-info">Actualizar Dirección</button>
+      <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
+        <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
+      <?php endif ?>
+      <?php if ($estado == 'Suspendido'): ?>
+        <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
+      <?php endif ?>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
+      <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Vender Punto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+           <h6>Ingrese el nuevo numero de cedula</h6>
+          <input type="number" name="cedula2"><br><br>
+          <button type="submit" name="venderpunto" class="btn btn-success">Vender</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+      
+      
 
     </div>
 

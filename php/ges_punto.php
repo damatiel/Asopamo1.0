@@ -15,7 +15,12 @@ if (isset($_POST["crearpunto"])) {
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
 	$indicaciones = $_POST['indicaciones'];
-	$dire = $td.$n1.'#'.$n2.'-'.$n3;
+	if ($td == "manzana") {
+		$dire = $td.$n1.$n2.$n3;
+	}else{
+		$dire = $td.$n1.'#'.$n2.'-'.$n3;
+	}
+	
 	$query ="SELECT * FROM suscriptores WHERE doc = '$doc'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
