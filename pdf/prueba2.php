@@ -198,7 +198,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     $id_punto = $fila[1];
     $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
-  if($fila2 = mysqli_fetch_array($query_exec)) {
+  while($fila2 = mysqli_fetch_array($query_exec)) {
   $total =0;
   $t_admin_mes=0;
   $t_saldo_ant=0;
