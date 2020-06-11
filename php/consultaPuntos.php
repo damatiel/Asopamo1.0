@@ -147,8 +147,10 @@
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
-                      <?php } ?>
-                    <td class="text-center"><?php echo $fila1[1]; ?></td>
+                      <?php } elseif ($estado == 4) {?>
+                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                     <?php } ?>
+                    <td class="text-center"><?php echo $fila1[1].' '.$fila1['indicaciones']; ?></td>
                       </tr>
                       <?php } ?>
                       <?php
@@ -177,8 +179,10 @@
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } elseif($estado == 4){ ?>
+                        <td class="text-center"><?php echo "Bloqueado"; ?></td>
                       <?php } ?>
-                  <td class="text-center"><?php echo $fila2[1]; ?></td>
+                  <td class="text-center"><?php echo $fila2[1].' '.$fila2['indicaciones']; ?></td>
                   
                     </tr>
                     <?php }}  ?>
@@ -206,7 +210,7 @@
                     <?php } else{ ?>
                       <td class="text-center"><?php echo "Cancelado"; ?></td>
                     <?php } ?>
-                  <td class="text-center"><?php echo $fila2[1]; ?></td>
+                  <td class="text-center"><?php echo $fila2[1].' '.$fila2['indicaciones']; ?></td>
                     </tr>
                     <?php
                      } }}
@@ -223,6 +227,7 @@
                      ?>
                       
                     <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
                     <td class="text-center"><?php echo $fila[3]; ?></td>
                     <td class="text-center"><?php echo $fila2[1]; ?></td>
                     <td class="text-center"><?php echo $fila2[3]; ?></td>
@@ -234,8 +239,10 @@
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
+                      <?php } elseif($estado == 4){ ?>
+                        <td class="text-center"><?php echo "Bloqueado"; ?></td>
                       <?php } ?>
-                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[1].' '.$fila['indicaciones']; ?></td>
                     </tr>
                    <?php } } ?>
                  
