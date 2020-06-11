@@ -148,7 +148,9 @@
                       <?php } elseif($estado == 3){ ?>
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } elseif ($estado == 4) {?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado"; ?></td>
+                         <?php } elseif ($estado == 5) {?>
+                        <td class="text-center"><?php echo "Bloqueado Especial"; ?></td>
                      <?php } ?>
                     <td class="text-center"><?php echo $fila1[1].' '.$fila1['indicaciones']; ?></td>
                       </tr>
@@ -181,6 +183,8 @@
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
+                        <?php } elseif ($estado == 5) {?>
+                        <td class="text-center"><?php echo "Bloqueado Especial"; ?></td>
                       <?php } ?>
                   <td class="text-center"><?php echo $fila2[1].' '.$fila2['indicaciones']; ?></td>
                   
@@ -241,6 +245,8 @@
                         <td class="text-center"><?php echo "Cancelado"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
+                        <?php } elseif ($estado == 5) {?>
+                        <td class="text-center"><?php echo "Bloqueado Especial"; ?></td>
                       <?php } ?>
                     <td class="text-center"><?php echo $fila[1].' '.$fila['indicaciones']; ?></td>
                     </tr>
