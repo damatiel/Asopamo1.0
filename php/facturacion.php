@@ -142,12 +142,46 @@
                     <label class="container text-center">Fecha fin de mes</label>
                   <input type="date" class="form-control documentoSuscriptor" name="fmes" >
                 </div>
-              
+              <div>
+                <input type="number" name="num_inicial" class="form-control" maxlength="3" id="txt" style="text-transform:uppercase;" placeholder="">
+              </div>
+              <div>
+                <input type="number" name="num_final" class="form-control" maxlength="1" id="txt" style="text-transform:uppercase;" placeholder="">
+              </div>
                 <div class="text-center">
                     <br>
                     <button type="submit" name="imprimir1" class="btn btn-primary">Imprimir</button>
                     <button type="submit" name="imprimirt" class="btn btn-success">Imprimir Todos</button>
                  </div>
+          </form>
+          <form method="post" action="../pdf/prueba2.php" class="formularioFacturacion">
+            <br>
+              <div class="container text-center">
+                  <label>Periodo De Facturacion</label>
+              </div>
+              <div>
+                <select name="mes" class="form-control">
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+              </div><br>
+                <div class="container form-group">
+                    <label class="container text-center">Fecha fin de mes</label>
+                  <input type="date" class="form-control documentoSuscriptor" name="ultimodia" >
+                </div>
+            <button type="submit" name="fact4" class="btn btn-success">Excel</button>
+            <button type="submit" name="fact3" class="btn btn-success">cortes</button>
+            <button type="submit" name="fact2" class="btn btn-success">Imprimir</button>
           </form>
 
         </body>

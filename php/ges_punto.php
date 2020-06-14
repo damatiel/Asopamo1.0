@@ -25,7 +25,7 @@ if (isset($_POST["crearpunto"])) {
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	if ($fila = mysqli_fetch_array($query_exec)) {
 		$query2 ="INSERT INTO puntos (dir,estado,doc_suscriptor,saldo_ant,contador,descuento,matricula,traslado,reactivacion,form_pago,fecha_act,multa,indicaciones) VALUES ('$dire',2,'$doc',0,0,0,0,0,0,0,NOW(),0,'$indicaciones')";
-		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 28");
 
 	echo "
 				<script>

@@ -83,7 +83,7 @@
           </div>
           <br>
           <div class="container text-center">
-            <form method = "POST" action="consultaPuntos">
+            <form method = "POST" action="#">
               <div class="gridConSuscriptores">
                 <div class="mr-2">
                 <input type="number" class="form-control" name="txtDoc" placeholder="Consulta Por Documento">

@@ -5,18 +5,22 @@ require_once __DIR__ . '/../php/conectar.php';
 
   session_start();
 
-$user = $_SESSION['nombres'];
+$user = 'miguel mejia';
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
 $ultimodia = $_POST['ultimodia'];
+$num_inicial = $_POST['num_inicial'];
+$num_final = $_POST['num_final'];
 
   
 
 		$html = '
       <link rel="stylesheet" href="prueba.css">
     <div  id="codigo"></div>';
-$query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
+      # code...
+    
+$query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER BY dir ASC";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
       $n_fact = $fila[0];
@@ -39,6 +43,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
     $atrasos = $fila2[5];
     $multa = $fila2[12];
     $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
+   $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+   $query4 = "UPDATE facturacion set estado = 2 ";
    $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
     $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
   $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
@@ -115,7 +121,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
       }}}
       
       
-		$name = 'facturas '.$p_fact.'.pdf';
+		$name = 'facturas '.$p_fact.' '.$num_inicial.'-'.$num_final.'.pdf';
   $folder = __DIR__ .'/pdf/';
     
     // PDF::savedisk($name,$html,$folder);
@@ -127,13 +133,13 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
 
 }if (isset($_POST["fact3"])) {
   $mes = $_POST['mes'];
-  $id_punto =$_POST['id_punto'];
         
 
 $html='
       <table>
           <tr>
           <th>Documento</th>
+          <th></th>
             <th>Dirección</th>
             <th>Primer Nombre</th>
             <th>Primer Apellido</th>
@@ -143,16 +149,17 @@ $html='
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
             $doc = $fila[3];
-            $dir = $fila[1];
+            $dir = $fila[1].' '.$fila['indicaciones'];
           $html.='
           <tr>
-            <td>'.$doc.'</td>            
+            <td>'.$doc.'</td> 
+            <td></td> 
             <td>'.$dir.'</td>';
               $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
               $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
           $p_n = $fila2[1];
-          $p_a = $fila2[2];
+          $p_a = $fila2[3];
             $html.='
               <td>'.$p_n.'</td>
               <td>'.$p_a.'</td> 

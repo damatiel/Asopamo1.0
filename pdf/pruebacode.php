@@ -116,6 +116,8 @@ if (isset($_POST["imprimir1"])) {
 
 		$mes = $_POST['mes'];
 		$ultimodia = $_POST['fmes'];
+		$num_inicial = $_POST['num_inicial'];
+		$num_final = $_POST['num_final'] + 1;
 		if ($mes == 1) {
     $mes1 = 'enero';
   }if ($mes == 2) {
@@ -144,9 +146,14 @@ if (isset($_POST["imprimir1"])) {
 		?>
 		<form method="POST" action="prueba2.php">
 		<input type="hidden" name="mes" value="<?php echo $mes; ?>">
+		<input type="hidden" name="num_inicial" value="<?php echo $num_inicial; ?>">
+		<input type="hidden" name="num_final" value="<?php echo $num_final; ?>">
 		<input type="hidden" name="ultimodia" value="<?php echo $ultimodia; ?>">
 		<?php 
-		$query4 = "SELECT * FROM puntos";
+		for ($i=$num_inicial; $i < $num_final; $i++) { 
+			# code...
+		
+		$query4 = "SELECT * FROM puntos WHERE id = '$i'";
   $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta facturacion");
   while ($fila4 = mysqli_fetch_array($query_exec4)) {
   		$query = "SELECT * FROM valores WHERE id = 1 ";
@@ -211,7 +218,7 @@ if (isset($_POST["imprimir1"])) {
 			$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion+$multa-$descuento;
   		$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado', multa = '$multa' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-  		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
+  		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar,dir,estado) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar','$dir','1')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
    $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
    $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
@@ -232,7 +239,8 @@ if (isset($_POST["imprimir1"])) {
   		}
   	
 			
-  	}
+  	}}
+  
   	?>
 		<input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>">
 		<input type="submit" name="fact2" value="Imprimir Facturas">
