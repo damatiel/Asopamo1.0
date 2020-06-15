@@ -81,9 +81,9 @@ margin-left: 10px;
     grid-template-columns: 30% 50% 20%;
 }
 .formularioFacturacion{
-    width: 30%;
+    width: 100%;
     position: center;
-    margin-left: 35%;
+    
 }
 .gridConsultas{
     display: grid;
@@ -143,4 +143,13 @@ margin-left: 10px;
 .importar:hover{
     background:#53DD49;
 }
+.gridFacturacion{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    
+}
 
+.gridRango{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
