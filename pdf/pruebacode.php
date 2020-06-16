@@ -200,7 +200,7 @@ if (isset($_POST["imprimir1"])) {
   			$estado = 3;
   			$query = "UPDATE puntos set contador = '$atrasos', estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-  	}elseif ($atrasos >=5) {
+  	}elseif ($atrasos >=5 or $estado == 5) {
   		
   	}else{
   		if ($saldo_ant > 0) {
