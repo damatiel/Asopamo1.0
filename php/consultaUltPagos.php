@@ -97,9 +97,9 @@ $atrasos ="";
               <div class="gridConsultas">
               <div class="container">
             <label>Documento</label>
-            <input type="number" class="form-control" name="txtDocumento" placeholder="txtDocumento">
+            <input type="number" class="form-control" name="txtDocumento" placeholder="Documento Del Suscriptor">
             <br>
-            <button type="submit" class="btn btn-primary" name="buscardoc">Buscar</button>
+            <button type="submit" class="btn btn-primary" name="buscardoc">Buscar Por Documento</button>
              </div>
              <div>
             <div class="container">
@@ -134,12 +134,21 @@ $atrasos ="";
                 <div>
                   <input type="text" class="form-control" name="numero3_direc" placeholder="">
                 </div>
-                <div>
-                  <br>
-                  <button type="submit" name ="buscarDireccion" class="btn btn-primary">Buscar</button>
-                </div>
               </div>
+              <div class="pt-2">
+                  <button type="submit" name ="buscarDireccion" class="btn btn-primary">Buscar Por Direccion</button>
+                </div>
             </div>
+            <div class="ml-3 mr-2">
+            <label>ID Punto</label>
+            <input type="number" class="form-control" name="txtIDPunto" placeholder="ID del Punto">
+            <br>
+            <button type="submit" name ="btnIDPunto" class="btn btn-primary">Buscar Por ID</button>
+            <div>
+            
+            </div>
+            </div>
+            
         </div>
         <br>
        
