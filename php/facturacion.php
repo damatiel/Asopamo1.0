@@ -156,7 +156,7 @@
                   <option value="12">Diciembre</option>
                 </select>
     </div>
-                <div class="container"><label>Fecha fin de mes</label></div>
+                <div class="container"><label>Fecha Limite Pago</label></div>
                 <div class="form-group">
                   <input type="date" class="form-control documentoSuscriptor" name="fmes" >
                 </div>
@@ -202,7 +202,7 @@
                 </select>
               </div>
               <div class="container">
-              <label class="text-center">Fecha fin de mes</label>
+              <label class="text-center">Fecha Limite Pago</label>
               </div>
                 <div class="form-group ml-2 mr-2">
                   <input type="date" class="form-control documentoSuscriptor" name="ultimodia" >
