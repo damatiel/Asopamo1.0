@@ -146,7 +146,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif ($estado == 4) {?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                          <?php } elseif ($estado == 5) {?>
@@ -180,7 +180,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                         <?php } elseif ($estado == 5) {?>
@@ -242,7 +242,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                         <?php } elseif ($estado == 5) {?>
