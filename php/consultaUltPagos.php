@@ -85,9 +85,7 @@ $atrasos ="";
           
         </div>
       </nav>
-      <div class="float-right text-center mr-3 importar">
-        <a href="#" style ="text-decoration: none; color:white;">Exportar a Excel</a>
-        </div>
+      
          <br>
           <div>
             <h2 class="titulo text-center container">Ultimos Pagos</h2>
