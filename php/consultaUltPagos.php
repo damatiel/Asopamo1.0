@@ -268,6 +268,53 @@ $atrasos ="";
                 }}}}
                 ?>
                   <!--CONSULTA POR DIRECCION FIN-->
+                  <!--CONSULTA POR ID INICIO-->
+                  <?php
+                if (isset($_POST["btnIDPunto"])){
+                    $id_punto = $_POST['txtIDPunto'];
+                    $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta puntos");
+                    while($fila3 = mysqli_fetch_array($query_exec)){
+                      $dire = $fila3[1].' '.$fila3['indicaciones'];
+                    $query = "SELECT * FROM pagos WHERE direccion = '$dire' ORDER BY num_factura DESC";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta pagos");
+                    while($fila = mysqli_fetch_array($query_exec)){
+                      $id_fact = $fila[1];
+                      $query = "SELECT * FROM facturacion WHERE numero_fact = '$id_fact'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta factura");
+                    if($fila2 = mysqli_fetch_array($query_exec)){ 
+                      $doc=$fila2[2];
+                      $nom=$fila[7];
+                      $id_punto=$fila[2];
+                      $saldo_ant=$fila[12];
+                      $atrasos=$fila[5];
+                      $ult_pago=$fila[4];
+                      $total=$fila[17];
+                      $entidad=$fila[3];
+                      if ($entidad == 1) {
+                        $entidad = 'Asopamo';
+                      }elseif($entidad == 1){
+                        $entidad = 'Servimcoop';
+                      }else{
+                        $entidad = 'Banco Agrario';
+                      }
+                      ?>
+                      <tr>
+                    <td class="text-center"><?php echo $doc; ?></td>
+                    <td class="text-center"><?php echo $nom; ?></td>
+                    <td class="text-center"><?php echo $id_punto; ?></td>
+                    <td class="text-center"><?php echo $saldo_ant; ?></td>
+                    <td class="text-center"><?php echo $atrasos; ?></td>
+                    <td class="text-center"><?php echo $ult_pago; ?></td>
+                    <td class="text-center"><?php echo $total; ?></td>
+                    <td class="text-center"><?php echo $entidad; ?></td>
+                  </tr>
+                    
+                    
+                  <?php 
+                }}}}
+                ?>
+                  <!--CONSULTA POR ID FIN-->
                 </tbody>
               </table>
           </div>
