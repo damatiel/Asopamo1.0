@@ -80,7 +80,7 @@
       </nav>
       <div class="float-right text-center">
         <form method = "post" action = "excel.php">
-          <button type="submit" name="excel" class="btn btn-primary">Exportar a Excel</button>
+          <button type="submit" name="excel_puntos" class="btn btn-primary">Exportar a Excel</button>
         </form>
         </div>
           <div>
