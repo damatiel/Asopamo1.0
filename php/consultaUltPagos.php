@@ -85,9 +85,7 @@ $atrasos ="";
           
         </div>
       </nav>
-      <div class="float-right text-center mr-3 importar">
-        <a href="#" style ="text-decoration: none; color:white;">Exportar a Excel</a>
-        </div>
+      
          <br>
           <div>
             <h2 class="titulo text-center container">Ultimos Pagos</h2>
@@ -97,9 +95,9 @@ $atrasos ="";
               <div class="gridConsultas">
               <div class="container">
             <label>Documento</label>
-            <input type="number" class="form-control" name="txtDocumento" placeholder="txtDocumento">
+            <input type="number" class="form-control" name="txtDocumento" placeholder="Documento Del Suscriptor">
             <br>
-            <button type="submit" class="btn btn-primary" name="buscardoc">Buscar</button>
+            <button type="submit" class="btn btn-primary" name="buscardoc">Buscar Por Documento</button>
              </div>
              <div>
             <div class="container">
@@ -134,12 +132,21 @@ $atrasos ="";
                 <div>
                   <input type="text" class="form-control" name="numero3_direc" placeholder="">
                 </div>
-                <div>
-                  <br>
-                  <button type="submit" name ="buscarDireccion" class="btn btn-primary">Buscar</button>
-                </div>
               </div>
+              <div class="pt-2">
+                  <button type="submit" name ="buscarDireccion" class="btn btn-primary">Buscar Por Direccion</button>
+                </div>
             </div>
+            <div class="ml-3 mr-2">
+            <label>ID Punto</label>
+            <input type="number" class="form-control" name="txtIDPunto" placeholder="ID del Punto">
+            <br>
+            <button type="submit" name ="btnIDPunto" class="btn btn-primary">Buscar Por ID</button>
+            <div>
+            
+            </div>
+            </div>
+            
         </div>
         <br>
        
@@ -259,6 +266,53 @@ $atrasos ="";
                 }}}}
                 ?>
                   <!--CONSULTA POR DIRECCION FIN-->
+                  <!--CONSULTA POR ID INICIO-->
+                  <?php
+                if (isset($_POST["btnIDPunto"])){
+                    $id_punto = $_POST['txtIDPunto'];
+                    $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta puntos");
+                    while($fila3 = mysqli_fetch_array($query_exec)){
+                      $dire = $fila3[1].' '.$fila3['indicaciones'];
+                    $query = "SELECT * FROM pagos WHERE direccion = '$dire' ORDER BY num_factura DESC";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta pagos");
+                    while($fila = mysqli_fetch_array($query_exec)){
+                      $id_fact = $fila[1];
+                      $query = "SELECT * FROM facturacion WHERE numero_fact = '$id_fact'";
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta factura");
+                    if($fila2 = mysqli_fetch_array($query_exec)){ 
+                      $doc=$fila2[2];
+                      $nom=$fila[7];
+                      $id_punto=$fila[2];
+                      $saldo_ant=$fila[12];
+                      $atrasos=$fila[5];
+                      $ult_pago=$fila[4];
+                      $total=$fila[17];
+                      $entidad=$fila[3];
+                      if ($entidad == 1) {
+                        $entidad = 'Asopamo';
+                      }elseif($entidad == 1){
+                        $entidad = 'Servimcoop';
+                      }else{
+                        $entidad = 'Banco Agrario';
+                      }
+                      ?>
+                      <tr>
+                    <td class="text-center"><?php echo $doc; ?></td>
+                    <td class="text-center"><?php echo $nom; ?></td>
+                    <td class="text-center"><?php echo $id_punto; ?></td>
+                    <td class="text-center"><?php echo $saldo_ant; ?></td>
+                    <td class="text-center"><?php echo $atrasos; ?></td>
+                    <td class="text-center"><?php echo $ult_pago; ?></td>
+                    <td class="text-center"><?php echo $total; ?></td>
+                    <td class="text-center"><?php echo $entidad; ?></td>
+                  </tr>
+                    
+                    
+                  <?php 
+                }}}}
+                ?>
+                  <!--CONSULTA POR ID FIN-->
                 </tbody>
               </table>
           </div>

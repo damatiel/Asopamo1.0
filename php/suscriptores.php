@@ -108,7 +108,7 @@
                                         <div class="container form-group">
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor">
-                                                <label>Primer Nombres</label>
+                                                <label>Primer Nombre</label>
                                                 <input type="text" class="form-control" name="txtPNnombre" id="txtPNnombre" value=<?php echo $fila['primer_nom']; ?>>
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">
@@ -160,7 +160,7 @@
                                         <div class="container form-group">
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor">
-                                                <label>Primer Nombres</label>
+                                                <label>Primer Nombre</label>
                                                 <input type="text" class="form-control" name="txtPNnombre" id="txtPNnombre" placeholder="Primer Nombre">
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">

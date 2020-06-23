@@ -75,6 +75,11 @@
           
         </div>
       </nav>
+      <div class="float-right text-center">
+        <form method = "post" action = "excel.php">
+          <button type="submit" name="excel_sus" class="btn btn-primary">Exportar a Excel</button>
+        </form>
+        </div>
           <div>
             <h2 class="titulo text-center container">Consulta Suscriptores</h2> 
           </div>

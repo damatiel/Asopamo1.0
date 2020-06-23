@@ -87,19 +87,17 @@
     </div>
   </nav>
   <div class="gridRPuntos">
+  <div class="border-right">
   <div>
-  <div>
-    <h2 class="titulo text-center container">Puntos</h2>
+    <h2 class="titulo text-center container">Crear Puntos</h2>
   </div>
   <form method="post" action="ges_punto.php" class="formularioPuntos">
     <div class="container form-group">
       <label>Documento</label>
-      <div class="gridCrearPunto">
-        <div><button type="submit" name="crearpunto" class="btn btn-dark">Crear</button></div>
-        <div><input type="number" name="cedula" class="form-control" id="txtDocumento" placeholder="txtDocumento"></div>
+      <div>
+        <div><input type="number" name="cedula" class="form-control" id="txtDocumento" placeholder="Documento Suscriptor"></div>
       </div>
     </div>
-    <br>
     <div class="container">
       <div>
         <label>Direccion</label>
@@ -134,8 +132,10 @@
   </div>
   <div class="form-group container">
     <label for="exampleFormControlTextarea1">Indicaciones</label>
-    <input class="form-control" rows="3" name="indicaciones" placeholder ="Digite Aca el barrio o cualquier otra indicacion">
+    <input class="form-control" rows="3" name="indicaciones" placeholder ="Digite el barrio o cualquier otra indicacion">
   </div>
+  <br>
+  <div class="text-center"><button type="submit" name="crearpunto" class="btn btn-success">Crear Punto</button></div>
       </form>
       </div>
       
@@ -256,9 +256,13 @@
             }elseif ($estado == 1) {
               $estado = "Deudor";
             }elseif ($estado == 3) {
-              $estado = "Suspendido";
+              $estado = "Suspendido por mora";
+            }elseif($estado == 5){
+              $estado = "Bloqueado Especial";
             }
+
              ?>
+            
             <td class="text-center"><?php echo $estado; ?></td>
             <td class="text-center"><?php echo $fila['contador']; ?></td>
             <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
@@ -297,7 +301,7 @@
       <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
         <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
       <?php endif ?>
-      <?php if ($estado == 'Suspendido'): ?>
+      <?php if ($estado == 'Suspendido por mora' or $estado == 'Bloqueado Especial'): ?>
         <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
       <?php endif ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
@@ -382,7 +386,9 @@
             }elseif ($estado == 1) {
               $estado = "Deudor";
             }elseif ($estado == 3) {
-              $estado = "Suspendido";
+              $estado = "Suspendido por mora";
+            }elseif ($estado == 5) {
+              $estado = "Bloqueado Especial";
             }
              ?>
             <td class="text-center"><?php echo $estado; ?></td>
@@ -423,7 +429,7 @@
       <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
         <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
       <?php endif ?>
-      <?php if ($estado == 'Suspendido'): ?>
+      <?php if ($estado == 'Suspendido por mora' or $estado == 'Bloqueado Especial'): ?>
         <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
       <?php endif ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
