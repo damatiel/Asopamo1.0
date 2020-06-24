@@ -69,7 +69,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-1mkd gwd-p-x0po" id="id_punto">'.$id_punto.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-16ht" id="subs">'.$nomCompleto.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-1hbn" id="fecha_fact">'.$f_fact.'</p>
-  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc" id="per_fact">'.$p_fact.'</p>
+  <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-4ge5" id="per_fact">'.$p_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d" id="per_fact_1">Atrasos:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_3">Fecha lim. de pago:</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-156d gwd-p-1bi0" id="per_fact_4">Fecha lim. de pago:</p>
@@ -91,6 +91,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35">'.$total_pagar.'</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1hvk">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35 gwd-p-q6vc">'.$total_pagar.'</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1hvk gwd-p-1vib">$</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35 gwd-p-q6vc gwd-p-1wb3">'.$total_pagar.'</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7">Saldo Anterior</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq">$</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg">'.$saldo_ant.'</p>
@@ -113,6 +115,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
   <p class="gwd-p-15yh">NUMERO DE FACTURA :</p>
   <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
+  <p class="gwd-p-ph3h">TOTAL:</p>
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>';
       
