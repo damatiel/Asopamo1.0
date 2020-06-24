@@ -1,4 +1,4 @@
-p {
+ p {
       margin: 0px;
     }
     h1 {
@@ -295,6 +295,7 @@ p {
     .gwd-p-uiqp {
       font-size: 20px;
       top: 828px;
+      font-weight: bold;
     }
     .gwd-p-ajdm {
       top: 790px;
@@ -328,6 +329,7 @@ p {
       font-size: 20px;
       top: 446px;
       left: 550px;
+      font-weight: bold;
     }
     .gwd-p-ph3h {
       position: absolute;
