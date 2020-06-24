@@ -204,7 +204,7 @@ if (isset($_POST["imprimir1"])) {
   			$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		}else{
-  			if ($atrasos >= 4) {
+  			if ($atrasos >= 2) {
   			$atrasos = $atrasos + 1;
   			$estado = 3;
   			$query = "UPDATE puntos set contador = '$atrasos', estado = '$estado' WHERE id = $id_punto";
@@ -239,7 +239,7 @@ if (isset($_POST["imprimir1"])) {
 			$n_fact = $fila2[0];
 			?>
 
-				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
+				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}
 		 
