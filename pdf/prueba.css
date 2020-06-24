@@ -1,4 +1,4 @@
- p {
+p {
       margin: 0px;
     }
     h1 {
@@ -31,12 +31,12 @@
     }
     .gwd-p-ppgg {
       position: absolute;
-      transform-origin: 238.25px 317.958px 0px;
-      font-size: 49px;
       width: 9.65%;
       height: 8.86%;
       top: 15%;
       left: 58%;
+      transform-origin: 73.5001px 16px 0px;
+      font-size: 30px;
     }
     .gwd-img-12pu {
       width: 813px;
@@ -45,10 +45,10 @@
       top: 0px;
     }
     .gwd-p-14qa {
-      width: 91.96px;
-      height: 52.01px;
-      left: 552.74px;
-      top: 88.05px;
+      width: 147px;
+      left: 631px;
+      height: 32px;
+      top: 57px;
     }
     .gwd-p-16rd {
       position: absolute;
@@ -292,6 +292,7 @@
     }
     .gwd-p-uiqp {
       top: 830px;
+      font-size: 20px;
     }
     .gwd-p-ajdm {
       top: 790px;
@@ -316,4 +317,27 @@
     }
     .gwd-p-1v3k {
       top: 659px;
+    }
+    .gwd-p-4ge5 {
+      top: 446px;
+      height: 18px;
+      transform-origin: 73.5001px 17.7778px 0px;
+      font-size: 20px;
+    }
+    .gwd-p-ph3h {
+      position: absolute;
+      left: 43px;
+      top: 847px;
+      font-size: 20px;
+      width: 73px;
+      height: 27px;
+      transform-origin: 36.75px 17.1429px 0px;
+    }
+    .gwd-p-1vib {
+      left: 121px;
+      top: 853px;
+    }
+    .gwd-p-1wb3 {
+      left: 146px;
+      top: 853px;
     }

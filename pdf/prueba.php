@@ -82,6 +82,8 @@ $dompdf->loadHtml('
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35">'.$total_pagar.'</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1hvk">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35 gwd-p-q6vc">'.$total_pagar.'</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1hvk gwd-p-1vib">$</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-hx35 gwd-p-q6vc gwd-p-1wb3">'.$total_pagar.'</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7">Saldo Anterior</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq">$</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg">'.$saldo_ant.'</p>
@@ -104,6 +106,7 @@ $dompdf->loadHtml('
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-tp5p gwd-p-1nly">'.$user.'</p>
   <p class="gwd-p-15yh">NUMERO DE FACTURA :</p>
   <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
+  <p class="gwd-p-ph3h">TOTAL:</p>
       
       <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
   ');

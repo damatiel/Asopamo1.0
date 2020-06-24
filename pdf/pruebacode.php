@@ -239,7 +239,7 @@ if (isset($_POST["imprimir1"])) {
 			$n_fact = $fila2[0];
 			?>
 
-				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
+				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}
 		 
