@@ -114,24 +114,35 @@
            <?php  
             include('ges_pagos.php');
            ?>
-           <div>
-             <label class="container">Nombre Suscriptor</label>
-             <label class="form-control"><?php echo $nomCompleto; ?></label>
+           <div class="container ">
             
-          </div>
-           <div class="gridPagos">
-             <div class="p-1">
-               <label class="container">Telefono</label>
-               <label for="" class="form-control"><?php echo $tel; ?></label>
-             </div>
-             <div class="p-1">
-              <label class="container">Direccion</label>
-              <label for="" class="form-control"><?php echo $direccion; ?></label>
-            </div>
-            <div class="p-1">
-              <label class="container">Total</label>
-              <label for="" class="form-control"><?php echo $tPagar; ?></label>
-            </div>
+          
+          <table class="table table-hover table-bordered">
+               <thead>
+                  <tr>
+                    <th scope="col" class="text-center">ID Punto</th>
+                    <th scope="col" class="text-center">Nombre</th>
+                    <th scope="col" class="text-center">Telefono</th>
+                    <th scope="col" class="text-center">Dirección</th>
+                    <th scope="col" class="text-center">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                    $query = "SELECT * FROM pre_pagos";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila = mysqli_fetch_array($query_exec)){ 
+                   ?>
+                  <tr>
+                    <td class="text-center"><?php echo $fila[0]; ?></td>
+                    <td class="text-center"><?php echo $fila[1]; ?></td>
+                    <td class="text-center"><?php echo $fila[2]; ?></td>
+                    <td class="text-center"><?php echo $fila[3]; ?></td>
+                    <td class="text-center"><?php echo $fila[4]; ?></td>
+                  </tr>
+                <?php } ?>
+                </tbody>
+             </table>
            </div>
            <br><br><br>
             <div class="gridPagos">

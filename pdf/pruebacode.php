@@ -12,8 +12,12 @@
   session_start();
 $user = $_SESSION['nombres'];
 if (isset($_POST["imprimir1"])) {
-
-	$td = $_POST['tipo_direc'];
+	if (isset($_POST["IdPunto"])) {
+		$id_punto = $_POST['IdPunto'];
+		$query = "SELECT * FROM puntos WHERE id = '$id_punto'";
+	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	}else{
+		$td = $_POST['tipo_direc'];
 	$n1 = $_POST['numero_direc'];
 	$n2 = $_POST['numero2_direc'];
 	$n3 = $_POST['numero3_direc'];
@@ -21,7 +25,12 @@ if (isset($_POST["imprimir1"])) {
 
 	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+	}
+
+
+	
 	if ($fila = mysqli_fetch_array($query_exec)) {
+		$dire = $fila['dir'];
 		$query = "SELECT * FROM valores WHERE id = 1 ";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 		if ($fila2 = mysqli_fetch_array($query_exec)) {
@@ -195,12 +204,12 @@ if (isset($_POST["imprimir1"])) {
   			$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		}else{
-  			if ($atrasos >= 2) {
+  			if ($atrasos >= 4) {
   			$atrasos = $atrasos + 1;
   			$estado = 3;
   			$query = "UPDATE puntos set contador = '$atrasos', estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-  	}elseif ($atrasos >=5) {
+  	}elseif ($atrasos >=5 or $estado == 5) {
   		
   	}else{
   		if ($saldo_ant > 0) {
