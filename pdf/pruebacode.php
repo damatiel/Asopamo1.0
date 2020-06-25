@@ -128,29 +128,29 @@ if (isset($_POST["imprimir1"])) {
 		$num_inicial = $_POST['num_inicial'];
 		$num_final = $_POST['num_final'] + 1;
 		if ($mes == 1) {
-    $mes1 = 'enero';
+    $mes1 = 'Enero';
   }if ($mes == 2) {
-    $mes1 = 'febrero';
+    $mes1 = 'Febrero';
   }if ($mes == 3) {
-    $mes1 = 'marzo';
+    $mes1 = 'Marzo';
   }if ($mes == 4) {
-    $mes1 = 'abril';
+    $mes1 = 'Abril';
   }if ($mes == 5) {
-    $mes1 = 'mayo';
+    $mes1 = 'Mayo';
   }if ($mes == 6) {
-    $mes1 = 'junio';
+    $mes1 = 'Junio';
   }if ($mes == 7) {
-    $mes1 = 'julio';
+    $mes1 = 'Julio';
   }if ($mes == 8) {
-    $mes1 = 'agosto';
+    $mes1 = 'Agosto';
   }if ($mes == 9) {
-    $mes1 = 'septiembre';
+    $mes1 = 'Septiembre';
   }if ($mes == 10) {
-    $mes1 = 'octubre';
+    $mes1 = 'Octubre';
   }if ($mes == 11) {
-    $mes1 = 'noviembre';
+    $mes1 = 'Noviembre';
   }if ($mes == 12) {
-    $mes1 = 'diciembre';
+    $mes1 = 'Diciembre';
   }
 		?>
 		<form method="POST" action="prueba2.php">
@@ -204,7 +204,7 @@ if (isset($_POST["imprimir1"])) {
   			$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		}else{
-  			if ($atrasos >= 4) {
+  			if ($atrasos >= 2) {
   			$atrasos = $atrasos + 1;
   			$estado = 3;
   			$query = "UPDATE puntos set contador = '$atrasos', estado = '$estado' WHERE id = $id_punto";
@@ -239,7 +239,7 @@ if (isset($_POST["imprimir1"])) {
 			$n_fact = $fila2[0];
 			?>
 
-				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>			
+				<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>			
 			<?php 
 		}
 		 
