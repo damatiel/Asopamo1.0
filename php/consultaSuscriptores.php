@@ -60,7 +60,9 @@
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
+              <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
+                <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
+                <a class="dropdown-item" href="valores.php">Valores</a>
                 
             </li>
             <li class="nav-item">
