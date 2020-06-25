@@ -256,9 +256,13 @@
             }elseif ($estado == 1) {
               $estado = "Deudor";
             }elseif ($estado == 3) {
-              $estado = "Suspendido";
+              $estado = "Suspendido por mora";
+            }elseif($estado == 5){
+              $estado = "Bloqueado Especial";
             }
+
              ?>
+            
             <td class="text-center"><?php echo $estado; ?></td>
             <td class="text-center"><?php echo $fila['contador']; ?></td>
             <td class="text-center"><?php echo $fila['saldo_ant']; ?></td>
@@ -297,7 +301,7 @@
       <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
         <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
       <?php endif ?>
-      <?php if ($estado == 'Suspendido'): ?>
+      <?php if ($estado == 'Suspendido por mora' or $estado == 'Bloqueado Especial'): ?>
         <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
       <?php endif ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>
@@ -382,7 +386,9 @@
             }elseif ($estado == 1) {
               $estado = "Deudor";
             }elseif ($estado == 3) {
-              $estado = "Suspendido";
+              $estado = "Suspendido por mora";
+            }elseif ($estado == 5) {
+              $estado = "Bloqueado Especial";
             }
              ?>
             <td class="text-center"><?php echo $estado; ?></td>
@@ -423,7 +429,7 @@
       <?php if ($estado == 'Activo' or $estado == 'Deudor'): ?>
         <button type="submit" name="suspender" class="btn btn-danger">Suspender Punto</button>
       <?php endif ?>
-      <?php if ($estado == 'Suspendido'): ?>
+      <?php if ($estado == 'Suspendido por mora' or $estado == 'Bloqueado Especial'): ?>
         <button type="submit" name="activar" class="btn btn-success">Activar Punto</button>
       <?php endif ?>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Vender Punto</button>

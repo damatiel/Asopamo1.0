@@ -78,6 +78,11 @@
           
         </div>
       </nav>
+      <div class="float-right text-center">
+        <form method = "post" action = "excel.php">
+          <button type="submit" name="excel_puntos" class="btn btn-primary">Exportar a Excel</button>
+        </form>
+        </div>
           <div>
             <h2 class="titulo text-center container">Consulta Puntos</h2> 
           </div>
@@ -146,7 +151,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif ($estado == 4) {?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                          <?php } elseif ($estado == 5) {?>
@@ -180,7 +185,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                         <?php } elseif ($estado == 5) {?>
@@ -242,7 +247,7 @@
                       <?php } elseif($estado == 1){ ?>
                         <td class="text-center"><?php echo "Deudor"; ?></td>
                       <?php } elseif($estado == 3){ ?>
-                        <td class="text-center"><?php echo "Cancelado"; ?></td>
+                        <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
                       <?php } elseif($estado == 4){ ?>
                         <td class="text-center"><?php echo "Bloqueado"; ?></td>
                         <?php } elseif ($estado == 5) {?>
@@ -257,6 +262,7 @@
                 </div>
                 
           </div>
+
 
         </body>
         </html>
