@@ -159,11 +159,10 @@
                       <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
                   <?php } ?>
                    <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
-                  </select>
-
-                   
+                  </select>                   
               </div>
               <div>
+                <label class="">Entidad De Pago:</label>
                 <input type="date" name="fecha_p" class="form-control">
               </div>
               <div class="text-center">
