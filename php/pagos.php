@@ -164,7 +164,7 @@
                    
               </div>
               <div>
-                <input type="date" name="fecha_p">
+                <input type="date" name="fecha_p" class="form-control">
               </div>
               <div class="text-center">
                 <button type="sunmit" class="btn btn-success" name="pagarFactura">Pagar</button>
