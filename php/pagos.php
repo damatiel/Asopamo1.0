@@ -145,11 +145,18 @@
              </table>
            </div>
            <br><br><br>
+           <div>
+            <label>Fecha de Pago</label>
+                <input type="date" name="fecha_p" class="form-control">
+              </div>
+              <br>
             <div class="gridPagos">
+
               <div class="p-1">
                 <label class="">Entidad De Pago:</label>
                 <input type="number" name="txtNumeroFactura" style="display:none;" value =<?php echo $numFactura; ?>>
               </div>
+                
               <div>
               <select class="form-control" name="select">
                 <?php
@@ -159,11 +166,7 @@
                       <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
                   <?php } ?>
                    <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
-                  </select>                   
-              </div>
-              <div>
-                <label class="">Entidad De Pago:</label>
-                <input type="date" name="fecha_p" class="form-control">
+                  </select>
               </div>
               <div class="text-center">
                 <button type="sunmit" class="btn btn-success" name="pagarFactura">Pagar</button>
