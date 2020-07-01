@@ -160,6 +160,7 @@
                   <?php } ?>
                    <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
                   </select>
+                  <input type="date" name="fecha_p">
                    
               </div>
               <div class="text-center">

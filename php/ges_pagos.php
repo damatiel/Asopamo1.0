@@ -37,6 +37,7 @@ require_once __DIR__ . '/conectar.php';
       }
       if (isset($_POST["pagarFactura"])) {
         $id_pagos = $_POST['select'];
+        $fecha_pago = $_POST['fecha_p'];
         $query5 = "SELECT * FROM pre_pagos";
           $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta pre pagos");
            while($fila = mysqli_fetch_array($query_exec5)){
@@ -54,7 +55,7 @@ require_once __DIR__ . '/conectar.php';
              if($fila1 = mysqli_fetch_array($query_exec)){
                $idPunto = $fila1['id_punto'];
                $p_fact = $fila1['periodo_fact'];
-               $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = NOW() WHERE periodo_fact = '$p_fact' AND id_punto = '$idPunto'";
+               $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = '$fecha_pago' WHERE periodo_fact = '$p_fact' AND id_punto = '$idPunto'";
                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizacion pagos");  
              }
              $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, traslado = 0, matricula = 0,reactivacion = 0, multa = 0, estado = 2 WHERE id = $idPunto ";
