@@ -35,6 +35,16 @@ require_once __DIR__ . '/conectar.php';
           
            
       }
+           if (isset($_GET["variable1"])) {
+             $id = $_GET['variable1'];
+             $query ="DELETE FROM pre_pagos WHERE id = '$id'";
+            $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+            echo "
+        <script>
+        window.location.replace('pagos.php');
+        </script>
+        ";
+           }
       if (isset($_POST["pagarFactura"])) {
         $id_pagos = $_POST['select'];
         $fecha_pago = $_POST['fecha_p'];

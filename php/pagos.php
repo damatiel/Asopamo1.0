@@ -125,6 +125,8 @@
                     <th scope="col" class="text-center">Telefono</th>
                     <th scope="col" class="text-center">Dirección</th>
                     <th scope="col" class="text-center">Total</th>
+                    <th scope="col" class="text-center">Borrar</th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -139,11 +141,17 @@
                     <td class="text-center"><?php echo $fila[2]; ?></td>
                     <td class="text-center"><?php echo $fila[3]; ?></td>
                     <td class="text-center"><?php echo $fila[4]; ?></td>
+                    <?php $id = $fila[0]; ?>
+                    <?php echo '<td class="text-center"><a href="ges_pagos.php?variable1='.$id.'">Borrar</a></td>'; ?>
+                    
+                    
                   </tr>
+
                 <?php } ?>
                 </tbody>
              </table>
            </div>
+           
            <br><br><br>
            <div>
             <label>Fecha de Pago</label>
