@@ -5,7 +5,7 @@ require_once __DIR__ . '/../php/conectar.php';
 
   session_start();
 
-$user = 'miguel mejia';
+$user = $_SESSION['nombres']." ".$_SESSION['apellidos'];
 require_once 'variospdf.php';
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
