@@ -35,7 +35,7 @@ if (isset($_POST["fact1"])) {
   $saldo_ant = $_POST['saldo_ant'];
   $descuento = $_POST['descuento'];
   $total_pagar = $_POST['total_pagar'];
-  $user = $_POST['user'];
+  $user = $_SESSION['nombres']." ".$_SESSION['apellidos'];
   $ultimodia = $_POST['ultimodia'];
   $mes = $_POST['mes'];
   $matricula = $_POST['matricula'];

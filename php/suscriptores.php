@@ -64,7 +64,7 @@
                 <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
                 <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
                 <a class="dropdown-item" href="valores.php">Valores</a>
-                
+                <a class="dropdown-item" href="respaldo.php">BackUp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
