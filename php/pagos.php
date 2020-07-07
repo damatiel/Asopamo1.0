@@ -177,7 +177,7 @@
                   </select>
               </div>
               <div class="text-center">
-                <button type="sunmit" class="btn btn-success" name="pagarFactura">Pagar</button>
+                <button type="submit" class="btn btn-success" name="pagarFactura">Pagar</button>
               </div>
             
             
