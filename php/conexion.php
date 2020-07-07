@@ -2,7 +2,7 @@
 
 	function conexion(){
 
-		$con = mysql_connect("localhost","root","");
+		$con = mysql_connect("127.0.0.1","root","");
 
 		if (!$con){
 

@@ -117,29 +117,29 @@ if (isset($_POST["imprimir1"])) {
 		$mes = $_POST['mes'];
 		$ultimodia = $_POST['fmes'];
 		if ($mes == 1) {
-    $mes1 = 'enero';
+    $mes1 = 'ENERO';
   }if ($mes == 2) {
-    $mes1 = 'febrero';
+    $mes1 = 'FEBRERO';
   }if ($mes == 3) {
-    $mes1 = 'marzo';
+    $mes1 = 'MARZO';
   }if ($mes == 4) {
-    $mes1 = 'abril';
+    $mes1 = 'ABRIL';
   }if ($mes == 5) {
-    $mes1 = 'mayo';
+    $mes1 = 'MAYO';
   }if ($mes == 6) {
-    $mes1 = 'junio';
+    $mes1 = 'JUNIO';
   }if ($mes == 7) {
-    $mes1 = 'julio';
+    $mes1 = 'JULIO';
   }if ($mes == 8) {
-    $mes1 = 'agosto';
+    $mes1 = 'AGOSTO';
   }if ($mes == 9) {
-    $mes1 = 'septiembre';
+    $mes1 = 'SEPTIEMBRE';
   }if ($mes == 10) {
-    $mes1 = 'octubre';
+    $mes1 = 'OCTUBRE';
   }if ($mes == 11) {
-    $mes1 = 'noviembre';
+    $mes1 = 'NOVIEMBRE';
   }if ($mes == 12) {
-    $mes1 = 'diciembre';
+    $mes1 = 'DICIEMBRE';
   }
 		?>
 		<form method="POST" action="prueba2.php">
@@ -213,8 +213,7 @@ if (isset($_POST["imprimir1"])) {
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
   		$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar')";
   $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta facturacion");
-   $query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
-   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta pagos");
+   
 		}
   	
   $query2 = "SELECT * FROM facturacion ";

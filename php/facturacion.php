@@ -146,8 +146,35 @@
                 <div class="text-center">
                     <br>
                     <button type="submit" name="imprimir1" class="btn btn-primary">Imprimir</button>
-                    <button type="submit" name="imprimirt" class="btn btn-success">Imprimir Todos</button>
+                    <button type="submit" name="imprimirt" class="btn btn-success">generar facturas</button>
+                    
                  </div>
+               </form>
+          <form method="post" action="../pdf/prueba2.php" class="formularioFacturacion">
+            <div class="container text-center">
+                  <label>Periodo De Facturacion</label>
+              </div>
+              <div>
+                <select name="mes" class="form-control">
+                  <option value="1">Enero</option>
+                  <option value="2">Febrero</option>
+                  <option value="3">Marzo</option>
+                  <option value="4">Abril</option>
+                  <option value="5">Mayo</option>
+                  <option value="6">Junio</option>
+                  <option value="7">Julio</option>
+                  <option value="8">Agosto</option>
+                  <option value="9">Septiembre</option>
+                  <option value="10">Octubre</option>
+                  <option value="11">Noviembre</option>
+                  <option value="12">Diciembre</option>
+                </select>
+              </div><br>
+              <div class="container form-group">
+                    <label class="container text-center">Fecha fin de mes</label>
+                  <input type="date" class="form-control documentoSuscriptor" name="fmes" >
+                </div>
+            <button type="submit" name="fact2" class="btn btn-success">Imprimir facturas</button>
           </form>
 
         </body>
