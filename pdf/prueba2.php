@@ -41,7 +41,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
     $traslado = $fila2[8];
     $reactivacion = $fila2[9];
     $atrasos = $fila2[5];
-    $multa = $fila2[12];
+    $multa = $fila2[12]; 
     $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
    $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
    $query4 = "UPDATE facturacion set estado = 2 ";
@@ -148,7 +148,11 @@ $html='
             <th>Primer Apellido</th>
           </tr>
           ';
-          $query = "SELECT * FROM puntos WHERE contador > 2";
+          $query = "SELECT * FROM facturacion WHERE total_pagar == 39400 ";
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+          while ($fila2 = mysqli_fetch_array($query_exec)) {
+            $id_punto = $fila2[1];
+          $query = "SELECT * FROM puntos WHERE id = '$id_punto'";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
             $doc = $fila[3];
@@ -167,7 +171,7 @@ $html='
               <td>'.$p_n.'</td>
               <td>'.$p_a.'</td> 
               </tr>';
-  }}
+  }}}
   $html.='
       </table>
     </div>';
