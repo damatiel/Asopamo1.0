@@ -26,7 +26,6 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <!--C-->
     <link rel="stylesheet" href="../css/main.css">
-</body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse bg-primary";" id="">
       <ul class="navbar-nav mr-auto">
@@ -63,7 +62,7 @@
           <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-            <a class="dropdown-item" href="respaldo.php">BackUp</a>
+            <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
         </li>
         <li class="nav-item">
             <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -197,6 +196,31 @@
         </form>
        <?php } }?>
         
-      
-
+       <div id = "ventana"class="ventanaBackup">
+                <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
+                <div>
+                <form method="post" action="backup.php">
+		              <h6>Crear Respaldo</h6>
+                  <button type="submit" class="btn btn-success" name="backup">Crear</button>
+              	</form>
+                </div>
+                <br>
+                <div class="form-group">
+                <form method="post" action="restore.php">
+	            	<h6>Subir Base De Datos</h6>
+                <input type="file" class="form-control-file">
+                <br>
+                <button type="submit" class="btn btn-success" name="backup">Subir</button>
+	            </form>
+                </div>
+            </div>
+            <script>
+                function abrir(){
+                  document.getElementById("ventana").style.display="block";
+                }
+                function cerrar(){
+                  document.getElementById("ventana").style.display="none";
+                }
+            </script>
+        </body>
 </html>
