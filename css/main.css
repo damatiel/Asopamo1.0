@@ -149,3 +149,21 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
 }
+.ventanaBackup{
+    background: rgb(255, 255, 255);
+    width: 30%;
+    padding: 1%;
+    border-radius: 10px;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    display: none;
+    border: black 1px solid;
+    text-align: center;
+    
+}
+#cerrar{
+    position: absolute;
+    right: 3px;
+    top: 1px;
+}
