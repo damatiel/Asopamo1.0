@@ -64,7 +64,7 @@
                 <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
                 <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
                 <a class="dropdown-item" href="valores.php">Valores</a>
-                <a class="dropdown-item" href="respaldo.php">BackUp</a>
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -108,7 +108,7 @@
                                         <div class="container form-group">
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor">
-                                                <label>Primer Nombre</label>
+                                                <label>Primer Nombres</label>
                                                 <input type="text" class="form-control" name="txtPNnombre" id="txtPNnombre" value=<?php echo $fila['primer_nom']; ?>>
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">
@@ -160,7 +160,7 @@
                                         <div class="container form-group">
                                             <div class="container row"> 
                                                 <div class="container tamañotxtSuscriptor">
-                                                <label>Primer Nombre</label>
+                                                <label>Primer Nombres</label>
                                                 <input type="text" class="form-control" name="txtPNnombre" id="txtPNnombre" placeholder="Primer Nombre">
                                                 </div>
                                               <div class="container tamañotxtSuscriptor">

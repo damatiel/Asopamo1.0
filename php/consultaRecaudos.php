@@ -65,13 +65,13 @@
               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-             <a class="dropdown-item" href="respaldo.php">BackUp</a>
+                
             </li>
             <li class="nav-item">
-                <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
+                <a class="nav-link">Usuario: Miguel</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="salir.php">Salir</a>
+                <a class="nav-link" href="#">Salir</a>
             </li>
             
             
@@ -149,23 +149,11 @@
                   </tr>
                 </thead>
                 <tbody >
-                  <?php  ?>
                   <?php
                      if (isset($_POST["btnConsultar"])){
                       $fecha_ini = $_POST['fInicial'];
                       $fecha_fin = $_POST['fFinal'];
                       $idEntidad = $_POST['select'];
-                      ?>
-                      <div class="float-right text-center">
-                      <form method = "post" action = "excel.php">
-                        <button type="submit" name="excel_recaudos" class="btn btn-primary">Exportar a Excel</button>
-                        <input type="hidden" name="fecha_ini" value=<?php echo $fecha_ini ?>>
-                        <input type="hidden" name="fecha_fin" value=<?php echo $fecha_fin ?>>
-                        <input type="hidden" name="idEntidad" value=<?php echo $idEntidad ?>>
-                      </form>
-                      </div>
-        <?php
-                      
                       if ($idEntidad == "todos") {
                         $query = "SELECT * FROM pagos WHERE fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
                       }else{
@@ -190,7 +178,6 @@
                         $TTotal += $fila1[17];
                         
                       ?>
-
                      <tr>
                      <td class="text-center"><?php echo $fila1[2]; ?></td>
                      <td class="text-center"><?php echo $fila1[9]; ?></td>
@@ -250,7 +237,6 @@
                 </tbody>
               </table>
     </div>
-
     
     </footer>
     </html>

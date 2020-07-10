@@ -31,12 +31,12 @@
     }
     .gwd-p-ppgg {
       position: absolute;
+      transform-origin: 238.25px 317.958px 0px;
+      font-size: 49px;
       width: 9.65%;
       height: 8.86%;
       top: 15%;
       left: 58%;
-      transform-origin: 73.5001px 16px 0px;
-      font-size: 30px;
     }
     .gwd-img-12pu {
       width: 813px;
@@ -45,10 +45,10 @@
       top: 0px;
     }
     .gwd-p-14qa {
-      width: 147px;
-      left: 631px;
-      height: 32px;
-      top: 53px;
+      width: 91.96px;
+      height: 52.01px;
+      left: 552.74px;
+      top: 88.05px;
     }
     .gwd-p-16rd {
       position: absolute;
@@ -286,21 +286,15 @@
     }
     .gwd-p-qjn1 {
       top: 808px;
-      width: 615px;
-      transform-origin: 1793.75px 210.923px 0px;
     }
     .gwd-p-rr0s {
       top: 828px;
     }
     .gwd-p-uiqp {
-      font-size: 20px;
-      top: 828px;
-      font-weight: bold;
+      top: 830px;
     }
     .gwd-p-ajdm {
       top: 790px;
-      width: 321px;
-      transform-origin: 936.251px 210.923px 0px;
     }
     .gwd-p-15yh {
       position: absolute;
@@ -322,44 +316,4 @@
     }
     .gwd-p-1v3k {
       top: 659px;
-    }
-    .gwd-p-4ge5 {
-      height: 18px;
-      transform-origin: 73.5001px 17.7778px 0px;
-      font-size: 20px;
-      top: 446px;
-      left: 550px;
-      font-weight: bold;
-    }
-    .gwd-p-ph3h {
-      position: absolute;
-      left: 43px;
-      top: 847px;
-      font-size: 20px;
-      width: 73px;
-      height: 27px;
-      transform-origin: 36.75px 17.1429px 0px;
-    }
-    .gwd-p-1vib {
-      left: 121px;
-      top: 853px;
-    }
-    .gwd-p-1wb3 {
-      left: 146px;
-      top: 853px;
-      width: 134px;
-      height: 18px;
-      transform-origin: 66.9999px 9px 0px;
-    }
-    .gwd-p-1trv {
-      width: 322px;
-      transform-origin: 939.167px 210.923px 0px;
-    }
-    .gwd-p-rv6v {
-      width: 616px;
-      transform-origin: 1796.67px 210.923px 0px;
-    }
-    .gwd-p-1oc6 {
-      width: 213px;
-      transform-origin: 621.25px 210.923px 0px;
     }
