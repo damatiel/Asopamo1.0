@@ -1,7 +1,7 @@
 <?php
 	//definir variables!!!
 	//servidor
-	define("host", "localhost");
+	define("host", "127.0.0.1");
 
 	//base de datos
 	define("bd","asopamo");

@@ -64,7 +64,7 @@
               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-                <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
+                
               </div>
             </li>
             <li class="nav-item">
@@ -114,57 +114,31 @@
            <?php  
             include('ges_pagos.php');
            ?>
-           <div class="container ">
-            
-          
-          <table class="table table-hover table-bordered">
-               <thead>
-                  <tr>
-                    <th scope="col" class="text-center">ID Punto</th>
-                    <th scope="col" class="text-center">Nombre</th>
-                    <th scope="col" class="text-center">Telefono</th>
-                    <th scope="col" class="text-center">Dirección</th>
-                    <th scope="col" class="text-center">Total</th>
-                    <th scope="col" class="text-center">Borrar</th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                    $query = "SELECT * FROM pre_pagos";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){ 
-                   ?>
-                  <tr>
-                    <td class="text-center"><?php echo $fila[0]; ?></td>
-                    <td class="text-center"><?php echo $fila[1]; ?></td>
-                    <td class="text-center"><?php echo $fila[2]; ?></td>
-                    <td class="text-center"><?php echo $fila[3]; ?></td>
-                    <td class="text-center"><?php echo $fila[4]; ?></td>
-                    <?php $id = $fila[0]; ?>
-                    <?php echo '<td class="text-center"><a href="ges_pagos.php?variable1='.$id.'">Borrar</a></td>'; ?>
-                    
-                    
-                  </tr>
-
-                <?php } ?>
-                </tbody>
-             </table>
-           </div>
-           
-           <br><br><br>
            <div>
-            <label>Fecha de Pago</label>
-                <input type="date" name="fecha_p" class="form-control">
-              </div>
-              <br>
+             <label class="container">Nombre Suscriptor</label>
+             <label class="form-control"><?php echo $nomCompleto; ?></label>
+            
+          </div>
+           <div class="gridPagos">
+             <div class="p-1">
+               <label class="container">Telefono</label>
+               <label for="" class="form-control"><?php echo $tel; ?></label>
+             </div>
+             <div class="p-1">
+              <label class="container">Direccion</label>
+              <label for="" class="form-control"><?php echo $direccion; ?></label>
+            </div>
+            <div class="p-1">
+              <label class="container">Total</label>
+              <label for="" class="form-control"><?php echo $tPagar; ?></label>
+            </div>
+           </div>
+           <br><br><br>
             <div class="gridPagos">
-
               <div class="p-1">
                 <label class="">Entidad De Pago:</label>
                 <input type="number" name="txtNumeroFactura" style="display:none;" value =<?php echo $numFactura; ?>>
               </div>
-                
               <div>
               <select class="form-control" name="select">
                 <?php
@@ -175,40 +149,16 @@
                   <?php } ?>
                    <input name = "idPago" style="display:none;" value = <?php echo $idPunto; ?> >
                   </select>
+                   
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-success" name="pagarFactura">Pagar</button>
+                <button type="sunmit" class="btn btn-success" name="pagarFactura">Pagar</button>
               </div>
             
             
             </div>
             </form>
-            <div id = "ventana"class="ventanaBackup">
-                <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
-                <div>
-                <form method="post" action="backup.php">
-		              <h6>Crear Respaldo</h6>
-                  <button type="submit" class="btn btn-success" name="backup">Crear</button>
-              	</form>
-                </div>
-                <br>
-                <div class="form-group">
-                <form method="post" action="restore.php">
-	            	<h6>Subir Base De Datos</h6>
-                <input type="file" class="form-control-file">
-                <br>
-                <button type="submit" class="btn btn-success" name="backup">Subir</button>
-	            </form>
-                </div>
-            </div>
-            <script>
-                function abrir(){
-                  document.getElementById("ventana").style.display="block";
-                }
-                function cerrar(){
-                  document.getElementById("ventana").style.display="none";
-                }
-            </script>
+         
         </body>
         </html>
 

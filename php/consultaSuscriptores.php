@@ -60,10 +60,8 @@
                 Configuracion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
-                <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
-                <a class="dropdown-item" href="valores.php">Valores</a>
-                <a class="dropdown-item" href="respaldo.php">BackUp</a>
+                <a class="dropdown-item" href="crearUsuario.php">Crear Usuario</a>
+                
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -77,11 +75,6 @@
           
         </div>
       </nav>
-      <div class="float-right text-center">
-        <form method = "post" action = "excel.php">
-          <button type="submit" name="excel_sus" class="btn btn-primary">Exportar a Excel</button>
-        </form>
-        </div>
           <div>
             <h2 class="titulo text-center container">Consulta Suscriptores</h2> 
           </div>

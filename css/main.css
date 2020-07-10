@@ -41,7 +41,11 @@ margin-left: 10px;
     display: grid;
     grid-template-columns: 25% 15% 15% 15% 15% 15%;
 }
-
+.gridCrearPunto{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    
+}
 .formularioCRecibos{
     width: 50%;
     position: center;
@@ -77,13 +81,13 @@ margin-left: 10px;
     grid-template-columns: 30% 50% 20%;
 }
 .formularioFacturacion{
-    width: 100%;
+    width: 30%;
     position: center;
-    
+    margin-left: 35%;
 }
 .gridConsultas{
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 50% 50%;
 }
 .formularioEntidades{
     width: 30%;
@@ -139,31 +143,4 @@ margin-left: 10px;
 .importar:hover{
     background:#53DD49;
 }
-.gridFacturacion{
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
-    
-}
 
-.gridRango{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-.ventanaBackup{
-    background: rgb(255, 255, 255);
-    width: 30%;
-    padding: 1%;
-    border-radius: 10px;
-    position: absolute;
-    left: 35%;
-    top: 35%;
-    display: none;
-    border: black 1px solid;
-    text-align: center;
-    
-}
-#cerrar{
-    position: absolute;
-    right: 3px;
-    top: 1px;
-}

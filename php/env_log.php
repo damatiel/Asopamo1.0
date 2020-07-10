@@ -28,10 +28,9 @@
 
 		$_SESSION["ultimoAcceso"]= date("Y-n-j H:i:s");
 
-		$_SESSION['usuario']=$fila[4];
+		$_SESSION['usuario']=$fila[3];
 		$_SESSION['nombres']=$fila[1];
-		$_SESSION['apellidos']=$fila[2];
-		$_SESSION['tipo']=$fila[3];
+		$_SESSION['tipo']=$fila[2];
 
 
 		if ($fila[2]==1) {
