@@ -1,0 +1,169 @@
+.nav-link{
+    color: white !important;
+}
+.navbar-nav {
+    float: left;
+    margin: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    position: relative;
+}
+
+.nav-link:hover{
+    background:#52A1F6 !important;
+    border-radius: 10px;
+}
+
+.dropdown-item:hover{
+    background:#E4E7EA;
+    
+}
+.formularioCrearUsuario{
+    width: 40%;
+    position: center;
+    margin-left: 30%;
+}
+.tamañotxtSuscriptor{
+    width: 50%;
+    padding-right: 10px;
+}
+.documentoSuscriptor{
+width: 95%;
+margin-left: 10px;
+
+}
+.formularioPuntos{
+    width: 80%;
+    position: center;
+    margin-left: 5%;
+}
+.gridDireccion{
+    display: grid;
+    grid-template-columns: 25% 15% 15% 15% 15% 15%;
+}
+
+.formularioCRecibos{
+    width: 50%;
+    position: center;
+}
+.gridCRecibos{
+    display: grid;
+    grid-template-columns: 50% 50% ;
+    
+}
+.gridCbxCRecibos{
+    display: grid;
+    grid-template-columns: 20% 50% 25% ;
+}
+.cbxCRecibos{
+    margin-left: 38px;
+    width: 105%;
+    
+}
+.labelCRecibos{
+    margin-left: 38px;
+    width: 100%;
+}
+.btnCRecibos{
+    margin-left: 63px;
+}
+.formularioPagos{
+    width: 50%;
+    position: center;
+    margin-left: 25%;
+}
+.gridPagos{
+    display: grid;
+    grid-template-columns: 30% 50% 20%;
+}
+.formularioFacturacion{
+    width: 100%;
+    position: center;
+    
+}
+.gridConsultas{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.formularioEntidades{
+    width: 30%;
+    position: center;
+    margin-left: 35%;
+}
+.formEntPago{
+    width: 50%;
+    position: center;
+    
+}
+.thnom{
+    width: 60%;
+}
+.gridEntPago{
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+}
+.gridValores{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+}
+.thvalor{
+    width: 20%;
+}
+.thConcepto{
+    width: 40%;
+}
+.gridConSuscriptores{
+    display: grid;
+    grid-template-columns: 30% 30% 30% 10%;
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+    display: block;
+    }
+
+.gridRPuntos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+     
+}
+.importar{
+    padding: .5%;
+    width: 12%;
+    background:#3DC434;
+    border-radius: 10px;
+}
+.importar:hover{
+    background:#53DD49;
+}
+.gridFacturacion{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    
+}
+
+.gridRango{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+.ventanaBackup{
+    background: rgb(255, 255, 255);
+    width: 30%;
+    padding: 1%;
+    border-radius: 10px;
+    position: absolute;
+    left: 35%;
+    top: 35%;
+    display: none;
+    border: black 1px solid;
+    text-align: center;
+    
+}
+#cerrar{
+    position: absolute;
+    right: 3px;
+    top: 1px;
+}
