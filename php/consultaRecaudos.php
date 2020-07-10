@@ -65,7 +65,7 @@
               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-             <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
+             <a class="dropdown-item" href="respaldo.php">BackUp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -253,30 +253,4 @@
 
     
     </footer>
-    <div id = "ventana"class="ventanaBackup">
-                <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
-                <div>
-                <form method="post" action="backup.php">
-		              <h6>Crear Respaldo</h6>
-                  <button type="submit" class="btn btn-success" name="backup">Crear</button>
-              	</form>
-                </div>
-                <br>
-                <div class="form-group">
-                <form method="post" action="restore.php">
-	            	<h6>Subir Base De Datos</h6>
-                <input type="file" class="form-control-file">
-                <br>
-                <button type="submit" class="btn btn-success" name="backup">Subir</button>
-	            </form>
-                </div>
-            </div>
-            <script>
-                function abrir(){
-                  document.getElementById("ventana").style.display="block";
-                }
-                function cerrar(){
-                  document.getElementById("ventana").style.display="none";
-                }
-            </script>
     </html>
