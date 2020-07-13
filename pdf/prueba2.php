@@ -136,38 +136,58 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
 
 }if (isset($_POST["fact3"])) {
   $mes = $_POST['mes'];
-        
-
 $html='
       <table>
           <tr>
-          <th>Documento</th>
-          <th></th>
+            <th>Documento</th>
+            <th></th>
             <th>Dirección</th>
             <th>Primer Nombre</th>
             <th>Primer Apellido</th>
           </tr>
           ';
-          $query = "SELECT * FROM puntos WHERE contador > 2";
+        $query = "SELECT * FROM puntos WHERE contador > 2";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
             $doc = $fila[3];
             $dir = $fila[1].' '.$fila['indicaciones'];
-          $html.='
-          <tr>
-            <td>'.$doc.'</td> 
-            <td></td> 
-            <td>'.$dir.'</td>';
-              $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
-              $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+          
+            $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+            $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
         if ($fila2 = mysqli_fetch_array($query_exec2)) {
           $p_n = $fila2[1];
           $p_a = $fila2[3];
+          $query3 = "SELECT * FROM cortes WHERE doc = '$doc'";
+          $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+        if ($fila3 = mysqli_fetch_array($query_exec3)) { 
+          $query6 = "UPDATE cortes set estado = 2 WHERE doc = $doc";
+          $query_exec6 = mysqli_query($db->conectar(),$query6)or die("no se puede realizar la consulta");
+
+        }else{
+          $query4 = "INSERT INTO cortes (doc, dir, p_nom, p_ape, estado) VALUES ('$doc', '$dir', '$p_n', '$p_a',1)";
+          $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no e puede realizar la consulta");
+        }}}
+          $query5 = "SELECT * FROM cortes WHERE estado = 1";
+          $query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta");
+
+          while ($fila5 = mysqli_fetch_array($query_exec5)) {
+            $doc = $fila5[0];
+            $dir = $fila5[1];
+            $p_n = $fila5[2];
+            $p_a = $fila5[3];
             $html.='
-              <td>'.$p_n.'</td>
-              <td>'.$p_a.'</td> 
+              <tr>
+                <td>'.$doc.'</td> 
+                <td></td> 
+                <td>'.$dir.'</td>';
+            $html.='
+                <td>'.$p_n.'</td>
+                <td>'.$p_a.'</td> 
               </tr>';
-  }}
+              }
+            
+        
+  
   $html.='
       </table>
     </div>';
