@@ -28,20 +28,20 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
       $doc = $fila[2];
       $f_fact = $fila[3];
       $p_fact = $fila[4];
-    $admin_mes = $fila[5];
-    $saldo_ant = $fila[6];
-    $total_pagar = $fila[9];
+      $descuento = $fila[12];
+      $matricula = $fila[13];
+      $traslado = $fila[14];
+      $reactivacion = $fila[15];
+      $multa = $fila[16];
+      $admin_mes = $fila[5];
+      $saldo_ant = $fila[6];
+      $total_pagar = $fila[9];
 
     $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
       $dir = $fila2[1]." ".$fila2['indicaciones'];
-      $descuento = $fila2[6];
-      $matricula = $fila2[7];
-    $traslado = $fila2[8];
-    $reactivacion = $fila2[9];
-    $atrasos = $fila2[5];
-    $multa = $fila2[12];
+      $atrasos = $fila2[5];
     $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
    $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
    $query4 = "UPDATE facturacion set estado = 2 ";
@@ -244,11 +244,11 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
       $p_fact = $fila[4];
       $admin_mes = $fila[5];
       $saldo_ant = $fila[6];
-      $descuento = $fila2[6];
-      $matricula = $fila2[7];
-      $traslado = $fila2[8];
-      $reactivacion = $fila2[9];
-      $multa = $fila2[12];
+      $descuento = $fila[12];
+      $matricula = $fila[13];
+      $traslado = $fila[14];
+      $reactivacion = $fila[15];
+      $multa = $fila[16];
       $total_pagar = $fila[9];
     }
    ?>
