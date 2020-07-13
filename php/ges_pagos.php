@@ -64,14 +64,15 @@ require_once __DIR__ . '/conectar.php';
           $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta seleccionar facturacion");
              if($fila1 = mysqli_fetch_array($query_exec)){
                $idPunto = $fila1['id_punto'];
+               $doc = $fila1[2];
                $p_fact = $fila1['periodo_fact'];
                $query = "UPDATE pagos set num_factura = '$numFactura', id_entPago = '$id_pagos', fecha_pago = '$fecha_pago' WHERE periodo_fact = '$p_fact' AND id_punto = '$idPunto'";
                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizacion pagos");  
              }
              $query = "UPDATE puntos set saldo_ant = 0, contador = 0, descuento = 0, traslado = 0, matricula = 0,reactivacion = 0, multa = 0, estado = 2 WHERE id = $idPunto ";
              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta actualizar puntos");
-             
-             
+             $query = "DELETE FROM cortes WHERE doc = '$doc'";
+             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta eliminar tabla cortes");
              
 
           }
