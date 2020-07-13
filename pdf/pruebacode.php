@@ -105,7 +105,7 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="traslado" value="<?php echo $traslado; ?>">
 		<input type="hidden" name="reactivacion" value="<?php echo $reactivacion; ?>">
 		<input type="hidden" name="multa" value="<?php echo $multa; ?>">
-		<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=100&text=<?php echo $n_fact; ?>"/>
+		<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>
 		<input type="submit" name="fact1">
 	</form>
 	<?php 
