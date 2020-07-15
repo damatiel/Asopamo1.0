@@ -38,45 +38,51 @@ if (isset($_POST["imprimir1"])) {
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
 		$atrasos = $fila[5];
+		$descuento = $fila[6];
+		$matricula = $fila[7];
+		$traslado = $fila[8];
+		$reactivacion = $fila[9];
+		$multa = $fila[12];
+	}
 		$dire = $dire.$indi;
-			$saldo_ant = $saldo_ant-$admin_mes;
+		$saldo_ant = $saldo_ant-$admin_mes;
 	
 		$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
 		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
 		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 
 		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' ORDER BY numero_fact DESC";
-	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
 		if ($fila2 = mysqli_fetch_array($query_exec2)) {
-		$n_fact = $fila2[0];
-		$f_fact = $fila2[3];
-		$p_fact = $fila2[4];
-		$admin_mes = $fila2[5];
-		$saldo_ant = $fila2[6];
-		$descuento = $fila2[12];
-		$matricula = $fila2[13];
-		$traslado = $fila2[14];
-		$reactivacion = $fila2[15];
-		$multa = $fila2[16];
+			$n_fact = $fila2[0];
+			$f_fact = $fila2[3];
+			$p_fact = $fila2[4];
+			$admin_mes = $fila2[5];
+			$saldo_ant = $fila2[6];
+			// $descuento = $fila2[12];
+			// $matricula = $fila2[13];
+			// $traslado = $fila2[14];
+			// $reactivacion = $fila2[15];
+			// $multa = $fila2[16];
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
-	$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
-	if ($fila3 = mysqli_fetch_array($query_exec3)) {
-		$pNom = $fila3[1];
-		$sNom = $fila3[2];
-		$pApe = $fila3[3];
-		$sApe = $fila3[4];
+		$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+		if ($fila3 = mysqli_fetch_array($query_exec3)) {
+			$pNom = $fila3[1];
+			$sNom = $fila3[2];
+			$pApe = $fila3[3];
+			$sApe = $fila3[4];
 		$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 		$query4 = "UPDATE pagos set descuento = '$descuento', traslado = '$traslado',reactivacion='$reactivacion',matricula='$matricula',total = '$total_pagar'  WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";	
 		$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta pagos");
 		$query5 = "SELECT * FROM pagos WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";
-	$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta");
-	if ($fila5 = mysqli_fetch_array($query_exec5)) {
-		$ultimodia = $fila5[6];
-	}
+		$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta");
+		if ($fila5 = mysqli_fetch_array($query_exec5)) {
+			$ultimodia = $fila5[6];
+		}
 	?>
 	
 	<?php 
-		}}}else{
+		}}else{
 			echo "
 				<script>
 				alert('Se agregaron datos incorrectos');
