@@ -16,7 +16,8 @@ if (isset($_POST["imprimir1"])) {
 		$id_punto = $_POST['IdPunto'];
 		$query = "SELECT * FROM puntos WHERE id = '$id_punto'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-	}else{
+	}
+	if (isset($_POST["tipo_direc"])){
 		$td = $_POST['tipo_direc'];
 	$n1 = $_POST['numero_direc'];
 	$n2 = $_POST['numero2_direc'];
