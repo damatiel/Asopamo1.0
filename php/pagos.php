@@ -53,6 +53,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
+              <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
             </li>
@@ -186,16 +187,16 @@
             <div id = "ventana"class="ventanaBackup">
                 <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
                 <div>
-                <form method="post" action="backup.php">
+                <form method="POST" action="backup.php">
 		              <h6>Crear Respaldo</h6>
                   <button type="submit" class="btn btn-success" name="backup">Crear</button>
               	</form>
                 </div>
                 <br>
                 <div class="form-group">
-                <form method="post" action="restore.php">
+                <form method="POST" action="restore.php">
 	            	<h6>Subir Base De Datos</h6>
-                <input type="file" class="form-control-file">
+                <input type="file" name="sql" class="form-control-file">
                 <br>
                 <button type="submit" class="btn btn-success" name="backup">Subir</button>
 	            </form>
