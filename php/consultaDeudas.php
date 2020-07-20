@@ -66,7 +66,7 @@
               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-             <a class="dropdown-item" href="respaldo.php">BackUp</a>
+            <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -83,45 +83,39 @@
       <div>
         <h2 class="titulo text-center container">Consulta Deudas</h2>
       </div>
+      
       <br>
       <?php 
         $idPunto = "";
-        $numRecaudos = 0;
-        $TServicios = 0;
-        $TSaldo = 0;
-        $TMultas = 0;
-        $TTraslados = 0;
-        $TReactivacion = 0;
-        $TMatricula = 0;
-        $TDescuento = 0;
+        $idEstado = "";
         $TTotal = 0;
       ?>
-      <form method = "POST" class="container formularioCRecibos" action = "#">
-            <div class="container gridCRecibos">
-                <div class="container form-group">
-                    <label class="container text-center">Desde</label>
-                  <input type="date" class="form-control documentoSuscriptor" name="fInicial" >
-                </div>
-                <div class="container form-group">
-                    <label class="container text-center">Hasta</label>
-                  <input type="date" class="form-control documentoSuscriptor" name="fFinal" >
-                </div>
-            </div>
-            
+      <form method = "POST" class="container formularioCRecibos" action = "#">      
             <div class="gridCbxCRecibos text-center">
-                
+            <label class="form-group p-1 labelCRecibos">Filtro De Estado</label>
+                <select class="form-control cbxCRecibos" name="select">
+                  <option value ="todos">TODOS</option>
+                  <option value="1">CON MORA</option>
+                  <option value="2">AL DIA</option>
+                  <option value="3">BLOQUEADO</option>
+                  <option value="4">SUSPENDIDO</option>
+                  <option value="5">BLOQUEO ESPECIAL</option>
+                  
+                  </select>
+                <div class="btnCRecibos">
+                    <button type="submit"  name ="btnConsultar" class="btn btn-dark">Consultar</button>
+                </div>
             </div>
             </form>
         <br>
-        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div class="table-wrapper-scroll-y tablaDeudas">
             <table class="table table-hover table-condensed">
                 <thead>
                   <tr>
                     <th class="text-center" scope="col">Punto</th>
                     <th class="text-center" scope="col">Direccion</th>
                     <th class="text-center" scope="col">Documento</th>
-                    <th class="text-center" scope="col">Nombres</th>
-                    <th class="text-center" scope="col">Apellidos</th>
+                    <th class="text-center" scope="col">Nombre</th>
                     <th class="text-center" scope="col">Fecha Ult Pago</th>
                     <th class="text-center" scope="col">Atrasos</th>
                     <th class="text-center" scope="col">Estado</th>
@@ -129,108 +123,105 @@
                   </tr>
                 </thead>
                 <tbody >
-                  <?php  ?>
                   <?php
                      if (isset($_POST["btnConsultar"])){
-                      $fecha_ini = $_POST['fInicial'];
-                      $fecha_fin = $_POST['fFinal'];
-                      $idEntidad = $_POST['select'];
+                      $idEstado = $_POST['select'];
                       ?>
-                      <div class="float-right text-center">
-                      <form method = "post" action = "excel.php">
-                        <button type="submit" name="excel_recaudos" class="btn btn-primary">Exportar a Excel</button>
-                        <input type="hidden" name="fecha_ini" value=<?php echo $fecha_ini ?>>
-                        <input type="hidden" name="fecha_fin" value=<?php echo $fecha_fin ?>>
-                        <input type="hidden" name="idEntidad" value=<?php echo $idEntidad ?>>
-                      </form>
-                      </div>
-        <?php
                       
-                      if ($idEntidad == "todos") {
-                        $query = "SELECT * FROM pagos WHERE fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
-                      }else{
-                        $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
-                      }
-                      
+                     <?php
+                  
+                      $query = "SELECT * FROM pagos";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila1 = mysqli_fetch_array($query_exec)){
-                        $idEntPago = $fila1['id_entPago'];
-                        $Numfactura = $fila1['num_factura'];
-                        $query2 = "SELECT * FROM ent_pago WHERE id = $idEntPago";
-                        $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                        $fila2 = mysqli_fetch_array($query_exec2);
-                        $numRecaudos ++;
-                        $TServicios += $fila1[11];;
-                        $TSaldo += $fila1[12];
-                        $TMultas += $fila1[20];
-                        $TTraslados += $fila1[14];
-                        $TReactivacion += $fila1[15];
-                        $TMatricula += $fila1[16];;
-                        $TDescuento += $fila1[13];
-                        $TTotal += $fila1[17];
-                        
-                      ?>
-
-                     <tr>
-                     <td class="text-center"><?php echo $fila1[2]; ?></td>
-                     <td class="text-center"><?php echo $fila1[9]; ?></td>
-                     <td class="text-center"><?php echo $fila1[1]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[11]; ?></td>
-                     <td class="text-center"><?php echo $fila1[5]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[12]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[20]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[14]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[15]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[16]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[13]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[17]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[4]; ?></td>
-                     <td class="text-center"><?php echo $fila1[10]; ?></td>
-                     <td class="text-center"><?php echo $fila2[1]; ?></td>
-                      </tr>
-                      <?php } ?>
+                        $idPunto =$fila1[2];
+                        if ($idEstado == "todos") {
+                          $query2 = "SELECT * FROM puntos WHERE id = $idPunto";
+                          $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                          $fila2 = mysqli_fetch_array($query_exec2);
+                        }else{
+                          $query2 = "SELECT * FROM puntos WHERE estado = $idEstado AND id = $idPunto";
+                          $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                          $fila2 = mysqli_fetch_array($query_exec2);
+                        }
+                        $TTotal += $fila2[4];
+                          ?>
+                          
+                             <tr>
+                                <td class="text-center"><?php echo $fila1[0]; ?></td>
+                                <td class="text-center"><?php echo $fila2[1]; ?></td>
+                                <td class="text-center"><?php echo $fila2[3]; ?></td>
+                                <td class="text-center"><?php echo $fila1[7]; ?></td>
+                                <td class="text-center"><?php echo $fila1[4]; ?></td>
+                                <td class="text-center"><?php echo $fila2[5]; ?></td>
+                         <?php
+                        switch ($fila2[2]) {
+                          case 1:
+                             ?> <td class="text-center">Con Mora</td><?php
+                              break;
+                          case 2:
+                            ?> <td class="text-center">Al Dia</td><?php
+                              break;
+                          case 3:
+                            ?> <td class="text-center">Bloqueado</td><?php
+                              break;
+                          case 4:
+                            ?> <td class="text-center">Suspendido</td><?php
+                                break;  
+                          case 5:
+                            ?> <td class="text-center">Bloqueado Especial</td><?php
+                                  break; 
+                      }
+                     ?>
                      
-                      <?php } ?>
+                     <td class="text-center"><?php echo $fila2[4]; ?></td>
+                      </tr>
+                         <?php }
+                        }
+                      ?>
                 </tbody>
                 
               </table>
          </div>
-         
-    </body>
-    <br>
-    <div>
-        <h2 class="titulo text-center container">Totalidad Recaudos</h2>
+         <div id = "ventana"class="ventanaBackup">
+                <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
+                <div>
+                <form method="POST" action="backup.php">
+		              <h6>Crear Respaldo</h6>
+                  <button type="submit" class="btn btn-success" name="backup">Crear</button>
+              	</form>
+                </div>
+                <br>
+                <div class="form-group">
+                <form method="POST" action="restore.php">
+	            	<h6>Subir Base De Datos</h6>
+                <input type="file" name="sql" class="form-control-file">
+                <br>
+                <button type="submit" class="btn btn-success" name="backup">Subir</button>
+	            </form>
+                </div>
+            </div>
+            <script>
+                function abrir(){
+                  document.getElementById("ventana").style.display="block";
+                }
+                function cerrar(){
+                  document.getElementById("ventana").style.display="none";
+                }
+            </script>
+         <br>
+         <div class="text-center border-top">
+        <h4>Total de Deudas $<?php echo $TTotal; ?></h4>
+        
       </div>
-    <footer>
-    <div>
-              <table class="table table-hover table-condensed">
-                <thead>
-                  <tr>
-                    <th class="text-center" scope="col">Numero Recaudos</th>
-                    <th class="text-center" scope="col">Total Servicios</th>
-                    <th class="text-center" scope="col">Total SaldoAnt</th>
-                    <th class="text-center" scope="col">Total Multas</th>
-                    <th class="text-center" scope="col">Total Traslados</th>
-                    <th class="text-center" scope="col">Total Reactivacion</th>
-                    <th class="text-center" scope="col">Total Matricula</th>
-                    <th class="text-center" scope="col">Total Descuento</th>
-                    <th class="text-center" scope="col">Suma Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <td class="text-center"><?php echo $numRecaudos; ?></td>
-                <td class="text-center"><?php echo "$".$TServicios; ?></td>
-                <td class="text-center"><?php echo "$".$TSaldo; ?></td>
-                <td class="text-center"><?php echo "$".$TMultas; ?></td>
-                <td class="text-center"><?php echo "$".$TTraslados; ?></td>
-                <td class="text-center"><?php echo "$".$TReactivacion; ?></td>
-                <td class="text-center"><?php echo "$".$TMatricula; ?></td>
-                <td class="text-center"><?php echo "$".$TDescuento; ?></td>
-                <td class="text-center"><?php echo "$".$TTotal; ?></td>
-                </tbody>
-              </table>
-    </div>
-
+      <div id = "ventana"class="text-center" >
+        <form method = "post" action = "excel.php">
+          <button type="submit" name="excel_deudas" class="btn btn-success">Exportar a Excel</button>
+          <input type="hidden" name="idEstado" value=<?php echo $idEstado; ?>>
+        </form>
+      </div>
+      
+    </body>
     
+    <footer>
     </footer>
     </html>

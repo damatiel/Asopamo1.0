@@ -221,3 +221,76 @@ header('Content-Disposition: attachment; filename=Recaudo  '.$idEntidad1.' '.$fe
  <?php
 }
 ?>
+
+<?php
+if (isset($_POST["excel_deudas"])) {
+  header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
+  header('Content-Disposition: attachment; filename=Deudas.xls');
+  $idEstado = $_POST['idEstado'];
+   ?>
+   <table class="table table-hover table-condensed">
+                <thead>
+                  <tr>
+                    <th class="text-center" scope="col">Punto</th>
+                    <th class="text-center" scope="col">Direccion</th>
+                    <th class="text-center" scope="col">Documento</th>
+                    <th class="text-center" scope="col">Nombre</th>
+                    <th class="text-center" scope="col">Fecha Ult Pago</th>
+                    <th class="text-center" scope="col">Atrasos</th>
+                    <th class="text-center" scope="col">Estado</th>
+                    <th class="text-center" scope="col">Deuda</th>
+                  </tr>
+                </thead>
+                <tbody >
+                  <?php
+                      $query = "SELECT * FROM pagos";
+                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                      while($fila1 = mysqli_fetch_array($query_exec)){
+                        $idPunto =$fila1[2];
+                        if ($idEstado == "todos") {
+                          $query2 = "SELECT * FROM puntos WHERE id = $idPunto";
+                          $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                          $fila2 = mysqli_fetch_array($query_exec2);
+                        }else{
+                          $query2 = "SELECT * FROM puntos WHERE estado = $idEstado AND id = $idPunto";
+                          $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                          $fila2 = mysqli_fetch_array($query_exec2);
+                        }
+                          ?>
+                          
+                             <tr>
+                                <td class="text-center"><?php echo $fila1[0]; ?></td>
+                                <td class="text-center"><?php echo $fila2[1]; ?></td>
+                                <td class="text-center"><?php echo $fila2[3]; ?></td>
+                                <td class="text-center"><?php echo $fila1[7]; ?></td>
+                                <td class="text-center"><?php echo $fila1[4]; ?></td>
+                                <td class="text-center"><?php echo $fila2[5]; ?></td>
+                         <?php
+                        switch ($fila2[2]) {
+                          case 1:
+                             ?> <td class="text-center">Con Mora</td><?php
+                              break;
+                          case 2:
+                            ?> <td class="text-center">Al Dia</td><?php
+                              break;
+                          case 3:
+                            ?> <td class="text-center">Bloqueado</td><?php
+                              break;
+                          case 4:
+                            ?> <td class="text-center">Suspendido</td><?php
+                                break;  
+                          case 5:
+                            ?> <td class="text-center">Bloqueado Especial</td><?php
+                                  break; 
+                      }
+                     ?>
+                     
+                     <td class="text-center"><?php echo $fila2[4]; ?></td>
+                      </tr>
+                         <?php }
+                        
+                      ?>
+                </tbody>
+                
+              </table>
+   <?php } ?>

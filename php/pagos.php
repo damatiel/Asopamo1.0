@@ -63,9 +63,9 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
-            <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
-            <a class="dropdown-item" href="valores.php">Valores</a>
-                <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
+              <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
+              <a class="dropdown-item" href="valores.php">Valores</a>
+              <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
               </div>
             </li>
             <li class="nav-item">

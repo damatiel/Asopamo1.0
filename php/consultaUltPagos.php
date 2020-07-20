@@ -60,6 +60,7 @@ $atrasos ="";
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
+              <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
             </li>
@@ -71,7 +72,7 @@ $atrasos ="";
                <a class="dropdown-item" href="crearUsuario.php">Usuarios</a>
             <a class="dropdown-item" href="entidadPago.php">Entidad De Pago</a>
             <a class="dropdown-item" href="valores.php">Valores</a>
-                <a class="dropdown-item" href="respaldo.php">BackUp</a>
+            <a class="dropdown-item" href="javascript:abrir()">BackUp</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link">Usuario: <?php echo $_SESSION['nombres']; ?></a>
@@ -318,5 +319,31 @@ $atrasos ="";
           </div>
         
         </form>
+        <div id = "ventana"class="ventanaBackup">
+                <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
+                <div>
+                <form method="POST" action="backup.php">
+		              <h6>Crear Respaldo</h6>
+                  <button type="submit" class="btn btn-success" name="backup">Crear</button>
+              	</form>
+                </div>
+                <br>
+                <div class="form-group">
+                <form method="POST" action="restore.php">
+	            	<h6>Subir Base De Datos</h6>
+                <input type="file" name="sql" class="form-control-file">
+                <br>
+                <button type="submit" class="btn btn-success" name="backup">Subir</button>
+	            </form>
+                </div>
+            </div>
+            <script>
+                function abrir(){
+                  document.getElementById("ventana").style.display="block";
+                }
+                function cerrar(){
+                  document.getElementById("ventana").style.display="none";
+                }
+            </script>
         </body>
         </html>
