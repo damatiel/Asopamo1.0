@@ -130,20 +130,21 @@
                       
                      <?php
                   
-                      $query = "SELECT * FROM pagos";
+                      $query = "SELECT * FROM pagos ";
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila1 = mysqli_fetch_array($query_exec)){
                         $idPunto =$fila1[2];
                         if ($idEstado == "todos") {
                           $query2 = "SELECT * FROM puntos WHERE id = $idPunto";
                           $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                          $fila2 = mysqli_fetch_array($query_exec2);
                         }else{
                           $query2 = "SELECT * FROM puntos WHERE estado = $idEstado AND id = $idPunto";
                           $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                          $fila2 = mysqli_fetch_array($query_exec2);
                         }
                         $TTotal += $fila2[4];
+                        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+                          # code...
+                        
                           ?>
                           
                              <tr>
@@ -175,7 +176,7 @@
                      
                      <td class="text-center"><?php echo $fila2[4]; ?></td>
                       </tr>
-                         <?php }
+                         <?php }}
                         }
                       ?>
                 </tbody>
