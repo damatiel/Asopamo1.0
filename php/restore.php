@@ -3,7 +3,6 @@
 <?php 
 if (isset($_POST["backup"])) {
     $name = $_POST['sql'];
-
 /**
  * This file contains the Restore_Database class wich performs
  * a partial or complete restoration of any given MySQL database
@@ -186,6 +185,7 @@ class Restore_Database {
         }
 
         return true;
+        
     }
 
     /*
@@ -299,3 +299,5 @@ if (php_sapi_name() != "cli") {
     echo '</div>';
 }
 }
+
+
