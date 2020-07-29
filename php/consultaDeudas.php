@@ -141,9 +141,9 @@
                           $query2 = "SELECT * FROM puntos WHERE estado = $idEstado AND id = $idPunto";
                           $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
                         }
-                        $TTotal += $fila2[4];
+                        
                         if ($fila2 = mysqli_fetch_array($query_exec2)) {
-                          # code...
+                          $TTotal += $fila2[4];
                         
                           ?>
                           

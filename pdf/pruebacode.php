@@ -14,18 +14,7 @@ $user = $_SESSION['nombres'];
 if (isset($_POST["imprimir1"])) {
 	if (isset($_POST["IdPunto"])) {
 		$id_punto = $_POST['IdPunto'];
-		echo $id_punto;
 		$query = "SELECT * FROM puntos WHERE id = '$id_punto'";
-	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-	}
-	if (isset($_POST["tipo_direc"])){
-		$td = $_POST['tipo_direc'];
-	$n1 = $_POST['numero_direc'];
-	$n2 = $_POST['numero2_direc'];
-	$n3 = $_POST['numero3_direc'];
-	$dire = $td.$n1.'#'.$n2.'-'.$n3;	
-
-	$query = "SELECT * FROM puntos WHERE dir = '$dire'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	}
 	if ($fila = mysqli_fetch_array($query_exec)) {
@@ -35,8 +24,7 @@ if (isset($_POST["imprimir1"])) {
 		if ($fila2 = mysqli_fetch_array($query_exec)) {
 				$admin_mes = $fila2[2];
 			}
-		$indi =$fila[13]; 
-		echo $indi;
+		$indi =$fila[13];
 		$doc = $fila[3];
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
