@@ -1,4 +1,4 @@
- p {
+p {
       margin: 0px;
     }
     h1 {
@@ -27,7 +27,7 @@
       left: 0px;
       top: 0px;
       width: 829px;
-      height: 1076px;
+      height: 810px;
     }
     .gwd-p-ppgg {
       position: absolute;
@@ -39,16 +39,16 @@
       font-size: 30px;
     }
     .gwd-img-12pu {
-      width: 813px;
       transform-origin: 406.667px 538px 0px;
       left: 0px;
       top: 0px;
+      width: 532px;
     }
     .gwd-p-14qa {
-      width: 147px;
-      left: 631px;
-      height: 32px;
-      top: 53px;
+      top: 40px;
+      height: 24px;
+      left: 413px;
+      width: 96px;
     }
     .gwd-p-16rd {
       position: absolute;
@@ -119,15 +119,17 @@
       position: absolute;
       background-image: none;
       background-color: rgb(255, 255, 255);
-      height: 29px;
-      top: 944px;
-      left: 290px;
-      width: 233px;
-      transform-origin: 116.553px 14.466px 0px;
+      top: 711px;
+      height: 22px;
+      left: 190px;
+      width: 153px;
     }
     .gwd-p-q0r4 {
-      left: 43px;
-      top: 407px;
+      top: 306px;
+      height: 44px;
+      width: 154px;
+      transform-origin: 117.526px 29.5px 0px;
+      left: 17px;
     }
     .gwd-p-huvl {
       top: 409px;
@@ -136,16 +138,32 @@
       top: 406px;
     }
     .gwd-p-1xo1 {
-      top: 406px;
+      top: 306px;
+      height: 44px;
+      width: 154px;
+      transform-origin: 117.526px 29.5px 0px;
+      left: 16px;
     }
     .gwd-p-1eat {
-      top: 409px;
+      top: 308px;
+      height: 44px;
+      left: 246px;
+      width: 213px;
+      transform-origin: 162.62px 29.5px 0px;
     }
     .gwd-p-wotq {
-      top: 409px;
+      top: 308px;
+      height: 44px;
+      left: 246px;
+      width: 213px;
+      transform-origin: 162.62px 29.5px 0px;
     }
     .gwd-p-1h36 {
-      top: 409px;
+      top: 308px;
+      height: 44px;
+      left: 246px;
+      width: 213px;
+      transform-origin: 162.62px 29.5px 0px;
     }
     .gwd-p-d236 {
       position: absolute;
@@ -180,14 +198,28 @@
     .gwd-p-ncq9 {
       font-family: "Courier New";
       font-weight: bold;
+      height: 14px;
+      width: 181px;
+      transform-origin: 90.5px 7px 0px;
+      left: 35px;
+      top: 435px;
     }
     .gwd-p-18ab {
       font-family: "Courier New";
       font-weight: bold;
+      top: 450px;
+      height: 14px;
+      left: 35px;
+      width: 211px;
+      transform-origin: 105.5px 7px 0px;
     }
     .gwd-p-8hmw {
       font-family: "Courier New";
       font-weight: bold;
+      top: 466px;
+      height: 14px;
+      left: 35px;
+      width: 63px;
     }
     .gwd-p-5wlg {
       left: 408px;
@@ -245,8 +277,12 @@
       top: 747px;
     }
     .gwd-p-1nly {
-      left: 154px;
-      top: 682px;
+      height: 14px;
+      font-size: 12px;
+      top: 515px;
+      width: 228px;
+      transform-origin: 114px 7px 0px;
+      left: 140px;
     }
     .gwd-p-156d {
       top: 285px;
@@ -257,8 +293,10 @@
       transform-origin: 221.667px 210.923px 0px;
     }
     .gwd-p-1oen {
-      left: 591px;
-      top: 284px;
+      top: 214px;
+      height: 12px;
+      width: 49px;
+      left: 429px;
     }
     .gwd-p-1bi0 {
       top: 304px;
@@ -266,41 +304,66 @@
       transform-origin: 543.495px 210.923px 0px;
     }
     .gwd-p-suoa {
-      width: 101px;
       transform-origin: 294.514px 210.923px 0px;
-      top: 304px;
-      left: 656px;
+      height: 12px;
+      left: 429px;
+      width: 66px;
+      top: 247px;
     }
     .gwd-p-240t {
-      left: 53px;
-      top: 682px;
+      top: 513px;
+      height: 14px;
+      left: 35px;
+      width: 63px;
     }
     .gwd-p-uoq1 {
-      top: 788px;
+      top: 593px;
+      height: 44px;
+      width: 153px;
+      transform-origin: 116.763px 29.5px 0px;
+      left: 17px;
     }
     .gwd-p-ujhy {
-      top: 791px;
+      top: 595px;
+      height: 44px;
+      width: 209px;
+      transform-origin: 159.566px 29.5px 0px;
+      left: 239px;
     }
     .gwd-p-1han {
-      top: 790px;
+      top: 595px;
+      height: 12px;
+      width: 99px;
+      left: 119px;
     }
     .gwd-p-qjn1 {
-      top: 808px;
-      width: 615px;
-      transform-origin: 1793.75px 210.923px 0px;
+      height: 12px;
+      left: 149px;
+      top: 613px;
+      width: 366px;
+      transform-origin: 1629.06px 210.923px 0px;
     }
     .gwd-p-rr0s {
-      top: 828px;
+      height: 12px;
+      width: 99px;
+      top: 633px;
+      left: 159px;
     }
     .gwd-p-uiqp {
       font-size: 20px;
-      top: 828px;
       font-weight: bold;
+      height: 12px;
+      top: 630px;
+      left: 427px;
+      width: 88px;
+      transform-origin: 391.482px 210.923px 0px;
     }
     .gwd-p-ajdm {
-      top: 790px;
-      width: 321px;
-      transform-origin: 936.251px 210.923px 0px;
+      top: 595px;
+      left: 336px;
+      width: 179px;
+      height: 13px;
+      transform-origin: 798.043px 228.5px 0px;
     }
     .gwd-p-15yh {
       position: absolute;
@@ -312,54 +375,247 @@
       top: 752px;
     }
     .gwd-p-15u8 {
-      left: 280px;
+      top: 566px;
+      height: 14px;
+      width: 149px;
+      left: 257px;
     }
     .gwd-p-1r4a {
-      top: 657px;
+      top: 495px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
     }
     .gwd-p-nc2t {
-      top: 657px;
+      top: 495px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
     }
     .gwd-p-1v3k {
-      top: 659px;
+      top: 496px;
+      height: 14px;
+      left: 35px;
+      width: 32px;
     }
     .gwd-p-4ge5 {
-      height: 18px;
-      transform-origin: 73.5001px 17.7778px 0px;
       font-size: 20px;
-      top: 446px;
-      left: 550px;
       font-weight: bold;
+      height: 14px;
+      width: 96px;
+      transform-origin: 71.2728px 17.7778px 0px;
+      top: 343px;
+      left: 429px;
     }
     .gwd-p-ph3h {
       position: absolute;
-      left: 43px;
-      top: 847px;
       font-size: 20px;
-      width: 73px;
-      height: 27px;
       transform-origin: 36.75px 17.1429px 0px;
+      height: 20px;
+      width: 47px;
+      top: 653px;
+      left: 19px;
     }
     .gwd-p-1vib {
-      left: 121px;
-      top: 853px;
+      height: 14px;
+      width: 7px;
+      top: 655px;
+      left: 93px;
     }
     .gwd-p-1wb3 {
-      left: 146px;
-      top: 853px;
-      width: 134px;
-      height: 18px;
       transform-origin: 66.9999px 9px 0px;
+      height: 14px;
+      width: 87px;
+      top: 656px;
+      left: 104px;
     }
     .gwd-p-1trv {
-      width: 322px;
-      transform-origin: 939.167px 210.923px 0px;
+      height: 12px;
+      left: 345px;
+      width: 169px;
+      transform-origin: 755.806px 210.923px 0px;
+      top: 308px;
     }
     .gwd-p-rv6v {
-      width: 616px;
-      transform-origin: 1796.67px 210.923px 0px;
+      height: 12px;
+      left: 147px;
+      width: 367px;
+      transform-origin: 1632.12px 210.923px 0px;
+      top: 327px;
     }
     .gwd-p-1oc6 {
-      width: 213px;
       transform-origin: 621.25px 210.923px 0px;
+      top: 307px;
+      height: 12px;
+      width: 140px;
+      left: 121px;
+    }
+    .gwd-p-133f {
+      top: 306px;
+      width: 154px;
+      height: 44px;
+      transform-origin: 117.526px 29.5px 0px;
+      font-size: 16px;
+      left: 16px;
+    }
+    .gwd-p-8dzf {
+      top: 308px;
+      height: 44px;
+      left: 246px;
+      width: 213px;
+      transform-origin: 162.62px 29.5px 0px;
+    }
+    .gwd-p-1lcy {
+      height: 12px;
+      width: 99px;
+      left: 165px;
+      top: 346px;
+    }
+    .gwd-p-i08h {
+      top: 215px;
+      height: 12px;
+      left: 330px;
+      width: 49px;
+    }
+    .gwd-p-1hqo {
+      top: 229px;
+      height: 12px;
+      left: 330px;
+      width: 124px;
+    }
+    .gwd-p-1m32 {
+      top: 229px;
+      height: 12px;
+      left: 330px;
+      width: 124px;
+    }
+    .gwd-p-1wga {
+      top: 400px;
+      height: 14px;
+      left: 35px;
+      width: 231px;
+      transform-origin: 115.5px 7px 0px;
+    }
+    .gwd-p-7vjl {
+      top: 400px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-1o0l {
+      top: 400px;
+      height: 14px;
+      left: 400px;
+      width: 7px;
+    }
+    .gwd-p-pl9h {
+      top: 400px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-ibug {
+      top: 400px;
+      height: 14px;
+      left: 417px;
+      width: 56px;
+    }
+    .gwd-p-5car {
+      top: 522px;
+      height: 14px;
+      left: 400px;
+      width: 7px;
+    }
+    .gwd-p-kmkt {
+      top: 522px;
+      height: 14px;
+      left: 416px;
+      width: 56px;
+    }
+    .gwd-p-13dn {
+      top: 418px;
+      height: 14px;
+      left: 35px;
+      width: 162px;
+      transform-origin: 81px 7px 0px;
+    }
+    .gwd-p-lgxp {
+      top: 418px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-1rrw {
+      top: 418px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-1nx0 {
+      top: 434px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-1hrr {
+      top: 434px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-6ppu {
+      top: 449px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-e63t {
+      top: 449px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-1p0n {
+      top: 464px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-yvzo {
+      top: 464px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-1rae {
+      top: 480px;
+      height: 14px;
+      left: 267px;
+      width: 7px;
+    }
+    .gwd-p-nial {
+      top: 480px;
+      height: 14px;
+      left: 279px;
+      width: 56px;
+    }
+    .gwd-p-9mo5 {
+      top: 482px;
+      height: 14px;
+      left: 35px;
+      width: 206px;
+      transform-origin: 103px 7px 0px;
+    }
+    .gwd-p-5okj {
+      top: 566px;
+      height: 14px;
+      width: 229px;
+      transform-origin: 174.826px 9.5px 0px;
+      left: 18px;
+    }
+    .gwd-strong-9mif {
+      font-size: 15px;
+    }
+    .gwd-strong-41fk {
+      font-size: 15px;
     }
