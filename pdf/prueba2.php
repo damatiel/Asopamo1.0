@@ -139,6 +139,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
 $html='
       <table>
           <tr>
+            <th>ID</th>
             <th>Documento</th>
             <th></th>
             <th>Dirección</th>
@@ -149,6 +150,7 @@ $html='
         $query = "SELECT * FROM puntos WHERE contador = 2";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
+            $id = $fila[0];
             $doc = $fila[3];
             $dir = $fila[1].' '.$fila['indicaciones'];
           
@@ -160,6 +162,7 @@ $html='
         }
             $html.='
               <tr>
+                <td>'.$id.'</td> 
                 <td>'.$doc.'</td> 
                 <td></td> 
                 <td>'.$dir.'</td>';

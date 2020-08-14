@@ -29,18 +29,12 @@ if (isset($_POST["imprimir1"])) {
 		$id_punto = $fila[0];
 		$saldo_ant = $fila[4];
 		$atrasos = $fila[5];
-		$descuento = $fila[6];
-		$matricula = $fila[7];
-		$traslado = $fila[8];
-		$reactivacion = $fila[9];
-		$multa = $fila[12];
 	}
 		$dire = $dire.$indi;
 		$saldo_ant = $saldo_ant-$admin_mes;
 	
-		$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
-		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
-		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+		
+		
 
 		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' ORDER BY numero_fact DESC";
 		$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
@@ -50,11 +44,14 @@ if (isset($_POST["imprimir1"])) {
 			$p_fact = $fila2[4];
 			$admin_mes = $fila2[5];
 			$saldo_ant = $fila2[6];
-			// $descuento = $fila2[12];
-			// $matricula = $fila2[13];
-			// $traslado = $fila2[14];
-			// $reactivacion = $fila2[15];
-			// $multa = $fila2[16];
+			 $descuento = $fila2[12];
+			 $matricula = $fila2[13];
+			 $traslado = $fila2[14];
+			 $reactivacion = $fila2[15];
+			 $multa = $fila2[16];
+			 $total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion-$descuento;
+			 $query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
+			$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 		$query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
 		$query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
 		if ($fila3 = mysqli_fetch_array($query_exec3)) {
