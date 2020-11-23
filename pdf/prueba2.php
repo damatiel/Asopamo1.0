@@ -20,7 +20,7 @@ $num_final = $_POST['num_final'];
     <div  id="codigo"></div>';
       # code...
     
-$query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='2' ORDER BY dir ASC";
+$query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER BY dir ASC";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
       $n_fact = $fila[0];
