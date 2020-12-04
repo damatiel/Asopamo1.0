@@ -29,7 +29,7 @@ header('Content-Disposition: attachment; filename=Puntos.xls');
                     $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                    while($fila = mysqli_fetch_array($query_exec)){ 
                     $docGeneral = $fila[3];
-                    $query2 = "SELECT * FROM suscriptores WHERE doc = $docGeneral";
+                    $query2 = "SELECT * FROM suscriptores WHERE doc = '$docGeneral'";
                       $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
                       $fila2 = mysqli_fetch_array($query_exec2);
                      ?>

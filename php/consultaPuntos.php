@@ -228,11 +228,11 @@
 
                    }else{
                     $query = "SELECT * FROM puntos";
-                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                    $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta0");
                    while($fila = mysqli_fetch_array($query_exec)){ 
-                    $docGeneral = $fila[3];
-                    $query2 = "SELECT * FROM suscriptores WHERE doc = $docGeneral";
-                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                    $doc = $fila[3];
+                    $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+                      $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta1");
                       $fila2 = mysqli_fetch_array($query_exec2);
                      ?>
                       
