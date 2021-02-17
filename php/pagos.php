@@ -40,7 +40,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="facturacion.php">Facturacion</a>
             </li>
-            
+            <li class="nav-item">
+                <a class="nav-link" href="internet.php">Internet</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="pagos.php">Pagos</a>
             </li>

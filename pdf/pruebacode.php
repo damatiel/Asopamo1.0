@@ -34,6 +34,7 @@ if (isset($_POST["imprimir1"])) {
 		$traslado = $fila[8];
 		$reactivacion = $fila[9];
 		$multa = $fila[12];
+		$inter = $fila['internet'];
 	}
 		$dire = $dire.$indi;
 		$saldo_ant = $saldo_ant-$admin_mes;
@@ -107,8 +108,17 @@ if (isset($_POST["imprimir1"])) {
 		<input type="hidden" name="traslado" value="<?php echo $traslado; ?>">
 		<input type="hidden" name="reactivacion" value="<?php echo $reactivacion; ?>">
 		<input type="hidden" name="multa" value="<?php echo $multa; ?>">
+		<input type="hidden" name="inter" value="<?php echo $inter; ?>">
 		<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $doc; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>
-		<input type="submit" name="fact1">
+		<input type="submit" name="fact1" value="Generar la Factura Individual">
+		<?php if ($inter == 1): ?>
+			<input type="submit" name="fact_inter" value="Generar la Factura Internet">
+		<?php endif ?>
+		
+	</form>
+	<br>
+	<form method="POST" action="../php/facturacion.php">
+		<input type="submit" name="volver" value="Volver">
 	</form>
 	<?php 
 	}
@@ -143,6 +153,7 @@ if (isset($_POST["imprimir1"])) {
   }if ($mes == 12) {
     $mes1 = 'Diciembre';
   }
+  $mes = $mes."-".$ultimodia;
 		?>
 		<form method="POST" action="prueba2.php">
 		<input type="hidden" name="mes" value="<?php echo $mes; ?>">
@@ -229,6 +240,7 @@ if (isset($_POST["imprimir1"])) {
   					echo $multa;
   					echo "-";
              		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 219");
+
   					$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar,dir,estado,descuento,matricula,traslado,reactivacion,multa) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar','$dir','1','$descuento','$matricula','$traslado','$reactivacion','$multa')";
   					$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta linea 221");
    					$query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
