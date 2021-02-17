@@ -134,7 +134,6 @@
                         $id_punto = $fila['id'];
                         ?>
                         <td><input type="checkbox" name="activo" value=<?php echo $id_punto ;?>></td>
-                        <?php echo $i ?>
                         <td><?php echo $fila['doc_suscriptor']; ?></td>
                         <td><?php echo $id_punto; ?></td>
                         <td><?php echo $fila['dir']; ?></td>
