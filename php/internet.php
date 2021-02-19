@@ -98,7 +98,7 @@
           </form>
           <?php if (isset($_POST["submit"])) {
             $documento = $_POST['txtDocumento'];
-            $query = "SELECT * FROM puntos WHERE doc_suscriptor = '$documento' AND estado = 2";
+            $query = "SELECT * FROM puntos WHERE doc_suscriptor = '$documento' AND estado < 3";
 
             $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 
