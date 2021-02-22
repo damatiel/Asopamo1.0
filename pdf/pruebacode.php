@@ -227,23 +227,10 @@ if (isset($_POST["imprimir1"])) {
 				}else{
 					$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion+$multa-$descuento;
   					$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado', multa = '$multa' WHERE id = '$id_punto'";
-  					echo $id_punto;
-  					echo "/";
-  					echo $total_pagar;
-  					echo "/";
-  					echo $atrasos;
-  					echo "/";
-  					echo $descuento;
-  					echo "/";
-  					echo $estado;
-  					echo "/";
-  					echo $multa;
-  					echo "-";
              		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 219");
-
-  					$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar,dir,estado,descuento,matricula,traslado,reactivacion,multa) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar','$dir','1','$descuento','$matricula','$traslado','$reactivacion','$multa')";
+  					$query5 = "INSERT INTO facturacion (id_punto,documento,fecha_fact,periodo_fact,admin_mes,saldo_ant,id_mes,operador,total_pagar,dir,estado,descuento,matricula,traslado,reactivacion,multa,internet) VALUES ('$id_punto', '$doc', NOW(), '$mes1','$admin_mes', '$saldo_ant','$mes', '$user','$total_pagar','$dir','1','$descuento','$matricula','$traslado','$reactivacion','$multa',0)";
   					$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta linea 221");
-   					$query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa') ";
+   					$query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa,internet) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa',0) ";
    					$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 223");
    					$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND periodo_fact = '$mes1'";
 					$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 225");
