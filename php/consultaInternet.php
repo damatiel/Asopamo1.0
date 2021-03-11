@@ -84,24 +84,21 @@ if ($_SESSION["autentificado"] != "SI") {
       </nav>
       <div class="float-right text-center">
         <form method = "post" action = "excel.php">
-          <button type="submit" name="excel_puntos" class="btn btn-primary">Exportar a Excel</button>
+          <button type="submit" name="excel_internet" class="btn btn-primary">Exportar a Excel</button>
         </form>
       </div>
       <div>
-        <h2 class="titulo text-center container">Consulta Puntos</h2> 
+        <h2 class="titulo text-center container">Consulta Internet</h2> 
       </div>
       <br>
-      <div class="container text-center">
+      <div class="container">
         <form method = "POST" action="#">
           <div class="gridConSuscriptores">
-            <div class="mr-2">
+            <div class="ml-2 mr-2 ">
               <input type="number" class="form-control" name="txtDoc" placeholder="Consulta Por Documento">
             </div>
-            <div class="mr-2 ml-2 ">
-              <input type="tetxt" class="form-control" name="txtNom" placeholder="Consulta Por Nombre">
-            </div>
-            <div class="mr-2 ml-2 ">
-              <input type="tetxt" class="form-control" name="txtApe" placeholder="Consulta Por Apellido">
+            <div class="ml-2 mr-2 ">
+              <input type="number" class="form-control" name="txtId" placeholder="Consulta Por ID">
             </div>
             <div class="ml-2">
               <button type="submit" name ="btnBuscar" class="btn btn-primary">Buscar</button>
@@ -132,10 +129,9 @@ if ($_SESSION["autentificado"] != "SI") {
               <?php
               if (isset($_POST["btnBuscar"])){
                 $doc = $_POST['txtDoc'];
-                $nom = $_POST['txtNom'];
-                $ape = $_POST['txtApe'];
+                $id = $_POST['txtId'];
                 if(!empty($doc)){
-                  $query1 = "SELECT * FROM puntos WHERE doc_suscriptor = $doc";
+                  $query1 = "SELECT * FROM puntos WHERE doc_suscriptor = $doc AND internet > 0";
                   $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
                   $query2 = "SELECT * FROM suscriptores WHERE doc = $doc";
                   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
@@ -165,16 +161,18 @@ if ($_SESSION["autentificado"] != "SI") {
                   </tr>
                 <?php } ?>
                 <?php
-              }else if(!empty($nom)){
-                $query1 = "SELECT * FROM suscriptores WHERE primer_nom = '$nom'";
-                $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
+              }else if(!empty($id)){
                 
-                while($fila1 = mysqli_fetch_array($query_exec1)){ 
-                  $docNom = $fila1[0];
+                
+                $query2 = "SELECT * FROM puntos WHERE id = $id AND internet > 0";
+                $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+                while($fila2 = mysqli_fetch_array($query_exec2)){
+                  $doc = $fila2[3];
+                  $query1 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+                  $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
                   
-                  $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
-                  $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                  while($fila2 = mysqli_fetch_array($query_exec2)){
+                  if($fila1 = mysqli_fetch_array($query_exec1)){ 
+                    
                     ?>
                     <tr>
                       <td class="text-center"><?php echo $fila2[0]; ?></td>
@@ -200,98 +198,72 @@ if ($_SESSION["autentificado"] != "SI") {
                   </tr>
                 <?php }}  ?>
                 <?php 
-              }else if(!empty($ape)){
-                $query1 = "SELECT * FROM suscriptores WHERE primer_ape = '$ape'";
-                $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta");
-                
-                if($fila1 = mysqli_fetch_array($query_exec1)){ 
-                  $docNom = $fila1[0];
-                  $query2 = "SELECT * FROM puntos WHERE doc_suscriptor = $docNom";
-                  $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
-                  while($fila2 = mysqli_fetch_array($query_exec2)){
-                    ?>
-                    <tr>
-                      <td class="text-center"><?php echo $fila2[0]; ?></td>
-                      <td class="text-center"><?php echo $fila1[0]; ?></td>
-                      <td class="text-center"><?php echo $fila1[1]; ?></td>
-                      <td class="text-center"><?php echo $fila1[3]; ?></td>
-                      <?php 
-                      
-                      $estado = $fila2[2];
-                      if($estado == 2){?>
-                       <td class="text-center"><?php echo "Activo"; ?></td>
-                     <?php } else{ ?>
-                      <td class="text-center"><?php echo "Cancelado"; ?></td>
-                    <?php } ?>
-                    <td class="text-center"><?php echo $fila2[1].' '.$fila2['indicaciones']; ?></td>
-                  </tr>
-                  <?php
-                } }}
-                
-
-              }else{
-                $query = "SELECT * FROM puntos";
-                $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta0");
-                while($fila = mysqli_fetch_array($query_exec)){ 
-                  $doc = $fila[3];
-                  $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
-                  $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta1");
-                  $fila2 = mysqli_fetch_array($query_exec2);
-                  ?>
-                  
-                  <tr>
-                    <td class="text-center"><?php echo $fila[0]; ?></td>
-                    <td class="text-center"><?php echo $fila[3]; ?></td>
-                    <td class="text-center"><?php echo $fila2[1]; ?></td>
-                    <td class="text-center"><?php echo $fila2[3]; ?></td>
-                    <?php 
-                    $estado = $fila[2];
-                    if($estado == 2){?>
-                     <td class="text-center"><?php echo "Activo"; ?></td>
-                   <?php } elseif($estado == 1){ ?>
-                    <td class="text-center"><?php echo "Deudor"; ?></td>
-                  <?php } elseif($estado == 3){ ?>
-                    <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
-                  <?php } elseif($estado == 4){ ?>
-                    <td class="text-center"><?php echo "Bloqueado"; ?></td>
-                  <?php } elseif ($estado == 5) {?>
-                    <td class="text-center"><?php echo "Bloqueado Especial"; ?></td>
-                  <?php } ?>
-                  <td class="text-center"><?php echo $fila[1].' '.$fila['indicaciones']; ?></td>
-                </tr>
-              <?php } } ?>
+              }
               
-              
-            </tbody>
-          </div>
-          
-        </div>
 
-        <div id = "ventana"class="ventanaBackup">
-          <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
-          <div>
-            <form method="POST" action="backup.php">
-              <h6>Crear Respaldo</h6>
-              <button type="submit" class="btn btn-success" name="backup">Crear</button>
-            </form>
-          </div>
-          <br>
-          <div class="form-group">
-            <form method="POST" action="restore.php">
-              <h6>Subir Base De Datos</h6>
-              <input type="file" name="sql" class="form-control-file">
-              <br>
-              <button type="submit" class="btn btn-success" name="backup">Subir</button>
-            </form>
-          </div>
+            }else{
+              $query = "SELECT * FROM puntos WHERE internet > 0";
+              $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta0");
+              while($fila = mysqli_fetch_array($query_exec)){ 
+                $doc = $fila[3];
+                $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+                $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta1");
+                $fila2 = mysqli_fetch_array($query_exec2);
+                ?>
+                
+                <tr>
+                  <td class="text-center"><?php echo $fila[0]; ?></td>
+                  <td class="text-center"><?php echo $fila[3]; ?></td>
+                  <td class="text-center"><?php echo $fila2[1]; ?></td>
+                  <td class="text-center"><?php echo $fila2[3]; ?></td>
+                  <?php 
+                  $estado = $fila[2];
+                  if($estado == 2){?>
+                   <td class="text-center"><?php echo "Activo"; ?></td>
+                 <?php } elseif($estado == 1){ ?>
+                  <td class="text-center"><?php echo "Deudor"; ?></td>
+                <?php } elseif($estado == 3){ ?>
+                  <td class="text-center"><?php echo "Bloqueado por Mora"; ?></td>
+                <?php } elseif($estado == 4){ ?>
+                  <td class="text-center"><?php echo "Bloqueado"; ?></td>
+                <?php } elseif ($estado == 5) {?>
+                  <td class="text-center"><?php echo "Bloqueado Especial"; ?></td>
+                <?php } ?>
+                <td class="text-center"><?php echo $fila[1].' '.$fila['indicaciones']; ?></td>
+              </tr>
+            <?php } } ?>
+            
+            
+          </tbody>
         </div>
-        <script>
-          function abrir(){
-            document.getElementById("ventana").style.display="block";
-          }
-          function cerrar(){
-            document.getElementById("ventana").style.display="none";
-          }
-        </script>
-      </body>
-      </html>
+        
+      </div>
+
+      <div id = "ventana"class="ventanaBackup">
+        <div id="cerrar"><a href="javascript:cerrar()"><img src="../img/close.png" alt=""></a></div>
+        <div>
+          <form method="POST" action="backup.php">
+            <h6>Crear Respaldo</h6>
+            <button type="submit" class="btn btn-success" name="backup">Crear</button>
+          </form>
+        </div>
+        <br>
+        <div class="form-group">
+          <form method="POST" action="restore.php">
+            <h6>Subir Base De Datos</h6>
+            <input type="file" name="sql" class="form-control-file">
+            <br>
+            <button type="submit" class="btn btn-success" name="backup">Subir</button>
+          </form>
+        </div>
+      </div>
+      <script>
+        function abrir(){
+          document.getElementById("ventana").style.display="block";
+        }
+        function cerrar(){
+          document.getElementById("ventana").style.display="none";
+        }
+      </script>
+    </body>
+    </html>

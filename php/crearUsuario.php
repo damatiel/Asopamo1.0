@@ -57,7 +57,7 @@
               <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
-              
+              <a class="dropdown-item" href="consultaInternet.php">Internet</a>
           </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

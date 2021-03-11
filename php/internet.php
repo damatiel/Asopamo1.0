@@ -58,6 +58,7 @@
               <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
+              <a class="dropdown-item" href="consultaInternet.php">Internet</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,6 +133,7 @@
                       while ($fila = mysqli_fetch_array($query_exec)) { 
                         $doc = $fila['doc_suscriptor'];
                         $id_punto = $fila['id'];
+                        $internet = $fila['internet'];
                         ?>
                         <td><input type="checkbox" name="activo" value=<?php echo $id_punto ;?>></td>
                         <td><?php echo $fila['doc_suscriptor']; ?></td>
@@ -169,16 +171,21 @@
                     </tr>
                   <?php } ?>
 
-
-
-
                 </tbody>
               </table>
             </div>
             <br>
 
             <div class="container form-group text-center">
+              <?php if ($internet == 0) {?>
               <button type="submit" name="activar_inter" class="btn btn-success">Activar internet</button>
+              <?php } ?>
+              <?php if ($internet == 1) {?>
+              <button type="submit" name="pagar_inter" class="btn btn-success">Pagar inscripción de internet</button>
+              <?php } ?>
+              <?php if ($internet == 2) {?>
+              <button type="submit" name="borrar_inter" class="btn btn-success">Quitar suscripción de internet</button>
+              <?php } ?>
             </div>
             </form>
             <?php
