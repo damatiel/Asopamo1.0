@@ -42,6 +42,7 @@ if (isset($_POST["fact1"])) {
   $traslado = $_POST['traslado'];
   $reactivacion = $_POST['reactivacion'];
   $multa = $_POST['multa'];
+  $admin_mes1 = $_POST['admin_mes1'];
   
 
 
@@ -75,7 +76,7 @@ $dompdf->loadHtml('
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-uiqp" id="per_fact_6">'.$p_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt gwd-p-ajdm" id="dir_1">'.$dir.'</p>
   <div class="gwd-div-1crj" id="codigo"></div>
-  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-1wga">Administración del Mes</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-1wga">'.$admin_mes1.'</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-7vjl">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1o0l">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-pl9h">'.$admin_mes.'</p>

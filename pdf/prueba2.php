@@ -7,6 +7,8 @@ require_once __DIR__ . '/../php/conectar.php';
 
 $user = $_SESSION['nombres']." ".$_SESSION['apellidos'];
 require_once 'variospdf.php';
+
+
 if (isset($_POST["fact2"])) {
 $mes = $_POST['mes'];
 $ultimodia = $_POST['ultimodia'];
@@ -36,10 +38,17 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
       $admin_mes = $fila[5];
       $saldo_ant = $fila[6];
       $total_pagar = $fila[9];
+      $vinternet = $fila[17];
 
     $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
   $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
+      $internet = $fila2['internet'];
+      $admin_mes1 = "Administración del mes";
+      if ($internet > 0) {
+        $admin_mes = $admin_mes + $vinternet;
+        $admin_mes1 = "Admin mes e Internet";
+      }
       $dir = $fila2[1]." ".$fila2['indicaciones'];
       $atrasos = $fila2[5];
     $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
@@ -84,7 +93,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-19xc gwd-p-uiqp" id="per_fact_6">'.$p_fact.'</p>
   <p class="gwd-p-1mkd gwd-p-2oua gwd-p-1l8l gwd-p-6s9a gwd-p-1swt gwd-p-ajdm" id="dir_1">'.$dir.'</p>
   <div class="gwd-div-1crj" id="codigo"></div>
-  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-1wga">Administración del Mes</p>
+  <p class="gwd-p-d236 gwd-p-1g7m gwd-p-1wga">'.$admin_mes1.'</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-7vjl">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-10z0 gwd-p-1o0l">$</p>
   <p class="gwd-p-d236 gwd-p-1g7m gwd-p-5wlg gwd-p-4uv1 gwd-p-pl9h">'.$admin_mes.'</p>
@@ -107,7 +116,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-ncq9">Descuento</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-18ab">Traslado de Punto</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-8hmw">Reconexión</p>
-  <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-9mo5">Otros Conceptos</p>
+  <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-9mo5">Otros Gastos</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1bt9 gwd-p-a5v1 gwd-p-ceg6 gwd-p-k48i gwd-p-1r4a">$</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-14r7 gwd-p-1baq gwd-p-1edg gwd-p-16jr gwd-p-11ry gwd-p-1avi gwd-p-1uq2 gwd-p-nc2t">'.$multa.'</p>
   <p class="gwd-p-d236 gwd-p-ediy gwd-p-1u8f gwd-p-14a8 gwd-p-ng4g gwd-p-1th5 gwd-p-1v3k">Multa</p>

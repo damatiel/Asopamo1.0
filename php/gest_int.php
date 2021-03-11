@@ -22,4 +22,32 @@ if (isset($_POST['activar_inter'])) {
 
 		}
 	}
+	if (isset($_POST['pagar_inter'])) {
+	if (isset($_POST['activo'])) {
+			$activar= $_POST['activo'];
+			$query ="UPDATE puntos SET internet='2' WHERE id = '$activar'";
+				$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+				echo "
+ 				<script>
+ 				alert('Se efectuo el pago de la inscripción de internet');
+ 				redir('internet.php');
+ 				</script>
+				";
+
+		}
+	}
+	if (isset($_POST['borrar_inter'])) {
+	if (isset($_POST['activo'])) {
+			$activar= $_POST['activo'];
+			$query ="UPDATE puntos SET internet='0' WHERE id = '$activar'";
+				$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+				echo "
+ 				<script>
+ 				alert('Se retiro la suscripción de internet');
+ 				redir('internet.php');
+ 				</script>
+				";
+
+		}
+	}
 ?>
