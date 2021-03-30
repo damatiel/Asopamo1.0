@@ -66,7 +66,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
     $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
     $html.='
 
-     <img class="gwd-img-ztg9" src="assets/factura.PNG" id="FACTURA2">
+     <img class="gwd-img-ztg9" src="assets/factura2.PNG" id="FACTURA2">
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-14u2">No Cuenta</p>
   <p class="gwd-p-10s9 gwd-p-13wj gwd-p-1w88" id="num_cuenta">'.$n_fact.'</p>
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-sn7x">No Cuenta</p>
@@ -114,12 +114,11 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
       <img class="gwd-div-jqdd" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
       <div class="gwd-div-gwpe"></div>
   <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
-  <img class="gwd-img-1cn1" src="null">
   <img class="gwd-img-1947 gwd-img-1tma" src="assets/asopamo.png">
-  <div class="gwd-div-radq"></div>
+  <div class="gwd-div-radq gwd-div-1jlq"></div>
   <div class="gwd-div-radq gwd-div-1n1n"></div>
   <img class="gwd-img-2evw gwd-img-p485" src="assets/logo_1.PNG">
-  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">';
+  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">
       
       $html.='
       <div style="page-break-after:always;"></div>';
