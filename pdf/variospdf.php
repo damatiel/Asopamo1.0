@@ -19,7 +19,7 @@ class PDF
 		$dompdf->loadHtml($html);
 
 		// (Optional) Setup the paper size and orientation
-		$dompdf->setPaper('letter', 'landscape');
+		$dompdf->setPaper('letter', 'portrait');
 		//landscape portrait
 
 		// Render the HTML as PDF
