@@ -66,7 +66,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
     $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
     $html.='
 
-     <img class="gwd-img-ztg9" src="assets/factura2.PNG" id="FACTURA2">
+     <img class="gwd-img-ztg9" src="assets/factura3.PNG" id="FACTURA2">
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-14u2">No Cuenta</p>
   <p class="gwd-p-10s9 gwd-p-13wj gwd-p-1w88" id="num_cuenta">'.$n_fact.'</p>
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-sn7x">No Cuenta</p>
@@ -86,31 +86,31 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-znu2 gwd-p-18r8" id="PERIODO_1">'.$p_fact.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-uy95 gwd-p-omce" id="LIMITE_PAGO_1">'.$ultimodia.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-z68v">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-4sl3" id="SER_PARA">10.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-4sl3" id="SER_PARA">'.$admin_mes.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-1dvk">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-fp76" id="SER_PARA_1">19.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-fp76" id="SER_PARA_1">'.$admin_mes.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-1yu7">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-1quq" id="OTROS2">20.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-1quq" id="OTROS2">0</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-a7vw gwd-p-gf4t">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-3xws gwd-p-1lm2" id="SALD_ANTER2">21.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-3xws gwd-p-1lm2" id="SALD_ANTER2">'.$saldo_ant.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-a7vw gwd-p-gb7b">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-3xws gwd-p-z17a" id="SER_PARA_4">22.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-3xws gwd-p-z17a" id="SER_PARA_4">'.$total_pagar.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-19dw">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-1ksx" id="SER_INTER">11.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-1ksx" id="SER_INTER">'.$vinternet.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-1yfb">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-1rhh" id="DESCUENTO">12.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-1rhh" id="DESCUENTO">'.$descuento.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1l16">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-1mmd" id="SALD_ANTER">13.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-1mmd" id="SALD_ANTER">'.$saldo_ant.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-7ryv">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1rsa" id="TRAS_PUNTO">14.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1rsa" id="TRAS_PUNTO">'.$traslado.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-juxz">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-14by" id="RECONEXION">15.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-14by" id="RECONEXION">'.$reactivacion.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1k65">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-11xs" id="MULTA">16.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-11xs" id="MULTA">'.$multa.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-goi7">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk" id="OTROS">17.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk" id="OTROS">0</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">18.000</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">'.$total_pagar.'</p>
       <img class="gwd-div-jqdd" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
       <div class="gwd-div-gwpe"></div>
   <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
@@ -118,7 +118,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <div class="gwd-div-radq gwd-div-1jlq"></div>
   <div class="gwd-div-radq gwd-div-1n1n"></div>
   <img class="gwd-img-2evw gwd-img-p485" src="assets/logo_1.PNG">
-  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">
+  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">';
       
       $html.='
       <div style="page-break-after:always;"></div>';
