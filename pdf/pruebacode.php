@@ -89,7 +89,7 @@ if (isset($_POST["imprimir1"])) {
 		}
 		$admin_mes1 = "Administración del mes";
       if ($inter > 0) {
-      	$admin_mes = $admin_mes + 40000;
+      	$admin_mes = $admin_mes;
         $admin_mes1 = "Admin mes e Internet";
       }
 		?>
@@ -234,7 +234,7 @@ if (isset($_POST["imprimir1"])) {
   			}elseif ($internet == 0) {
   				$vinternet = 0;
   			}else{
-  				$vinternet = 40000;
+  				$vinternet = 0;
   			}
 
 
