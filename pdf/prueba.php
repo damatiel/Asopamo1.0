@@ -136,7 +136,7 @@ if (isset($_POST["fact_inter"])) {
   $inter = $_POST['inter'];
 
 $dompdf->loadHtml('
-<link rel="stylesheet" href="prueba.css">
+<link rel="stylesheet" href="prueba_ant.css">
 <div  id="codigo"></div>
    <img class="gwd-img-xvwd gwd-img-12pu" src="assets/factura_1_original (2)_4.jpg" id="factura">
   <p class="gwd-p-ppgg gwd-p-14qa" id="num_fact">'.$n_fact.'</p>

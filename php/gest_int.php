@@ -20,8 +20,8 @@ if (isset($_POST['activar_inter'])) {
  				</script>
 				";
 
-		}
-	}
+		}echo "error linea 23";
+	}echo "error linea 24";
 	if (isset($_POST['pagar_inter'])) {
 	if (isset($_POST['activo'])) {
 			$activar= $_POST['activo'];
@@ -34,8 +34,8 @@ if (isset($_POST['activar_inter'])) {
  				</script>
 				";
 
-		}
-	}
+		}echo "error linea 37";
+	}echo "error linea 38";
 	if (isset($_POST['borrar_inter'])) {
 	if (isset($_POST['activo'])) {
 			$activar= $_POST['activo'];
@@ -48,6 +48,6 @@ if (isset($_POST['activar_inter'])) {
  				</script>
 				";
 
-		}
-	}
+		}echo "error linea 51";
+	}echo "error linea 52";
 ?>
