@@ -1,4 +1,4 @@
- p {
+p {
       margin: 0px;
     }
     h1 {
@@ -244,19 +244,6 @@
       top: 324px;
       left: 704px;
     }
-    .gwd-div-jqdd {
-      position: absolute;
-      width: 259.333px;
-      height: 49px;
-      border-image-source: none;
-      border-image-width: 1;
-      border-image-outset: 0;
-      border-image-repeat: stretch;
-      border-color: rgb(114, 74, 74);
-      margin: 0px;
-      top: 360px;
-      left: 534px;
-    }
     .gwd-p-14u2 {
       left: 357px;
       color: rgb(255, 255, 255);
@@ -423,4 +410,155 @@
     }
     .gwd-img-i2p2 {
       left: 12px;
+    }
+    .gwd-div-1crj {
+      background-color: rgb(255, 255, 255);
+      height: 22px;
+      position: absolute;
+      width: 153px;
+      top: 374px;
+      left: 602px;
+    }
+    .gwd-span-ww9a {
+      font-family: Arial;
+      font-size: xx-large;
+    }
+    .gwd-div-6fim {
+      font-family: Arial;
+      font-size: xx-large;
+    }
+    .gwd-div-cddg {
+      font-family: Arial;
+      font-size: xx-large;
+    }
+    .gwd-div-14cq {
+      font-family: Arial;
+      font-size: xx-large;
+    }
+    .gwd-div-1qqc {
+      font-family: Arial;
+      font-size: xx-large;
+    }
+    .gwd-p-1dly {
+      position: absolute;
+      height: 61px;
+      font-family: "Courier New";
+      font-size: 9px;
+      text-align: center;
+      transform-origin: 50% 50% 0px;
+      left: 37px;
+      width: 265px;
+      top: 355px;
+    }
+    .gwd-span-u2wc {
+      font-family: "Arial Black";
+    }
+    .gwd-div-1tfq {
+      font-family: "Arial Black";
+    }
+    .gwd-div-1neo {
+      font-family: "Arial Black";
+    }
+    .gwd-span-1mdj {
+      font-family: "Arial Black";
+    }
+    .gwd-span-10qz {
+      font-family: "Arial Black";
+    }
+    .gwd-span-1elw {
+      color: rgb(41, 6, 226);
+    }
+    .gwd-span-1kam {
+      font-family: "Arial Black";
+    }
+    .gwd-div-19n6 {
+      font-family: "Arial Black";
+    }
+    .gwd-img-1dbl {
+      position: absolute;
+      width: 81px;
+      height: 52px;
+      left: 128px;
+      top: 392px;
+    }
+    .gwd-p-flx4 {
+      left: 37px;
+      top: 355px;
+    }
+    .gwd-p-frrh {
+      position: absolute;
+      font-family: "Arial Black";
+      font-size: 7px;
+      text-align: center;
+      transform-origin: 314px -11px 0px;
+      top: 503px;
+      left: 29px;
+    }
+    .gwd-span-wcg1 {
+      font-size: 11px;
+    }
+    .gwd-p-idja {
+      left: 24px;
+      width: 265px;
+    }
+    .gwd-p-5xxo {
+      text-align: justify;
+      left: 12px;
+      top: 354px;
+    }
+    .gwd-p-hfq1 {
+      position: absolute;
+      font-family: "Courier New";
+      font-size: 9px;
+      top: 441px;
+      left: 36px;
+    }
+    .gwd-span-55sn {
+      font-family: "Arial Black";
+    }
+    .gwd-div-1xjp {
+      font-family: "Arial Black";
+    }
+    .gwd-p-hp50 {
+      position: absolute;
+      font-family: "Courier New";
+      font-size: 9px;
+      text-align: center;
+      top: 123px;
+      left: 68px;
+    }
+    .gwd-div-13it {
+      font-family: "Arial Black";
+    }
+    .gwd-p-p746 {
+      top: 486px;
+      left: 574px;
+    }
+    .gwd-span-18d3 {
+      font-size: 8px;
+    }
+    .gwd-span-tski {
+      font-family: "Arial Black";
+    }
+    .gwd-div-h4td {
+      font-size: 8px;
+    }
+    .gwd-span-5buu {
+      font-family: "Arial Black";
+      font-size: 8px;
+    }
+    .gwd-div-1gx6 {
+      position: absolute;
+      font-family: "Arial Black";
+      font-size: 8px;
+      text-align: center;
+      top: 127px;
+      left: 122px;
+    }
+    .gwd-span-1oe0 {
+      font-family: "Arial Black";
+    }
+    .gwd-span-1h4u {
+      font-family: "Arial Black";
+      font-size: 8px;
     }

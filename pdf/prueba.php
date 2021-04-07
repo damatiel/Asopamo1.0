@@ -94,7 +94,7 @@ $dompdf->loadHtml('
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk" id="OTROS">0</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8">$</p>
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">'.$total_pagar.'</p>
-      <img class="gwd-div-jqdd" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
+      <img class="gwd-div-1crj" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
       <div class="gwd-div-gwpe"></div>
   <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
   <img class="gwd-img-1947 gwd-img-1tma" src="assets/asopamo.png">
