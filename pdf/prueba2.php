@@ -64,7 +64,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
     $pApe = $fila3[3];
     $sApe = $fila3[4];
     $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
-    
+    $otros2= $descuento + $traslado + $reactivacion + $multa;
     $html.='
   <img class="gwd-img-ztg9" src="assets/factura5.PNG" id="FACTURA2">
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-14u2">No Cuenta</p>
@@ -90,7 +90,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-1dvk">$</p>
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-fp76" id="SER_PARA_1">'.$admin_mes.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-1yu7">$</p>
-  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-1quq" id="OTROS2">0</p>
+  <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-1quq" id="OTROS2">'.$otros2.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-a7vw gwd-p-gf4t">$</p>
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-3xws gwd-p-1lm2" id="SALD_ANTER2">'.$saldo_ant.'</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-a7vw gwd-p-gb7b">$</p>
