@@ -64,9 +64,9 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
     $pApe = $fila3[3];
     $sApe = $fila3[4];
     $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
+    
     $html.='
-
-     <img class="gwd-img-ztg9" src="assets/factura3.PNG" id="FACTURA2">
+  <img class="gwd-img-ztg9" src="assets/factura5.PNG" id="FACTURA2">
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-14u2">No Cuenta</p>
   <p class="gwd-p-10s9 gwd-p-13wj gwd-p-1w88" id="num_cuenta">'.$n_fact.'</p>
   <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-sn7x">No Cuenta</p>
@@ -111,14 +111,27 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk" id="OTROS">0</p>
   <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8">$</p>
   <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">'.$total_pagar.'</p>
-      <img class="gwd-div-jqdd" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
-      <div class="gwd-div-gwpe"></div>
-  <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
+      <img class="gwd-div-1crj" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
+      <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
   <img class="gwd-img-1947 gwd-img-1tma" src="assets/asopamo.png">
-  <div class="gwd-div-radq gwd-div-1jlq"></div>
-  <div class="gwd-div-radq gwd-div-1n1n"></div>
   <img class="gwd-img-2evw gwd-img-p485" src="assets/logo_1.PNG">
-  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">';
+  <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">
+  <img class="gwd-img-1dbl" src="assets/firma.PNG">
+  <p class="gwd-p-1dly gwd-p-flx4 gwd-p-idja gwd-p-5xxo" id="text"><span class="gwd-span-1mdj">P<span class="gwd-span-u2wc">ara PQR diríjase a la oficina o a través del correo electrónico&nbsp;</span></span><span class="gwd-span-10qz"><span class="gwd-span-1elw">asopamo@yahoo.es</span> o comuníquese telefónicamente con&nbsp;</span><span class="gwd-span-1kam">a la línea, 315 882 7273. En caso de presentar reclamación con este estado de cuenta, diríjase a la oficina antes de la fecha límite de pago.</span></p>
+  <div><br>
+    
+  </div>
+  <p class="gwd-p-frrh"><span class="gwd-span-wcg1">Pague su cuenta a tiempo, evitese la suspención de los servicios y un cargo de reconexión de $ 5,000</span><br>
+    
+  </p>
+  <p class="gwd-p-hfq1"><span class="gwd-span-55sn">Representante Legal: Jeisson Andrey Pinto Pinto<br></span><span class="gwd-span-1oe0">Operador: Diana Lisseth Alfonso Ríos</span></p>
+  <div><br>
+    
+  </div>
+  <p class="gwd-p-hp50 gwd-p-p746"><span class="gwd-span-5buu">NIT. 804008685<br></span><span class="gwd-span-tski">Lic. Min Tic 2019 - 2029. Entidad sin Ánimo de Lucro<br></span><span class="gwd-span-1h4u">Dirección: Calle 6 No 8 - 51, Mogotes (S) Teléfono: 315 882 7273</span></p>
+  <div class="gwd-div-1gx6">NIT. 804008685<br>
+    Lic. Min Tic 2019 - 2029. Entidad sin Ánimo de Lucro<br>
+    Dirección: Calle 6 No 8 - 51, Mogotes (S) Teléfono: 315 882 7273</div>';
       
       $html.='
       <div style="page-break-after:always;"></div>';
