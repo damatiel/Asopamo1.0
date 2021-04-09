@@ -55,7 +55,7 @@ if (isset($_POST["fact1"])) {
     <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-sn7x">No Cuenta</p>
     <p class="gwd-p-10s9 gwd-p-13wj gwd-p-lot3" id="num_cuenta_1">'.$n_fact.'</p>
     <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-18rr" id="num_cc">'.$doc.'</p>
-    <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-1ts8" id="nombre">'.$nomCompleto.'</p>
+    <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-1ts8" id="nombre">'.$p_nom.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-swx0 gwd-p-dyqc" id="ID_PUNTO">'.$id_punto.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-omm1 gwd-p-1c9y" id="DIRECCION">'.$dir.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-1jeq gwd-p-kkcw" id="DIRECCION_1">MOGOTES - SANTANDER</p>
@@ -192,7 +192,7 @@ if (isset($_POST["fact_inter"])) {
     <p class="gwd-p-15yh gwd-p-5okj">ESTADO DE CUENTA :</p>
     <p class="gwd-p-15yh gwd-p-15u8">'.$n_fact.'</p>
     <p class="gwd-p-ph3h">TOTAL:</p>
-    
+
     <img class="gwd-div-1crj" src="assets/'.$n_fact.'.jpg"/>
     ');
 
