@@ -43,6 +43,8 @@ if (isset($_POST["fact1"])) {
   $reactivacion = $_POST['reactivacion'];
   $multa = $_POST['multa'];
   $admin_mes1 = $_POST['admin_mes1'];
+  $vinternet =0;
+  $otros2 = 0;
   
 
 
@@ -62,7 +64,7 @@ if (isset($_POST["fact1"])) {
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-znu2 gwd-p-vsjq" id="PERIODO">'.$p_fact.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-uy95 gwd-p-1wj9" id="LIMITE_PAGO">'.$ultimodia.'</p>
     <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-1v8m" id="num_cc_1">'.$doc.'</p>
-    <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-12im" id="nombre_1">'.$nomCompleto.'</p>
+    <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-12im" id="nombre_1">'.$p_nom.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-swx0 gwd-p-ucgl" id="ID_PUNTO_1">'.$id_punto.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-omm1 gwd-p-ly9f" id="DIRECCION_2">'.$dir.'</p>
     <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-1jeq gwd-p-o1f3" id="DIRECCION_3">MOGOTES - SANTANDER</p>

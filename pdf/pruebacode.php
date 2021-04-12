@@ -230,7 +230,7 @@ if (isset($_POST["imprimir1"])) {
   			}
 
   			if ($internet == 1) {
-  				$vinternet = 100000;
+  				$vinternet = 0;
   			}elseif ($internet == 0) {
   				$vinternet = 0;
   			}else{
