@@ -43,7 +43,7 @@ if (isset($_POST["fact1"])) {
   $reactivacion = $_POST['reactivacion'];
   $multa = $_POST['multa'];
   $admin_mes1 = $_POST['admin_mes1'];
-  $vinternet =0;
+  $vinternet = $_POST['vinternet'];
   $otros2 = 0;
   
 
