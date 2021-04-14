@@ -191,12 +191,12 @@
               </div>
               <div class="container">
                 <select name="mes" class="form-control">
-                  <option value="1">Enero</option>
-                  <option value="2">Febrero</option>
-                  <option value="3">Marzo</option>
-                  <option value="4">Abril</option>
-                  <option value="5">Mayo</option>
-                  <option value="6">Junio</option>
+                  <option value="Enero">Enero</option>
+                  <option value="Febrero">Febrero</option>
+                  <option value="Marzo">Marzo</option>
+                  <option value="Abril">Abril</option>
+                  <option value="Mayo">Mayo</option>
+                  <option value="Junio">Junio</option>
                   <option value="7">Julio</option>
                   <option value="8">Agosto</option>
                   <option value="9">Septiembre</option>
