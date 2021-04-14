@@ -16,6 +16,7 @@ $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar l
 while($fila = mysqli_fetch_array($query_exec)){
  $id = $fila[0];
  $mes = 'Abril';
+ echo $id;
  $query = "SELECT * FROM facturacion WHERE id_punto = '$id' AND periodo_fact = '$mes'";
  $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 19");
  if($fila2 = mysqli_fetch_array($query_exec)){
