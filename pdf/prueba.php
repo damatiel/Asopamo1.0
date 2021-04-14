@@ -32,6 +32,7 @@ if (isset($_POST["fact1"])) {
   $doc = $_POST['doc'];
   $atrasos = $_POST['atrasos'];
   $admin_mes = $_POST['admin_mes'];
+  $admin_mes2 = $_POST['admin_mes2'];
   $saldo_ant = $_POST['saldo_ant'];
   $descuento = $_POST['descuento'];
   $total_pagar = $_POST['total_pagar'];
@@ -73,7 +74,7 @@ if (isset($_POST["fact1"])) {
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-z68v">$</p>
     <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-4sl3" id="SER_PARA">'.$admin_mes.'</p>
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-1dvk">$</p>
-    <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-fp76" id="SER_PARA_1">'.$admin_mes.'</p>
+    <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-fp76" id="SER_PARA_1">'.$admin_mes2.'</p>
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-1yu7">$</p>
     <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1u5p gwd-p-5hed gwd-p-3htt gwd-p-1quq" id="OTROS2">'.$otros2.'</p>
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1hqq gwd-p-ised gwd-p-a7vw gwd-p-gf4t">$</p>
