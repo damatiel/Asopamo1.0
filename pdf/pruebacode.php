@@ -49,10 +49,8 @@
 		$dire = $dire.$indi;
 		$saldo_ant = $saldo_ant-$admin_mes;
 
-		
+		$admin_mes2 = $admin_mes + $vinternet;
 		$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion+$vinternet-$descuento;
-		$query = "UPDATE facturacion set total_pagar = '$total_pagar' WHERE id_punto = $id_punto";
-		$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 44");
 		
 
 		$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' ORDER BY numero_fact DESC";
@@ -111,6 +109,7 @@
 				<input type="hidden" name="doc" value="<?php echo $doc; ?>">
 				<input type="hidden" name="atrasos" value="<?php echo $atrasos; ?>">
 				<input type="hidden" name="admin_mes" value="<?php echo $admin_mes; ?>">
+				<input type="hidden" name="admin_mes2" value="<?php echo $admin_mes2; ?>">
 				<input type="hidden" name="saldo_ant" value="<?php echo $saldo_ant; ?>">
 				<input type="hidden" name="descuento" value="<?php echo $descuento; ?>">
 				<input type="hidden" name="total_pagar" value="<?php echo $total_pagar; ?>">
