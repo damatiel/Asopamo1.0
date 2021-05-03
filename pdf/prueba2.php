@@ -48,6 +48,8 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
       if ($internet > 0) {
         $admin_mes2 = $admin_mes + $vinternet;
         $admin_mes1 = "Admin mes e Internet";
+      }else{
+        $admin_mes2 = $admin_mes;
       }
       $dir = $fila2[1]." ".$fila2['indicaciones'];
       $atrasos = $fila2[5];
@@ -124,7 +126,7 @@ $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER 
   <p class="gwd-p-frrh"><span class="gwd-span-wcg1">Pague su cuenta a tiempo, evitese la suspención de los servicios y un cargo de reconexión de $ 5,000</span><br>
     
   </p>
-  <p class="gwd-p-hfq1"><span class="gwd-span-55sn">Representante Legal: Jeisson Andrey Pinto Pinto<br></span><span class="gwd-span-1oe0">Operador: Diana Lisseth Alfonso Ríos</span></p>
+  <p class="gwd-p-hfq1"><span class="gwd-span-55sn">Representante Legal: Jeisson Andrey Pinto Pinto<br></span><span class="gwd-span-1oe0">Coordinadora Oficina: Diana Lisseth Alfonso Ríos</span></p>
   <div><br>
     
   </div>
