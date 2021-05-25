@@ -163,7 +163,7 @@ $html='
             <th>Primer Apellido</th>
           </tr>
           ';
-        $query = "SELECT * FROM puntos WHERE contador = 2";
+        $query = "SELECT * FROM puntos WHERE contador > 0";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
             $id = $fila[0];
@@ -216,6 +216,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     <th>Fecha de Factura</th>
     <th>Periodo Facturado</th>
     <th>Administracion del mes</th>
+    <th>Internet</th>
     <th>Saldo Anterior</th>
     <th>Descuento</th>
     <th>Matricula</th>
@@ -229,6 +230,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   $total =0;
   $t_admin_mes=0;
+  $t_internet=0;
   $t_saldo_ant=0;
   $t_descuento=0;
   $t_matricula=0;
@@ -248,6 +250,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
       $f_fact = $fila[3];
       $p_fact = $fila[4];
       $admin_mes = $fila[5];
+      $internet = $fila['internet'];
       $saldo_ant = $fila[6];
       $descuento = $fila[12];
       $matricula = $fila[13];
@@ -264,6 +267,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     <td><?php echo $f_fact; ?></td>
     <td><?php echo $p_fact; ?></td>
     <td><?php echo $admin_mes; ?></td>
+    <td><?php echo $internet; ?></td>
     <td><?php echo $saldo_ant; ?></td>
     <td><?php echo $descuento; ?></td>
     <td><?php echo $matricula; ?></td>
@@ -275,6 +279,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
   <?php 
   $total = $total + $total_pagar;
   $t_admin_mes = $t_admin_mes + $admin_mes;
+  $t_internet = $t_internet + $internet;
   $t_saldo_ant=$t_saldo_ant+$saldo_ant;
   $t_descuento=$t_descuento+$descuento;
   $t_matricula=$t_matricula+$matricula;
@@ -289,6 +294,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
      <td></td>
      <td></td>
      <td><?php echo $t_admin_mes; ?></td>
+     <td><?php echo $t_internet; ?></td>
      <td><?php echo $t_saldo_ant; ?></td>
      <td><?php echo $t_descuento; ?></td>
      <td><?php echo $t_matricula; ?></td>
