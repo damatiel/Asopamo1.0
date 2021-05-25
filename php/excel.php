@@ -100,6 +100,7 @@ if (isset($_POST["excel_recaudos"])) {
   $TServicios = 0;
   $TSaldo = 0;
   $TMultas = 0;
+  $TInter = 0;
   $TTraslados = 0;
   $TReactivacion = 0;
   $TMatricula = 0;
@@ -133,6 +134,7 @@ if (isset($_POST["excel_recaudos"])) {
     <th class="text-center" scope="col">Reactivacion</th>
     <th class="text-center" scope="col">Cuota Mat</th>
     <th class="text-center" scope="col">Descuento</th>
+    <th class="text-center" scope="col">Internet</th>
     <th class="text-center" scope="col">Total</th>
     <th class="text-center" scope="col">Fec Pago</th>
     <th class="text-center" scope="col">Periodo</th>
@@ -154,9 +156,10 @@ if (isset($_POST["excel_recaudos"])) {
     $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
     $fila2 = mysqli_fetch_array($query_exec2);
     $numRecaudos ++;
-    $TServicios += $fila1[11];;
+    $TServicios += $fila1[11];
     $TSaldo += $fila1[12];
     $TMultas += $fila1[20];
+    $TInter += $fila1[21];
     $TTraslados += $fila1[14];
     $TReactivacion += $fila1[15];
     $TMatricula += $fila1[16];;
@@ -177,6 +180,7 @@ if (isset($_POST["excel_recaudos"])) {
      <td class="text-center"><?php echo "$".$fila1[15]; ?></td>
      <td class="text-center"><?php echo "$".$fila1[16]; ?></td>
      <td class="text-center"><?php echo "$".$fila1[13]; ?></td>
+     <td class="text-center"><?php echo "$".$fila1[21]; ?></td>
      <td class="text-center"><?php echo "$".$fila1[17]; ?></td>
      <td class="text-center"><?php echo "$".$fila1[4]; ?></td>
      <td class="text-center"><?php echo $fila1[10]; ?></td>
@@ -203,6 +207,7 @@ if (isset($_POST["excel_recaudos"])) {
           <th class="text-center" scope="col">Total Reactivacion</th>
           <th class="text-center" scope="col">Total Matricula</th>
           <th class="text-center" scope="col">Total Descuento</th>
+          <th class="text-center" scope="col">Total Internet</th>
           <th class="text-center" scope="col">Suma Total</th>
         </tr>
       </thead>
@@ -215,6 +220,7 @@ if (isset($_POST["excel_recaudos"])) {
         <td class="text-center"><?php echo "$".$TReactivacion; ?></td>
         <td class="text-center"><?php echo "$".$TMatricula; ?></td>
         <td class="text-center"><?php echo "$".$TDescuento; ?></td>
+        <td class="text-center"><?php echo "$".$TInter; ?></td>
         <td class="text-center"><?php echo "$".$TTotal; ?></td>
       </tbody>
     </table>
