@@ -163,7 +163,7 @@ $html='
             <th>Primer Apellido</th>
           </tr>
           ';
-        $query = "SELECT * FROM puntos WHERE contador > 0";
+        $query = "SELECT * FROM puntos WHERE contador = 1";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
           while ($fila = mysqli_fetch_array($query_exec)) {
             $id = $fila[0];

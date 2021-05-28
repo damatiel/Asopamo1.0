@@ -91,6 +91,7 @@
         $numRecaudos = 0;
         $TServicios = 0;
         $TSaldo = 0;
+        $TInter = 0;
         $TMultas = 0;
         $TTraslados = 0;
         $TReactivacion = 0;
@@ -143,6 +144,7 @@
                     <th class="text-center" scope="col">Reactivacion</th>
                     <th class="text-center" scope="col">Cuota Mat</th>
                     <th class="text-center" scope="col">Descuento</th>
+                    <th class="text-center" scope="col">Internet</th>
                     <th class="text-center" scope="col">Total</th>
                     <th class="text-center" scope="col">Fec Pago</th>
                     <th class="text-center" scope="col">Periodo</th>
@@ -185,6 +187,7 @@
                         $numRecaudos ++;
                         $TServicios += $fila1[11];;
                         $TSaldo += $fila1[12];
+                        $TInter += $fila1[21];
                         $TMultas += $fila1[20];
                         $TTraslados += $fila1[14];
                         $TReactivacion += $fila1[15];
@@ -205,6 +208,7 @@
                      <td class="text-center"><?php echo "$".$fila1[14]; ?></td>
                      <td class="text-center"><?php echo "$".$fila1[15]; ?></td>
                      <td class="text-center"><?php echo "$".$fila1[16]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[21]; ?></td>
                      <td class="text-center"><?php echo "$".$fila1[13]; ?></td>
                      <td class="text-center"><?php echo "$".$fila1[17]; ?></td>
                      <td class="text-center"><?php echo "$".$fila1[4]; ?></td>
@@ -263,6 +267,7 @@
                     <th class="text-center" scope="col">Total Reactivacion</th>
                     <th class="text-center" scope="col">Total Matricula</th>
                     <th class="text-center" scope="col">Total Descuento</th>
+                    <th class="text-center" scope="col">Total Internet</th>
                     <th class="text-center" scope="col">Suma Total</th>
                   </tr>
                 </thead>
@@ -275,6 +280,7 @@
                 <td class="text-center"><?php echo "$".$TReactivacion; ?></td>
                 <td class="text-center"><?php echo "$".$TMatricula; ?></td>
                 <td class="text-center"><?php echo "$".$TDescuento; ?></td>
+                <td class="text-center"><?php echo "$".$TInter; ?></td>
                 <td class="text-center"><?php echo "$".$TTotal; ?></td>
                 </tbody>
               </table>
