@@ -217,17 +217,25 @@
 							$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 						}
 						if ($estado == 3) {
+							$atrasos = $atrasos + 1;
 							$estado = 4;
-							$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
+							$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
 							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 195");
-						}elseif ($saldo_ant > 0) {
+						}elseif ($estado == 1) {
 								$atrasos = $atrasos + 1;
 								$estado = 3;
-								$query = "UPDATE puntos set estado = '$estado' WHERE id = $id_punto";
-								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 195");
+								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
+								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 227");						
+
 						}else{
 								$multa = 0;
-							
+							if ($saldo_ant > 0) {
+								$atrasos = $atrasos + 1;
+								$estado = 1;
+								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
+								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 235");						
+
+						}
 
 							if ($internet == 1) {
 								$vinternet = 0;
@@ -257,13 +265,13 @@
 								$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta linea 221");
 								$query2 = "INSERT INTO pagos (id_punto,atrasos,fecha_limite,nom_suscriptor,fecha_factura,direccion,periodo_fact,admin_mes,saldo_anterior,descuento,traslado,reactivacion,matricula,total,documento,estado,multa,internet) VALUES ('$id_punto','$atrasos','$ultimodia','$nomCompleto',NOW(),'$dir','$mes1','$admin_mes','$saldo_ant','$descuento','$traslado','$reactivacion','$matricula','$total_pagar','$doc',0,'$multa','$vinternet') ";
 								$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 223");
-								$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND periodo_fact = '$mes1'";
+								$query2 = "SELECT * FROM facturacion WHERE id_punto = '$id_punto' AND id_mes = '$mes'";
 								$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 225");
 								if ($fila2 = mysqli_fetch_array($query_exec2)) {
 									$n_fact = $fila2[0];
 									?>
 
-									<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>			
+									<img style="display: none;" src="barcode.php?filepath=assets/<?php echo $n_fact; ?>.jpg&codetype=Code39&size=1&text=<?php echo $n_fact; ?>"/>	
 									<?php 
 								}
 							}
