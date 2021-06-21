@@ -201,9 +201,6 @@ $name = 'cortes.pdf';
 }
 if (isset($_POST["fact4"])) { 
   $mes = $_POST['mes'];
-  if ($mes == 3) {
-    $mes = 'Marzo';
-  }
   $ultimodia = $_POST['ultimodia'];
 header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
 header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
@@ -226,7 +223,7 @@ header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
     <th>Total a Pagar</th>
   </tr>
   <?php 
-    $query = "SELECT * FROM facturacion WHERE periodo_fact = '$mes'";
+    $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   $total =0;
   $t_admin_mes=0;
