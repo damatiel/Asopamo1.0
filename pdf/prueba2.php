@@ -156,7 +156,8 @@ if (isset($_POST["fact2"])) {
       <th>Primer Apellido</th>
       </tr>
       ';
-      $query = "SELECT * FROM puntos WHERE contador = 1";
+
+      $query = "SELECT * FROM puntos WHERE contador = 1 AND internet = 0";
       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
       while ($fila = mysqli_fetch_array($query_exec)) {
         $id = $fila[0];
@@ -187,7 +188,57 @@ if (isset($_POST["fact2"])) {
       </table>
       </div>';
 
-      $name = 'cortes.pdf';
+      $name = 'cortes sin Internet.pdf';
+
+    // PDF::savedisk($name,$html,$folder);
+      PDF::stream($name,$html);
+    }
+    if (isset($_POST["fact6"])) {
+      $mes = $_POST['mes'];
+      $html='
+      <table>
+      <tr>
+      <th>ID</th>
+      <th>Documento</th>
+      <th></th>
+      <th>Dirección</th>
+      <th>Primer Nombre</th>
+      <th>Primer Apellido</th>
+      </tr>
+      ';
+
+      $query = "SELECT * FROM puntos WHERE contador = 1 AND internet = 2";
+      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+      while ($fila = mysqli_fetch_array($query_exec)) {
+        $id = $fila[0];
+        $doc = $fila[3];
+        $dir = $fila[1].' '.$fila['indicaciones'];
+
+        $query2 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
+        $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
+        if ($fila2 = mysqli_fetch_array($query_exec2)) {
+          $p_n = $fila2[1];
+          $p_a = $fila2[3];
+        }
+        $html.='
+        <tr>
+        <td>'.$id.'</td> 
+        <td>'.$doc.'</td> 
+        <td></td> 
+        <td>'.$dir.'</td>';
+        $html.='
+        <td>'.$p_n.'</td>
+        <td>'.$p_a.'</td> 
+        </tr>';
+      }
+
+
+
+      $html.='
+      </table>
+      </div>';
+
+      $name = 'cortes con internet.pdf';
 
     // PDF::savedisk($name,$html,$folder);
       PDF::stream($name,$html);
@@ -196,7 +247,7 @@ if (isset($_POST["fact2"])) {
       $mes = $_POST['mes'];
       $ultimodia = $_POST['ultimodia'];
       header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
-      header('Content-Disposition: attachment; filename=Facturas '.$mes.'.xls');
+      header('Content-Disposition: attachment; filename=Facturas '.$mes.' sin internet.xls');
       ?>
       <table>
         <tr>
@@ -216,7 +267,7 @@ if (isset($_POST["fact2"])) {
           <th>Total a Pagar</th>
         </tr>
         <?php 
-        $query = "SELECT * FROM facturacion WHERE id_mes = '$mes'";
+        $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND internet = 0";
         $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
         $total =0;
         $t_admin_mes=0;
@@ -296,5 +347,108 @@ if (isset($_POST["fact2"])) {
      </table>
      <?php
    }
+if (isset($_POST["fact5"])) { 
+      $mes = $_POST['mes'];
+      $ultimodia = $_POST['ultimodia'];
+      header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
+      header('Content-Disposition: attachment; filename=Facturas '.$mes.' con internet.xls');
+      ?>
+      <table>
+        <tr>
+          <th>Numero de Factura</th>
+          <th>Id del Punto</th>
+          <th>Numero de Cedula</th>
+          <th>Fecha de Factura</th>
+          <th>Periodo Facturado</th>
+          <th>Administracion del mes</th>
+          <th>Internet</th>
+          <th>Saldo Anterior</th>
+          <th>Descuento</th>
+          <th>Matricula</th>
+          <th>Traslado</th>
+          <th>Reactivacion</th>
+          <th>Multa</th>
+          <th>Total a Pagar</th>
+        </tr>
+        <?php 
+        $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND internet >= 1";
+        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
+        $total =0;
+        $t_admin_mes=0;
+        $t_internet=0;
+        $t_saldo_ant=0;
+        $t_descuento=0;
+        $t_matricula=0;
+        $t_traslado =0;
+        $t_reactivacion=0;
+        $t_multa=0;
 
+        while ($fila = mysqli_fetch_array($query_exec)) {
+          $id_punto = $fila[1];
+          $query1 = "SELECT * FROM puntos WHERE id = '$id_punto'";
+          $query_exec1 = mysqli_query($db->conectar(),$query1)or die("no se puede realizar la consulta facturacion");
+          if($fila2 = mysqli_fetch_array($query_exec1)) {
+
+            $n_fact = $fila[0];
+            $id_punto = $fila[1];
+            $doc = $fila[2];
+            $f_fact = $fila[3];
+            $p_fact = $fila[4];
+            $admin_mes = $fila[5];
+            $internet = $fila['internet'];
+            $saldo_ant = $fila[6];
+            $descuento = $fila[12];
+            $matricula = $fila[13];
+            $traslado = $fila[14];
+            $reactivacion = $fila[15];
+            $multa = $fila[16];
+            $total_pagar = $fila[9];
+          }
+          ?>
+          <tr>
+            <td><?php echo $n_fact; ?></td>
+            <td><?php echo $id_punto; ?></td>
+            <td><?php echo $doc; ?></td>
+            <td><?php echo $f_fact; ?></td>
+            <td><?php echo $p_fact; ?></td>
+            <td><?php echo $admin_mes; ?></td>
+            <td><?php echo $internet; ?></td>
+            <td><?php echo $saldo_ant; ?></td>
+            <td><?php echo $descuento; ?></td>
+            <td><?php echo $matricula; ?></td>
+            <td><?php echo $traslado; ?></td>
+            <td><?php echo $reactivacion; ?></td>
+            <td><?php echo $multa; ?></td>
+            <td><?php echo $total_pagar; ?></td>
+          </tr>
+          <?php 
+          $total = $total + $total_pagar;
+          $t_admin_mes = $t_admin_mes + $admin_mes;
+          $t_internet = $t_internet + $internet;
+          $t_saldo_ant=$t_saldo_ant+$saldo_ant;
+          $t_descuento=$t_descuento+$descuento;
+          $t_matricula=$t_matricula+$matricula;
+          $t_reactivacion=$t_reactivacion+$reactivacion;
+          $t_multa=$t_multa+$multa;
+        }
+        ?>
+        <tr>
+         <td>Total</td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td></td>
+         <td><?php echo $t_admin_mes; ?></td>
+         <td><?php echo $t_internet; ?></td>
+         <td><?php echo $t_saldo_ant; ?></td>
+         <td><?php echo $t_descuento; ?></td>
+         <td><?php echo $t_matricula; ?></td>
+         <td><?php echo $t_traslado; ?></td>
+         <td><?php echo $t_reactivacion; ?></td>
+         <td><?php echo $t_multa; ?></td>
+         <td><?php echo $total; ?></td>
+       </tr>
+     </table>
+     <?php
+   }
    ?>
