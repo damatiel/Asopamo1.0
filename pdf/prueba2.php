@@ -144,7 +144,14 @@ if (isset($_POST["fact2"])) {
 
 
     }if (isset($_POST["fact3"])) {
-      $mes = $_POST['mes'];
+       if (isset($_POST['mes_num'])) {
+        $mes = $_POST['mes_num'];
+        $ultimodia = $_POST['ultimodia_num'];
+        $mes = $mes."-".$ultimodia;
+      }else{
+        $mes = $_POST['mes'];
+      $ultimodia = $_POST['ultimodia'];
+      }
       $html='
       <table>
       <tr>
@@ -194,7 +201,14 @@ if (isset($_POST["fact2"])) {
       PDF::stream($name,$html);
     }
     if (isset($_POST["fact6"])) {
-      $mes = $_POST['mes'];
+       if (isset($_POST['mes_num'])) {
+        $mes = $_POST['mes_num'];
+        $ultimodia = $_POST['ultimodia_num'];
+        $mes = $mes."-".$ultimodia;
+      }else{
+        $mes = $_POST['mes'];
+      $ultimodia = $_POST['ultimodia'];
+      }
       $html='
       <table>
       <tr>
@@ -244,8 +258,14 @@ if (isset($_POST["fact2"])) {
       PDF::stream($name,$html);
     }
     if (isset($_POST["fact4"])) { 
-      $mes = $_POST['mes'];
+       if (isset($_POST['mes_num'])) {
+        $mes = $_POST['mes_num'];
+        $ultimodia = $_POST['ultimodia_num'];
+        $mes = $mes."-".$ultimodia;
+      }else{
+        $mes = $_POST['mes'];
       $ultimodia = $_POST['ultimodia'];
+      }
       header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
       header('Content-Disposition: attachment; filename=Facturas '.$mes.' sin internet.xls');
       ?>
@@ -348,8 +368,15 @@ if (isset($_POST["fact2"])) {
      <?php
    }
 if (isset($_POST["fact5"])) { 
-      $mes = $_POST['mes'];
+      
+      if (isset($_POST['mes_num'])) {
+        $mes = $_POST['mes_num'];
+        $ultimodia = $_POST['ultimodia_num'];
+        $mes = $mes."-".$ultimodia;
+      }else{
+        $mes = $_POST['mes'];
       $ultimodia = $_POST['ultimodia'];
+      }
       header('Content-type: application/vnd.ms-excel;charset=iso-8859-15');
       header('Content-Disposition: attachment; filename=Facturas '.$mes.' con internet.xls');
       ?>
