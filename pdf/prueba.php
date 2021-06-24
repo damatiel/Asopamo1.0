@@ -97,7 +97,7 @@ if (isset($_POST["fact1"])) {
     <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk" id="OTROS">0</p>
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8">$</p>
     <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">'.$total_pagar.'</p>
-    <img class="gwd-div-1crj" id="CODIGO" src="img/'.$n_fact.'.jpg"/>
+    <img class="gwd-div-1crj" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
     <img class="gwd-img-2evw gwd-img-i2p2" src="img/logo_1.PNG">
     <img class="gwd-img-1947 gwd-img-1tma" src="img/asopamo.png">
     <img class="gwd-img-2evw gwd-img-p485" src="img/logo_1.PNG">
@@ -154,7 +154,7 @@ if (isset($_POST["fact_inter"])) {
   $dompdf->loadHtml('
     <link rel="stylesheet" href="prueba.css">
     <div  id="codigo"></div>
-    <img class="gwd-img-ztg9" src="assets/factura5.PNG" id="FACTURA2">
+    <img class="gwd-img-ztg9" src="img/factura5.PNG" id="FACTURA2">
     <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-14u2">No Cuenta</p>
     <p class="gwd-p-10s9 gwd-p-13wj gwd-p-1w88" id="num_cuenta">'.$n_fact.'</p>
     <p class="gwd-p-10s9 gwd-p-1wd9 gwd-p-sn7x">No Cuenta</p>
@@ -200,11 +200,11 @@ if (isset($_POST["fact_inter"])) {
     <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8">$</p>
     <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o" id="TOTAL">150.000</p>
     <img class="gwd-div-1crj" id="CODIGO" src="assets/'.$n_fact.'.jpg"/>
-    <img class="gwd-img-2evw gwd-img-i2p2" src="assets/logo_1.PNG">
-    <img class="gwd-img-1947 gwd-img-1tma" src="assets/asopamo.png">
-    <img class="gwd-img-2evw gwd-img-p485" src="assets/logo_1.PNG">
-    <img class="gwd-img-1947 gwd-img-876s" src="assets/asopamo.png">
-    <img class="gwd-img-1dbl" src="assets/firma.PNG">
+    <img class="gwd-img-2evw gwd-img-i2p2" src="img/logo_1.PNG">
+    <img class="gwd-img-1947 gwd-img-1tma" src="img/asopamo.png">
+    <img class="gwd-img-2evw gwd-img-p485" src="img/logo_1.PNG">
+    <img class="gwd-img-1947 gwd-img-876s" src="img/asopamo.png">
+    <img class="gwd-img-1dbl" src="img/firma.PNG">
     <p class="gwd-p-1dly gwd-p-flx4 gwd-p-idja gwd-p-5xxo" id="text"><span class="gwd-span-1mdj">P<span class="gwd-span-u2wc">ara PQR diríjase a la oficina o a través del correo electrónico&nbsp;</span></span><span class="gwd-span-10qz"><span class="gwd-span-1elw">asopamo@yahoo.es</span> o comuníquese telefónicamente con&nbsp;</span><span class="gwd-span-1kam">a la línea, 315 882 7273. En caso de presentar reclamación con este estado de cuenta, diríjase a la oficina antes de la fecha límite de pago.</span></p>
     <div><br>
     
