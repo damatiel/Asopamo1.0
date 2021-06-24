@@ -285,8 +285,11 @@
 				?>
 				<input type="hidden" name="id_punto" value="<?php echo $id_punto; ?>">
 				<input type="submit" name="fact2" value="Imprimir Facturas">
-				<input type="submit" name="fact4" value="Imprimir reporte de excel de la factura del mes">
-				<input type="submit" name="fact3" value="Imprimir cortes">
+				<input type="submit" name="fact4" value="Imprimir reporte de excel de la factura del mes sin internet">
+				<input type="submit" name="fact5" value="Imprimir reporte de excel de la factura del mes con internet">
+
+				<input type="submit" name="fact3" value="Imprimir cortes sin internet">
+				<input type="submit" name="fact6" value="Imprimir cortes con internet">
 			</form>
 			<?php
 		}
