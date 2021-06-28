@@ -190,7 +190,7 @@
                   <label>Periodo De Facturacion</label>
               </div>
               <div class="container">
-                <select name="mes" class="form-control">
+                <select name="mes_num" class="form-control">
                   <option value="1">Enero</option>
                   <option value="2">Febrero</option>
                   <option value="3">Marzo</option>
@@ -209,11 +209,13 @@
               <label class="text-center">Fecha Limite Pago</label>
               </div>
                 <div class="form-group ml-2 mr-2">
-                  <input type="date" class="form-control documentoSuscriptor" name="ultimodia" >
+                  <input type="date" class="form-control documentoSuscriptor" name="ultimodia_num" >
                 </div>
             <div class="text-center">
-            <button type="submit" name="fact4" class="btn btn-success">Excel</button>
-            <button type="submit" name="fact3" class="btn btn-success">cortes</button>
+            <button type="submit" name="fact4" class="btn btn-success">Excel sin internet</button>
+            <button type="submit" name="fact5" class="btn btn-success">Excel con internet</button><br><br>
+            <button type="submit" name="fact3" class="btn btn-success">cortes sin internet</button>
+            <button type="submit" name="fact3" class="btn btn-success">cortes con internet</button>
             <button type="submit" name="fact2" class="btn btn-success">Imprimir</button>
             </div>
            
