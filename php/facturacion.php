@@ -215,7 +215,7 @@
             <button type="submit" name="fact4" class="btn btn-success">Excel sin internet</button>
             <button type="submit" name="fact5" class="btn btn-success">Excel con internet</button><br><br>
             <button type="submit" name="fact3" class="btn btn-success">cortes sin internet</button>
-            <button type="submit" name="fact3" class="btn btn-success">cortes con internet</button>
+            <button type="submit" name="fact6" class="btn btn-success">cortes con internet</button>
             <button type="submit" name="fact2" class="btn btn-success">Imprimir</button>
             </div>
            
