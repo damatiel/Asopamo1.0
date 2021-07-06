@@ -20,16 +20,6 @@ p {
       transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
       transform-style: preserve-3d;
     }
-    .gwd-img-ztg9 {
-      position: absolute;
-      top: 0px;
-      transform-style: preserve-3d;
-      transform-origin: 50% 50% 0px;
-      left: 0px;
-      transform: translate3d(25px, 2px, 0px);
-      width: 815px;
-      height: 532px;
-    }
     .gwd-p-10s9 {
       position: absolute;
       width: 102px;
@@ -53,10 +43,6 @@ p {
       left: 819px;
       width: 56px;
       font-size: 14px;
-    }
-    .gwd-p-1wd9 {
-      font-size: 13px;
-      width: 81px;
     }
     .gwd-p-5s47 {
       top: 361px;
@@ -157,12 +143,12 @@ p {
       top: 539px;
     }
     .gwd-p-ake8 {
-      top: 450px;
-      left: 419px;
+      left: 441px;
+      top: 449px;
     }
     .gwd-p-708o {
-      top: 451px;
-      left: 431px;
+      left: 453px;
+      top: 450px;
     }
     .gwd-p-omm1 {
       left: 506px;
@@ -178,42 +164,43 @@ p {
     }
     .gwd-p-1v8m {
       top: 69px;
-      left: 628px;
+      width: 130px;
+      left: 678px;
     }
     .gwd-p-12im {
       top: 86px;
-      left: 628px;
-      width: 196px;
+      width: 155px;
+      left: 678px;
     }
     .gwd-p-ucgl {
       top: 101px;
-      left: 628px;
+      width: 140px;
+      left: 678px;
     }
     .gwd-p-ly9f {
       top: 116px;
-      left: 628px;
+      width: 155px;
+      left: 678px;
     }
     .gwd-p-o1f3 {
       top: 135px;
-      left: 628px;
+      width: 140px;
+      left: 678px;
     }
     .gwd-p-18r8 {
       top: 154px;
-      left: 628px;
+      width: 140px;
+      left: 678px;
     }
     .gwd-p-omce {
       top: 176px;
-      left: 628px;
-    }
-    .gwd-p-sn7x {
-      left: 677px;
-      color: rgb(255, 255, 255);
-      top: 26px;
+      width: 140px;
+      left: 678px;
     }
     .gwd-p-lot3 {
-      left: 758px;
       color: rgb(255, 255, 255);
       top: 26px;
+      left: 744px;
     }
     .gwd-p-1u5p {}
     .gwd-p-1hqq {
@@ -237,141 +224,136 @@ p {
       top: 412px;
     }
     .gwd-p-gb7b {
-      top: 323px;
-      left: 692px;
+      top: 326px;
+      left: 709px;
     }
     .gwd-p-z17a {
-      top: 324px;
-      left: 704px;
-    }
-    .gwd-p-14u2 {
-      left: 357px;
-      color: rgb(255, 255, 255);
-      top: 27px;
+      top: 327px;
+      left: 721px;
     }
     .gwd-p-1w88 {
       width: 56px;
       height: 27px;
-      left: 438px;
       color: rgb(255, 255, 255);
       top: 27px;
+      left: 424px;
     }
     .gwd-p-18rr {
-      top: 204px;
-      left: 125px;
+      top: 201px;
+      left: 169px;
     }
     .gwd-p-1ts8 {
-      top: 221px;
-      left: 125px;
       width: 196px;
+      top: 218px;
+      left: 170px;
     }
     .gwd-p-dyqc {
-      top: 236px;
-      left: 125px;
+      top: 233px;
+      left: 170px;
     }
     .gwd-p-1c9y {
-      top: 251px;
-      left: 125px;
+      top: 248px;
+      left: 170px;
     }
     .gwd-p-kkcw {
-      top: 270px;
-      left: 125px;
+      top: 267px;
+      left: 169px;
     }
     .gwd-p-vsjq {
-      top: 289px;
-      left: 125px;
+      top: 286px;
+      left: 169px;
     }
     .gwd-p-1wj9 {
-      top: 311px;
-      left: 125px;
+      top: 308px;
+      left: 169px;
     }
     .gwd-p-z68v {
-      top: 224px;
-      left: 418px;
+      left: 440px;
+      top: 223px;
     }
     .gwd-p-4sl3 {
-      top: 225px;
-      left: 430px;
+      left: 452px;
+      top: 224px;
     }
     .gwd-p-1dvk {
-      top: 215px;
-      left: 692px;
+      top: 218px;
+      left: 709px;
     }
     .gwd-p-fp76 {
-      top: 216px;
-      left: 704px;
+      top: 219px;
+      left: 721px;
     }
     .gwd-p-1yu7 {
-      top: 244px;
-      left: 692px;
+      top: 247px;
+      left: 709px;
     }
     .gwd-p-1quq {
-      top: 245px;
-      left: 704px;
+      top: 248px;
+      left: 721px;
     }
     .gwd-p-gf4t {
-      top: 271px;
-      left: 692px;
+      top: 274px;
+      left: 709px;
     }
     .gwd-p-1lm2 {
-      top: 272px;
-      left: 704px;
+      top: 275px;
+      left: 721px;
     }
     .gwd-p-19dw {
-      top: 249px;
-      left: 418px;
+      left: 440px;
+      top: 248px;
     }
     .gwd-p-1ksx {
-      top: 250px;
-      left: 430px;
+      left: 452px;
+      top: 249px;
     }
     .gwd-p-1yfb {
-      top: 274px;
-      left: 418px;
+      left: 440px;
+      top: 273px;
     }
     .gwd-p-1rhh {
-      top: 275px;
-      left: 430px;
+      left: 452px;
+      top: 274px;
     }
     .gwd-p-1l16 {
-      top: 299px;
-      left: 418px;
+      left: 440px;
+      top: 298px;
     }
     .gwd-p-1mmd {
-      top: 300px;
-      left: 430px;
+      left: 452px;
+      top: 299px;
     }
     .gwd-p-7ryv {
-      top: 323px;
-      left: 418px;
+      left: 440px;
+      top: 322px;
     }
     .gwd-p-1rsa {
-      top: 324px;
-      left: 430px;
+      left: 452px;
+      top: 323px;
     }
     .gwd-p-juxz {
-      top: 348px;
-      left: 418px;
+      left: 440px;
+      top: 347px;
     }
     .gwd-p-14by {
-      top: 349px;
-      left: 430px;
+      left: 452px;
+      top: 348px;
     }
     .gwd-p-1k65 {
-      top: 373px;
-      left: 418px;
+      left: 440px;
+      top: 372px;
     }
     .gwd-p-11xs {
-      top: 374px;
-      left: 430px;
+      left: 452px;
+      top: 373px;
     }
     .gwd-p-goi7 {
-      top: 398px;
-      left: 418px;
+      left: 440px;
+      top: 397px;
     }
     .gwd-p-1tbk {
-      top: 399px;
-      left: 430px;
+      left: 452px;
+      top: 398px;
     }
     .gwd-img-2evw {
       position: absolute;
@@ -410,6 +392,7 @@ p {
     }
     .gwd-img-i2p2 {
       left: 12px;
+      top: 28px;
     }
     .gwd-div-1crj {
       background-color: rgb(255, 255, 255);
@@ -552,8 +535,8 @@ p {
       font-family: "Arial Black";
       font-size: 8px;
       text-align: center;
-      top: 127px;
       left: 122px;
+      top: 127px;
     }
     .gwd-span-1oe0 {
       font-family: "Arial Black";
@@ -561,4 +544,896 @@ p {
     .gwd-span-1h4u {
       font-family: "Arial Black";
       font-size: 8px;
+    }
+    .gwd-div-13ji {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 138px;
+      left: 32.96px;
+      position: absolute;
+      top: 193.97px;
+      transform-origin: 50% 50% 0px;
+      width: 273.972px;
+    }
+    .gwd-div-abpi {
+      background-color: rgb(93, 85, 167);
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 36px;
+      left: 693.53px;
+      position: absolute;
+      top: 15.98px;
+      transform-origin: 50% 50% 0px;
+      width: 135px;
+    }
+    .gwd-div-q82p {
+      background-color: rgb(93, 85, 167);
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 36px;
+      left: 371.9px;
+      position: absolute;
+      top: 14.97px;
+      transform-origin: 50% 50% 0px;
+      width: 135px;
+    }
+    .gwd-div-i2uf {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 219.986px;
+      left: 318.02px;
+      position: absolute;
+      top: 197px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-17l9 {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 219.986px;
+      left: 432.03px;
+      position: absolute;
+      top: 197px;
+      transform-origin: 50% 50% 0px;
+      width: 60.0278px;
+    }
+    .gwd-div-nfu6 {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 79px;
+      left: 706.01px;
+      position: absolute;
+      top: 215px;
+      transform-origin: 50% 50% 0px;
+      width: 60.0278px;
+    }
+    .gwd-div-qw55 {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 79px;
+      left: 592.01px;
+      position: absolute;
+      top: 215px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-155l {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 592.01px;
+      position: absolute;
+      top: 215px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-6ww0 {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 592.01px;
+      position: absolute;
+      top: 241.23px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-171p {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 318.02px;
+      position: absolute;
+      top: 247.98px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-xqyq {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 23px;
+      left: 318px;
+      position: absolute;
+      top: 273px;
+      transform-origin: 50% 50% 0px;
+      width: 174px;
+    }
+    .gwd-div-1s9l {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 20px;
+      left: 318px;
+      position: absolute;
+      top: 300px;
+      transform-origin: 50% 50% 0px;
+      width: 174px;
+    }
+    .gwd-div-jnr9 {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 318px;
+      position: absolute;
+      top: 323px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-1vwf {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 20.9583px;
+      left: 318.02px;
+      position: absolute;
+      top: 349.03px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-1sym {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 20.0139px;
+      left: 318.02px;
+      position: absolute;
+      top: 372.02px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-1ouo {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 318.02px;
+      position: absolute;
+      top: 448px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-div-ea9a {
+      background-color: rgb(93, 85, 167);
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 432.03px;
+      position: absolute;
+      top: 448px;
+      transform-origin: 50% 50% 0px;
+      width: 60.0278px;
+    }
+    .gwd-div-1j7w {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 592.01px;
+      position: absolute;
+      top: 322px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+      background-image: none;
+      background-color: transparent;
+    }
+    .gwd-div-19s5 {
+      background-color: rgb(93, 85, 167);
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 22.9861px;
+      left: 706.01px;
+      position: absolute;
+      top: 322px;
+      transform-origin: 50% 50% 0px;
+      width: 60.0278px;
+    }
+    .gwd-div-b0fv {
+      background-color: rgb(93, 85, 167);
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 24px;
+      left: 318.02px;
+      position: absolute;
+      top: 197px;
+      transform-origin: 50% 50% 0px;
+      width: 174.028px;
+    }
+    .gwd-p-1bg0 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 202px;
+    }
+    .gwd-p-njk3 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 230px;
+    }
+    .gwd-p-cfqv {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 205px;
+    }
+    .gwd-p-ltsz {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 439px;
+      position: absolute;
+      top: 205px;
+      transform-origin: 33.0764px 6.22222px 0px;
+    }
+    .gwd-p-qtxc {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 596px;
+      position: absolute;
+      top: 222px;
+    }
+    .gwd-p-17bo {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 596px;
+      position: absolute;
+      top: 248px;
+    }
+    .gwd-p-1hwm {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 596px;
+      position: absolute;
+      top: 275px;
+    }
+    .gwd-p-8q25 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 596px;
+      position: absolute;
+      top: 329px;
+    }
+    .gwd-p-1uvj {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 255px;
+    }
+    .gwd-p-1109 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 281px;
+    }
+    .gwd-p-117z {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 306px;
+    }
+    .gwd-p-17o9 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 330px;
+    }
+    .gwd-p-e6lf {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 355px;
+    }
+    .gwd-p-1gcg {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 378px;
+    }
+    .gwd-p-9l4q {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 321px;
+      position: absolute;
+      top: 402px;
+    }
+    .gwd-p-86x7 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      position: absolute;
+      top: 451px;
+      left: 325px;
+    }
+    .gwd-p-twlh {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 239px;
+    }
+    .gwd-p-9ege {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 256px;
+    }
+    .gwd-p-10x8 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 273px;
+    }
+    .gwd-p-1ob5 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 290px;
+    }
+    .gwd-p-1eej {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 47px;
+      position: absolute;
+      top: 310px;
+      transform-origin: 59.9271px 6.33333px 0px;
+    }
+    .gwd-div-1hkd {
+      border-block-style: solid;
+      border-block-width: 2px;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      border-inline-style: solid;
+      border-inline-width: 2px;
+      height: 138px;
+      left: 539.97px;
+      position: absolute;
+      top: 60px;
+      transform-origin: 50% 50% 0px;
+      width: 273.972px;
+      background-image: none;
+      background-color: transparent;
+    }
+    .gwd-p-1ysh {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 68px;
+    }
+    .gwd-p-18eg {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 105px;
+    }
+    .gwd-p-phdg {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 122px;
+    }
+    .gwd-p-1tz3 {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 139px;
+    }
+    .gwd-p-1fuw {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 156px;
+    }
+    .gwd-p-1bvg {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 553px;
+      position: absolute;
+      top: 176px;
+      transform-origin: 59.9271px 6.33333px 0px;
+    }
+    .gwd-p-1hmp {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 376px;
+      position: absolute;
+      top: 26px;
+    }
+    .gwd-span-xcub {
+      color: rgb(255, 255, 255);
+      font-family: "Arial Black";
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .gwd-br-1s4m {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .gwd-p-1pnr {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+      left: 697px;
+      position: absolute;
+      top: 26px;
+    }
+    .gwd-br-rr1y {
+      font-family: Georgia;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .gwd-div-17yg {
+      left: 694px;
+      top: 16px;
+    }
+    .gwd-div-wk6u {
+      left: 372px;
+      top: 15px;
+    }
+    .gwd-div-sftf {
+      height: 219.986px;
+      left: 318px;
+      width: 174.028px;
+    }
+    .gwd-div-1kld {
+      height: 219.986px;
+      left: 432px;
+      top: 197px;
+    }
+    .gwd-div-xnfk {
+      left: 706px;
+      width: 60.0278px;
+    }
+    .gwd-div-o2o2 {
+      height: 79px;
+      left: 592px;
+    }
+    .gwd-div-1qqz {
+      height: 22.9861px;
+      left: 592px;
+      top: 215px;
+    }
+    .gwd-div-19vr {
+      height: 22.9861px;
+      left: 592px;
+      top: 241px;
+    }
+    .gwd-div-qfch {
+      height: 22.9861px;
+      left: 318px;
+      top: 248px;
+    }
+    .gwd-div-171t {
+      height: 22.9861px;
+    }
+    .gwd-div-11c1 {
+      height: 20.9583px;
+      left: 318px;
+      top: 349px;
+    }
+    .gwd-div-1etv {
+      height: 20.0139px;
+      left: 318px;
+      top: 372px;
+    }
+    .gwd-div-1860 {
+      background-color: rgba(0, 0, 0, 0);
+      height: 22.9861px;
+      left: 318px;
+      width: 174.028px;
+    }
+    .gwd-div-mh8l {
+      height: 22.9861px;
+      left: 432px;
+      top: 448px;
+    }
+    .gwd-div-32n8 {
+      left: 592px;
+    }
+    .gwd-div-bvew {
+      height: 22.9861px;
+      left: 706px;
+    }
+    .gwd-div-1jz2 {
+      left: 321px;
+      top: 193px;
+    }
+    .gwd-p-111c {
+      left: 324px;
+      top: 226px;
+    }
+    .gwd-p-r0sm {
+      left: 324px;
+      top: 201px;
+    }
+    .gwd-div-1pqy {
+      top: 59px;
+      left: 524px;
+    }
+    .gwd-p-1vl9 {
+      top: 254px;
+      left: 25px;
+    }
+    .gwd-p-1nmh {
+      top: 237px;
+      left: 25px;
+    }
+    .gwd-p-eiwb {
+      top: 271px;
+      left: 25px;
+    }
+    .gwd-p-m9gf {
+      top: 199px;
+      left: 25px;
+    }
+    .gwd-p-j4dq {
+      left: 324px;
+      top: 201px;
+    }
+    .gwd-div-1845 {
+      left: 322px;
+      top: 345px;
+    }
+    .gwd-div-1vr8 {
+      left: 322px;
+      top: 319px;
+    }
+    .gwd-div-1nn1 {
+      left: 322px;
+      top: 296px;
+    }
+    .gwd-div-d0vr {
+      left: 322px;
+      top: 269px;
+    }
+    .gwd-div-2cjg {
+      left: 321px;
+      top: 193px;
+    }
+    .gwd-div-f6xe {
+      left: 435px;
+      top: 193px;
+    }
+    .gwd-div-6gdv {
+      left: 321px;
+      top: 244px;
+    }
+    .gwd-div-rgio {
+      left: 321px;
+      top: 269px;
+    }
+    .gwd-div-1vmc {
+      left: 321px;
+      top: 296px;
+    }
+    .gwd-div-1t64 {
+      left: 321px;
+      top: 319px;
+    }
+    .gwd-div-1xy1 {
+      left: 321px;
+      top: 345px;
+    }
+    .gwd-div-1tth {
+      left: 321px;
+      top: 368px;
+    }
+    .gwd-div-d3cw {
+      left: 321px;
+      top: 444px;
+    }
+    .gwd-div-1jv3 {
+      left: 435px;
+      top: 444px;
+    }
+    .gwd-p-1g2w {
+      left: 442px;
+      top: 201px;
+    }
+    .gwd-p-13f6 {
+      left: 324px;
+      top: 251px;
+    }
+    .gwd-p-5ks1 {
+      left: 324px;
+      top: 277px;
+    }
+    .gwd-p-14hz {
+      left: 324px;
+      top: 302px;
+    }
+    .gwd-p-1lxw {
+      left: 324px;
+      top: 326px;
+    }
+    .gwd-p-1ylt {
+      left: 324px;
+      top: 351px;
+    }
+    .gwd-p-7cuk {
+      left: 324px;
+      top: 398px;
+    }
+    .gwd-div-6kls {
+      left: 435px;
+      top: 193px;
+    }
+    .gwd-div-1mn1 {
+      left: 321px;
+      top: 244px;
+    }
+    .gwd-div-le0p {
+      left: 435px;
+      top: 444px;
+    }
+    .gwd-p-tvr9 {
+      left: 442px;
+      top: 201px;
+    }
+    .gwd-p-157g {
+      top: 310px;
+      left: 25px;
+    }
+    .gwd-p-1vrx {
+      left: 25px;
+    }
+    .gwd-p-12re {
+      top: 374px;
+      left: 324px;
+    }
+    .gwd-div-m46e {
+      background-color: rgba(0, 0, 0, 0);
+      height: 138px;
+      top: 194px;
+      left: 12px;
+      width: 289px;
+    }
+    .gwd-p-drys {
+      top: 67px;
+      left: 537px;
+    }
+    .gwd-p-dmtp {
+      top: 104px;
+      left: 537px;
+    }
+    .gwd-p-16g4 {
+      top: 121px;
+      left: 537px;
+    }
+    .gwd-p-1k29 {
+      top: 138px;
+      left: 537px;
+    }
+    .gwd-p-plei {
+      top: 155px;
+      left: 537px;
+    }
+    .gwd-p-17ps {
+      top: 175px;
+      left: 537px;
+    }
+    .gwd-p-zxpb {
+      top: 67px;
+      left: 537px;
+    }
+    .gwd-p-819i {
+      top: 104px;
+      left: 537px;
+    }
+    .gwd-p-i7ju {
+      top: 121px;
+      left: 537px;
+    }
+    .gwd-p-117v {
+      top: 138px;
+      left: 537px;
+    }
+    .gwd-p-l0q0 {
+      top: 155px;
+      left: 537px;
+    }
+    .gwd-p-aze6 {
+      top: 175px;
+      left: 537px;
+    }
+    .gwd-p-x1mb {
+      left: 362px;
+    }
+    .gwd-div-h02e {
+      left: 348px;
+    }
+    .gwd-p-75zv {
+      left: 683px;
+    }
+    .gwd-div-1bbg {
+      left: 664px;
+    }
+    .gwd-div-11u6 {
+      background-color: rgb(255, 255, 255);
+      height: 531px;
+      position: absolute;
+      top: 3px;
+      width: 815px;
+      border-style: solid;
+      border-width: 2px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(92, 84, 167);
+      left: 0px;
+    }
+    .gwd-div-10g6 {
+      background-color: rgb(255, 255, 255);
+      height: 531px;
+      position: absolute;
+      top: 3px;
+      border-image-source: none;
+      border-image-width: 1;
+      border-image-outset: 0;
+      border-image-repeat: stretch;
+      border-color: rgb(92, 84, 167);
+      border-style: solid;
+      border-width: 2px;
+      width: 306px;
+      transform-origin: 50% 50% 0px;
+      left: 509px;
     }
