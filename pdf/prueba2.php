@@ -21,7 +21,7 @@ if (isset($_POST["fact2"])) {
   <link rel="stylesheet" href="prueba.css"> 
   ';
 
-  $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1'";
+  $query = "SELECT * FROM facturacion WHERE id_mes = '$mes' AND estado ='1' ORDER BY dir DESC";
   $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta facturacion");
   while ($fila = mysqli_fetch_array($query_exec)) {
     $n_fact = $fila[0];
@@ -63,7 +63,7 @@ if (isset($_POST["fact2"])) {
         $pApe = $fila3[3];
         $sApe = $fila3[4];
         $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
-        $otros2= $descuento + $traslado + $reactivacion + $multa;
+        $otros2= $descuento + $traslado + $reactivacion + $multa + $matricula;
         $html.='
         
         <div class="gwd-div-11u6"></div>
@@ -192,7 +192,7 @@ if (isset($_POST["fact2"])) {
         <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1k65 text-tool-feedback">$</p>
         <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-11xs text-tool-feedback" id="MULTA">'.$multa.'</p>
         <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-goi7 text-tool-feedback">$</p>
-        <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk text-tool-feedback" id="OTROS">0</p>
+        <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-1tbk text-tool-feedback" id="OTROS">'.$matricula.'</p>
         <p class="gwd-p-2i7j gwd-p-8lhm gwd-p-1u4p gwd-p-1gay gwd-p-tsh9 gwd-p-1cgk gwd-p-1h0q gwd-p-1ekb gwd-p-1j9q gwd-p-ake8 text-tool-feedback">$</p>
         <p class="gwd-p-2i7j gwd-p-1u0r gwd-p-1yia gwd-p-8cj0 gwd-p-ccgb gwd-p-ss2v gwd-p-1b3y gwd-p-1qk7 gwd-p-4iew gwd-p-708o text-tool-feedback" id="TOTAL">'.$total_pagar.'</p>
         <img class="gwd-div-1crj" id="CODIGO" src="assets/'.$n_fact.'.jpg">

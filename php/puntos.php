@@ -63,6 +63,7 @@
           <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
               <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
+              <a class="dropdown-item" href="consulta_deuda_mes.php">Deudas por Mes</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
               <a class="dropdown-item" href="consultaInternet.php">Internet</a>
@@ -258,9 +259,9 @@
             if ($estado == 2) {
               $estado = "Activo";
             }elseif ($estado == 1) {
-              $estado = "Deudor";
-            }elseif ($estado == 3) {
               $estado = "Suspendido por mora";
+            }elseif($estado == 4){
+              $estado = "Bloqueado por mora";
             }elseif($estado == 5){
               $estado = "Bloqueado Especial";
             }

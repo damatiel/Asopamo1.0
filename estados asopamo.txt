@@ -1,0 +1,18 @@
+suscriptores:
+estado: 1 : recien creado
+puntos:
+estado: 2 : recien creado
+estado: 1 : queda debiendo el primer recibo
+
+estado 2: activo
+estado 5: suspendido - bloqueado especial
+estado 1: suspendido por mora - atraso: 1 - 5
+estado 4: bloqueo por mora - atraso: 6
+
+
+punto 1274
+
+internet:
+estado 0: sin internet
+estado 1: internet recien activado sin pagar
+estado 2: internet activo pagado

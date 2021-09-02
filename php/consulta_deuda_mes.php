@@ -76,29 +76,17 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="salir.php">Salir</a>
-            </li>
-            
-            
+            </li> 
           </ul>
-          
         </div>
       </nav>
       <div>
-        <h2 class="titulo text-center container">Consulta Recaudos</h2>
+        <h2 class="titulo text-center container">Consulta Deuda Mes</h2>
       </div>
       <br>
       <?php 
         $idPunto = "";
-        $numRecaudos = 0;
-        $TServicios = 0;
-        $TSaldo = 0;
-        $TInter = 0;
-        $TMultas = 0;
-        $TTraslados = 0;
-        $TReactivacion = 0;
-        $TMatricula = 0;
-        $TDescuento = 0;
-        $TTotal = 0;
+        $TDeuda = 0;
       ?>
       <form method = "POST" class="container formularioCRecibos" action = "#">
             <div class="container gridCRecibos">
@@ -116,14 +104,9 @@
                 <label class="form-group p-1 labelCRecibos">Entidad De Pago</label>
                 <select class="form-control cbxCRecibos" name="select">
                   <option value ="todos">TODOS</option>
-                <?php
-                  $query = "SELECT * FROM ent_pago";
-                  $resul = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                  while ($row=mysqli_fetch_array($resul)){?>
-                      <option value = <?php echo $row['id']; ?>><?php echo $row['Nombre']; ?> </option>
-                  <?php } ?>
-
-                  </select>
+                  <option value ="para">PARABOLICA</option>
+                  <option value ="inter">INTERNET</option>
+                </select>
                 <div class="btnCRecibos">
                     <button type="submit"  name ="btnConsultar" class="btn btn-dark">Consultar</button>
                 </div>
@@ -135,23 +118,11 @@
                 <thead>
                   <tr>
                     <th class="text-center" scope="col">Punto</th>
-                    <th class="text-center" scope="col">Direccion</th>
-                    <th class="text-center" scope="col">FacNro</th>
-                    <th class="text-center" scope="col">Servicio</th>
-                    <th class="text-center" scope="col">Atrasos</th>
-                    <th class="text-center" scope="col">Sald Ant</th>
-                    <th class="text-center" scope="col">Multa Mora</th>
-                    <th class="text-center" scope="col">Traslado</th>
-                    <th class="text-center" scope="col">Reactivacion</th>
-                    <th class="text-center" scope="col">Cuota Mat</th>
-                    <th class="text-center" scope="col">Descuento</th>
-                    <th class="text-center" scope="col">Internet</th>
-                    <th class="text-center" scope="col">Total</th>
-                    <th class="text-center" scope="col">Fec Pago</th>
-                    <th class="text-center" scope="col">Periodo</th>
-                    <th class="text-center" scope="col">Entidad</th>
-                    
-
+                    <th class="text-center" scope="col">Nombre</th>
+                    <th class="text-center" scope="col">Apellido</th>
+                    <th class="text-center" scope="col">Cedula</th>
+                    <th class="text-center" scope="col">Fecha de Deuda</th>
+                    <th class="text-center" scope="col">Deuda</th>
                   </tr>
                 </thead>
                 <tbody >
@@ -164,7 +135,7 @@
                       ?>
                       <div class="float-right text-center">
                       <form method = "post" action = "excel.php">
-                        <button type="submit" name="excel_recaudos" class="btn btn-primary">Exportar a Excel</button>
+                        <button type="submit" name="excel_deuda_mes" class="btn btn-primary">Exportar a Excel</button>
                         <input type="hidden" name="fecha_ini" value=<?php echo $fecha_ini ?>>
                         <input type="hidden" name="fecha_fin" value=<?php echo $fecha_fin ?>>
                         <input type="hidden" name="idEntidad" value=<?php echo $idEntidad ?>>
@@ -173,48 +144,34 @@
         <?php
                       
                       if ($idEntidad == "todos") {
-                        $query = "SELECT * FROM pagos WHERE fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
-                      }else{
-                        $query = "SELECT * FROM pagos WHERE id_entPago = $idEntidad AND fecha_pago BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                        $query = "SELECT * FROM deudas_meses WHERE fecha BETWEEN '$fecha_ini' AND '$fecha_fin'";
+                      }elseif ($idEntidad == "para"){
+                        $query = "SELECT * FROM deudas_meses WHERE fecha BETWEEN '$fecha_ini' AND '$fecha_fin' AND inter <= 0";
+                      }elseif ($idEntidad == "inter") {
+                        $query = "SELECT * FROM deudas_meses WHERE fecha BETWEEN '$fecha_ini' AND '$fecha_fin'AND inter >= 1";
                       }
                       
                       $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
                       while($fila1 = mysqli_fetch_array($query_exec)){
-                        $idEntPago = $fila1['id_entPago'];
-                        $Numfactura = $fila1['num_factura'];
-                        $query2 = "SELECT * FROM ent_pago WHERE id = $idEntPago";
+                        $idpunto = $fila1[1];
+                        $query2 = "SELECT * FROM puntos WHERE id = $idpunto";
                         $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta");
                         $fila2 = mysqli_fetch_array($query_exec2);
-                        $numRecaudos ++;
-                        $TServicios += $fila1[11];;
-                        $TSaldo += $fila1[12];
-                        $TInter += $fila1[21];
-                        $TMultas += $fila1[20];
-                        $TTraslados += $fila1[14];
-                        $TReactivacion += $fila1[15];
-                        $TMatricula += $fila1[16];;
-                        $TDescuento += $fila1[13];
-                        $TTotal += $fila1[17];
+                        $doc = $fila2[3];
+                        $query3 = "SELECT * FROM suscriptores WHERE doc = $doc";
+                        $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta");
+                        $fila3 = mysqli_fetch_array($query_exec3);
+                        $TDeuda += $fila1[3];
                         
                       ?>
 
                      <tr>
-                     <td class="text-center"><?php echo $fila1[2]; ?></td>
-                     <td class="text-center"><?php echo $fila1[9]; ?></td>
                      <td class="text-center"><?php echo $fila1[1]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[11]; ?></td>
-                     <td class="text-center"><?php echo $fila1[5]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[12]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[20]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[14]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[15]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[16]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[21]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[13]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[17]; ?></td>
-                     <td class="text-center"><?php echo "$".$fila1[4]; ?></td>
-                     <td class="text-center"><?php echo $fila1[10]; ?></td>
-                     <td class="text-center"><?php echo $fila2[1]; ?></td>
+                     <td class="text-center"><?php echo $fila3[1]; ?></td>
+                     <td class="text-center"><?php echo $fila3[3]; ?></td>
+                     <td class="text-center"><?php echo $fila3[0]; ?></td>
+                     <td class="text-center"><?php echo $fila1[2]; ?></td>
+                     <td class="text-center"><?php echo "$".$fila1[3]; ?></td>
                       </tr>
                       <?php } ?>
                      
@@ -260,29 +217,12 @@
               <table class="table table-hover table-condensed">
                 <thead>
                   <tr>
-                    <th class="text-center" scope="col">Numero Recaudos</th>
-                    <th class="text-center" scope="col">Total Servicios</th>
-                    <th class="text-center" scope="col">Total SaldoAnt</th>
-                    <th class="text-center" scope="col">Total Multas</th>
-                    <th class="text-center" scope="col">Total Traslados</th>
-                    <th class="text-center" scope="col">Total Reactivacion</th>
-                    <th class="text-center" scope="col">Total Matricula</th>
-                    <th class="text-center" scope="col">Total Descuento</th>
-                    <th class="text-center" scope="col">Total Internet</th>
-                    <th class="text-center" scope="col">Suma Total</th>
+                    <th class="text-center" scope="col">Total Deuda</th>
                   </tr>
                 </thead>
                 <tbody>
-                <td class="text-center"><?php echo $numRecaudos; ?></td>
-                <td class="text-center"><?php echo "$".$TServicios; ?></td>
-                <td class="text-center"><?php echo "$".$TSaldo; ?></td>
-                <td class="text-center"><?php echo "$".$TMultas; ?></td>
-                <td class="text-center"><?php echo "$".$TTraslados; ?></td>
-                <td class="text-center"><?php echo "$".$TReactivacion; ?></td>
-                <td class="text-center"><?php echo "$".$TMatricula; ?></td>
-                <td class="text-center"><?php echo "$".$TDescuento; ?></td>
-                <td class="text-center"><?php echo "$".$TInter; ?></td>
-                <td class="text-center"><?php echo "$".$TTotal; ?></td>
+                
+                <td class="text-center"><?php echo "$".$TDeuda; ?></td>
                 </tbody>
               </table>
     </div>
