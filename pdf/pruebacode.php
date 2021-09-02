@@ -208,6 +208,7 @@
 							$sApe = $fila3[4];
 							$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 						}
+
 						if ($atrasos == 5) {
 							$atrasos = $atrasos + 1;
 							$estado = 4;
@@ -216,21 +217,21 @@
 						}elseif ($estado == 1) {
 							$atrasos = $atrasos + 1;
 							$query = "UPDATE puntos set contador = '$atrasos' WHERE id = $id_punto";
-							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 219");						
+							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 228");						
 
 						}elseif ($estado == 4) {					
 
 						}elseif ($estado == 5) {						
 
-						}elseif ($saldo_ant > 0 and $estado == 2) {
+						}else{
+							$multa = 0;
+							if ($saldo_ant > 0) {
 								$atrasos = $atrasos + 1;
 								$estado = 1;
 								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
 								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 235");						
 
-						}else{
-							$multa = 0;
-							
+							}
 
 							if ($internet == 1) {
 								$vinternet = 0;

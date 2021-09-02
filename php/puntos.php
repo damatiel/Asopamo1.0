@@ -389,10 +389,10 @@
             if ($estado == 2) {
               $estado = "Activo";
             }elseif ($estado == 1) {
-              $estado = "Deudor";
-            }elseif ($estado == 3) {
               $estado = "Suspendido por mora";
-            }elseif ($estado == 5) {
+            }elseif($estado == 4){
+              $estado = "Bloqueado por mora";
+            }elseif($estado == 5){
               $estado = "Bloqueado Especial";
             }
              ?>

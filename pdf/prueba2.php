@@ -39,7 +39,7 @@ if (isset($_POST["fact2"])) {
     $total_pagar = $fila[9];
     $vinternet = $fila[17];
 
-    $query2 = "SELECT * FROM puntos WHERE id = '$id_punto'";
+    $query2 = "SELECT * FROM puntos WHERE id = '$id_punto' ";
     $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta suscriptores");
     if ($fila2 = mysqli_fetch_array($query_exec2)) {
       $internet = $fila2['internet'];
@@ -64,6 +64,10 @@ if (isset($_POST["fact2"])) {
         $sApe = $fila3[4];
         $nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
         $otros2= $descuento + $traslado + $reactivacion + $multa + $matricula;
+
+      if ($saldo_ant >=1) {
+        // code...
+      }else{
         $html.='
         
         <div class="gwd-div-11u6"></div>
@@ -219,15 +223,14 @@ if (isset($_POST["fact2"])) {
         Dirección: Calle 6 No 8 - 51, Mogotes (S) Teléfono: 315 882 7273</div>';
         $html.='
       <div style="page-break-after:always;"></div>';
+    }
       }}}
       
       
       $name = 'facturas '.$p_fact.' '.$num_inicial.'-'.$num_final.'.pdf';
 
-      PDF::stream($name,$html);
-
-
-
+        PDF::stream($name,$html);
+      
 
     }if (isset($_POST["fact3"])) {
      if (isset($_POST['mes_num'])) {
