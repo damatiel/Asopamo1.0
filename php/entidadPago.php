@@ -58,6 +58,7 @@
               <a class="dropdown-item" href="consultaUltPagos.php">Ultimos Pagos</a> 
               <a class="dropdown-item" href="consultaRecaudos.php">Recaudos</a>
               <a class="dropdown-item" href="consultaDeudas.php">Deudas</a>
+              <a class="dropdown-item" href="consulta_deuda_mes.php">Deudas por Mes</a>
               <a class="dropdown-item" href="ConsultaPuntos.php">Puntos</a>
               <a class="dropdown-item" href="consultaSuscriptores.php">Suscriptores</a>
               <a class="dropdown-item" href="consultaInternet.php">Internet</a>
