@@ -131,7 +131,7 @@ if (isset($_POST['suspender'])) {
 		$deuda = $fila[4];
 	}
 	if ($deuda == 0) {
-		$query ="UPDATE puntos SET estado = 5 WHERE id = '$id_punto'";
+		$query ="UPDATE puntos SET estado = 5, contador = 0 WHERE id = '$id_punto'";
 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
 	echo "
 		<script>
