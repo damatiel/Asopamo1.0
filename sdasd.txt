@@ -1,0 +1,6 @@
+El ID en línea de la cuenta PSN y la dirección de correo electrónico
+• La tarjeta de crédito utilizada para realizar compras en la cuenta
+• El número de serie de la primera consola utilizada para crear la cuenta o iniciar sesión en su cuenta
+• Detalles de transacciones recientes realizadas en la cuenta
+• Dirección de correo electrónico utilizada cuando se creó la cuenta
+• Detalles de PayPal (si corresponde)
