@@ -71,7 +71,7 @@
 				$nomCompleto = $pNom." ".$sNom." ".$pApe." ".$sApe;
 				$query4 = "UPDATE pagos set descuento = '$descuento', traslado = '$traslado',reactivacion='$reactivacion',matricula='$matricula',total = '$total_pagar'  WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";	
 				$query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta pagos linea 72");
-				$query5 = "SELECT * FROM pagos WHERE id_punto = '$id_punto' AND periodo_fact = '$p_fact'";
+				$query5 = "SELECT * FROM pagos WHERE id_punto = '$id_punto' AND fecha_factura = '$f_fact'";
 				$query_exec5 = mysqli_query($db->conectar(),$query5)or die("no se puede realizar la consulta linea 74");
 				if ($fila5 = mysqli_fetch_array($query_exec5)) {
 					$ultimodia = $fila5[6];
