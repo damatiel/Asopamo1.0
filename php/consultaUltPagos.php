@@ -200,7 +200,7 @@ $atrasos ="";
                       $entidad=$fila[3];
                       if ($entidad == 1) {
                         $entidad = 'Asopamo';
-                      }elseif($entidad == 1){
+                      }elseif($entidad == 2){
                         $entidad = 'Servimcoop';
                       }else{
                         $entidad = 'Banco Agrario';

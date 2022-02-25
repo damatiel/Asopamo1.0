@@ -215,8 +215,9 @@
 							$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
 							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 223");
 						}elseif ($estado == 1) {
+
 							$atrasos = $atrasos + 1;
-							$query = "UPDATE puntos set contador = '$atrasos' WHERE id = $id_punto";
+							$query = "UPDATE puntos set contador = '$atrasos', multa = '$multa' WHERE id = $id_punto";
 							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 228");						
 
 						}elseif ($estado == 4) {					
