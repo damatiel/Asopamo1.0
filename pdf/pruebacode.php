@@ -136,29 +136,29 @@
 			$num_inicial = $_POST['num_inicial'];
 			$num_final = $_POST['num_final'] + 1;
 			if ($mes == 1) {
-				$mes1 = 'Enero';
+				$mes1 = 'Enero'.date("Y");
 			}if ($mes == 2) {
-				$mes1 = 'Febrero';
+				$mes1 = 'Febrero'.date("Y");
 			}if ($mes == 3) {
-				$mes1 = 'Marzo';
+				$mes1 = 'Marzo'.date("Y");
 			}if ($mes == 4) {
-				$mes1 = 'Abril';
+				$mes1 = 'Abril'.date("Y");
 			}if ($mes == 5) {
-				$mes1 = 'Mayo';
+				$mes1 = 'Mayo'.date("Y");
 			}if ($mes == 6) {
-				$mes1 = 'Junio';
+				$mes1 = 'Junio'.date("Y");
 			}if ($mes == 7) {
-				$mes1 = 'Julio';
+				$mes1 = 'Julio'.date("Y");
 			}if ($mes == 8) {
-				$mes1 = 'Agosto';
+				$mes1 = 'Agosto'.date("Y");
 			}if ($mes == 9) {
-				$mes1 = 'Septiembre';
+				$mes1 = 'Septiembre'.date("Y");
 			}if ($mes == 10) {
-				$mes1 = 'Octubre';
+				$mes1 = 'Octubre'.date("Y");
 			}if ($mes == 11) {
-				$mes1 = 'Noviembre';
+				$mes1 = 'Noviembre'.date("Y");
 			}if ($mes == 12) {
-				$mes1 = 'Diciembre';
+				$mes1 = 'Diciembre'.date("Y");
 			}
 			$mes = $mes."-".$ultimodia;
 			?>
@@ -212,7 +212,7 @@
 						if ($atrasos == 5) {
 							$atrasos = $atrasos + 1;
 							$estado = 4;
-							$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
+							$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos', multa = '$multa' WHERE id = $id_punto";
 							$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 223");
 						}elseif ($estado == 1) {
 
@@ -225,14 +225,16 @@
 						}elseif ($estado == 5) {						
 
 						}else{
-							$multa = 0;
+							
 							if ($saldo_ant > 0) {
 								$atrasos = $atrasos + 1;
 								$estado = 1;
-								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos' WHERE id = $id_punto";
+								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos', multa = '$multa' WHERE id = $id_punto";
 								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 235");						
 
 							}
+
+							$multa = 0;
 
 							if ($internet == 1) {
 								$vinternet = 0;
