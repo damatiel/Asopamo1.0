@@ -30,23 +30,32 @@ $db = new DB_CONNECT();
 	
  // }
 
-$query = "SELECT * FROM pagos";
-	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 28");
-	while($fila1 = mysqli_fetch_array($query_exec)){
+// $query = "SELECT * FROM pagos";
+// 	$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 28");
+// 	while($fila1 = mysqli_fetch_array($query_exec)){
 
-		$fecha_fin = $fila1[6];
-		$id_pago = $fila1[0];
+// 		$fecha_fin = $fila1[6];
+// 		$id_pago = $fila1[0];
 
-	$query2 = "UPDATE pagos set fecha_pago = '$fecha_fin' WHERE id_entPago >= 0 AND id_pagos = $id_pago";
-	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 34");
+// 	$query2 = "UPDATE pagos set fecha_pago = '$fecha_fin' WHERE id_entPago >= 0 AND id_pagos = $id_pago";
+// 	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 34");
 	
 
 
 
-	}
+// 	}
+
+	
+
+ // 		$fecha_lim = '2022-04-29';
+
+	// $mes1 = 'Abril'.date("Y");
+
+	// $query2 = "UPDATE pagos set perido_fact = '$mes1' WHERE fecha_limite = $fecha_lim";
+	// $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 51");
 
 
-// $mes1 = 'Enero'.date("Y");
-// echo $mes1;
+
+
 
 ?>
