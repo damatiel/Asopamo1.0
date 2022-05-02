@@ -50,10 +50,7 @@ if (isset($_POST["fact2"])) {
       }
       $dir = $fila2[1]." ".$fila2['indicaciones'];
       $atrasos = $fila2[5];
-      $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
-      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
-      $query4 = "UPDATE facturacion set estado = 2 ";
-      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+           
       $query3 = "SELECT * FROM suscriptores WHERE doc = '$doc'";
       $query_exec3 = mysqli_query($db->conectar(),$query3)or die("no se puede realizar la consulta suscriptores");
       if ($fila3 = mysqli_fetch_array($query_exec3)) {
@@ -68,6 +65,11 @@ if (isset($_POST["fact2"])) {
       if ($saldo_ant >=1) {
         // code...
       }else{
+        $query4 = "UPDATE puntos set descuento = 0,traslado = 0,reactivacion = 0,matricula =0, multa = 0 WHERE id = $id_punto";
+      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+      $query4 = "UPDATE facturacion set estado = 2 ";
+      $query_exec4 = mysqli_query($db->conectar(),$query4)or die("no se puede realizar la consulta");
+
         $html.='
         
         <div class="gwd-div-11u6"></div>

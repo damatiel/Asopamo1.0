@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 require_once __DIR__ . '/../php/conectar.php';
 $db = new DB_CONNECT();
 
@@ -45,14 +45,12 @@ $db = new DB_CONNECT();
 
 // 	}
 
-	
+ 		$id_mes = '4-2022-04-29';
 
- // 		$fecha_lim = '2022-04-29';
+	$mes1 = 'Abril'.date("Y");
 
-	// $mes1 = 'Abril'.date("Y");
-
-	// $query2 = "UPDATE pagos set perido_fact = '$mes1' WHERE fecha_limite = $fecha_lim";
-	// $query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 51");
+	$query2 = "UPDATE facturacion set perido_fact = 'Abril2022' WHERE id_mes = '4-2022-04-29'";
+	$query_exec2 = mysqli_query($db->conectar(),$query2)or die("no se puede realizar la consulta linea 55");
 
 
 

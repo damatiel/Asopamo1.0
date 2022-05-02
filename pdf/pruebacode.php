@@ -177,12 +177,11 @@
 						$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 159");
 						if ($fila = mysqli_fetch_array($query_exec)) {
 							$admin_mes = $fila[2];
-							$multa = $fila[2];
 						}
 						$query = "SELECT * FROM valores WHERE id = 5 ";
 						$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 165");
-						if ($fila = mysqli_fetch_array($query_exec)) {
-							$multa = $fila[2];
+						if ($fila7 = mysqli_fetch_array($query_exec)) {
+							$multa = $fila7[2];
 						}
 
 						$doc = $fila4[3];
@@ -226,15 +225,7 @@
 
 						}else{
 							
-							if ($saldo_ant > 0) {
-								$atrasos = $atrasos + 1;
-								$estado = 1;
-								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos', multa = '$multa' WHERE id = $id_punto";
-								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 235");						
-
-							}
-
-							$multa = 0;
+							
 
 							if ($internet == 1) {
 								$vinternet = 0;
@@ -256,6 +247,20 @@
 
 
 							}else{
+
+								if ($saldo_ant > 0) {
+								$atrasos = $atrasos + 1;
+								$estado = 1;
+								$query = "UPDATE puntos set estado = '$estado', contador = '$atrasos', multa = '$multa' WHERE id = $id_punto";
+								$query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta linea 235");						
+
+							}else{
+								$multa = 0;
+							}
+
+							echo $multa;
+
+							
 
 								$total_pagar = $admin_mes+$saldo_ant+$matricula+$traslado+$reactivacion+$multa+$vinternet-$descuento;
 								$query = "UPDATE puntos set saldo_ant = '$total_pagar', contador = '$atrasos', descuento = '$descuento', estado = '$estado', multa = '$multa' WHERE id = '$id_punto'";
