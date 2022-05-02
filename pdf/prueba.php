@@ -45,9 +45,9 @@ if (isset($_POST["fact1"])) {
   $multa = $_POST['multa'];
   $admin_mes1 = $_POST['admin_mes1'];
   $vinternet = $_POST['vinternet'];
-  $otros2 = 0;
+  $otros2 = $vinternet + $traslado + $reactivacion + $multa + $matricula - $descuento;
   
-
+  echo $multa;
 
   $dompdf->loadHtml('
     <link rel="stylesheet" href="prueba.css">
