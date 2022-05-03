@@ -140,14 +140,14 @@ if (isset($_POST["fact1"])) {
   </p>
   <p class="gwd-p-10s9 gwd-p-13wj gwd-p-1w88 text-tool-feedback" id="num_cuenta">'.$n_fact.'</p>
   <p class="gwd-p-10s9 gwd-p-13wj gwd-p-lot3 text-tool-feedback" id="num_cuenta_1">'.$n_fact.'</p>
-  <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-18rr text-tool-feedback" id="num_cc">'.$doc.'</p>
+  <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-18rr text-tool-feedback" id="num_cc">'.$n_fact.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-1ts8 text-tool-feedback" id="nombre">'.$p_nom.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-swx0 gwd-p-dyqc text-tool-feedback" id="ID_PUNTO">'.$id_punto.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-omm1 gwd-p-1c9y text-tool-feedback" id="DIRECCION">'.$dir.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-1jeq gwd-p-kkcw text-tool-feedback" id="DIRECCION_1">MOGOTES - SANTANDER</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-znu2 gwd-p-vsjq text-tool-feedback" id="PERIODO">'.$p_fact.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-zabr gwd-p-l5rv gwd-p-uy95 gwd-p-1wj9 text-tool-feedback" id="LIMITE_PAGO">'.$ultimodia.'</p>
-  <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-1v8m text-tool-feedback" id="num_cc_1">'.$doc.'</p>
+  <p class="gwd-p-b0d8 gwd-p-1yuh gwd-p-1v8m text-tool-feedback" id="num_cc_1">'.$n_fact.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-ki1i gwd-p-12im text-tool-feedback" id="nombre_1">'.$p_nom.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-swx0 gwd-p-ucgl text-tool-feedback" id="ID_PUNTO_1">'.$id_punto.'</p>
   <p class="gwd-p-b0d8 gwd-p-5s47 gwd-p-1qao gwd-p-lsdz gwd-p-omm1 gwd-p-ly9f text-tool-feedback" id="DIRECCION_2">'.$dir.'</p>
