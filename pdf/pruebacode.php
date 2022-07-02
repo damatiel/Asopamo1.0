@@ -258,7 +258,6 @@
 								$multa = 0;
 							}
 
-							echo $multa;
 
 							
 
@@ -287,7 +286,6 @@
 
 						}
 						$query8 = "INSERT INTO deudas_meses (id_punto,fecha,deuda,inter) VALUES ('$id_punto',NOW(),'$saldo_ant','$internet')";
-								echo $id_punto;
 								$query_exec8 = mysqli_query($db->conectar(),$query8)or die("no se puede realizar la consulta linea 277");
 					}
 				}
