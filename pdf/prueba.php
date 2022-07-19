@@ -186,7 +186,7 @@ if (isset($_POST["fact1"])) {
   <img class="gwd-img-2evw gwd-img-p485" src="img/logo_1.PNG">
   <img class="gwd-img-1947 gwd-img-876s" src="img/asopamo.png">
   <img class="gwd-img-1dbl" src="img/firma.PNG">
-  <p class="gwd-p-1dly gwd-p-flx4 gwd-p-idja gwd-p-5xxo text-tool-feedback" id="text"><span class="gwd-span-1mdj">P<span class="gwd-span-u2wc">ara PQR diríjase a la oficina o a través del correo electrónico&nbsp;</span></span><span class="gwd-span-10qz"><span class="gwd-span-1elw">asopamo@yahoo.es</span> o comuníquese telefónicamente con&nbsp;
+  <p class="gwd-p-1dly gwd-p-flx4 gwd-p-idja gwd-p-5xxo text-tool-feedback" id="text"><span class="gwd-span-1mdj">P<span class="gwd-span-u2wc">ara PQR diríjase a la oficina o a través del correo electrónico&nbsp;</span></span><span class="gwd-span-10qz"><span class="gwd-span-1elw">asopamotv@telemogotes.com</span> o comuníquese telefónicamente con&nbsp;
     </span><span class="gwd-span-1kam">a la línea, 315 882 7273. En caso de presentar reclamación con este estado de cuenta, diríjase a la oficina antes de la fecha límite de pago.</span></p>
   <div><br>
     
