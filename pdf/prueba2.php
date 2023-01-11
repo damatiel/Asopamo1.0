@@ -212,7 +212,9 @@ if (isset($_POST["fact2"])) {
         <div><br>
 
         </div>
-        <p class="gwd-p-frrh text-tool-feedback"><span class="gwd-span-wcg1">Pague su cuenta a tiempo, evitese la suspención de los servicios y un cargo de reconexión de $ 5,000</span><br>
+        <p class="gwd-p-frrh text-tool-feedback"><span class="gwd-span-wcg1">Convocatoria asamblea general ordinaria el día 23 de enero a las 5:00 pm en el salón pastoral.
+  <br>
+  Pague su cuenta a tiempo, evitese la suspención de los servicios y un cargo de reconexión de $ 5,000</span><br>
 
         </p>
         <p class="gwd-p-hfq1 text-tool-feedback"><span class="gwd-span-55sn">Representante Legal: Jeisson Andrey Pinto Pinto<br></span><span class="gwd-span-1oe0">Coordinadora Oficina: '.$_SESSION['nombres'].'</span></p>
