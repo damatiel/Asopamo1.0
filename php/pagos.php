@@ -119,8 +119,7 @@
            <?php  
             include('ges_pagos.php');
            ?>
-           <div class="container ">
-            
+           <div class="container ">        
           
           <table class="table table-hover table-bordered">
                <thead>
@@ -131,28 +130,27 @@
                     <th scope="col" class="text-center">Dirección</th>
                     <th scope="col" class="text-center">Total</th>
                     <th scope="col" class="text-center">Borrar</th>
-
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
-                    $query = "SELECT * FROM pre_pagos";
-                      $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
-                      while($fila = mysqli_fetch_array($query_exec)){ 
-                   ?>
-                  <tr>
-                    <td class="text-center"><?php echo $fila[0]; ?></td>
-                    <td class="text-center"><?php echo $fila[1]; ?></td>
-                    <td class="text-center"><?php echo $fila[2]; ?></td>
-                    <td class="text-center"><?php echo $fila[3]; ?></td>
-                    <td class="text-center"><?php echo $fila[4]; ?></td>
-                    <?php $id = $fila[0]; ?>
-                    <?php echo '<td class="text-center"><a href="ges_pagos.php?variable1='.$id.'">Borrar</a></td>'; ?>
-                    
-                    
-                  </tr>
+                    <?php 
+                      $query = "SELECT * FROM pre_pagos";
+                        $query_exec = mysqli_query($db->conectar(),$query)or die("no se puede realizar la consulta");
+                        while($fila = mysqli_fetch_array($query_exec)){ 
+                     ?>
+                    <tr>
+                      <td class="text-center"><?php echo $fila[0]; ?></td>
+                      <td class="text-center"><?php echo $fila[1]; ?></td>
+                      <td class="text-center"><?php echo $fila[2]; ?></td>
+                      <td class="text-center"><?php echo $fila[3]; ?></td>
+                      <td class="text-center"><?php echo $fila[4]; ?></td>
+                      <?php $id = $fila[0]; ?>
+                      <?php echo '<td class="text-center"><a href="ges_pagos.php?variable1='.$id.'">Borrar</a></td>'; ?>
+                      
+                      
+                    </tr>
 
-                <?php } ?>
+                  <?php } ?>
                 </tbody>
              </table>
            </div>
