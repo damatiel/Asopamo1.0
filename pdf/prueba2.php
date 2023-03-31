@@ -206,18 +206,16 @@ if (isset($_POST["fact2"])) {
         <img class="gwd-img-1947 gwd-img-1tma" src="img/asopamo.png">
         <img class="gwd-img-2evw gwd-img-p485" src="img/logo_1.PNG">
         <img class="gwd-img-1947 gwd-img-876s" src="img/asopamo.png">
-        <img class="gwd-img-1dbl" src="img/firma.PNG">
         <p class="gwd-p-1dly gwd-p-flx4 gwd-p-idja gwd-p-5xxo text-tool-feedback" id="text"><span class="gwd-span-1mdj">P<span class="gwd-span-u2wc">ara PQR diríjase a la oficina o a través del correo electrónico&nbsp;</span></span><span class="gwd-span-10qz"><span class="gwd-span-1elw">asopamotv@telemogotes.com</span> o comuníquese telefónicamente con&nbsp;
         </span><span class="gwd-span-1kam">a la línea, 315 882 7273. En caso de presentar reclamación con este estado de cuenta, diríjase a la oficina antes de la fecha límite de pago.</span></p>
         <div><br>
 
         </div>
-        <p class="gwd-p-frrh text-tool-feedback"><span class="gwd-span-wcg1">Convocatoria asamblea general ordinaria el día 23 de enero a las 5:00 pm en el salón pastoral.
-  <br>
+        <p class="gwd-p-frrh text-tool-feedback"><span class="gwd-span-wcg1">
   Pague su cuenta a tiempo, evitese la suspención de los servicios y un cargo de reconexión de $ 5,000</span><br>
 
         </p>
-        <p class="gwd-p-hfq1 text-tool-feedback"><span class="gwd-span-55sn">Representante Legal: Jeisson Andrey Pinto Pinto<br></span><span class="gwd-span-1oe0">Coordinadora Oficina: '.$_SESSION['nombres'].'</span></p>
+        <p class="gwd-p-hfq1 text-tool-feedback"><span class="gwd-span-55sn">Representante Legal: Pedro Murillo Jaimes<br></span><span class="gwd-span-1oe0">Coordinadora Oficina: '.$_SESSION['nombres'].'</span></p>
         <div><br>
 
         </div>
